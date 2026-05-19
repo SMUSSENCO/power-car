@@ -1,0 +1,44 @@
+[
+  {
+    "id": "moscow",
+    "city": "Москва",
+    "emoji": "🏛",
+    "timezone": "MSK UTC+3",
+    "address": "ул. Примерная, 1, офис 100",
+    "addressNote": "(метро Парк культуры)",
+    "phone": "+7 (495) 000-00-00",
+    "phoneRaw": "+74950000000",
+    "hours": "Пн–Сб 9:00–18:00 (МСК)",
+    "maxUrl": "https://max.ru/",
+    "published": true,
+    "order": 1
+  },
+  {
+    "id": "tomsk",
+    "city": "Томск",
+    "emoji": "🏔",
+    "timezone": "TOMK UTC+7",
+    "address": "пр. Ленина, 100, офис 50",
+    "addressNote": "(центр города)",
+    "phone": "+7 (382) 000-00-00",
+    "phoneRaw": "+73820000000",
+    "hours": "Пн–Сб 9:00–18:00 (Томск)",
+    "maxUrl": "https://max.ru/",
+    "published": true,
+    "order": 2
+  },
+  {
+    "id": "novosibirsk",
+    "city": "Новосибирск",
+    "emoji": "🌆",
+    "timezone": "NOVT UTC+7",
+    "address": "ул. Красный проспект, 50",
+    "addressNote": "(метро Площадь Ленина)",
+    "phone": "+7 (383) 000-00-00",
+    "phoneRaw": "+73830000000",
+    "hours": "Пн–Сб 9:00–18:00 (Нск)",
+    "maxUrl": "https://max.ru/",
+    "published": true,
+    "order": 3
+  }
+]

@@ -1,0 +1,3656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>POWER Car — Импорт авто из Китая, Японии и Кореи под ключ</title>
+<meta name="description" content="POWER Car — доставка автомобилей и мотоциклов из Китая, Японии, Кореи. Прозрачный подбор, фото-отчёт, отслеживание логистики. Офисы в Москве, Томске, Новосибирске." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="POWER Car — Импорт авто из Китая, Японии и Кореи" />
+<meta property="og:description" content="Подбор бесплатно. Фото-отчёт перед покупкой. Отчёт о логистике в реальном времени." />
+<meta property="og:image" content="og-image.png" />
+<meta property="og:locale" content="ru_RU" />
+
+<!-- Favicon (inline SVG) -->
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2310B981'/><path d='M12 38 L20 28 L42 28 L50 25 L55 32 L55 42 Z M8 42 L57 42' fill='none' stroke='%23000' stroke-width='3' stroke-linejoin='round'/><circle cx='22' cy='44' r='4' fill='%23000'/><circle cx='44' cy='44' r='4' fill='%23000'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:400,500,600,700,800|manrope:400,500,600,700&display=swap" rel="stylesheet">
+
+<!-- JSON-LD LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoDealer",
+  "name": "POWER Car",
+  "description": "Импорт автомобилей и мотоциклов из Китая, Японии и Кореи",
+  "areaServed": "RU",
+  "address": [
+    {"@type":"PostalAddress","addressLocality":"Москва","addressCountry":"RU"},
+    {"@type":"PostalAddress","addressLocality":"Томск","addressCountry":"RU"},
+    {"@type":"PostalAddress","addressLocality":"Новосибирск","addressCountry":"RU"}
+  ]
+}
+</script>
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root {
+  /* Colors */
+  --bg: #0A0A0A;
+  --bg-alt: #0E0E10;
+  --bg-elevated: #131316;
+  --surface: rgba(255,255,255,0.035);
+  --surface-2: rgba(255,255,255,0.06);
+  --surface-3: rgba(255,255,255,0.10);
+  --surface-4: rgba(255,255,255,0.14);
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --border-3: rgba(255,255,255,0.22);
+  --text: #FAFAFA;
+  --text-muted: rgba(255,255,255,0.62);
+  --text-dim: rgba(255,255,255,0.42);
+  --accent: #10B981;
+  --accent-2: #34D399;
+  --accent-3: #6EE7B7;
+  --accent-dark: #047857;
+  --accent-glow: rgba(16,185,129,0.35);
+  --accent-soft: rgba(16,185,129,0.12);
+  --danger: #EF4444;
+  --warning: #F59E0B;
+
+  /* Radii */
+  --r-xs: 8px;
+  --r-sm: 14px;
+  --r-md: 22px;
+  --r-lg: 32px;
+  --r-xl: 44px;
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Safe areas (iOS) */
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* iOS: prevent rubber-band scroll affecting fixed elements */
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'ss01', 'cv11';
+  min-height: 100%;
+  /* iOS: account for FAB + announcement bar */
+  padding-bottom: calc(80px + var(--sab));
+}
+
+@media (min-width: 1024px) {
+  body { padding-bottom: 0; }
+}
+
+/* ============ AMBIENT BACKGROUND ============ */
+.ambient {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  /* iOS: prevent flicker */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+.ambient::before, .ambient::after {
+  content: '';
+  position: absolute;
+  width: 60vw; height: 60vw;
+  border-radius: 50%;
+  -webkit-filter: blur(120px);
+  filter: blur(120px);
+  opacity: 0.4;
+  will-change: transform;
+}
+.ambient::before {
+  top: -20%; left: -10%;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 60%);
+  animation: drift1 22s var(--ease-out) infinite alternate;
+}
+.ambient::after {
+  bottom: -30%; right: -20%;
+  width: 70vw; height: 70vw;
+  background: radial-gradient(circle, #064E3B 0%, transparent 60%);
+  animation: drift2 28s var(--ease-out) infinite alternate;
+}
+@keyframes drift1 { to { transform: translate(20vw, 10vh) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(-15vw, -10vh) scale(1.1); } }
+
+/* Grain */
+.grain {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+/* ============ TYPOGRAPHY ============ */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+h1 { font-size: clamp(2rem, 6.5vw, 4.75rem); font-weight: 700; letter-spacing: -0.04em; }
+h2 { font-size: clamp(1.875rem, 5vw, 3.5rem); }
+h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--accent);
+}
+.muted { color: var(--text-muted); }
+
+.glow-text {
+  background: linear-gradient(120deg, #fff 0%, var(--accent-2) 50%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6s linear infinite;
+}
+@keyframes shine { to { background-position: 200% center; } }
+
+/* ============ LAYOUT ============ */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  padding-left: max(20px, var(--sal));
+  padding-right: max(20px, var(--sar));
+  position: relative;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .container { padding-left: max(40px, var(--sal)); padding-right: max(40px, var(--sar)); }
+}
+
+section { position: relative; padding: 72px 0; }
+@media (min-width: 768px) { section { padding: 112px 0; } }
+
+/* ============ GLASS ============ */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 0 0 1px rgba(255,255,255,0.02) inset;
+  transition: border-color 0.4s var(--ease-out), background 0.4s var(--ease-out), transform 0.5s var(--ease-out);
+}
+.glass-strong {
+  background: var(--surface-2);
+  border-color: var(--border-2);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  backdrop-filter: blur(40px) saturate(160%);
+}
+
+/* iOS-safe focus */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-xs);
+}
+</style>
+<style>
+/* ============ ANNOUNCEMENT BAR ============ */
+.announce {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 99;
+  padding: 8px 16px;
+  padding-top: max(8px, var(--sat));
+  background: linear-gradient(90deg, rgba(16,185,129,0.18), rgba(16,185,129,0.10));
+  border-bottom: 1px solid rgba(16,185,129,0.25);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  transition: transform 0.4s var(--ease-out);
+}
+.announce.hidden { transform: translateY(-100%); }
+.announce-text { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; overflow: hidden; }
+.announce-emoji { font-size: 1rem; }
+.announce-divider { color: var(--accent); opacity: 0.6; }
+.announce-secondary { display: none; }
+@media (min-width: 768px) {
+  .announce-secondary { display: inline; color: var(--text-muted); }
+}
+.announce-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.announce-close:hover { background: var(--surface-2); color: var(--text); }
+.announce-close svg { width: 14px; height: 14px; }
+
+/* ============ HEADER ============ */
+.header-wrap {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding-top: 34px;
+  padding-top: calc(34px + var(--sat));
+  transition: padding 0.3s var(--ease-out);
+  pointer-events: none;
+}
+.header-wrap.announce-hidden {
+  padding-top: var(--sat);
+}
+.header {
+  margin: 0 16px;
+  pointer-events: auto;
+  border-radius: 999px;
+  padding: 8px 8px 8px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: all 0.4s var(--ease-out);
+  background: rgba(10,10,10,0.55);
+  border: 1px solid rgba(255,255,255,0.06);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  position: relative;
+}
+@media (min-width: 768px) {
+  .header { margin: 0 32px; padding: 10px 10px 10px 22px; }
+}
+.header.scrolled {
+  background: rgba(10,10,10,0.78);
+  border-color: var(--border-2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* City silhouettes — removed */
+
+/* Logo (compact mark only) */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.logo-svg { height: 28px; width: auto; display: block; }
+
+/* Nav */
+.nav {
+  display: none;
+  gap: 2px;
+  align-items: center;
+}
+@media (min-width: 1024px) { .nav { display: flex; } }
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: all 0.3s var(--ease-out);
+}
+.nav a:hover { color: var(--text); background: var(--surface-2); }
+
+/* Header CTA group */
+.header-cta { display: flex; gap: 6px; align-items: center; }
+
+/* ============ BUTTONS ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out);
+  white-space: nowrap;
+  min-height: 46px;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+  /* iOS tap highlight off */
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  color: #002417;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.4) inset,
+    0 -1px 0 rgba(0,0,0,0.2) inset,
+    0 12px 28px -8px var(--accent-glow);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.4) inset,
+    0 -1px 0 rgba(0,0,0,0.2) inset,
+    0 18px 40px -8px var(--accent-glow);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border-2);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.btn-ghost:hover { background: var(--surface-3); }
+
+.btn-icon {
+  padding: 12px;
+  min-width: 46px;
+  min-height: 46px;
+  border-radius: 50%;
+}
+.btn-sm { padding: 9px 16px; font-size: 0.85rem; min-height: 40px; }
+.btn-sm.btn-icon { padding: 10px; min-width: 40px; min-height: 40px; }
+
+/* Animated CTA effects */
+.btn-pulse {
+  position: relative;
+}
+.btn-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  opacity: 0;
+  z-index: -1;
+  animation: btnPulse 3s var(--ease-out) infinite;
+}
+@keyframes btnPulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.08); }
+}
+
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: translateX(-100%);
+  animation: btnShine 4.5s var(--ease-out) infinite;
+}
+@keyframes btnShine {
+  0% { transform: translateX(-100%); }
+  18%, 100% { transform: translateX(100%); }
+}
+
+/* Call button (phone icon) */
+.btn-call {
+  background: var(--accent-soft);
+  color: var(--accent-2);
+  border-color: rgba(16,185,129,0.3);
+}
+.btn-call:hover {
+  background: var(--accent-glow);
+  color: var(--text);
+}
+
+/* ============ MOBILE FAB ============ */
+.fab {
+  position: fixed;
+  bottom: 12px;
+  bottom: max(12px, var(--sab));
+  left: 12px; right: 12px;
+  z-index: 95;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(10,10,10,0.85);
+  border: 1px solid var(--border-2);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.06) inset;
+}
+@media (min-width: 1024px) { .fab { display: none; } }
+
+.fab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 11px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  color: var(--text);
+}
+.fab-btn:active { transform: scale(0.95); }
+.fab-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.fab-max { background: linear-gradient(135deg, #6366F1, #8B5CF6); color: white; }
+.fab-tg { background: linear-gradient(135deg, #2AABEE, #229ED9); color: white; }
+.fab-call {
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  color: #002417;
+}
+</style>
+<style>
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  /* iOS-safe: avoid 100vh which includes hidden URL bar */
+  padding-top: 140px;
+  padding-top: calc(140px + var(--sat));
+  padding-bottom: 60px;
+}
+@media (min-width: 1024px) {
+  .hero {
+    min-height: calc(100svh - 80px);
+    display: flex;
+    align-items: center;
+  }
+}
+.hero-grid {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+}
+@media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
+
+.hero h1 { margin-top: 18px; }
+.hero h1 .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: rise 0.9s var(--ease-out) forwards;
+}
+.hero h1 .word:nth-child(1) { animation-delay: 0.1s; }
+.hero h1 .word:nth-child(2) { animation-delay: 0.2s; }
+.hero h1 .word:nth-child(3) { animation-delay: 0.3s; }
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+.country-rotator {
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(120deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  min-width: 6ch;
+  text-align: left;
+  transition: opacity 0.4s, transform 0.4s;
+}
+.country-rotator::after {
+  content: '';
+  position: absolute;
+  bottom: 0.06em; left: 0; right: 0;
+  height: 0.06em;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  border-radius: 999px;
+  opacity: 0.4;
+}
+
+.hero-sub {
+  margin-top: 22px;
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  color: var(--text-muted);
+  max-width: 540px;
+  line-height: 1.55;
+  opacity: 0;
+  animation: rise 0.9s var(--ease-out) 0.5s forwards;
+}
+
+.hero-cta-row {
+  margin-top: 32px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: rise 0.9s var(--ease-out) 0.7s forwards;
+}
+
+.stats {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 20px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  opacity: 0;
+  animation: rise 0.9s var(--ease-out) 0.9s forwards;
+}
+.stat { text-align: left; padding: 0 12px; position: relative; }
+.stat + .stat::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12%; bottom: 12%;
+  width: 1px;
+  background: var(--border);
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(180deg, #fff, #aaa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label {
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* ============ ROUTES MAP (Hero visual) ============ */
+.routes-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.1 / 1;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.routes-map svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.route-dot-pulse {
+  animation: dotPulse 2.4s var(--ease-out) infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.route-line {
+  stroke-dasharray: 6 4;
+  stroke-dashoffset: 0;
+  animation: dashFlow 14s linear infinite;
+}
+@keyframes dashFlow { to { stroke-dashoffset: -200; } }
+.route-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--text-muted);
+}
+.route-label.active { fill: var(--accent-2); }
+.route-label-bg {
+  fill: rgba(10,10,10,0.7);
+  stroke: var(--border);
+}
+
+/* ============ SECTION HEADS ============ */
+.section-head {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+.section-head h2 { margin-top: 16px; }
+.section-head p {
+  margin-top: 16px;
+  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+  color: var(--text-muted);
+}
+
+/* ============ ADVANTAGES (6 cards) ============ */
+.advantages-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 768px) { .advantages-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.adv {
+  padding: 22px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  transition: all 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.adv:hover {
+  border-color: var(--border-2);
+  background: var(--surface-2);
+  transform: translateY(-2px);
+}
+.adv-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  border: 1px solid rgba(16,185,129,0.25);
+  display: grid;
+  place-items: center;
+  color: var(--accent-2);
+  flex-shrink: 0;
+}
+.adv-icon svg { width: 22px; height: 22px; }
+.adv h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.adv p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.45; }
+
+/* ============ CAR CARDS (unified system) ============ */
+.car-card {
+  position: relative;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+}
+.car-card:hover {
+  border-color: var(--border-2);
+  background: var(--surface-2);
+  transform: translateY(-4px);
+}
+
+.car-img {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #0d2a23, #0a1a16);
+  overflow: hidden;
+}
+.car-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(16,185,129,0.18), transparent 60%);
+}
+.car-img-svg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.car-img-svg svg { width: 70%; height: auto; opacity: 0.85; }
+
+.car-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.car-flag-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--border-2);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  z-index: 2;
+}
+
+.car-top-ribbon {
+  position: absolute;
+  top: 12px; right: -8px;
+  padding: 6px 14px 6px 12px;
+  background: linear-gradient(135deg, #FFB800, #FF8A00);
+  color: #1a0e00;
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  border-radius: 4px 0 0 4px;
+  box-shadow: 0 4px 12px rgba(255,138,0,0.4);
+  z-index: 2;
+}
+.car-top-ribbon::after {
+  content: '';
+  position: absolute;
+  right: 0; bottom: -8px;
+  border-top: 8px solid #B66200;
+  border-right: 8px solid transparent;
+}
+
+.car-badges {
+  position: absolute;
+  bottom: 12px; left: 12px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  z-index: 2;
+  max-width: calc(100% - 24px);
+}
+.car-badge {
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid var(--border-2);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.car-badge-tax { background: rgba(16,185,129,0.22); border-color: var(--accent); color: var(--accent-2); }
+.car-badge-hit { background: rgba(239,68,68,0.22); border-color: #EF4444; color: #FCA5A5; }
+.car-badge-new { background: rgba(59,130,246,0.22); border-color: #3B82F6; color: #93C5FD; }
+
+.car-photo-count {
+  position: absolute;
+  bottom: 12px; right: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.65);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: inline-flex; align-items: center; gap: 4px;
+  z-index: 2;
+}
+.car-photo-count svg { width: 12px; height: 12px; }
+
+.car-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.car-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.car-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.car-meta-item { display: inline-flex; align-items: center; gap: 4px; }
+.car-meta-item::after { content: '·'; margin-left: 6px; opacity: 0.5; }
+.car-meta-item:last-child::after { display: none; }
+.car-wheel-right {
+  background: rgba(245,158,11,0.18);
+  border: 1px solid rgba(245,158,11,0.4);
+  color: #FBBF24;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.car-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.car-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.car-price-market {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-decoration: line-through;
+}
+
+.car-delivery {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.car-delivery svg { width: 14px; height: 14px; color: var(--accent-2); }
+
+.car-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.car-actions .btn { flex: 1; padding: 11px 14px; font-size: 0.85rem; min-height: 42px; }
+
+/* ============ TOP-5 CAROUSEL ============ */
+.top5-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 20px;
+  padding: 4px 20px 24px;
+  margin: 0 -20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.top5-track::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) {
+  .top5-track { margin: 0 -40px; scroll-padding-inline-start: 40px; padding-left: 40px; padding-right: 40px; }
+}
+.top5-track .car-card {
+  flex: 0 0 auto;
+  width: min(320px, 82vw);
+  scroll-snap-align: start;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.carousel-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  display: grid; place-items: center;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.3s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+.carousel-btn:hover {
+  background: var(--surface-3);
+  border-color: var(--border-3);
+}
+.carousel-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.carousel-btn svg { width: 18px; height: 18px; }
+
+.section-head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.section-head-row .section-head { margin-bottom: 0; flex: 1; min-width: 280px; }
+
+/* ============ SELECTOR (Подборщик) ============ */
+.selector {
+  padding: 28px;
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  backdrop-filter: blur(40px) saturate(160%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.08) inset,
+    0 24px 60px -20px rgba(0,0,0,0.4);
+}
+@media (min-width: 768px) { .selector { padding: 36px; } }
+
+/* Auto/Moto toggle (iOS-style) */
+.type-toggle {
+  display: inline-flex;
+  background: rgba(0,0,0,0.4);
+  border-radius: 999px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  gap: 2px;
+  position: relative;
+}
+.type-toggle button {
+  position: relative;
+  padding: 10px 22px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: color 0.3s var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+.type-toggle button.active { color: #002417; }
+.type-toggle-thumb {
+  position: absolute;
+  top: 4px; bottom: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  transition: transform 0.4s var(--ease-spring);
+  z-index: 0;
+  left: 4px;
+}
+.type-toggle[data-type="moto"] .type-toggle-thumb { transform: translateX(100%); }
+
+.selector-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+.selector-label:first-of-type { margin-top: 28px; }
+
+/* Filter chips */
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chip {
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+.chip:hover { border-color: var(--border-2); background: rgba(0,0,0,0.5); }
+.chip.active {
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  color: #002417;
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px -4px var(--accent-glow);
+}
+
+/* More filters toggle */
+.more-filters {
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.more-filters summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 6px 0;
+  transition: color 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.more-filters summary::-webkit-details-marker { display: none; }
+.more-filters summary:hover { color: var(--text); }
+.more-filters summary svg {
+  transition: transform 0.3s var(--ease-out);
+}
+.more-filters[open] summary svg { transform: rotate(180deg); }
+
+/* Results */
+.results-note {
+  margin: 32px 0 16px;
+  padding: 14px 18px;
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  border: 1px solid rgba(16,185,129,0.25);
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.45;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.results-note svg { width: 18px; height: 18px; color: var(--accent-2); flex-shrink: 0; margin-top: 2px; }
+
+.results-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  margin-top: 20px;
+}
+@media (min-width: 640px) { .results-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .results-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.results-empty {
+  padding: 40px 24px;
+  text-align: center;
+  border-radius: var(--r-md);
+  background: rgba(0,0,0,0.25);
+  border: 1px dashed var(--border-2);
+}
+.results-empty h3 { margin-bottom: 10px; }
+.results-empty p { color: var(--text-muted); max-width: 400px; margin: 0 auto 18px; }
+
+.individual-cta {
+  margin-top: 24px;
+  padding: 20px 24px;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.04));
+  border: 1px solid rgba(16,185,129,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.individual-cta-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+.individual-cta-text small { display: block; font-family: var(--font-body); font-size: 0.82rem; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
+</style>
+<style>
+/* ============ CREDIT (compact) ============ */
+.credit-strip {
+  padding: 18px 20px;
+  border-radius: var(--r-md);
+  background: linear-gradient(90deg, rgba(46, 73, 197, 0.08), rgba(33, 168, 56, 0.08));
+  border: 1px solid var(--border-2);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.credit-strip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 220px;
+}
+.credit-strip-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.credit-strip-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.credit-banks {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.bank-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+.bank-pill-vtb {
+  background: linear-gradient(135deg, rgba(46, 73, 197, 0.18), rgba(0,0,0,0.3));
+  border-color: rgba(46, 73, 197, 0.4);
+}
+.bank-pill-sber {
+  background: linear-gradient(135deg, rgba(33, 168, 56, 0.18), rgba(0,0,0,0.3));
+  border-color: rgba(33, 168, 56, 0.4);
+}
+.bank-logo {
+  width: 22px; height: 22px;
+  border-radius: 5px;
+  display: grid; place-items: center;
+  font-weight: 700;
+  font-size: 0.62rem;
+}
+.bank-logo-vtb { background: #2E49C5; color: white; }
+.bank-logo-sber { background: #21A838; color: white; }
+
+/* ============ STEPS ============ */
+.steps-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .steps-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .steps-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.step {
+  padding: 24px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  position: relative;
+  transition: all 0.5s var(--ease-out);
+  transform-style: preserve-3d;
+}
+.step:hover {
+  border-color: var(--border-2);
+  background: var(--surface-2);
+}
+.step-num {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--accent-2), transparent 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.7;
+}
+.step h3 { margin-top: 14px; font-size: 1.05rem; }
+.step p { margin-top: 10px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+.step-highlight {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: var(--r-xs);
+  background: var(--accent-soft);
+  border: 1px solid rgba(16,185,129,0.25);
+  font-size: 0.78rem;
+  color: var(--accent-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.step-highlight svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* ============ LEGAL PROTECTION ============ */
+.legal-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 768px) { .legal-grid { grid-template-columns: repeat(4, 1fr); } }
+.legal {
+  padding: 20px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.legal-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  display: grid; place-items: center;
+  color: var(--accent-2);
+}
+.legal-icon svg { width: 22px; height: 22px; }
+.legal h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.legal p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+
+/* ============ CASES (with fix) ============ */
+.cases-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 20px;
+  /* FIX: removed padding-right that caused dead space */
+  padding: 4px 20px 24px;
+  margin: 0 -20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.cases-scroll::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) {
+  .cases-scroll { margin: 0 -40px; scroll-padding-inline-start: 40px; padding-left: 40px; padding-right: 40px; }
+}
+
+.case {
+  flex: 0 0 auto;
+  width: min(340px, 82vw);
+  scroll-snap-align: start;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.case:hover { border-color: var(--border-2); background: var(--surface-2); transform: translateY(-4px); }
+
+.case-img {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: linear-gradient(135deg, #064E3B, #022C22);
+}
+.case-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(16,185,129,0.3), transparent 60%);
+}
+.case-img-svg {
+  position: absolute;
+  inset: 0;
+  display: grid; place-items: center;
+}
+.case-img-svg svg { width: 70%; height: auto; opacity: 0.92; }
+
+.case-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.case-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+.case-client {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.case-quote {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+  font-style: italic;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
+}
+.case-meta {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.case-meta b { color: var(--text); font-weight: 600; }
+
+/* ============ VIDEO REVIEWS (placeholder) ============ */
+.video-placeholder {
+  padding: 60px 24px;
+  text-align: center;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(0,0,0,0.3));
+  border: 1px dashed var(--border-2);
+}
+.video-placeholder-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  display: grid; place-items: center;
+  margin: 0 auto 18px;
+  color: var(--accent-2);
+}
+.video-placeholder-icon svg { width: 30px; height: 30px; }
+.video-placeholder h3 { margin-bottom: 10px; }
+.video-placeholder p { color: var(--text-muted); max-width: 480px; margin: 0 auto; }
+.video-channels {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.video-channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.video-channel svg { width: 18px; height: 18px; }
+
+/* ============ TEAM ============ */
+.team-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 768px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.member {
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+}
+.member:hover { border-color: var(--border-2); background: var(--surface-2); transform: translateY(-3px); }
+.member-photo {
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, #0d2a23, #0a1a16);
+  display: grid; place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.member-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(16,185,129,0.15), transparent 60%);
+}
+.member-photo svg { width: 60%; height: auto; opacity: 0.7; color: var(--text-dim); }
+.member-body { padding: 16px; text-align: center; }
+.member-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+.member-role {
+  font-size: 0.78rem;
+  color: var(--accent-2);
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+.member-exp {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.member-tg {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: #2AABEE;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(42,171,238,0.1);
+  border: 1px solid rgba(42,171,238,0.2);
+}
+.member-tg svg { width: 12px; height: 12px; }
+
+/* ============ OFFICES ============ */
+.offices-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) { .offices-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.office {
+  padding: 26px;
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.office-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  width: fit-content;
+}
+.office h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.office-address {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.office-phone {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent-2);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.3s;
+}
+.office-phone:hover { opacity: 0.8; }
+.office-phone svg { width: 18px; height: 18px; }
+.office-hours {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+.office-hours svg { width: 14px; height: 14px; color: var(--accent-2); }
+.office-max {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.3s;
+}
+.office-max:hover { transform: translateY(-2px); }
+.office-max svg { width: 16px; height: 16px; }
+
+/* ============ FAQ ============ */
+.faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 880px; }
+.faq-item {
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+}
+.faq-item[open] { border-color: var(--border-2); background: var(--surface-2); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-icon {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: grid; place-items: center;
+  transition: all 0.4s var(--ease-out);
+}
+.faq-item[open] .faq-icon {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(45deg);
+  color: #002417;
+}
+.faq-content {
+  padding: 0 24px 22px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+/* ============ FINAL CTA ============ */
+.cta-card {
+  position: relative;
+  border-radius: var(--r-xl);
+  padding: 32px 20px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(16,185,129,0.10), rgba(0,0,0,0.35));
+  border: 1px solid var(--border-2);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  backdrop-filter: blur(40px) saturate(160%);
+  max-width: 100%;
+}
+@media (min-width: 768px) { .cta-card { padding: 56px 48px; background: linear-gradient(135deg, rgba(16,185,129,0.14), rgba(0,0,0,0.4)); } }
+/* Decorative glow — only on desktop, hidden on mobile to avoid the sharp seam */
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle, var(--accent-glow), transparent 60%);
+  pointer-events: none;
+  display: none;
+}
+@media (min-width: 1024px) { .cta-card::before { display: block; } }
+.cta-grid {
+  display: grid; gap: 28px;
+  grid-template-columns: 1fr;
+  position: relative; z-index: 1;
+  min-width: 0;
+}
+.cta-grid > * { min-width: 0; max-width: 100%; }
+@media (min-width: 1024px) { .cta-grid { grid-template-columns: 1.15fr 1fr; align-items: start; gap: 56px; } }
+
+.cta-anchors {
+  margin: 28px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.cta-anchor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--r-sm);
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+}
+.cta-anchor-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  display: grid; place-items: center;
+  color: var(--accent-2);
+  flex-shrink: 0;
+}
+.cta-anchor-icon svg { width: 18px; height: 18px; }
+.cta-anchor-text {
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.cta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.field input, .field select, .field textarea {
+  font-family: var(--font-body);
+  /* iOS: prevent zoom on focus */
+  font-size: 16px;
+  padding: 14px 16px;
+  border-radius: var(--r-sm);
+  background: rgba(0,0,0,0.45);
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: all 0.3s var(--ease-out);
+  -webkit-appearance: none;
+  appearance: none;
+}
+@media (min-width: 768px) {
+  .field input, .field select, .field textarea { font-size: 1rem; }
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(0,0,0,0.6);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+/* Channel chips — compact horizontal layout */
+.channel-chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.channel-chip {
+  padding: 10px 4px;
+  border-radius: var(--r-sm);
+  background: rgba(0,0,0,0.35);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.25s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  min-width: 0;
+}
+.channel-chip svg { width: 16px; height: 16px; flex-shrink: 0; }
+@media (min-width: 768px) {
+  .channel-chip { padding: 12px 8px; font-size: 0.82rem; }
+  .channel-chip svg { width: 18px; height: 18px; }
+}
+.channel-chip.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-2);
+}
+.channel-chip:hover { border-color: var(--border-2); }
+
+/* Submit button — full width on mobile */
+.cta-form .btn { width: 100%; }
+
+/* iOS-style toggle for consent */
+.consent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  padding: 4px 0;
+}
+.consent a { color: var(--accent-2); text-decoration: none; border-bottom: 1px solid var(--border-2); }
+.consent-toggle {
+  position: relative;
+  width: 44px; height: 26px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 999px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.3s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+.consent-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 22px; height: 22px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s var(--ease-spring);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.consent input { display: none; }
+.consent input:checked + .consent-toggle {
+  background: var(--accent);
+}
+.consent input:checked + .consent-toggle::after {
+  transform: translateX(18px);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  padding: 32px 0 24px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
+}
+.footer-grid {
+  display: grid; gap: 28px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) { .footer-grid { grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; } }
+.footer-brand .logo-svg { height: 36px; }
+.footer-brand p { margin-top: 12px; color: var(--text-muted); font-size: 0.82rem; max-width: 360px; line-height: 1.5; }
+.footer h4 {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  margin-top: 14px;
+  font-weight: 700;
+}
+.footer-col a {
+  color: var(--text);
+  text-decoration: none;
+  display: block;
+  padding: 3px 0;
+  font-size: 0.85rem;
+  transition: color 0.3s var(--ease-out);
+}
+.footer-col a:hover { color: var(--accent-2); }
+.footer-office {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+.footer-office b { color: var(--text); display: inline-block; margin-right: 6px; }
+.footer-office a { color: var(--text); padding: 0; font-size: inherit; }
+
+/* Socials: flex wrap, no holes */
+.social-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+.social-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  display: grid; place-items: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+.social-icon:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-2);
+  transform: translateY(-2px);
+}
+.social-icon svg { width: 16px; height: 16px; }
+
+.footer-docs-inline {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.6;
+}
+.footer-docs-inline a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--border-2);
+}
+.footer-docs-inline a:hover { color: var(--text); }
+
+.footer-legal {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-legal a { color: var(--text-dim); text-decoration: none; }
+
+/* ============ MODAL ============ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.75);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+  overflow-y: auto;
+  /* iOS: prevent body scroll */
+  -webkit-overflow-scrolling: touch;
+}
+@media (min-width: 768px) {
+  .modal-backdrop { align-items: center; padding: 40px 20px; }
+}
+.modal-backdrop.open { display: flex; animation: fadeIn 0.3s var(--ease-out); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal {
+  width: 100%;
+  max-width: 760px;
+  background: var(--bg-elevated);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  border: 1px solid var(--border-2);
+  border-bottom: none;
+  max-height: 92vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  animation: slideUp 0.4s var(--ease-spring);
+}
+@media (min-width: 768px) {
+  .modal { border-radius: var(--r-lg); border-bottom: 1px solid var(--border-2); }
+}
+@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-2);
+  display: grid; place-items: center;
+  cursor: pointer;
+  color: var(--text);
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+}
+.modal-close svg { width: 18px; height: 18px; }
+
+.modal-gallery {
+  position: relative;
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #0d2a23, #0a1a16);
+  overflow: hidden;
+}
+.modal-gallery-inner {
+  display: grid; place-items: center;
+  width: 100%; height: 100%;
+}
+.modal-gallery svg { width: 60%; height: auto; opacity: 0.85; }
+
+.modal-body { padding: 24px; }
+@media (min-width: 768px) { .modal-body { padding: 32px; } }
+.modal-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.modal-price-block {
+  text-align: right;
+}
+.modal-price {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--accent-2);
+  line-height: 1;
+}
+.modal-price-market {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  text-decoration: line-through;
+  margin-top: 4px;
+}
+.modal-price-save {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #FBBF24;
+}
+
+.modal-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: var(--r-md);
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+}
+.modal-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.modal-spec-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.modal-spec-value {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.modal-breakdown {
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: var(--r-md);
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+}
+.modal-breakdown h4 {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.modal-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.modal-breakdown-row:last-child { border-bottom: none; }
+.modal-breakdown-row .l { color: var(--text-muted); }
+.modal-breakdown-total {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 2px solid var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 700;
+}
+.modal-breakdown-total .v {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--accent-2);
+}
+
+.modal-disclaimer {
+  margin: 16px 0;
+  padding: 12px 14px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  border-left: 2px solid var(--border-2);
+  background: rgba(0,0,0,0.2);
+  line-height: 1.5;
+  border-radius: 0 var(--r-xs) var(--r-xs) 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.modal-actions .btn { flex: 1; min-width: 140px; }
+
+/* ============ REVEAL ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal-stagger.in > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.in > *:nth-child(1) { transition-delay: 0.0s; }
+.reveal-stagger.in > *:nth-child(2) { transition-delay: 0.08s; }
+.reveal-stagger.in > *:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger.in > *:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger.in > *:nth-child(5) { transition-delay: 0.32s; }
+.reveal-stagger.in > *:nth-child(6) { transition-delay: 0.40s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ ANNOUNCEMENT BAR ============ -->
+<div class="announce" id="announce" role="banner">
+  <span class="announce-text">
+    <span class="announce-emoji">🎁</span>
+    <span><b>Подбор и консультация — бесплатно</b><span class="announce-secondary"> · Платите только за выбранное авто</span></span>
+  </span>
+  <button class="announce-close" id="announceClose" aria-label="Закрыть">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
+<!-- ============ HEADER ============ -->
+<div class="header-wrap" id="headerWrap">
+  <header class="header" id="header">
+    <a href="#" class="logo" aria-label="POWER Car — на главную">
+      <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+        <!-- Car silhouette mark -->
+        <g transform="translate(2,8)">
+          <path d="M2 36 C 0 38, 0 44, 4 46 L 44 46 C 48 44, 48 38, 46 36 L 36 36 L 32 28 L 18 28 L 14 36 Z"
+                fill="none" stroke="#10B981" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M14 36 L18 30 L32 30 L36 36"
+                fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="14" cy="44" r="4" fill="#10B981"/>
+          <circle cx="34" cy="44" r="4" fill="#10B981"/>
+        </g>
+        <!-- POWER CAR text -->
+        <text x="60" y="32" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="20" fill="#FAFAFA" letter-spacing="-0.5">POWER</text>
+        <text x="60" y="50" font-family="Bricolage Grotesque, sans-serif" font-weight="600" font-size="14" fill="#10B981" letter-spacing="2">CAR</text>
+      </svg>
+    </a>
+
+    <nav class="nav" aria-label="Главное меню">
+      <a href="#advantages">Преимущества</a>
+      <a href="#top5">Топ-5</a>
+      <a href="#selector">Подбор</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#offices">Офисы</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+
+    <div class="header-cta">
+      <a href="tel:+78005553535" class="btn btn-call btn-sm btn-icon btn-pulse" aria-label="Позвонить">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="#cta" class="btn btn-primary btn-sm btn-shine">Заявка</a>
+    </div>
+  </header>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Импорт авто · Под ключ</span>
+        <h1>
+          <span class="word">Авто и мото</span><br/>
+          <span class="word">из <span class="country-rotator" id="rotator">Кореи</span></span>
+        </h1>
+        <p class="hero-sub">
+          Подбираем, выкупаем, растамаживаем и доставляем автомобиль или мотоцикл из Китая, Японии или Кореи. Прозрачный расчёт стоимости — без скрытых комиссий.
+        </p>
+        <div class="hero-cta-row">
+          <a href="#selector" class="btn btn-primary btn-shine">
+            Подобрать авто
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#cases" class="btn btn-ghost">Смотреть кейсы</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value" data-target="1200" data-suffix="+">0</div>
+            <div class="stat-label">авто доставлено<br/>с 2019 года</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">до <span data-target="45">0</span></div>
+            <div class="stat-label">дней под ключ<br/>в среднем</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">0₽</div>
+            <div class="stat-label">предоплата<br/>за подбор</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROUTES MAP -->
+      <div class="routes-map" aria-hidden="true">
+        <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#10B981" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#10B981" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#34D399" stop-opacity="0.3"/>
+            </linearGradient>
+            <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#34D399" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#10B981" stop-opacity="0.8"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Sources: Seoul, Tokyo, Shanghai -->
+          <!-- Vladivostok hub: center-ish -->
+          <!-- Destinations: Moscow, Tomsk, Novosibirsk -->
+
+          <!-- Lines from sources to hub -->
+          <path id="r1" class="route-line" d="M 70 80 Q 200 100, 300 200" fill="none" stroke="url(#lineGrad)" stroke-width="1.5"/>
+          <path id="r2" class="route-line" d="M 80 200 Q 180 220, 300 200" fill="none" stroke="url(#lineGrad)" stroke-width="1.5" style="animation-delay: -3s"/>
+          <path id="r3" class="route-line" d="M 70 320 Q 200 280, 300 200" fill="none" stroke="url(#lineGrad)" stroke-width="1.5" style="animation-delay: -6s"/>
+
+          <!-- Lines from hub to destinations -->
+          <path id="r4" class="route-line" d="M 300 200 Q 380 100, 430 60" fill="none" stroke="url(#lineGrad2)" stroke-width="1.5" style="animation-delay: -2s"/>
+          <path id="r5" class="route-line" d="M 300 200 Q 380 230, 440 250" fill="none" stroke="url(#lineGrad2)" stroke-width="1.5" style="animation-delay: -5s"/>
+          <path id="r6" class="route-line" d="M 300 200 Q 380 380, 420 420" fill="none" stroke="url(#lineGrad2)" stroke-width="1.5" style="animation-delay: -8s"/>
+
+          <!-- Source dots with glow -->
+          <g>
+            <circle cx="70" cy="80" r="20" fill="url(#dotGlow)"/>
+            <circle cx="70" cy="80" r="5" fill="#10B981" class="route-dot route-dot-pulse"/>
+          </g>
+          <g>
+            <circle cx="80" cy="200" r="20" fill="url(#dotGlow)"/>
+            <circle cx="80" cy="200" r="5" fill="#10B981" class="route-dot route-dot-pulse" style="animation-delay: -0.8s"/>
+          </g>
+          <g>
+            <circle cx="70" cy="320" r="20" fill="url(#dotGlow)"/>
+            <circle cx="70" cy="320" r="5" fill="#10B981" class="route-dot route-dot-pulse" style="animation-delay: -1.6s"/>
+          </g>
+
+          <!-- Hub: Vladivostok -->
+          <g>
+            <circle cx="300" cy="200" r="32" fill="url(#dotGlow)"/>
+            <circle cx="300" cy="200" r="9" fill="#34D399" stroke="#10B981" stroke-width="2"/>
+            <circle cx="300" cy="200" r="14" fill="none" stroke="#10B981" stroke-width="1" opacity="0.5">
+              <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+
+          <!-- Destination dots -->
+          <g>
+            <circle cx="430" cy="60" r="16" fill="url(#dotGlow)"/>
+            <circle cx="430" cy="60" r="4" fill="#10B981" class="route-dot"/>
+          </g>
+          <g>
+            <circle cx="440" cy="250" r="16" fill="url(#dotGlow)"/>
+            <circle cx="440" cy="250" r="4" fill="#10B981" class="route-dot"/>
+          </g>
+          <g>
+            <circle cx="420" cy="420" r="16" fill="url(#dotGlow)"/>
+            <circle cx="420" cy="420" r="4" fill="#10B981" class="route-dot"/>
+          </g>
+
+          <!-- Source labels -->
+          <g>
+            <rect x="20" y="56" width="60" height="20" rx="10" class="route-label-bg"/>
+            <text x="50" y="70" text-anchor="middle" class="route-label">🇰🇷 Сеул</text>
+          </g>
+          <g>
+            <rect x="30" y="176" width="62" height="20" rx="10" class="route-label-bg"/>
+            <text x="61" y="190" text-anchor="middle" class="route-label">🇯🇵 Токио</text>
+          </g>
+          <g>
+            <rect x="14" y="328" width="78" height="20" rx="10" class="route-label-bg"/>
+            <text x="53" y="342" text-anchor="middle" class="route-label">🇨🇳 Шанхай</text>
+          </g>
+
+          <!-- Hub label -->
+          <g>
+            <rect x="240" y="218" width="120" height="22" rx="11" fill="rgba(16,185,129,0.2)" stroke="#10B981"/>
+            <text x="300" y="234" text-anchor="middle" class="route-label" style="fill:#34D399;font-weight:700;">⚓ Владивосток</text>
+          </g>
+
+          <!-- Destination labels -->
+          <g>
+            <rect x="378" y="44" width="74" height="20" rx="10" class="route-label-bg"/>
+            <text x="415" y="58" text-anchor="middle" class="route-label">🏛 Москва</text>
+          </g>
+          <g>
+            <rect x="392" y="262" width="68" height="20" rx="10" class="route-label-bg"/>
+            <text x="426" y="276" text-anchor="middle" class="route-label">🏔 Томск</text>
+          </g>
+          <g>
+            <rect x="354" y="404" width="106" height="20" rx="10" class="route-label-bg"/>
+            <text x="407" y="418" text-anchor="middle" class="route-label">🌆 Новосибирск</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ ADVANTAGES ============ -->
+<section id="advantages">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Преимущества</span>
+      <h2>Почему <span class="glow-text">POWER Car</span></h2>
+      <p>Полный цикл импорта под ключ — без скрытых платежей и долгих согласований. Контроль и прозрачность на каждом этапе.</p>
+    </div>
+    <div class="advantages-grid reveal-stagger">
+      <div class="adv">
+        <div class="adv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3>🎁 Бесплатный подбор</h3>
+        <p>Подбор и консультация — без предоплаты. Платите только за выбранное авто.</p>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>🛡 Договор и аккредитив</h3>
+        <p>Юридическая защита сделки. Расчёты через банковский аккредитив Сбербанка или ВТБ.</p>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3>📷 Фото-отчёт перед покупкой</h3>
+        <p>Подробный фото-отчёт и протокол компьютерной диагностики до выкупа авто.</p>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>🌏 3 страны импорта</h3>
+        <p>Прямые контракты в Китае, Японии и Корее. Доступ к аукционам и дилерским сетям.</p>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>🏢 3 офиса в РФ</h3>
+        <p>Москва, Томск, Новосибирск. Доставка во все регионы России.</p>
+      </div>
+      <div class="adv">
+        <div class="adv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>⚡ До 45 дней под ключ</h3>
+        <p>От заявки до выдачи ключей. Отчёт о логистике в реальном времени.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOP-5 ============ -->
+<section id="top5">
+  <div class="container">
+    <div class="section-head-row reveal">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">🏆 Топ-5 предложений</span>
+        <h2>Лучшие <span class="glow-text">сейчас</span></h2>
+        <p>Самые выгодные предложения месяца — отобраны по соотношению цены, состояния и сроков доставки.</p>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="top5Prev" aria-label="Предыдущие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="top5Next" aria-label="Следующие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="top5-track" id="top5Track" role="region" aria-label="Топ-5 автомобилей">
+      <!-- cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELECTOR (Подборщик) ============ -->
+<section id="selector">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Подбор</span>
+      <h2>Найдите авто <span class="glow-text">под ваш бюджет</span></h2>
+      <p>Укажите параметры — покажем подходящие варианты из базы. Если ничего не подойдёт, подберём индивидуально.</p>
+    </div>
+
+    <div class="selector reveal">
+      <!-- Auto/Moto toggle -->
+      <div class="type-toggle" id="typeToggle" data-type="auto" role="tablist">
+        <span class="type-toggle-thumb"></span>
+        <button class="active" data-type="auto" role="tab" aria-selected="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+          Авто
+        </button>
+        <button data-type="moto" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="M14 17h-4l-2-8h-4M14 9l2 8M7 14h7"/></svg>
+          Мото
+        </button>
+      </div>
+
+      <!-- Budget filter -->
+      <label class="selector-label" id="budgetLabel">Бюджет</label>
+      <div class="chips" id="budgetChips" role="radiogroup" aria-labelledby="budgetLabel">
+        <!-- injected by JS depending on type -->
+      </div>
+
+      <!-- Age filter -->
+      <label class="selector-label" id="ageLabel">Возраст автомобиля</label>
+      <div class="chips" id="ageChips" role="radiogroup" aria-labelledby="ageLabel">
+        <button class="chip active" data-age="all">Все</button>
+        <button class="chip" data-age="0-3">До 3 лет</button>
+        <button class="chip" data-age="3-7">3–7 лет</button>
+        <button class="chip" data-age="7-12">7–12 лет</button>
+        <button class="chip" data-age="12-17">12–17 лет</button>
+      </div>
+
+      <!-- More filters -->
+      <details class="more-filters">
+        <summary>
+          Больше фильтров
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <label class="selector-label">Страна</label>
+        <div class="chips" id="countryChips" role="radiogroup">
+          <button class="chip active" data-country="all">Все</button>
+          <button class="chip" data-country="China">🇨🇳 Китай</button>
+          <button class="chip" data-country="Japan">🇯🇵 Япония</button>
+          <button class="chip" data-country="Korea">🇰🇷 Корея</button>
+        </div>
+
+        <div id="motoExtraFilters" style="display:none;">
+          <label class="selector-label">Тип мотоцикла</label>
+          <div class="chips" id="motoTypeChips" role="radiogroup">
+            <button class="chip active" data-mototype="all">Все</button>
+            <button class="chip" data-mototype="sport">Спорт</button>
+            <button class="chip" data-mototype="naked">Нейкед</button>
+            <button class="chip" data-mototype="tour">Турер</button>
+            <button class="chip" data-mototype="enduro">Эндуро</button>
+            <button class="chip" data-mototype="classic">Классика</button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Note above results -->
+      <div class="results-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Авто взяты из базы самых выгодных предложений на сейчас. Привезём любой автомобиль под ваш запрос — обратитесь в офис или оставьте заявку.</span>
+      </div>
+
+      <!-- Results -->
+      <div class="results-grid" id="resultsGrid">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Individual CTA -->
+      <div class="individual-cta">
+        <div class="individual-cta-text">
+          Не нашли своё авто?
+          <small>База содержит самые популярные позиции. Привезём авто под индивидуальный запрос.</small>
+        </div>
+        <a href="#cta" class="btn btn-primary">
+          Подобрать индивидуально
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEPS ============ -->
+<section id="steps">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Этапы</span>
+      <h2>Как это <span class="glow-text">работает</span></h2>
+      <p>Прозрачный процесс от подбора до выдачи ключей. Сопровождаем на каждом этапе и показываем все документы.</p>
+    </div>
+    <div class="steps-grid reveal-stagger">
+      <article class="step">
+        <div class="step-num">01</div>
+        <h3>Подбор и проверка</h3>
+        <p>Находим подходящий лот по вашему запросу. Проверяем VIN, историю, техсостояние.</p>
+        <div class="step-highlight">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          Фото-отчёт + протокол диагностики
+        </div>
+      </article>
+      <article class="step">
+        <div class="step-num">02</div>
+        <h3>Выкуп и логистика</h3>
+        <p>Заключаем агентский договор, выкупаем авто, организуем доставку морем или контейнером.</p>
+        <div class="step-highlight">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Отслеживание в реальном времени
+        </div>
+      </article>
+      <article class="step">
+        <div class="step-num">03</div>
+        <h3>Растаможка</h3>
+        <p>Оформляем СБКТС, рассчитываем и оплачиваем утильсбор и таможенную пошлину.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">04</div>
+        <h3>Передача ключей</h3>
+        <p>Доставляем авто в ваш регион, передаём документы и помогаем с постановкой на учёт.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEGAL PROTECTION ============ -->
+<section id="legal" style="padding-top:0;">
+  <div class="container">
+    <div class="legal-grid reveal-stagger">
+      <div class="legal">
+        <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
+        <h4>Агентский договор</h4>
+        <p>Юридически защищённая сделка с фиксированными условиями.</p>
+      </div>
+      <div class="legal">
+        <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M22 10H2"/></svg></div>
+        <h4>Расчёты через аккредитив</h4>
+        <p>Деньги в банке до подтверждения сделки. ВТБ или Сбербанк.</p>
+      </div>
+      <div class="legal">
+        <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>Страхование грузоперевозки</h4>
+        <p>Каско на время доставки — на случай повреждений в пути.</p>
+      </div>
+      <div class="legal">
+        <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h4>Лицензированный брокер</h4>
+        <p>Таможенный брокер с действующей лицензией ФТС.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASES ============ -->
+<section id="cases">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Истории привоза</span>
+      <h2>Реальные кейсы <span class="glow-text">наших клиентов</span></h2>
+      <p>Каждый автомобиль — со всеми документами и фото из портов. Прозрачно от заявки до ключей.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="cases-scroll" id="casesTrack">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO REVIEWS (placeholder) ============ -->
+<section id="video" style="padding-top:0;">
+  <div class="container">
+    <div class="video-placeholder reveal">
+      <div class="video-placeholder-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <h3>Видео-обзоры — скоро</h3>
+      <p>Запускаем канал с детальными обзорами привезённых автомобилей. Подписывайтесь, чтобы не пропустить.</p>
+      <div class="video-channels">
+        <span class="video-channel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</span>
+        <span class="video-channel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.05 2.81H1.95C.87 2.81 0 3.68 0 4.76v14.48c0 1.08.87 1.95 1.95 1.95h20.1c1.08 0 1.95-.87 1.95-1.95V4.76c0-1.08-.87-1.95-1.95-1.95zM18 12.55l-7 5.05v-3.5H3.95V9.9H11V6.4l7 5.05c.27.2.27.6 0 .8z"/></svg> Rutube</span>
+        <span class="video-channel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.435-.193c.135-.148.131-.425.131-.425s-.019-1.305.587-1.497c.597-.19 1.363 1.262 2.175 1.819.614.422 1.081.33 1.081.33l2.171-.031s1.135-.07.597-.964c-.044-.073-.314-.661-1.617-1.871-1.366-1.268-1.183-1.063.462-3.253 1.001-1.335 1.402-2.15 1.276-2.498-.119-.332-.855-.244-.855-.244l-2.442.015s-.181-.025-.315.056c-.131.079-.215.262-.215.262s-.387 1.035-.905 1.916c-1.091 1.857-1.528 1.955-1.707 1.84-.418-.272-.313-1.082-.313-1.657 0-1.797.272-2.547-.528-2.74-.265-.064-.461-.106-1.138-.113-.869-.009-1.605.003-2.022.208-.277.135-.491.439-.361.456.161.022.525.099.717.363.249.341.24 1.106.24 1.106s.143 2.103-.336 2.365c-.327.179-.776-.187-1.748-1.875-.498-.864-.874-1.819-.874-1.819s-.072-.176-.201-.27c-.156-.114-.374-.151-.374-.151l-2.322.015s-.348.01-.476.161c-.114.135-.009.413-.009.413s1.818 4.252 3.875 6.394c1.887 1.965 4.03 1.836 4.03 1.836z"/></svg> VK Видео</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="team">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Команда</span>
+      <h2>Кто <span class="glow-text">работает с вами</span></h2>
+      <p>Опытные специалисты в импорте, логистике и таможенном оформлении. Готовы ответить на любые вопросы.</p>
+    </div>
+    <div class="team-grid reveal-stagger"><!-- rendered by JS --></div>
+  </div>
+</section>
+
+<!-- ============ OFFICES ============ -->
+<section id="offices">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Офисы</span>
+      <h2>Где мы <span class="glow-text">находимся</span></h2>
+      <p>Три офиса в России — приходите познакомиться, обсудить заказ или забрать готовый автомобиль.</p>
+    </div>
+
+    <div class="offices-grid reveal-stagger"><!-- rendered by JS --></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Частые <span class="glow-text">вопросы</span></h2>
+    </div>
+
+    <div class="faq-list reveal-stagger">
+      <details class="faq-item">
+        <summary>
+          Какие гарантии я получаю при заказе?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Заключаем агентский договор. Все этапы — выкуп, доставка, растаможка — фиксируются документально. Расчёты можно проводить через банковский аккредитив ВТБ или Сбербанка.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Как считается итоговая стоимость?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Цена авто на аукционе + доставка до РФ + таможенная пошлина + утильсбор + СБКТС + наша фиксированная комиссия. Никаких скрытых платежей.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Сколько занимает доставка?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">В среднем 35–55 дней от подписания договора до выдачи ключей. Корея — самый быстрый маршрут, Япония — около 50 дней с учётом аукциона.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Можно ли посмотреть авто до покупки?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Конечно. Делаем подробный фото- и видеообзор, подключаемся по видеосвязи во время осмотра, предоставляем отчёт о техническом состоянии и истории.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Какие авто вы НЕ привозите?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Не возим автомобили старше 2009 года — из-за повышенных таможенных ставок и высоких рисков по техсостоянию. Также не работаем с авто после серьёзных ДТП без документов.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Работаете ли с регионами?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Доставляем во все регионы России — автовозом или индивидуальным транспортом. Стоимость доставки рассчитывается отдельно для каждого города.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="cta-grid">
+        <div>
+          <span class="eyebrow">Готовы заказать?</span>
+          <h2 style="margin-top:18px;">Получите 3 варианта под ваш бюджет — <span class="glow-text">бесплатно</span></h2>
+          <p style="margin-top:18px;color:var(--text-muted);max-width:520px;line-height:1.55;">
+            Сегодня менеджер подберёт лучшие варианты с отчётом о состоянии каждого автомобиля и нюансах конкретной модели.
+          </p>
+          <div class="cta-anchors">
+            <div class="cta-anchor">
+              <div class="cta-anchor-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="cta-anchor-text"><b>Подбор и консультация — бесплатно</b></div>
+            </div>
+          </div>
+        </div>
+
+        <form class="cta-form" id="leadForm">
+          <div class="field">
+            <label for="lf-name">Ваше имя</label>
+            <input id="lf-name" type="text" required minlength="2" autocomplete="given-name" />
+          </div>
+          <div class="field">
+            <label for="lf-phone">Телефон</label>
+            <input id="lf-phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label>Удобный способ связи</label>
+            <div class="channel-chips" id="channelChips">
+              <button type="button" class="channel-chip active" data-channel="call" aria-pressed="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Звонок
+              </button>
+              <button type="button" class="channel-chip" data-channel="telegram" aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.93 3.821c.42-1.747-.518-2.459-1.499-2.077L1.114 9.515C-.295 10.052-.272 10.801.873 11.157l5.617 1.747L19.27 4.74c.612-.366 1.169-.165.711.219z"/></svg>
+                TG
+              </button>
+              <button type="button" class="channel-chip" data-channel="max" aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                MAX
+              </button>
+              <button type="button" class="channel-chip" data-channel="whatsapp" aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.713.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375a9.869 9.869 0 0 1-1.516-5.26c0-5.445 4.455-9.885 9.942-9.885 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>
+                WA
+              </button>
+            </div>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" id="consent" required />
+            <span class="consent-toggle"></span>
+            <span>Согласен с обработкой персональных данных в соответствии с <a href="#privacy" target="_blank">Политикой конфиденциальности</a> (152-ФЗ)</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-shine" style="margin-top:6px;">
+            Получить 3 варианта бесплатно
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDIT (compact strip) ============ -->
+<section id="credit" style="padding: 0 0 40px;">
+  <div class="container">
+    <div class="credit-strip reveal">
+      <div class="credit-strip-text">
+        <div class="credit-strip-title">💳 Поможем оформить кредит на авто</div>
+        <div class="credit-strip-sub">Работаем напрямую с ВТБ и Сбербанком. Кредит на ввозимые авто — там, где обычные банки отказывают.</div>
+      </div>
+      <div class="credit-banks">
+        <span class="bank-pill bank-pill-vtb">
+          <span class="bank-logo bank-logo-vtb">VTB</span>
+          ВТБ
+        </span>
+        <span class="bank-pill bank-pill-sber">
+          <span class="bank-logo bank-logo-sber">СБ</span>
+          Сбербанк
+        </span>
+        <a href="#cta" class="btn btn-ghost btn-sm">Узнать условия →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="POWER Car">
+          <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(2,8)">
+              <path d="M2 36 C 0 38, 0 44, 4 46 L 44 46 C 48 44, 48 38, 46 36 L 36 36 L 32 28 L 18 28 L 14 36 Z" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M14 36 L18 30 L32 30 L36 36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="14" cy="44" r="4" fill="#10B981"/>
+              <circle cx="34" cy="44" r="4" fill="#10B981"/>
+            </g>
+            <text x="60" y="32" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="20" fill="#FAFAFA" letter-spacing="-0.5">POWER</text>
+            <text x="60" y="50" font-family="Bricolage Grotesque, sans-serif" font-weight="600" font-size="14" fill="#10B981" letter-spacing="2">CAR</text>
+          </svg>
+        </a>
+        <p>Импорт автомобилей и мотоциклов из Китая, Японии и Кореи под ключ. Прозрачные расчёты, документы и сопровождение на каждом этапе.</p>
+        <h4>Соцсети</h4>
+        <div class="social-grid">
+          <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="social-icon" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.93 3.821c.42-1.747-.518-2.459-1.499-2.077L1.114 9.515C-.295 10.052-.272 10.801.873 11.157l5.617 1.747L19.27 4.74c.612-.366 1.169-.165.711.219z"/></svg></a>
+          <a href="#" class="social-icon" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.713.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375a9.869 9.869 0 0 1-1.516-5.26c0-5.445 4.455-9.885 9.942-9.885 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg></a>
+          <a href="#" class="social-icon" aria-label="MAX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a href="#" class="social-icon" aria-label="Rutube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.05 2.81H1.95C.87 2.81 0 3.68 0 4.76v14.48c0 1.08.87 1.95 1.95 1.95h20.1c1.08 0 1.95-.87 1.95-1.95V4.76c0-1.08-.87-1.95-1.95-1.95zM18 12.55l-7 5.05v-3.5H3.95V9.9H11V6.4l7 5.05c.27.2.27.6 0 .8z"/></svg></a>
+          <a href="#" class="social-icon" aria-label="VK Видео"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.435-.193c.135-.148.131-.425.131-.425s-.019-1.305.587-1.497c.597-.19 1.363 1.262 2.175 1.819.614.422 1.081.33 1.081.33l2.171-.031s1.135-.07.597-.964c-.044-.073-.314-.661-1.617-1.871-1.366-1.268-1.183-1.063.462-3.253 1.001-1.335 1.402-2.15 1.276-2.498-.119-.332-.855-.244-.855-.244l-2.442.015s-.181-.025-.315.056c-.131.079-.215.262-.215.262s-.387 1.035-.905 1.916c-1.091 1.857-1.528 1.955-1.707 1.84-.418-.272-.313-1.082-.313-1.657 0-1.797.272-2.547-.528-2.74-.265-.064-.461-.106-1.138-.113-.869-.009-1.605.003-2.022.208-.277.135-.491.439-.361.456.161.022.525.099.717.363.249.341.24 1.106.24 1.106s.143 2.103-.336 2.365c-.327.179-.776-.187-1.748-1.875-.498-.864-.874-1.819-.874-1.819s-.072-.176-.201-.27c-.156-.114-.374-.151-.374-.151l-2.322.015s-.348.01-.476.161c-.114.135-.009.413-.009.413s1.818 4.252 3.875 6.394c1.887 1.965 4.03 1.836 4.03 1.836z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Офисы</h4>
+        <div class="footer-office">
+          <b>🏛 Москва</b><a href="tel:+74950000000">+7 (495) 000-00-00</a>
+        </div>
+        <div class="footer-office">
+          <b>🏔 Томск</b><a href="tel:+73820000000">+7 (382) 000-00-00</a>
+        </div>
+        <div class="footer-office">
+          <b>🌆 Новосибирск</b><a href="tel:+73830000000">+7 (383) 000-00-00</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Документы</h4>
+        <p class="footer-docs-inline">
+          <a href="#privacy">Политика конфиденциальности</a> ·
+          <a href="#terms">Пользовательское соглашение</a> ·
+          <a href="#consent">Согласие на обработку ПД</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <span>© 2026 POWER Car · Все права защищены</span>
+      <span>ИП Иванов И.И. · ИНН 0000000000</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE FAB ============ -->
+<nav class="fab" aria-label="Быстрые контакты">
+  <a href="https://max.ru/" class="fab-btn fab-max">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    MAX
+  </a>
+  <a href="https://t.me/" class="fab-btn fab-tg">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.93 3.821c.42-1.747-.518-2.459-1.499-2.077L1.114 9.515C-.295 10.052-.272 10.801.873 11.157l5.617 1.747L19.27 4.74c.612-.366 1.169-.165.711.219z"/></svg>
+    TG
+  </a>
+  <a href="tel:+78005553535" class="fab-btn fab-call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Звонок
+  </a>
+</nav>
+
+<!-- ============ MODAL (car details) ============ -->
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="modalCar">
+    <button class="modal-close" id="modalClose" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="modalContent">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</div>
+<script>
+'use strict';
+
+
+// ============ DATA SOURCE ============
+// Architecture: data loaded from JSON files in /data/.
+// Migrating to NocoDB API later → just swap fetchers.
+// Cache in localStorage as fallback if network fails.
+
+const DataSource = (() => {
+  const CACHE_KEY = 'pc_cache_v1';
+  const CACHE_TTL = 1000 * 60 * 60 * 24; // 24h
+  const ENDPOINTS = {
+    cars: 'data/cars.json',
+    motorcycles: 'data/motorcycles.json',
+    cases: 'data/cases.json',
+    team: 'data/team.json',
+    offices: 'data/offices.json',
+    articles: 'data/articles.json'
+  };
+
+  function readCache() {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const c = JSON.parse(raw);
+      if (Date.now() - c.t > CACHE_TTL) return null;
+      return c.d;
+    } catch (e) { return null; }
+  }
+  function writeCache(data) {
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), d: data }));
+    } catch (e) {}
+  }
+
+  async function fetchOne(name) {
+    try {
+      const res = await fetch(ENDPOINTS[name], { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (e) {
+      console.warn(`Failed to fetch ${name}:`, e.message);
+      return null;
+    }
+  }
+
+  // Filter only published records and sort
+  function normalize(name, items) {
+    if (!Array.isArray(items)) return [];
+    let filtered = items.filter(it => it.published !== false);
+    if (name === 'team' || name === 'offices') {
+      filtered.sort((a, b) => (a.order || 0) - (b.order || 0));
+    } else if (name === 'cases' || name === 'articles') {
+      filtered.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+    }
+    return filtered;
+  }
+
+  async function loadAll() {
+    const names = Object.keys(ENDPOINTS);
+    const results = await Promise.all(names.map(n => fetchOne(n)));
+    const data = {};
+    let anyMissed = false;
+    names.forEach((n, i) => {
+      if (results[i]) {
+        data[n] = normalize(n, results[i]);
+      } else {
+        anyMissed = true;
+      }
+    });
+    // If everything loaded, cache it
+    if (!anyMissed && names.every(n => data[n] && data[n].length >= 0)) {
+      writeCache(data);
+      return { data, source: 'network' };
+    }
+    // Otherwise try cache
+    const cached = readCache();
+    if (cached) {
+      console.info('Using cached data');
+      names.forEach(n => { if (!data[n]) data[n] = cached[n] || []; });
+      return { data, source: 'cache' };
+    }
+    // Nothing — return empty arrays
+    names.forEach(n => { if (!data[n]) data[n] = []; });
+    return { data, source: 'empty' };
+  }
+
+  return { loadAll };
+})();
+
+// Will be populated after init
+let CARS = [];
+let MOTOS = [];
+let CASES = [];
+let TEAM = [];
+let OFFICES = [];
+let ARTICLES = [];
+
+// ============ FILTER CONFIG ============
+const BUDGETS_AUTO = [
+  { id:'all', label:'Все', min:0, max:Infinity },
+  { id:'700k-1m', label:'700к–1 млн', min:700000, max:1000000 },
+  { id:'1-1.5m', label:'1–1,5 млн', min:1000000, max:1500000 },
+  { id:'1.5-2.5m', label:'1,5–2,5 млн', min:1500000, max:2500000 },
+  { id:'2.5-4m', label:'2,5–4 млн', min:2500000, max:4000000 },
+  { id:'4-6m', label:'4–6 млн', min:4000000, max:6000000 },
+  { id:'6-10m', label:'6–10 млн', min:6000000, max:10000000 },
+  { id:'10m+', label:'10 млн+', min:10000000, max:Infinity }
+];
+const BUDGETS_MOTO = [
+  { id:'all', label:'Все', min:0, max:Infinity },
+  { id:'lt400k', label:'до 400к', min:0, max:400000 },
+  { id:'400-700k', label:'400–700к', min:400000, max:700000 },
+  { id:'700k-1.2m', label:'700к–1,2 млн', min:700000, max:1200000 },
+  { id:'1.2-2m', label:'1,2–2 млн', min:1200000, max:2000000 },
+  { id:'2m+', label:'2 млн+', min:2000000, max:Infinity }
+];
+
+// ============ STATE ============
+const state = {
+  type: 'auto',
+  budget: 'all',
+  age: 'all',
+  country: 'all',
+  mototype: 'all',
+  channel: 'call'
+};
+
+// ============ UTILS ============
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+const fmt = (n) => new Intl.NumberFormat('ru-RU').format(n);
+const fmtPrice = (n) => fmt(n) + ' ₽';
+const ageOf = (year) => 2026 - year;
+const daysSince = (dateStr) => {
+  const d = new Date(dateStr);
+  return Math.floor((Date.now() - d.getTime()) / 86400000);
+};
+
+// ============ ANNOUNCEMENT BAR ============
+function initAnnounce() {
+  const bar = $('#announce');
+  const hwrap = $('#headerWrap');
+  const closeBtn = $('#announceClose');
+  if (!bar || !closeBtn) return;
+
+  try {
+    if (localStorage.getItem('announceClosed') === '1') {
+      bar.classList.add('hidden');
+      if (hwrap) hwrap.classList.add('announce-hidden');
+    }
+  } catch(e) {}
+
+  closeBtn.addEventListener('click', () => {
+    bar.classList.add('hidden');
+    if (hwrap) hwrap.classList.add('announce-hidden');
+    try { localStorage.setItem('announceClosed', '1'); } catch(e) {}
+  });
+}
+
+// ============ HEADER SCROLLED ============
+function initHeader() {
+  const header = $('#header');
+  if (!header) return;
+  const onScroll = () => {
+    if (window.scrollY > 20) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+// ============ COUNTRY ROTATOR ============
+function initRotator() {
+  const el = $('#rotator');
+  if (!el) return;
+  const items = ['Кореи', 'Японии', 'Китая'];
+  let i = 0;
+  setInterval(() => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(-8px)';
+    setTimeout(() => {
+      i = (i + 1) % items.length;
+      el.textContent = items[i];
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 400);
+  }, 3000);
+}
+
+// ============ STAT COUNTERS ============
+function initStats() {
+  const els = $$('.stat-value[data-target]');
+  let played = false;
+  const animate = () => {
+    if (played) return;
+    played = true;
+    els.forEach(el => {
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      const duration = 1600;
+      const start = performance.now();
+      const initial = 0;
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        const v = Math.floor(initial + (target - initial) * ease);
+        el.textContent = v + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some(e => e.isIntersecting)) animate();
+    }, { threshold: 0.3 });
+    if (els[0]) io.observe(els[0]);
+  } else {
+    animate();
+  }
+}
+
+// ============ REVEAL ON SCROLL ============
+function initReveal() {
+  const els = $$('.reveal, .reveal-stagger');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(e => e.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(e => io.observe(e));
+}
+
+// ============ CAR CARD RENDERING ============
+function carImageSvg(brand) {
+  // Generic stylized car silhouette
+  return `<div class="car-img-svg"><svg viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 75 Q 10 65 20 60 L 50 50 Q 70 38 90 38 L 130 38 Q 150 38 165 50 L 185 60 Q 192 65 190 75 L 190 80 Q 188 85 180 85 L 20 85 Q 12 85 10 80 Z"
+      fill="rgba(16,185,129,0.12)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M55 50 L 70 42 L 130 42 L 145 50" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
+    <line x1="100" y1="42" x2="100" y2="50" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
+    <circle cx="55" cy="82" r="9" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/>
+    <circle cx="145" cy="82" r="9" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/>
+  </svg></div>`;
+}
+function motoImageSvg() {
+  return `<div class="car-img-svg"><svg viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="75" r="14" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/>
+    <circle cx="160" cy="75" r="14" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/>
+    <path d="M40 75 L 70 50 L 100 50 L 115 35 L 140 35 L 160 75" fill="rgba(16,185,129,0.12)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M115 35 L 130 25 L 145 30" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none"/>
+  </svg></div>`;
+}
+function caseImageSvg() {
+  return `<div class="case-img-svg"><svg viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 75 Q 10 65 20 60 L 50 50 Q 70 38 90 38 L 130 38 Q 150 38 165 50 L 185 60 Q 192 65 190 75 L 190 80 Q 188 85 180 85 L 20 85 Q 12 85 10 80 Z"
+      fill="rgba(16,185,129,0.18)" stroke="rgba(255,255,255,0.92)" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M55 50 L 70 42 L 130 42 L 145 50" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.75)" stroke-width="1.2"/>
+    <circle cx="55" cy="82" r="9" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/>
+    <circle cx="145" cy="82" r="9" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/>
+  </svg></div>`;
+}
+
+function badgesFor(car) {
+  // Plashki removed per user request — keep function for backward compat in modal
+  return [];
+}
+
+function renderCarCard(car, opts = {}) {
+  const badges = badgesFor(car);
+  const badgesHtml = badges.map(b => `<span class="car-badge ${b.cls}">${b.text}</span>`).join('');
+  const topRibbon = opts.topRank ? `<div class="car-top-ribbon">TOP ${opts.topRank}</div>` : '';
+  const wheelBadge = car.wheel === 'right' ? `<span class="car-wheel-right">Правый руль</span>` : '';
+  const photoCount = `<div class="car-photo-count">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    8 фото
+  </div>`;
+  const imageContent = car.image ? `<img src="${car.image}" alt="${car.brand} ${car.model}" loading="lazy">` : (car.type === 'moto' ? motoImageSvg() : carImageSvg(car.brand));
+
+  const card = document.createElement('article');
+  card.className = 'car-card';
+  card.dataset.id = car.id;
+  card.innerHTML = `
+    <div class="car-img">
+      ${imageContent}
+      <div class="car-flag-badge">${car.flag} ${car.country === 'Japan' ? 'Япония' : car.country === 'China' ? 'Китай' : 'Корея'}</div>
+      ${topRibbon}
+      <div class="car-badges">${badgesHtml}</div>
+      ${photoCount}
+    </div>
+    <div class="car-body">
+      <div class="car-title">${car.brand} ${car.model}</div>
+      <div class="car-meta">
+        <span class="car-meta-item">${car.year} г.</span>
+        <span class="car-meta-item">${fmt(car.mileage)} км</span>
+        <span class="car-meta-item">${car.engine}</span>
+        ${wheelBadge ? `<span class="car-meta-item">${wheelBadge}</span>` : ''}
+      </div>
+      <div class="car-price-row">
+        <span class="car-price">${fmtPrice(car.price)}</span>
+        ${car.priceMarket > car.price ? `<span class="car-price-market">${fmtPrice(car.priceMarket)}</span>` : ''}
+      </div>
+      <div class="car-delivery">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Доставка ${car.deliveryMin}–${car.deliveryMax} дней
+      </div>
+      <div class="car-actions">
+        <button class="btn btn-ghost btn-sm" data-action="details">Подробнее</button>
+        <a href="#cta" class="btn btn-primary btn-sm" data-action="order">Заказать</a>
+      </div>
+    </div>
+  `;
+  card.querySelector('[data-action="details"]').addEventListener('click', () => openCarModal(car));
+  return card;
+}
+
+// ============ TOP-5 ============
+function renderTop5() {
+  const track = $('#top5Track');
+  if (!track) return;
+  const top5 = CARS.filter(c => c.hit).slice(0, 5);
+  const fill = top5.length < 5 ? CARS.filter(c => !top5.includes(c)).slice(0, 5 - top5.length) : [];
+  const all = [...top5, ...fill].slice(0, 5);
+  track.innerHTML = '';
+  all.forEach((car, i) => {
+    track.appendChild(renderCarCard(car, { topRank: i + 1 }));
+  });
+}
+
+function initTop5Carousel() {
+  const track = $('#top5Track');
+  const prev = $('#top5Prev');
+  const next = $('#top5Next');
+  if (!track || !prev || !next) return;
+  const cardWidth = () => {
+    const first = track.querySelector('.car-card');
+    return first ? first.offsetWidth + 16 : 320;
+  };
+  prev.addEventListener('click', () => {
+    track.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+  });
+  next.addEventListener('click', () => {
+    track.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+  });
+}
+
+// ============ SELECTOR (Подборщик) ============
+function renderBudgetChips() {
+  const container = $('#budgetChips');
+  if (!container) return;
+  const list = state.type === 'auto' ? BUDGETS_AUTO : BUDGETS_MOTO;
+  // Reset to 'all' if previous selection doesn't exist
+  if (!list.find(b => b.id === state.budget)) state.budget = 'all';
+  container.innerHTML = '';
+  list.forEach(b => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'chip' + (state.budget === b.id ? ' active' : '');
+    btn.dataset.budget = b.id;
+    btn.textContent = b.label;
+    btn.addEventListener('click', () => {
+      state.budget = b.id;
+      container.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.budget === b.id));
+      renderResults();
+    });
+    container.appendChild(btn);
+  });
+}
+
+function getBudgetRange() {
+  const list = state.type === 'auto' ? BUDGETS_AUTO : BUDGETS_MOTO;
+  return list.find(b => b.id === state.budget) || list[0];
+}
+
+function getAgeRange() {
+  if (state.age === 'all') return { min: 0, max: 100 };
+  const [min, max] = state.age.split('-').map(Number);
+  return { min, max };
+}
+
+function filterCars() {
+  const pool = state.type === 'auto' ? CARS : MOTOS;
+  const budget = getBudgetRange();
+  const age = getAgeRange();
+  // Soft filter: items matching get a score
+  const scored = pool.map(car => {
+    let score = 0;
+    let matches = true;
+    if (car.price < budget.min || car.price > budget.max) { matches = false; }
+    const carAge = ageOf(car.year);
+    if (carAge < age.min || carAge > age.max) { matches = false; }
+    if (state.country !== 'all' && car.country !== state.country) { matches = false; }
+    if (state.type === 'moto' && state.mototype !== 'all' && car.mototype !== state.mototype) { matches = false; }
+    if (matches) score += 100;
+    if (car.hit) score += 5;
+    if (daysSince(car.addedAt) < 14) score += 2;
+    return { car, score, matches };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  return scored.filter(s => s.matches).map(s => s.car).slice(0, 6);
+}
+
+function renderResults() {
+  const grid = $('#resultsGrid');
+  if (!grid) return;
+  const results = filterCars();
+  grid.innerHTML = '';
+  if (results.length === 0) {
+    grid.innerHTML = `<div class="results-empty" style="grid-column: 1 / -1;">
+      <h3>Под эти параметры в базе пусто</h3>
+      <p>Это не значит, что мы не можем привезти такое авто. База содержит самые популярные предложения — расширьте параметры или оставьте индивидуальную заявку.</p>
+      <a href="#cta" class="btn btn-primary">Подобрать индивидуально</a>
+    </div>`;
+    return;
+  }
+  results.forEach(car => grid.appendChild(renderCarCard(car)));
+}
+
+function initSelector() {
+  const toggle = $('#typeToggle');
+  if (!toggle) return;
+  toggle.querySelectorAll('button[data-type]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.type = btn.dataset.type;
+      toggle.dataset.type = state.type;
+      toggle.querySelectorAll('button').forEach(b => {
+        const active = b.dataset.type === state.type;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
+      // toggle moto-only filters
+      const motoExtra = $('#motoExtraFilters');
+      if (motoExtra) motoExtra.style.display = state.type === 'moto' ? 'block' : 'none';
+      // re-render
+      renderBudgetChips();
+      renderResults();
+    });
+  });
+
+  // Age chips
+  $$('#ageChips .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      state.age = c.dataset.age;
+      $$('#ageChips .chip').forEach(x => x.classList.toggle('active', x === c));
+      renderResults();
+    });
+  });
+
+  // Country chips
+  $$('#countryChips .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      state.country = c.dataset.country;
+      $$('#countryChips .chip').forEach(x => x.classList.toggle('active', x === c));
+      renderResults();
+    });
+  });
+
+  // Moto type chips
+  $$('#motoTypeChips .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      state.mototype = c.dataset.mototype;
+      $$('#motoTypeChips .chip').forEach(x => x.classList.toggle('active', x === c));
+      renderResults();
+    });
+  });
+
+  renderBudgetChips();
+  renderResults();
+}
+
+// ============ MODAL: CAR DETAILS ============
+function openCarModal(car) {
+  const content = $('#modalContent');
+  const backdrop = $('#modalBackdrop');
+  if (!content || !backdrop) return;
+
+  const badges = badgesFor(car);
+  const badgesHtml = badges.map(b => `<span class="car-badge ${b.cls}">${b.text}</span>`).join('');
+  const wheelBadge = car.wheel === 'right' ? `<span class="car-wheel-right">Правый руль</span>` : '';
+  const galleryContent = car.image ? `<img src="${car.image}" alt="${car.brand} ${car.model}" style="width:100%;height:100%;object-fit:cover;">` : (car.type === 'moto' ? motoImageSvg() : carImageSvg(car.brand));
+
+  // breakdown: rough split
+  const auctionPrice = Math.round(car.price * 0.55);
+  const delivery = Math.round(car.price * 0.10);
+  const customs = Math.round(car.price * 0.27);
+  const docs = Math.round(car.price * 0.04);
+  const commission = car.price - auctionPrice - delivery - customs - docs;
+
+  content.innerHTML = `
+    <div class="modal-gallery">
+      <div class="car-flag-badge">${car.flag} ${car.country === 'Japan' ? 'Япония' : car.country === 'China' ? 'Китай' : 'Корея'}</div>
+      <div class="car-badges">${badgesHtml}</div>
+      <div class="modal-gallery-inner">${galleryContent}</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title-row">
+        <div>
+          <h2 class="modal-title" id="modalTitle">${car.brand} ${car.model}</h2>
+          <div style="color:var(--text-muted);margin-top:6px;">${car.year} г. · ${fmt(car.mileage)} км · ${car.engine}</div>
+        </div>
+        <div class="modal-price-block">
+          <div class="modal-price">${fmtPrice(car.price)}</div>
+          ${car.priceMarket > car.price ? `<div class="modal-price-market">${fmtPrice(car.priceMarket)}</div><div class="modal-price-save">Экономия ${fmtPrice(car.priceMarket - car.price)}</div>` : ''}
+        </div>
+      </div>
+
+      <div class="modal-specs">
+        <div class="modal-spec-item"><span class="modal-spec-label">Год</span><span class="modal-spec-value">${car.year}</span></div>
+        <div class="modal-spec-item"><span class="modal-spec-label">Пробег</span><span class="modal-spec-value">${fmt(car.mileage)} км</span></div>
+        <div class="modal-spec-item"><span class="modal-spec-label">Двигатель</span><span class="modal-spec-value">${car.engine}</span></div>
+        ${car.transmission ? `<div class="modal-spec-item"><span class="modal-spec-label">Коробка</span><span class="modal-spec-value">${car.transmission}</span></div>` : ''}
+        ${car.body ? `<div class="modal-spec-item"><span class="modal-spec-label">Кузов</span><span class="modal-spec-value">${car.body}</span></div>` : ''}
+        <div class="modal-spec-item"><span class="modal-spec-label">Руль</span><span class="modal-spec-value">${car.wheel === 'right' ? 'Правый' : 'Левый'}</span></div>
+        <div class="modal-spec-item"><span class="modal-spec-label">Страна</span><span class="modal-spec-value">${car.flag} ${car.country === 'Japan' ? 'Япония' : car.country === 'China' ? 'Китай' : 'Корея'}</span></div>
+        <div class="modal-spec-item"><span class="modal-spec-label">Доставка</span><span class="modal-spec-value">${car.deliveryMin}–${car.deliveryMax} дней</span></div>
+      </div>
+
+      <div class="modal-breakdown">
+        <h4>Из чего складывается цена</h4>
+        <div class="modal-breakdown-row"><span class="l">Цена авто на аукционе</span><span>${fmtPrice(auctionPrice)}</span></div>
+        <div class="modal-breakdown-row"><span class="l">Доставка морем + автовоз</span><span>${fmtPrice(delivery)}</span></div>
+        <div class="modal-breakdown-row"><span class="l">Утильсбор и таможня</span><span>${fmtPrice(customs)}</span></div>
+        <div class="modal-breakdown-row"><span class="l">СБКТС, оформление</span><span>${fmtPrice(docs)}</span></div>
+        <div class="modal-breakdown-row"><span class="l">Комиссия POWER Car</span><span>${fmtPrice(commission)}</span></div>
+        <div class="modal-breakdown-total"><span>Итого под ключ</span><span class="v">${fmtPrice(car.price)}</span></div>
+      </div>
+
+      <div class="modal-disclaimer">
+        Цены не являются публичной офертой. Цена может меняться в обе стороны в зависимости от курса валют на дату подписания договора.
+      </div>
+
+      <div class="modal-actions">
+        <a href="#cta" class="btn btn-primary btn-shine" data-close-modal>Заказать этот автомобиль</a>
+        <a href="#cta" class="btn btn-ghost" data-close-modal>Узнать пробег / детали</a>
+      </div>
+    </div>
+  `;
+
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // close handlers
+  content.querySelectorAll('[data-close-modal]').forEach(b => {
+    b.addEventListener('click', closeCarModal);
+  });
+}
+
+function closeCarModal() {
+  const backdrop = $('#modalBackdrop');
+  if (!backdrop) return;
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function initModal() {
+  const backdrop = $('#modalBackdrop');
+  const close = $('#modalClose');
+  if (!backdrop || !close) return;
+  close.addEventListener('click', closeCarModal);
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeCarModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeCarModal();
+  });
+}
+
+// ============ CASES ============
+function renderCases() {
+  const track = $('#casesTrack');
+  if (!track) return;
+  track.innerHTML = '';
+  CASES.forEach(c => {
+    const card = document.createElement('article');
+    card.className = 'case';
+    card.dataset.id = c.id;
+    card.innerHTML = `
+      <div class="case-img">
+        <div class="car-flag-badge">${c.flag} ${c.country}</div>
+        <div class="car-photo-count">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          ${c.photoCount} фото
+        </div>
+        ${caseImageSvg()}
+      </div>
+      <div class="case-body">
+        <div class="case-title">${c.carTitle}</div>
+        <div class="case-client">— ${c.clientName}, ${c.clientCity}</div>
+        <div class="case-quote">${c.quote}</div>
+        <div class="case-meta">
+          <span><b>${c.year}</b> г. · <b>${c.deliveryDays}</b> дней</span>
+          ${c.showPrice ? `<span><b>${fmtPrice(c.finalPrice)}</b> под ключ</span>` : ''}
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => openCaseModal(c));
+    track.appendChild(card);
+  });
+}
+
+// ============ TEAM ============
+function memberPhotoSvg() {
+  return `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><circle cx="50" cy="38" r="16"/><path d="M20 90c0-17 13-30 30-30s30 13 30 30"/></svg>`;
+}
+function tgIconSvg() {
+  return `<svg viewBox="0 0 24 24" fill="currentColor"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.93 3.821c.42-1.747-.518-2.459-1.499-2.077L1.114 9.515C-.295 10.052-.272 10.801.873 11.157l5.617 1.747L19.27 4.74c.612-.366 1.169-.165.711.219z"/></svg>`;
+}
+function renderTeam() {
+  const grid = document.querySelector('#team .team-grid');
+  if (!grid) return;
+  if (!TEAM.length) { grid.style.display = 'none'; return; }
+  grid.innerHTML = '';
+  TEAM.forEach(m => {
+    const el = document.createElement('div');
+    el.className = 'member';
+    const photoHtml = m.photo ? `<img src="${m.photo}" alt="${m.name}" style="width:100%;height:100%;object-fit:cover;display:block;">` : memberPhotoSvg();
+    const tgHtml = m.telegram ? `<a href="${m.telegram}" class="member-tg" target="_blank" rel="noopener">${tgIconSvg()} Telegram</a>` : '';
+    el.innerHTML = `
+      <div class="member-photo">${photoHtml}</div>
+      <div class="member-body">
+        <div class="member-name">${m.name}</div>
+        <div class="member-role">${m.role || ''}</div>
+        <div class="member-exp">${m.experience || ''}</div>
+        ${tgHtml}
+      </div>
+    `;
+    grid.appendChild(el);
+  });
+}
+
+// ============ OFFICES ============
+function phoneIconSvg() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+}
+function clockIconSvg() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+}
+function maxIconSvg() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`;
+}
+function renderOffices() {
+  const grid = document.querySelector('#offices .offices-grid');
+  if (!grid) return;
+  if (!OFFICES.length) { grid.style.display = 'none'; return; }
+  grid.innerHTML = '';
+  OFFICES.forEach(o => {
+    const el = document.createElement('div');
+    el.className = 'office';
+    el.innerHTML = `
+      <span class="office-flag">${o.emoji || ''} ${o.city} · ${o.timezone || ''}</span>
+      <h3>${o.city}</h3>
+      <div class="office-address">${o.address}${o.addressNote ? '<br/>' + o.addressNote : ''}</div>
+      <a href="tel:${o.phoneRaw || o.phone}" class="office-phone">${phoneIconSvg()} ${o.phone}</a>
+      <div class="office-hours">${clockIconSvg()} ${o.hours || ''}</div>
+      ${o.maxUrl ? `<a href="${o.maxUrl}" class="office-max" target="_blank" rel="noopener">${maxIconSvg()} Написать в MAX</a>` : ''}
+    `;
+    grid.appendChild(el);
+  });
+}
+
+function openCaseModal(c) {
+  const content = $('#modalContent');
+  const backdrop = $('#modalBackdrop');
+  if (!content || !backdrop) return;
+
+  content.innerHTML = `
+    <div class="modal-gallery">
+      <div class="car-flag-badge">${c.flag} ${c.country}</div>
+      <div class="car-photo-count">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        ${c.photoCount} фото
+      </div>
+      <div class="modal-gallery-inner">${caseImageSvg()}</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title-row">
+        <div>
+          <h2 class="modal-title" id="modalTitle">${c.carTitle}</h2>
+          <div style="color:var(--text-muted);margin-top:6px;">${c.clientName}, ${c.clientCity} · ${c.year} г.</div>
+        </div>
+        ${c.showPrice ? `<div class="modal-price-block"><div class="modal-price">${fmtPrice(c.finalPrice)}</div><div style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">под ключ за ${c.deliveryDays} дней</div></div>` : ''}
+      </div>
+
+      <p style="font-size:0.95rem;line-height:1.6;color:var(--text);margin-top:6px;">${c.story}</p>
+
+      ${c.showPrice ? `<div class="modal-breakdown">
+        <h4>Разбивка стоимости</h4>
+        ${c.breakdown.map(b => `<div class="modal-breakdown-row"><span class="l">${b.label}</span><span>${fmtPrice(b.value)}</span></div>`).join('')}
+        <div class="modal-breakdown-total"><span>Итого</span><span class="v">${fmtPrice(c.finalPrice)}</span></div>
+      </div>` : ''}
+
+      ${c.videoUrl ? `<div style="margin:20px 0;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/9;background:#000;">
+        <iframe src="${c.videoUrl}" style="width:100%;height:100%;border:0;" allowfullscreen></iframe>
+      </div>` : ''}
+
+      <div class="modal-actions">
+        <a href="#cta" class="btn btn-primary btn-shine" data-close-modal>Хочу такое же</a>
+      </div>
+    </div>
+  `;
+
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  content.querySelectorAll('[data-close-modal]').forEach(b => {
+    b.addEventListener('click', closeCarModal);
+  });
+}
+
+// ============ FORM ============
+function initForm() {
+  const form = $('#leadForm');
+  if (!form) return;
+  const phone = $('#lf-phone');
+
+  // Phone mask
+  if (phone) {
+    phone.addEventListener('input', (e) => {
+      let v = e.target.value.replace(/\D/g, '');
+      if (v.startsWith('8')) v = '7' + v.slice(1);
+      if (!v.startsWith('7') && v) v = '7' + v;
+      let out = '+7';
+      if (v.length > 1) out += ' (' + v.slice(1, 4);
+      if (v.length >= 5) out += ') ' + v.slice(4, 7);
+      if (v.length >= 8) out += '-' + v.slice(7, 9);
+      if (v.length >= 10) out += '-' + v.slice(9, 11);
+      e.target.value = out;
+    });
+  }
+
+  // Channel chips
+  $$('#channelChips .channel-chip').forEach(c => {
+    c.addEventListener('click', () => {
+      state.channel = c.dataset.channel;
+      $$('#channelChips .channel-chip').forEach(x => {
+        const active = x === c;
+        x.classList.toggle('active', active);
+        x.setAttribute('aria-pressed', String(active));
+      });
+    });
+  });
+
+  // Submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const consent = $('#consent');
+    if (consent && !consent.checked) {
+      const toggle = consent.nextElementSibling;
+      if (toggle) {
+        toggle.style.outline = '2px solid #EF4444';
+        toggle.style.outlineOffset = '3px';
+        setTimeout(() => { toggle.style.outline = ''; toggle.style.outlineOffset = ''; }, 1800);
+      }
+      alert('Для отправки заявки необходимо согласиться с обработкой персональных данных');
+      return;
+    }
+    const submitBtn = form.querySelector('button[type=submit]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '✓ Заявка принята';
+      submitBtn.style.background = 'linear-gradient(180deg, #34D399, #10B981)';
+    }
+    setTimeout(() => {
+      form.reset();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Получить 3 варианта бесплатно';
+      }
+    }, 3500);
+  });
+}
+
+// ============ INIT ============
+async function initApp() {
+  // Always available UI
+  initAnnounce();
+  initHeader();
+  initRotator();
+  initStats();
+  initReveal();
+  initModal();
+  initForm();
+
+  // Load data from JSON files
+  const { data, source } = await DataSource.loadAll();
+  CARS = data.cars || [];
+  MOTOS = data.motorcycles || [];
+  CASES = data.cases || [];
+  TEAM = data.team || [];
+  OFFICES = data.offices || [];
+  ARTICLES = data.articles || [];
+
+  if (source === 'cache') {
+    console.info('Data loaded from cache');
+  } else if (source === 'empty') {
+    console.warn('No data loaded — JSON files unreachable, no cache');
+  }
+
+  // Render data-driven sections
+  renderTop5();
+  initTop5Carousel();
+  initSelector();
+  renderCases();
+  renderTeam();
+  renderOffices();
+}
+
+function safeInit() {
+  try { initApp(); } catch (e) { console.error('Init error:', e); }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', safeInit);
+} else {
+  safeInit();
+}
+</script>
+</body>
+</html>

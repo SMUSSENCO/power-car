@@ -1,0 +1,42 @@
+[
+  {
+    "id": "alexey",
+    "name": "Алексей П.",
+    "role": "Основатель",
+    "experience": "В импорте с 2018",
+    "telegram": "https://t.me/",
+    "photo": "",
+    "published": true,
+    "order": 1
+  },
+  {
+    "id": "maria",
+    "name": "Мария Л.",
+    "role": "Старший менеджер",
+    "experience": "В авто-импорте с 2019",
+    "telegram": "https://t.me/",
+    "photo": "",
+    "published": true,
+    "order": 2
+  },
+  {
+    "id": "dmitry",
+    "name": "Дмитрий К.",
+    "role": "Логист",
+    "experience": "10 лет в ВЭД",
+    "telegram": "https://t.me/",
+    "photo": "",
+    "published": true,
+    "order": 3
+  },
+  {
+    "id": "olga",
+    "name": "Ольга Р.",
+    "role": "Таможенный брокер",
+    "experience": "Лицензия ФТС с 2015",
+    "telegram": "https://t.me/",
+    "photo": "",
+    "published": true,
+    "order": 4
+  }
+]
