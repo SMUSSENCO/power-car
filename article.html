@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0A" />
+<title>Статья — POWER Car</title>
+<meta name="description" content="Гайды и обзоры по импорту автомобилей" />
+<link rel="icon" type="image/svg+xml" href="images/logo/logo-32.svg" />
+<link rel="apple-touch-icon" href="images/logo/logo-180.svg" />
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,500,600,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0A0A;
+  --bg-2: #131316;
+  --surface: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.1);
+  --border-2: rgba(255,255,255,0.16);
+  --text: #FAFAFA;
+  --text-muted: rgba(255,255,255,0.7);
+  --text-dim: rgba(255,255,255,0.5);
+  --accent: #10B981;
+  --accent-2: #34D399;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+.art-header {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px;
+  background: rgba(10,10,10,0.85);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.art-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+.art-logo svg { width: 32px; height: 32px; }
+.art-logo-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.art-logo-text .accent { color: var(--accent); }
+.art-back {
+  color: var(--accent-2);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.art-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+.art-breadcrumbs {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+}
+.art-breadcrumbs a { color: var(--text-muted); text-decoration: none; }
+.art-breadcrumbs a:hover { color: var(--accent-2); }
+.art-category-pill {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.4);
+  color: var(--accent-2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.art-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.art-meta {
+  display: flex;
+  gap: 16px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.art-cover {
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #0d2a23, #022C22);
+}
+.art-cover img { width: 100%; height: 100%; object-fit: cover; }
+.art-body {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+.art-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 32px 0 12px;
+}
+.art-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 24px 0 10px;
+}
+.art-body p { margin-bottom: 16px; }
+.art-body ul, .art-body ol { margin-bottom: 16px; padding-left: 24px; }
+.art-body li { margin-bottom: 8px; }
+.art-body a { color: var(--accent-2); }
+.art-body strong, .art-body b { color: var(--text); font-weight: 700; }
+.art-body code {
+  font-family: 'SF Mono', Menlo, monospace;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* CTA inside article */
+.art-cta {
+  margin: 40px 0;
+  padding: 28px 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(16,185,129,0.14), rgba(0,0,0,0.3));
+  border: 1px solid var(--border-2);
+  text-align: center;
+}
+.art-cta h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.art-cta p { color: var(--text-muted); margin-bottom: 18px; }
+.art-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  color: #002417;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 12px 28px -8px rgba(16,185,129,0.35);
+}
+
+.art-loading, .art-error {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--text-muted);
+}
+.art-error h2 { color: var(--text); margin-bottom: 12px; font-family: var(--font-display); }
+</style>
+</head>
+<body>
+
+<header class="art-header">
+  <a href="index.html" class="art-logo"><img src="images/logo/logo-50.svg" alt="POWER Car" width="50" height="23" style="height:36px;width:auto;display:block;" /></a>
+  <a href="index.html" class="art-back">← На главную</a>
+</header>
+
+<main class="art-content" id="articleContent">
+  <div class="art-loading">Загружаем статью…</div>
+</main>
+
+<script>
+'use strict';
+
+// Get slug from URL query param
+function getSlug() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('slug');
+}
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+  } catch (e) { return iso; }
+}
+
+async function loadArticle() {
+  const slug = getSlug();
+  const content = document.getElementById('articleContent');
+
+  if (!slug) {
+    content.innerHTML = `<div class="art-error">
+      <h2>Статья не найдена</h2>
+      <p>Не указан идентификатор статьи в адресе.</p>
+      <a href="index.html#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
+    </div>`;
+    return;
+  }
+
+  try {
+    const res = await fetch('data/articles.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const articles = await res.json();
+    const article = articles.find(a => a.slug === slug && a.published !== false);
+
+    if (!article) {
+      content.innerHTML = `<div class="art-error">
+        <h2>Статья не найдена</h2>
+        <p>Статья с идентификатором «${slug}» не найдена или не опубликована.</p>
+        <a href="index.html#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
+      </div>`;
+      return;
+    }
+
+    // Update page meta
+    document.title = (article.seoTitle || article.title) + ' — POWER Car';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', article.seoDescription || article.description || '');
+
+    // Inject Article schema (Schema.org)
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": article.title,
+      "description": article.description,
+      "datePublished": article.publishedAt,
+      "author": { "@type": "Organization", "name": article.author || "POWER Car" },
+      "publisher": { "@type": "Organization", "name": "POWER Car" }
+    };
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.textContent = JSON.stringify(schema);
+    document.head.appendChild(schemaScript);
+
+    // Render
+    const coverHtml = article.cover ? `<div class="art-cover"><img src="${article.cover}" alt="${article.title}"></div>` : '';
+    content.innerHTML = `
+      <nav class="art-breadcrumbs">
+        <a href="index.html">Главная</a> ›
+        <a href="index.html#articles">Статьи</a> ›
+        <span>${article.title}</span>
+      </nav>
+      ${article.category ? `<span class="art-category-pill">${article.category}</span>` : ''}
+      <h1 class="art-title">${article.title}</h1>
+      <div class="art-meta">
+        <span>${fmtDate(article.publishedAt)}</span>
+        ${article.readTime ? `<span>⏱ ${article.readTime} мин чтения</span>` : ''}
+        ${article.author ? `<span>✍️ ${article.author}</span>` : ''}
+      </div>
+      ${coverHtml}
+      <div class="art-body">${article.body || ''}</div>
+
+      <div class="art-cta">
+        <h3>Готовы заказать авто из Азии?</h3>
+        <p>Получите 3 варианта под ваш бюджет — бесплатно. Менеджер свяжется в течение рабочего дня.</p>
+        <a href="index.html#cta">Оставить заявку →</a>
+      </div>
+    `;
+  } catch (e) {
+    console.error('Failed to load article:', e);
+    content.innerHTML = `<div class="art-error">
+      <h2>Не удалось загрузить статью</h2>
+      <p>Проверьте соединение с интернетом или попробуйте позже.</p>
+      <a href="index.html#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
+    </div>`;
+  }
+}
+
+loadArticle();
+</script>
+</body>
+</html>

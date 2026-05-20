@@ -13,11 +13,19 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="POWER Car — Импорт авто из Китая, Японии и Кореи" />
 <meta property="og:description" content="Подбор бесплатно. Фото-отчёт перед покупкой. Отчёт о логистике в реальном времени." />
-<meta property="og:image" content="og-image.png" />
+<meta property="og:image" content="images/logo/logo-og.svg" />
 <meta property="og:locale" content="ru_RU" />
 
-<!-- Favicon (inline SVG) -->
-<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2310B981'/><path d='M12 38 L20 28 L42 28 L50 25 L55 32 L55 42 Z M8 42 L57 42' fill='none' stroke='%23000' stroke-width='3' stroke-linejoin='round'/><circle cx='22' cy='44' r='4' fill='%23000'/><circle cx='44' cy='44' r='4' fill='%23000'/></svg>" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="POWER Car — Импорт авто из Китая, Японии и Кореи" />
+<meta name="twitter:description" content="Подбор бесплатно. Фото-отчёт перед покупкой. Отчёт о логистике в реальном времени." />
+<meta name="twitter:image" content="images/logo/logo-og.svg" />
+
+<!-- Favicon and touch icons -->
+<link rel="icon" type="image/svg+xml" href="images/logo/logo-32.svg" />
+<link rel="apple-touch-icon" href="images/logo/logo-180.svg" />
+<link rel="mask-icon" href="images/logo/logo-32.svg" color="#10B981" />
 
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:400,500,600,700,800|manrope:400,500,600,700&display=swap" rel="stylesheet">
@@ -334,6 +342,29 @@ section { position: relative; padding: 72px 0; }
   flex-shrink: 0;
 }
 .logo-svg { height: 28px; width: auto; display: block; }
+
+/* Real SVG logo image */
+.logo-img {
+  display: block;
+  width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.logo-img-header {
+  height: 22px;
+}
+@media (min-width: 768px) {
+  .logo-img-header { height: 28px; }
+}
+@media (min-width: 1024px) {
+  .logo-img-header { height: 32px; }
+}
+.logo-img-footer {
+  height: 44px;
+}
+@media (min-width: 768px) {
+  .logo-img-footer { height: 52px; }
+}
 
 /* Nav */
 .nav {
@@ -1040,6 +1071,26 @@ section { position: relative; padding: 72px 0; }
   box-shadow: 0 4px 16px -4px var(--accent-glow);
 }
 
+/* Promo chip (e.g. "Выгодно") */
+.chip-promo {
+  position: relative;
+  padding-right: 22px;
+}
+.chip-promo-label {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 2px 7px;
+  background: linear-gradient(135deg, #FFB800, #FF8A00);
+  color: #1a0e00;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(255,138,0,0.4);
+  white-space: nowrap;
+}
+
 /* More filters toggle */
 .more-filters {
   margin-top: 24px;
@@ -1120,6 +1171,35 @@ section { position: relative; padding: 72px 0; }
   letter-spacing: -0.01em;
 }
 .individual-cta-text small { display: block; font-family: var(--font-body); font-size: 0.82rem; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
+
+/* Load More button */
+.load-more-wrap {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.btn-load-more {
+  padding: 14px 28px;
+  font-size: 0.92rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+}
+.btn-load-more:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.load-more-count {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
 </style>
 <style>
 /* ============ CREDIT (compact) ============ */
@@ -1361,6 +1441,116 @@ section { position: relative; padding: 72px 0; }
 }
 .case-meta b { color: var(--text); font-weight: 600; }
 
+/* ============ ARTICLES ============ */
+.articles-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 20px;
+  padding: 4px 20px 24px;
+  margin: 0 -20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.articles-track::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) {
+  .articles-track { margin: 0 -40px; scroll-padding-inline-start: 40px; padding-left: 40px; padding-right: 40px; }
+}
+.article-card {
+  flex: 0 0 auto;
+  width: min(320px, 82vw);
+  scroll-snap-align: start;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--text);
+}
+.article-card:hover {
+  border-color: var(--border-2);
+  background: var(--surface-2);
+  transform: translateY(-4px);
+}
+.article-cover {
+  position: relative;
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #064E3B, #022C22);
+  overflow: hidden;
+}
+.article-cover::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(16,185,129,0.25), transparent 60%);
+}
+.article-cover img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.article-cover-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.article-category {
+  position: absolute;
+  top: 12px; left: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(16,185,129,0.18);
+  border: 1px solid rgba(16,185,129,0.4);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  z-index: 2;
+}
+.article-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.article-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.article-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.article-meta {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
 /* ============ VIDEO REVIEWS (placeholder) ============ */
 .video-placeholder {
   padding: 60px 24px;
@@ -1549,6 +1739,65 @@ section { position: relative; padding: 72px 0; }
 }
 .office-max:hover { transform: translateY(-2px); }
 .office-max svg { width: 16px; height: 16px; }
+
+.office-address-note {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* Yandex Map embed inside office card */
+.office-map {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+  background: var(--bg-elevated);
+}
+.office-map iframe {
+  width: 100%;
+  height: 180px;
+  display: block;
+  border: 0;
+  filter: grayscale(0.2) brightness(0.92);
+  transition: filter 0.3s var(--ease-out);
+}
+.office-map:hover iframe {
+  filter: grayscale(0) brightness(1);
+}
+.office-map-link {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(10,10,10,0.85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--accent-2);
+  text-decoration: none;
+  font-size: 0.74rem;
+  font-weight: 600;
+  border: 1px solid var(--border-2);
+  transition: all 0.2s;
+}
+.office-map-link:hover {
+  background: rgba(10,10,10,0.95);
+  color: var(--text);
+}
+
+/* "Coming soon" office card variant */
+.office-coming-soon {
+  opacity: 0.85;
+  border-style: dashed;
+}
+.office-coming-soon h3 {
+  opacity: 0.7;
+}
 
 /* ============ FAQ ============ */
 .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 880px; }
@@ -2117,20 +2366,7 @@ section { position: relative; padding: 72px 0; }
 <div class="header-wrap" id="headerWrap">
   <header class="header" id="header">
     <a href="#" class="logo" aria-label="POWER Car — на главную">
-      <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-        <!-- Car silhouette mark -->
-        <g transform="translate(2,8)">
-          <path d="M2 36 C 0 38, 0 44, 4 46 L 44 46 C 48 44, 48 38, 46 36 L 36 36 L 32 28 L 18 28 L 14 36 Z"
-                fill="none" stroke="#10B981" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M14 36 L18 30 L32 30 L36 36"
-                fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
-          <circle cx="14" cy="44" r="4" fill="#10B981"/>
-          <circle cx="34" cy="44" r="4" fill="#10B981"/>
-        </g>
-        <!-- POWER CAR text -->
-        <text x="60" y="32" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="20" fill="#FAFAFA" letter-spacing="-0.5">POWER</text>
-        <text x="60" y="50" font-family="Bricolage Grotesque, sans-serif" font-weight="600" font-size="14" fill="#10B981" letter-spacing="2">CAR</text>
-      </svg>
+      <img src="images/logo/logo-50.svg" alt="POWER Car" class="logo-img logo-img-header" width="50" height="23" />
     </a>
 
     <nav class="nav" aria-label="Главное меню">
@@ -2409,9 +2645,9 @@ section { position: relative; padding: 72px 0; }
       <div class="chips" id="ageChips" role="radiogroup" aria-labelledby="ageLabel">
         <button class="chip active" data-age="all">Все</button>
         <button class="chip" data-age="0-3">До 3 лет</button>
-        <button class="chip" data-age="3-7">3–7 лет</button>
-        <button class="chip" data-age="7-12">7–12 лет</button>
-        <button class="chip" data-age="12-17">12–17 лет</button>
+        <button class="chip chip-promo" data-age="3-5">3–5 лет<span class="chip-promo-label">✨ Выгодно</span></button>
+        <button class="chip" data-age="5-10">5–10 лет</button>
+        <button class="chip" data-age="10-19">10–19 лет</button>
       </div>
 
       <!-- More filters -->
@@ -2451,6 +2687,9 @@ section { position: relative; padding: 72px 0; }
       <div class="results-grid" id="resultsGrid">
         <!-- injected by JS -->
       </div>
+
+      <!-- Load more button -->
+      <div class="load-more-wrap" id="loadMoreWrap" style="display:none;"></div>
 
       <!-- Individual CTA -->
       <div class="individual-cta">
@@ -2582,6 +2821,30 @@ section { position: relative; padding: 72px 0; }
   </div>
 </section>
 
+<!-- ============ ARTICLES ============ -->
+<section id="articles">
+  <div class="container">
+    <div class="section-head-row reveal">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">📝 Полезные статьи</span>
+        <h2>Гайды и <span class="glow-text">обзоры</span></h2>
+        <p>Разбираем нюансы импорта авто: расчёты, законы, сравнения моделей. Опыт наших клиентов и собственная экспертиза.</p>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="articlesPrev" aria-label="Предыдущие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="articlesNext" aria-label="Следующие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="articles-track" id="articlesTrack" role="region" aria-label="Статьи о импорте авто">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
 <!-- ============ OFFICES ============ -->
 <section id="offices">
   <div class="container">
@@ -2705,7 +2968,7 @@ section { position: relative; padding: 72px 0; }
           <label class="consent">
             <input type="checkbox" id="consent" required />
             <span class="consent-toggle"></span>
-            <span>Согласен с обработкой персональных данных в соответствии с <a href="#privacy" target="_blank">Политикой конфиденциальности</a> (152-ФЗ)</span>
+            <span>Согласен с обработкой персональных данных в соответствии с <a href="docs/privacy.html" target="_blank">Политикой конфиденциальности</a> (152-ФЗ)</span>
           </label>
 
           <button type="submit" class="btn btn-primary btn-shine" style="margin-top:6px;">
@@ -2746,17 +3009,8 @@ section { position: relative; padding: 72px 0; }
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo" aria-label="POWER Car">
-          <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(2,8)">
-              <path d="M2 36 C 0 38, 0 44, 4 46 L 44 46 C 48 44, 48 38, 46 36 L 36 36 L 32 28 L 18 28 L 14 36 Z" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M14 36 L18 30 L32 30 L36 36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
-              <circle cx="14" cy="44" r="4" fill="#10B981"/>
-              <circle cx="34" cy="44" r="4" fill="#10B981"/>
-            </g>
-            <text x="60" y="32" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="20" fill="#FAFAFA" letter-spacing="-0.5">POWER</text>
-            <text x="60" y="50" font-family="Bricolage Grotesque, sans-serif" font-weight="600" font-size="14" fill="#10B981" letter-spacing="2">CAR</text>
-          </svg>
+        <a href="#" class="logo logo-footer" aria-label="POWER Car">
+          <img src="images/logo/logo-180.svg" alt="POWER Car" class="logo-img logo-img-footer" width="180" height="85" />
         </a>
         <p>Импорт автомобилей и мотоциклов из Китая, Японии и Кореи под ключ. Прозрачные расчёты, документы и сопровождение на каждом этапе.</p>
         <h4>Соцсети</h4>
@@ -2787,9 +3041,9 @@ section { position: relative; padding: 72px 0; }
       <div class="footer-col">
         <h4>Документы</h4>
         <p class="footer-docs-inline">
-          <a href="#privacy">Политика конфиденциальности</a> ·
-          <a href="#terms">Пользовательское соглашение</a> ·
-          <a href="#consent">Согласие на обработку ПД</a>
+          <a href="docs/privacy.html">Политика конфиденциальности</a> ·
+          <a href="docs/terms.html">Пользовательское соглашение</a> ·
+          <a href="docs/agreement.html">Макет договора</a>
         </p>
       </div>
     </div>
@@ -3200,6 +3454,7 @@ function renderBudgetChips() {
     btn.addEventListener('click', () => {
       state.budget = b.id;
       container.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.budget === b.id));
+      resetPagination();
       renderResults();
     });
     container.appendChild(btn);
@@ -3216,6 +3471,11 @@ function getAgeRange() {
   const [min, max] = state.age.split('-').map(Number);
   return { min, max };
 }
+
+// Pagination state
+const PAGE_INITIAL = 6;
+const PAGE_STEP = 3;
+let visibleCount = PAGE_INITIAL;
 
 function filterCars() {
   const pool = state.type === 'auto' ? CARS : MOTOS;
@@ -3236,23 +3496,53 @@ function filterCars() {
     return { car, score, matches };
   });
   scored.sort((a, b) => b.score - a.score);
-  return scored.filter(s => s.matches).map(s => s.car).slice(0, 6);
+  // Return ALL matching cars, pagination handled in renderResults
+  return scored.filter(s => s.matches).map(s => s.car);
 }
 
 function renderResults() {
   const grid = $('#resultsGrid');
+  const loadMoreWrap = $('#loadMoreWrap');
   if (!grid) return;
-  const results = filterCars();
+  const allResults = filterCars();
   grid.innerHTML = '';
-  if (results.length === 0) {
+  if (allResults.length === 0) {
     grid.innerHTML = `<div class="results-empty" style="grid-column: 1 / -1;">
       <h3>Под эти параметры в базе пусто</h3>
       <p>Это не значит, что мы не можем привезти такое авто. База содержит самые популярные предложения — расширьте параметры или оставьте индивидуальную заявку.</p>
       <a href="#cta" class="btn btn-primary">Подобрать индивидуально</a>
     </div>`;
+    if (loadMoreWrap) loadMoreWrap.style.display = 'none';
     return;
   }
-  results.forEach(car => grid.appendChild(renderCarCard(car)));
+  const visible = allResults.slice(0, visibleCount);
+  visible.forEach(car => grid.appendChild(renderCarCard(car)));
+
+  // Show/hide "load more" button
+  if (loadMoreWrap) {
+    if (visibleCount < allResults.length) {
+      const remaining = allResults.length - visibleCount;
+      const nextChunk = Math.min(PAGE_STEP, remaining);
+      loadMoreWrap.style.display = 'flex';
+      loadMoreWrap.innerHTML = `
+        <button class="btn btn-ghost btn-load-more" id="btnLoadMore">
+          Показать ещё ${nextChunk} ${nextChunk === 1 ? 'авто' : (nextChunk < 5 ? 'авто' : 'авто')}
+          <span class="load-more-count">(ещё ${remaining})</span>
+        </button>
+      `;
+      $('#btnLoadMore').addEventListener('click', () => {
+        visibleCount += PAGE_STEP;
+        renderResults();
+      });
+    } else {
+      loadMoreWrap.style.display = 'none';
+    }
+  }
+}
+
+// Reset pagination when filters change
+function resetPagination() {
+  visibleCount = PAGE_INITIAL;
 }
 
 function initSelector() {
@@ -3271,6 +3561,7 @@ function initSelector() {
       const motoExtra = $('#motoExtraFilters');
       if (motoExtra) motoExtra.style.display = state.type === 'moto' ? 'block' : 'none';
       // re-render
+      resetPagination();
       renderBudgetChips();
       renderResults();
     });
@@ -3281,6 +3572,7 @@ function initSelector() {
     c.addEventListener('click', () => {
       state.age = c.dataset.age;
       $$('#ageChips .chip').forEach(x => x.classList.toggle('active', x === c));
+      resetPagination();
       renderResults();
     });
   });
@@ -3290,6 +3582,7 @@ function initSelector() {
     c.addEventListener('click', () => {
       state.country = c.dataset.country;
       $$('#countryChips .chip').forEach(x => x.classList.toggle('active', x === c));
+      resetPagination();
       renderResults();
     });
   });
@@ -3299,6 +3592,7 @@ function initSelector() {
     c.addEventListener('click', () => {
       state.mototype = c.dataset.mototype;
       $$('#motoTypeChips .chip').forEach(x => x.classList.toggle('active', x === c));
+      resetPagination();
       renderResults();
     });
   });
@@ -3452,14 +3746,12 @@ function renderTeam() {
     const el = document.createElement('div');
     el.className = 'member';
     const photoHtml = m.photo ? `<img src="${m.photo}" alt="${m.name}" style="width:100%;height:100%;object-fit:cover;display:block;">` : memberPhotoSvg();
-    const tgHtml = m.telegram ? `<a href="${m.telegram}" class="member-tg" target="_blank" rel="noopener">${tgIconSvg()} Telegram</a>` : '';
     el.innerHTML = `
       <div class="member-photo">${photoHtml}</div>
       <div class="member-body">
         <div class="member-name">${m.name}</div>
         <div class="member-role">${m.role || ''}</div>
         <div class="member-exp">${m.experience || ''}</div>
-        ${tgHtml}
       </div>
     `;
     grid.appendChild(el);
@@ -3483,17 +3775,87 @@ function renderOffices() {
   grid.innerHTML = '';
   OFFICES.forEach(o => {
     const el = document.createElement('div');
-    el.className = 'office';
+    el.className = 'office' + (o.comingSoon ? ' office-coming-soon' : '');
+
+    // Map embed via Yandex Maps iframe (only if coordinates present)
+    let mapHtml = '';
+    if (!o.comingSoon && o.lat && o.lng) {
+      const mapSrc = `https://yandex.ru/map-widget/v1/?ll=${o.lng}%2C${o.lat}&z=16&pt=${o.lng},${o.lat},pm2grm`;
+      mapHtml = `
+        <div class="office-map">
+          <iframe src="${mapSrc}" loading="lazy" frameborder="0" allowfullscreen="true"></iframe>
+          ${o.yandexMapUrl ? `<a href="${o.yandexMapUrl}" target="_blank" rel="noopener" class="office-map-link">Открыть в Яндекс.Картах →</a>` : ''}
+        </div>
+      `;
+    }
+
+    // Phone link only if real number
+    const phoneHtml = o.comingSoon ? '' : `<a href="tel:${o.phoneRaw || o.phone}" class="office-phone">${phoneIconSvg()} ${o.phone}</a>`;
+    // Hours
+    const hoursHtml = `<div class="office-hours">${clockIconSvg()} ${o.hours || ''}</div>`;
+    // MAX button
+    const maxHtml = o.maxUrl && !o.comingSoon ? `<a href="${o.maxUrl}" class="office-max" target="_blank" rel="noopener">${maxIconSvg()} Написать в MAX</a>` : '';
+
     el.innerHTML = `
       <span class="office-flag">${o.emoji || ''} ${o.city} · ${o.timezone || ''}</span>
       <h3>${o.city}</h3>
-      <div class="office-address">${o.address}${o.addressNote ? '<br/>' + o.addressNote : ''}</div>
-      <a href="tel:${o.phoneRaw || o.phone}" class="office-phone">${phoneIconSvg()} ${o.phone}</a>
-      <div class="office-hours">${clockIconSvg()} ${o.hours || ''}</div>
-      ${o.maxUrl ? `<a href="${o.maxUrl}" class="office-max" target="_blank" rel="noopener">${maxIconSvg()} Написать в MAX</a>` : ''}
+      <div class="office-address">${o.address}${o.addressNote ? '<br/><span class="office-address-note">' + o.addressNote + '</span>' : ''}</div>
+      ${mapHtml}
+      ${phoneHtml}
+      ${hoursHtml}
+      ${maxHtml}
     `;
     grid.appendChild(el);
   });
+}
+
+// ============ ARTICLES ============
+function renderArticles() {
+  const track = $('#articlesTrack');
+  if (!track) return;
+  if (!ARTICLES.length) {
+    const section = document.querySelector('#articles');
+    if (section) section.style.display = 'none';
+    return;
+  }
+  track.innerHTML = '';
+  ARTICLES.forEach(a => {
+    const card = document.createElement('a');
+    card.className = 'article-card';
+    card.href = `article.html?slug=${encodeURIComponent(a.slug)}`;
+    const coverHtml = a.cover
+      ? `<img src="${a.cover}" alt="${a.title}" loading="lazy">`
+      : `<div class="article-cover-placeholder">${(a.category || '📝').charAt(0)}</div>`;
+    const date = a.publishedAt ? new Date(a.publishedAt).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+    card.innerHTML = `
+      <div class="article-cover">
+        ${a.category ? `<span class="article-category">${a.category}</span>` : ''}
+        ${coverHtml}
+      </div>
+      <div class="article-body">
+        <div class="article-title">${a.title}</div>
+        <div class="article-desc">${a.description || ''}</div>
+        <div class="article-meta">
+          <span>${date}</span>
+          ${a.readTime ? `<span>⏱ ${a.readTime} мин</span>` : ''}
+        </div>
+      </div>
+    `;
+    track.appendChild(card);
+  });
+}
+
+function initArticlesCarousel() {
+  const track = $('#articlesTrack');
+  const prev = $('#articlesPrev');
+  const next = $('#articlesNext');
+  if (!track || !prev || !next) return;
+  const cardWidth = () => {
+    const first = track.querySelector('.article-card');
+    return first ? first.offsetWidth + 16 : 320;
+  };
+  prev.addEventListener('click', () => track.scrollBy({ left: -cardWidth(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: cardWidth(), behavior: 'smooth' }));
 }
 
 function openCaseModal(c) {
@@ -3640,6 +4002,8 @@ async function initApp() {
   renderCases();
   renderTeam();
   renderOffices();
+  renderArticles();
+  initArticlesCarousel();
 }
 
 function safeInit() {
