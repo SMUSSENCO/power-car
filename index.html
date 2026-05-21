@@ -2189,6 +2189,85 @@ section { position: relative; padding: 72px 0; }
 }
 .modal-gallery svg { width: 60%; height: auto; opacity: 0.85; }
 
+/* ============ MEDIA TABS (Video / Photos in case modal) ============ */
+.media-tabs {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(10,10,10,0.7);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-2);
+}
+.media-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+.media-tab:hover { color: var(--text); }
+.media-tab.active {
+  background: var(--accent);
+  color: #002417;
+}
+.media-panel {
+  width: 100%;
+  height: 100%;
+}
+.media-panel[hidden] { display: none; }
+
+/* Video panel — fills the 16/10 container */
+.media-video-wrap {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: block;
+}
+.media-video-wrap iframe,
+.media-video-wrap video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Photos panel — horizontal scrollable grid */
+.media-photos-grid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  background: var(--bg);
+}
+.media-photos-grid::-webkit-scrollbar { display: none; }
+.media-photos-grid img {
+  height: 100%;
+  width: auto;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  object-fit: cover;
+  display: block;
+}
+
 .modal-body { padding: 24px; }
 @media (min-width: 768px) { .modal-body { padding: 32px; } }
 .modal-title-row {
@@ -3858,19 +3937,83 @@ function initArticlesCarousel() {
   next.addEventListener('click', () => track.scrollBy({ left: cardWidth(), behavior: 'smooth' }));
 }
 
+// Convert any video URL (YouTube/Rutube/VK Video/direct mp4) to an embed-ready iframe HTML
+function videoEmbedHtml(url) {
+  if (!url) return '';
+  const u = String(url).trim();
+
+  // YouTube: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID
+  let m = u.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([\w-]{11})/);
+  if (m) {
+    return `<iframe src="https://www.youtube.com/embed/${m[1]}?rel=0" style="width:100%;height:100%;border:0;" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  }
+
+  // Rutube: rutube.ru/video/ID/ or rutube.ru/play/embed/ID
+  m = u.match(/rutube\.ru\/(?:video\/|play\/embed\/)([\w]+)/);
+  if (m) {
+    return `<iframe src="https://rutube.ru/play/embed/${m[1]}" style="width:100%;height:100%;border:0;" allow="clipboard-write; autoplay" allowfullscreen></iframe>`;
+  }
+
+  // VK Video: vk.com/video123_456 or vk.com/video_ext.php?oid=...&id=...
+  m = u.match(/vk\.com\/video(-?\d+)_(\d+)/);
+  if (m) {
+    return `<iframe src="https://vk.com/video_ext.php?oid=${m[1]}&id=${m[2]}&hd=2" style="width:100%;height:100%;border:0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+  }
+  // Already an ext-style URL
+  if (/vk\.com\/video_ext\.php/.test(u)) {
+    return `<iframe src="${u}" style="width:100%;height:100%;border:0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+  }
+
+  // Direct mp4/webm/ogg
+  if (/\.(mp4|webm|ogg|mov)(\?|$)/i.test(u)) {
+    return `<video src="${u}" controls style="width:100%;height:100%;background:#000;"></video>`;
+  }
+
+  // Fallback: assume it's already an embed URL
+  return `<iframe src="${u}" style="width:100%;height:100%;border:0;" allowfullscreen></iframe>`;
+}
+
 function openCaseModal(c) {
   const content = $('#modalContent');
   const backdrop = $('#modalBackdrop');
   if (!content || !backdrop) return;
 
+  const hasVideo = Boolean(c.videoUrl);
+  const hasPhotos = Array.isArray(c.photos) && c.photos.length > 0;
+  // Default tab: video first if available, otherwise photos
+  const defaultTab = hasVideo ? 'video' : 'photos';
+
+  // Build tabs only if we have both
+  const tabsHtml = (hasVideo && hasPhotos) ? `
+    <div class="media-tabs" role="tablist">
+      <button class="media-tab active" data-mtab="video" role="tab" aria-selected="true">▶ Видео</button>
+      <button class="media-tab" data-mtab="photos" role="tab" aria-selected="false">📷 Фото${c.photoCount ? ' · ' + c.photoCount : ''}</button>
+    </div>
+  ` : '';
+
+  // Photos panel (uses existing carousel logic; for now: placeholder cards or real images)
+  const photosPanelHtml = hasPhotos
+    ? `<div class="media-photos-grid">${c.photos.map(p => `<img src="${p}" alt="${c.carTitle}" loading="lazy" />`).join('')}</div>`
+    : `<div class="modal-gallery-inner">${caseImageSvg()}</div>`;
+
+  // Video panel
+  const videoPanelHtml = hasVideo
+    ? `<div class="media-video-wrap">${videoEmbedHtml(c.videoUrl)}</div>`
+    : '';
+
+  // Decide which panel is visible by default
+  const showVideoPanel = defaultTab === 'video';
+
   content.innerHTML = `
     <div class="modal-gallery">
       <div class="car-flag-badge">${c.flag} ${c.country}</div>
-      <div class="car-photo-count">
+      ${hasPhotos && !hasVideo ? `<div class="car-photo-count">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         ${c.photoCount} фото
-      </div>
-      <div class="modal-gallery-inner">${caseImageSvg()}</div>
+      </div>` : ''}
+      ${tabsHtml}
+      <div class="media-panel media-panel-video" ${showVideoPanel ? '' : 'hidden'}>${videoPanelHtml}</div>
+      <div class="media-panel media-panel-photos" ${showVideoPanel ? 'hidden' : ''}>${photosPanelHtml}</div>
     </div>
     <div class="modal-body">
       <div class="modal-title-row">
@@ -3883,14 +4026,10 @@ function openCaseModal(c) {
 
       <p style="font-size:0.95rem;line-height:1.6;color:var(--text);margin-top:6px;">${c.story}</p>
 
-      ${c.showPrice ? `<div class="modal-breakdown">
+      ${c.showPrice && c.breakdown ? `<div class="modal-breakdown">
         <h4>Разбивка стоимости</h4>
         ${c.breakdown.map(b => `<div class="modal-breakdown-row"><span class="l">${b.label}</span><span>${fmtPrice(b.value)}</span></div>`).join('')}
         <div class="modal-breakdown-total"><span>Итого</span><span class="v">${fmtPrice(c.finalPrice)}</span></div>
-      </div>` : ''}
-
-      ${c.videoUrl ? `<div style="margin:20px 0;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/9;background:#000;">
-        <iframe src="${c.videoUrl}" style="width:100%;height:100%;border:0;" allowfullscreen></iframe>
       </div>` : ''}
 
       <div class="modal-actions">
@@ -3898,6 +4037,32 @@ function openCaseModal(c) {
       </div>
     </div>
   `;
+
+  // Media tabs switching
+  const tabs = content.querySelectorAll('.media-tab');
+  const videoPanel = content.querySelector('.media-panel-video');
+  const photosPanel = content.querySelector('.media-panel-photos');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => {
+        const active = x === t;
+        x.classList.toggle('active', active);
+        x.setAttribute('aria-selected', String(active));
+      });
+      const showVideo = t.dataset.mtab === 'video';
+      if (videoPanel) videoPanel.hidden = !showVideo;
+      if (photosPanel) photosPanel.hidden = showVideo;
+      // Pause video when switching to photos by clearing src then restoring
+      if (!showVideo && videoPanel) {
+        const iframe = videoPanel.querySelector('iframe');
+        if (iframe) {
+          const src = iframe.src; iframe.src = ''; iframe.src = src;
+        }
+        const video = videoPanel.querySelector('video');
+        if (video) video.pause();
+      }
+    });
+  });
 
   backdrop.classList.add('open');
   document.body.style.overflow = 'hidden';
