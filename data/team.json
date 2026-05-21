@@ -1,8 +1,8 @@
 [
   {
-    "id": "alexey",
-    "name": "Алексей П.",
-    "role": "Основатель",
+    "id": "Igor",
+    "name": "Степанов Игорь",
+    "role": "Директор",
     "experience": "В импорте с 2018",
     "telegram": "https://t.me/",
     "photo": "",
@@ -20,8 +20,8 @@
     "order": 2
   },
   {
-    "id": "dmitry",
-    "name": "Дмитрий К.",
+    "id": "Sergey",
+    "name": "Гундарев Сергей",
     "role": "Логист",
     "experience": "10 лет в ВЭД",
     "telegram": "https://t.me/",
