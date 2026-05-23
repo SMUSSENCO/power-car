@@ -782,6 +782,31 @@ section { position: relative; padding: 72px 0; }
   height: 100%;
   object-fit: cover;
   display: block;
+  position: relative;
+  z-index: 1;
+}
+/* When a real photo is present, hide the decorative green glow */
+.car-img:has(img)::after { display: none; }
+
+/* Car photo gallery in modal — horizontal scroll */
+.car-gallery-scroll {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  background: #000;
+}
+.car-gallery-scroll::-webkit-scrollbar { display: none; }
+.car-gallery-scroll img {
+  width: 100%;
+  height: 100%;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  object-fit: cover;
+  display: block;
 }
 
 .car-flag-badge {
@@ -3464,11 +3489,12 @@ function renderCarCard(car, opts = {}) {
   const badgesHtml = badges.map(b => `<span class="car-badge ${b.cls}">${b.text}</span>`).join('');
   const topRibbon = opts.topRank ? `<div class="car-top-ribbon">TOP ${opts.topRank}</div>` : '';
   const wheelBadge = car.wheel === 'right' ? `<span class="car-wheel-right">Правый руль</span>` : '';
-  const photoCount = `<div class="car-photo-count">
+  const hasPhotos = Array.isArray(car.photos) && car.photos.length > 0;
+  const photoCount = hasPhotos ? `<div class="car-photo-count">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-    8 фото
-  </div>`;
-  const imageContent = car.image ? `<img src="${car.image}" alt="${car.brand} ${car.model}" loading="lazy">` : (car.type === 'moto' ? motoImageSvg() : carImageSvg(car.brand));
+    ${car.photos.length} фото
+  </div>` : '';
+  const imageContent = hasPhotos ? `<img src="${car.photos[0]}" alt="${car.brand} ${car.model}" loading="lazy">` : (car.type === 'moto' ? motoImageSvg() : carImageSvg(car.brand));
 
   const card = document.createElement('article');
   card.className = 'car-card';
@@ -3710,20 +3736,49 @@ function openCarModal(car) {
   const badges = badgesFor(car);
   const badgesHtml = badges.map(b => `<span class="car-badge ${b.cls}">${b.text}</span>`).join('');
   const wheelBadge = car.wheel === 'right' ? `<span class="car-wheel-right">Правый руль</span>` : '';
-  const galleryContent = car.image ? `<img src="${car.image}" alt="${car.brand} ${car.model}" style="width:100%;height:100%;object-fit:cover;">` : (car.type === 'moto' ? motoImageSvg() : carImageSvg(car.brand));
 
-  // breakdown: rough split
-  const auctionPrice = Math.round(car.price * 0.55);
-  const delivery = Math.round(car.price * 0.10);
-  const customs = Math.round(car.price * 0.27);
-  const docs = Math.round(car.price * 0.04);
-  const commission = car.price - auctionPrice - delivery - customs - docs;
+  // Photo gallery from car.photos array
+  const hasPhotos = Array.isArray(car.photos) && car.photos.length > 0;
+  let galleryContent;
+  if (hasPhotos) {
+    galleryContent = `<div class="car-gallery-scroll">${car.photos.map(p =>
+      `<img src="${p}" alt="${car.brand} ${car.model}" loading="lazy" />`
+    ).join('')}</div>`;
+  } else {
+    galleryContent = `<div class="modal-gallery-inner">${car.type === 'moto' ? motoImageSvg() : carImageSvg(car.brand)}</div>`;
+  }
+  const photoCountBadge = hasPhotos ? `<div class="car-photo-count">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    ${car.photos.length} фото
+  </div>` : '';
+
+  // Price breakdown — manual values from car data (no auto-calculation)
+  const bd = car.breakdown || {};
+  const hasBreakdown = bd.auction || bd.delivery || bd.customs || bd.docs || bd.commission;
+  let breakdownHtml = '';
+  if (hasBreakdown) {
+    const rows = [
+      { label: 'Цена авто на аукционе', value: bd.auction },
+      { label: 'Доставка морем + автовоз', value: bd.delivery },
+      { label: 'Утильсбор и таможня', value: bd.customs },
+      { label: 'СБКТС, оформление', value: bd.docs },
+      { label: 'Комиссия POWER Car', value: bd.commission }
+    ].filter(r => r.value);
+    const sum = rows.reduce((acc, r) => acc + Number(r.value || 0), 0);
+    breakdownHtml = `
+      <div class="modal-breakdown">
+        <h4>Из чего складывается цена</h4>
+        ${rows.map(r => `<div class="modal-breakdown-row"><span class="l">${r.label}</span><span>${fmtPrice(r.value)}</span></div>`).join('')}
+        <div class="modal-breakdown-total"><span>Итого под ключ</span><span class="v">${fmtPrice(sum)}</span></div>
+      </div>`;
+  }
 
   content.innerHTML = `
     <div class="modal-gallery">
       <div class="car-flag-badge">${car.flag} ${car.country === 'Japan' ? 'Япония' : car.country === 'China' ? 'Китай' : 'Корея'}</div>
       <div class="car-badges">${badgesHtml}</div>
-      <div class="modal-gallery-inner">${galleryContent}</div>
+      ${photoCountBadge}
+      ${galleryContent}
     </div>
     <div class="modal-body">
       <div class="modal-title-row">
@@ -3748,15 +3803,7 @@ function openCarModal(car) {
         <div class="modal-spec-item"><span class="modal-spec-label">Доставка</span><span class="modal-spec-value">${car.deliveryMin}–${car.deliveryMax} дней</span></div>
       </div>
 
-      <div class="modal-breakdown">
-        <h4>Из чего складывается цена</h4>
-        <div class="modal-breakdown-row"><span class="l">Цена авто на аукционе</span><span>${fmtPrice(auctionPrice)}</span></div>
-        <div class="modal-breakdown-row"><span class="l">Доставка морем + автовоз</span><span>${fmtPrice(delivery)}</span></div>
-        <div class="modal-breakdown-row"><span class="l">Утильсбор и таможня</span><span>${fmtPrice(customs)}</span></div>
-        <div class="modal-breakdown-row"><span class="l">СБКТС, оформление</span><span>${fmtPrice(docs)}</span></div>
-        <div class="modal-breakdown-row"><span class="l">Комиссия POWER Car</span><span>${fmtPrice(commission)}</span></div>
-        <div class="modal-breakdown-total"><span>Итого под ключ</span><span class="v">${fmtPrice(car.price)}</span></div>
-      </div>
+      ${breakdownHtml}
 
       <div class="modal-disclaimer">
         Цены не являются публичной офертой. Цена может меняться в обе стороны в зависимости от курса валют на дату подписания договора.
@@ -4200,6 +4247,12 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', safeInit);
 } else {
   safeInit();
+}
+
+// Expose modal openers (used by tests and potential deep-linking)
+if (typeof window !== 'undefined') {
+  window.openCarModal = openCarModal;
+  window.openCaseModal = openCaseModal;
 }
 </script>
 </body>

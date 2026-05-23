@@ -30,7 +30,14 @@
       "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-8.jpg",
       "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-9.jpg",
       "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-10.jpg"
-    ]
+    ],
+    "breakdown": {
+      "auction": 1616329,
+      "delivery": 293878,
+      "customs": 793471,
+      "docs": 117551,
+      "commission": 117551
+    }
   },
   {
     "id": "hyundai-solaris",
