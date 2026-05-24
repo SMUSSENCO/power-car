@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%" style="background-color: #0A0B0D;">
+  <rect width="1200" height="630" fill="#0A0B0D" />
+  <path d="M 0,150 L 1200,150 M 0,300 L 1200,300 M 0,450 L 1200,450 M 0,600 L 1200,600" stroke="#16181C" stroke-width="1" />
+  <path d="M 200,0 L 200,630 M 400,0 L 400,630 M 600,0 L 600,630 M 800,0 L 800,630 M 1000,0 L 1000,630" stroke="#16181C" stroke-width="1" />
+  <circle cx="950" cy="315" r="250" fill="none" stroke="#16181C" stroke-width="2" />
+  <circle cx="950" cy="315" r="150" fill="none" stroke="#22252A" stroke-width="1.5" stroke-dasharray="10 15" />
+  <circle cx="950" cy="315" r="50" fill="none" stroke="#00FF88" stroke-width="1" opacity="0.3" />
+  <g transform="translate(850, 215)" opacity="0.9">
+    <line x1="-100" y1="100" x2="200" y2="100" stroke="#22252A" stroke-width="8" />
+    <line x1="0" y1="100" x2="100" y2="100" stroke="#00FF88" stroke-width="12" />
+    <circle cx="0" cy="100" r="15" fill="#FF5E00" />
+    <circle cx="100" cy="100" r="15" fill="#FF5E00" />
+    <text x="30" y="70" fill="#00FF88" font-family="'Inter', sans-serif" font-size="28" font-weight="900">3-5 ЛЕТ</text>
+  </g>
+  <text x="80" y="140" fill="#00FF88" font-family="'Inter', sans-serif" font-size="20" font-weight="800" letter-spacing="4">ТАРИФЫ И СТАВКИ: ТАМОЖЕННЫЙ СОЮЗ</text>
+  <text x="80" y="220" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="52" font-weight="900" letter-spacing="-1">ВЫГОДНЫЙ ВОЗРАСТ АВТО</text>
+  <text x="80" y="290" fill="#FF5E00" font-family="'Inter', sans-serif" font-size="52" font-weight="900" letter-spacing="-1">ПРОХОДНАЯ КАТЕГОРИЯ</text>
+  <line x1="80" y1="350" x2="550" y2="350" stroke="#22252A" stroke-width="3" />
+  <text x="80" y="405" fill="#8E929A" font-family="'Inter', sans-serif" font-size="20" font-weight="bold">Расчет пошлины по фиксированной ставке за куб.см</text>
+  <text x="80" y="445" fill="#8E929A" font-family="'Inter', sans-serif" font-size="20" font-weight="bold">Сравнение пошлин для новых и подержанных авто</text>
+  <text x="80" y="485" fill="#FF5E00" font-family="'Inter', sans-serif" font-size="20" font-weight="bold">Экономия на растаможке легковых малолитражек</text>
+  <text x="80" y="560" fill="#4A4E57" font-family="'Inter', sans-serif" font-size="22" font-weight="900" letter-spacing="3">POWER CAR</text>
+</svg>
