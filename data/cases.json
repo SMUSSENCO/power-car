@@ -4,16 +4,17 @@
     "carTitle": "Toyota Harrier Hybrid",
     "clientName": "Иван И.",
     "clientCity": "Новосибирск",
-    "flag": "🇯🇵",
     "country": "Япония",
+    "flag": "🇯🇵",
     "year": 2021,
     "deliveryDays": 52,
     "finalPrice": 3720000,
     "showPrice": true,
-    "hasClientPhoto": false,
+    "hasClientPhoto": true,
     "photoCount": 10,
     "quote": "Менеджер выходил на связь каждый день, всё прозрачно. Получил машину раньше срока.",
     "story": "Заказал Toyota Harrier Hybrid 2021 года через POWER Car. Хотел кроссовер с гибридной системой и низким расходом. Менеджер за два дня нашёл три варианта на аукционе в Японии. Выбрали с пробегом 38 000 км. Аккредитив через Сбербанк — деньги ушли только после подтверждения сделки. Доставка заняла 52 дня, контейнером до Владивостока, далее автовозом. На каждом этапе получал фото и обновления статуса.",
+    "videoUrl": "https://r.mradx.net/vrs/b1/df/b7761bc7a5bc2449775f.mp4",
     "breakdown": [
       {
         "label": "Цена авто на аукционе",
@@ -36,10 +37,23 @@
         "value": 50000
       }
     ],
-    "videoUrl": "https://r.mradx.net/vrs/b1/df/b7761bc7a5bc2449775f.mp4",
-    "published": true,
     "priority": 100,
-    "photos": []
+    "published": true,
+    "photos": [
+      "images/cases/Mazda-axela-2014-1.jpg",
+      "images/cases/Mazda-axela-2014-2.jpg",
+      "images/cases/Mazda-axela-2014-3.jpg",
+      "images/cases/Mazda-axela-2014-4.jpg",
+      "images/cases/Mazda-axela-2014-5.jpg",
+      "images/cases/Mazda-axela-2014-6.jpg",
+      "images/cases/Mazda-axela-2014-7.jpg",
+      "images/cases/Mazda-axela-2014-8.jpg",
+      "images/cases/Mazda-axela-2014-9.jpg",
+      "images/cases/Mazda-axela-2014-10.jpg",
+      "images/cases/Mazda-axela-2014-11.jpg",
+      "images/cases/Mazda-axela-2014-12.jpg",
+      "images/cases/Mazda-axela-2014-13.jpg"
+    ]
   },
   {
     "id": "case-zeekr-001",
