@@ -6,7 +6,7 @@
     "year": 2023,
     "price": 2938780,
     "priceMarket": 3300000,
-    "mileage": 128000,
+    "mileage": 5000,
     "engine": "1.5 бензин",
     "transmission": "CVT",
     "body": "crossover",
@@ -19,6 +19,13 @@
     "published": true,
     "addedAt": "2026-05-10",
     "type": "auto",
+    "breakdown": {
+      "auction": 1432998,
+      "delivery": 293878,
+      "customs": 221000,
+      "docs": 100000,
+      "commission": 50000
+    },
     "photos": [
       "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-1.jpg",
       "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-2.jpg",
@@ -30,36 +37,49 @@
       "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-8.jpg",
       "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-9.jpg",
       "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-10.jpg"
-    ],
-    "breakdown": {
-      "auction": 1616329,
-      "delivery": 293878,
-      "customs": 793471,
-      "docs": 117551,
-      "commission": 117551
-    }
+    ]
   },
   {
-    "id": "hyundai-solaris",
-    "type": "auto",
-    "country": "Korea",
-    "flag": "🇰🇷",
-    "brand": "Hyundai",
-    "model": "Solaris",
-    "year": 2015,
-    "price": 850000,
-    "priceMarket": 990000,
-    "mileage": 110000,
-    "body": "sedan",
-    "engine": "1.6 бензин",
-    "transmission": "АКПП",
+    "id": "Gelly-binyue-2021",
+    "brand": "Gelly",
+    "model": "binyue",
+    "year": 2021,
+    "price": 1276000,
+    "priceMarket": 1350000,
+    "mileage": 38000,
+    "engine": "1.4 бензин",
+    "transmission": "CVT",
+    "body": "crossover",
+    "country": "China",
+    "flag": "🇨🇳",
     "wheel": "left",
     "deliveryMin": 35,
-    "deliveryMax": 45,
+    "deliveryMax": 48,
     "hit": false,
-    "addedAt": "2026-04-20",
     "published": true,
-    "photos": []
+    "addedAt": "2026-04-20",
+    "type": "auto",
+    "breakdown": {
+      "auction": 769000,
+      "delivery": 149950,
+      "customs": 207000,
+      "docs": 100000,
+      "commission": 50000
+    },
+    "photos": [
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-1.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-2.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-3.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-4.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-5.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-6.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-7.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-8.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-9.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-10.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-11.jpg",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-12.jpg"
+    ]
   },
   {
     "id": "toyota-corolla",
