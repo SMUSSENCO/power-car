@@ -1,67 +1,11 @@
 [
   {
-    "id": "case-toyota-harrier",
-    "carTitle": "Toyota Harrier Hybrid",
-    "clientName": "Иван И.",
-    "clientCity": "Новосибирск",
-    "country": "Япония",
-    "flag": "🇯🇵",
-    "year": 2021,
-    "deliveryDays": 52,
-    "finalPrice": 3720000,
-    "showPrice": true,
-    "hasClientPhoto": true,
-    "photoCount": 10,
-    "quote": "Менеджер выходил на связь каждый день, всё прозрачно. Получил машину раньше срока.",
-    "story": "Заказал Toyota Harrier Hybrid 2021 года через POWER Car. Хотел кроссовер с гибридной системой и низким расходом. Менеджер за два дня нашёл три варианта на аукционе в Японии. Выбрали с пробегом 38 000 км. Аккредитив через Сбербанк — деньги ушли только после подтверждения сделки. Доставка заняла 52 дня, контейнером до Владивостока, далее автовозом. На каждом этапе получал фото и обновления статуса.",
-    "videoUrl": "https://r.mradx.net/vrs/b1/df/b7761bc7a5bc2449775f.mp4",
-    "breakdown": [
-      {
-        "label": "Цена авто на аукционе",
-        "value": 2380000
-      },
-      {
-        "label": "Доставка морем + автовоз",
-        "value": 380000
-      },
-      {
-        "label": "Утильсбор и таможня",
-        "value": 820000
-      },
-      {
-        "label": "СБКТС, оформление",
-        "value": 90000
-      },
-      {
-        "label": "Комиссия POWER Car",
-        "value": 50000
-      }
-    ],
-    "priority": 100,
-    "published": true,
-    "photos": [
-      "images/cases/Mazda-axela-2014-1.jpg",
-      "images/cases/Mazda-axela-2014-2.jpg",
-      "images/cases/Mazda-axela-2014-3.jpg",
-      "images/cases/Mazda-axela-2014-4.jpg",
-      "images/cases/Mazda-axela-2014-5.jpg",
-      "images/cases/Mazda-axela-2014-6.jpg",
-      "images/cases/Mazda-axela-2014-7.jpg",
-      "images/cases/Mazda-axela-2014-8.jpg",
-      "images/cases/Mazda-axela-2014-9.jpg",
-      "images/cases/Mazda-axela-2014-10.jpg",
-      "images/cases/Mazda-axela-2014-11.jpg",
-      "images/cases/Mazda-axela-2014-12.jpg",
-      "images/cases/Mazda-axela-2014-13.jpg"
-    ]
-  },
-  {
     "id": "case-zeekr-001",
     "carTitle": "Zeekr 001 LR",
     "clientName": "Алексей М.",
     "clientCity": "Москва",
-    "flag": "🇨🇳",
     "country": "Китай",
+    "flag": "🇨🇳",
     "year": 2023,
     "deliveryDays": 38,
     "finalPrice": 4280000,
@@ -70,6 +14,7 @@
     "photoCount": 12,
     "quote": "Электромобиль шёл на 700 км запасе хода. Привезли быстрее, чем обещали.",
     "story": "Хотел электромобиль с большим запасом хода. Менеджер предложил Zeekr 001 LR 2023 года прямо с завода — пробег 12 000 км. Купил через POWER Car, потому что обычные автосалоны в Москве этот лонг-ренж не возят. Подбор занял неделю — нашли вариант через дилерскую сеть в Шанхае. Доставка по морю до Владивостока, далее автовозом до Москвы — 38 дней.",
+    "videoUrl": "https://rutube.ru/shorts/6e10b061ca7918f60d53d6a51603a038/",
     "breakdown": [
       {
         "label": "Цена авто у дилера",
@@ -88,10 +33,23 @@
         "value": 90000
       }
     ],
-    "videoUrl": null,
-    "published": true,
     "priority": 90,
-    "photos": []
+    "published": true,
+    "photos": [
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-1.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-2.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-3.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-4.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-5.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-6.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-7.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-8.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-9.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-10.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-11.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-12.jpg",
+      "images/cases/Mazda-axela-2014/Mazda-axela-2014-13.jpg"
+    ]
   },
   {
     "id": "case-kia-k5",
