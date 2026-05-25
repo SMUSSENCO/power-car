@@ -4189,10 +4189,32 @@ function openCaseModal(c) {
     </div>
   ` : '';
 
-  // Photos panel (uses existing carousel logic; for now: placeholder cards or real images)
-  const photosPanelHtml = hasPhotos
-    ? `<div class="media-photos-grid">${c.photos.map(p => `<img src="${p}" alt="${c.carTitle}" loading="lazy" />`).join('')}</div>`
-    : `<div class="modal-gallery-inner">${caseImageSvg()}</div>`;
+  // Photos panel — gallery with arrows + dots (same as car gallery)
+  let photosPanelHtml;
+  if (hasPhotos) {
+    const slides = c.photos.map((p, i) =>
+      `<img src="${p}" alt="${c.carTitle} — фото ${i+1}" loading="${i === 0 ? 'eager' : 'lazy'}" />`
+    ).join('');
+    const dots = c.photos.length > 1
+      ? `<div class="gallery-dots">${c.photos.map((_, i) => `<button class="gallery-dot${i === 0 ? ' active' : ''}" data-dot="${i}" aria-label="Фото ${i+1}"></button>`).join('')}</div>`
+      : '';
+    const arrows = c.photos.length > 1 ? `
+      <button class="gallery-arrow gallery-arrow-prev" aria-label="Предыдущее фото">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="gallery-arrow gallery-arrow-next" aria-label="Следующее фото">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>` : '';
+    photosPanelHtml = `
+      <div class="car-gallery">
+        <div class="car-gallery-scroll">${slides}</div>
+        ${arrows}
+        ${dots}
+        <div class="gallery-counter">1 / ${c.photos.length}</div>
+      </div>`;
+  } else {
+    photosPanelHtml = `<div class="modal-gallery-inner">${caseImageSvg()}</div>`;
+  }
 
   // Video panel
   const videoPanelHtml = hasVideo
@@ -4205,10 +4227,6 @@ function openCaseModal(c) {
   content.innerHTML = `
     <div class="modal-gallery">
       <div class="car-flag-badge">${c.flag} ${c.country}</div>
-      ${hasPhotos && !hasVideo ? `<div class="car-photo-count">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        ${c.photoCount} фото
-      </div>` : ''}
       ${tabsHtml}
       <div class="media-panel media-panel-video" ${showVideoPanel ? '' : 'hidden'}>${videoPanelHtml}</div>
       <div class="media-panel media-panel-photos" ${showVideoPanel ? 'hidden' : ''}>${photosPanelHtml}</div>
@@ -4267,6 +4285,32 @@ function openCaseModal(c) {
   content.querySelectorAll('[data-close-modal]').forEach(b => {
     b.addEventListener('click', closeCarModal);
   });
+
+  // Photo gallery navigation (arrows + dots + counter)
+  if (hasPhotos && c.photos.length > 1) {
+    const scroll = content.querySelector('.media-panel-photos .car-gallery-scroll');
+    if (scroll) {
+      const dots = content.querySelectorAll('.media-panel-photos .gallery-dot');
+      const counter = content.querySelector('.media-panel-photos .gallery-counter');
+      const prevBtn = content.querySelector('.media-panel-photos .gallery-arrow-prev');
+      const nextBtn = content.querySelector('.media-panel-photos .gallery-arrow-next');
+      const total = c.photos.length;
+      const goTo = (i) => {
+        const idx = Math.max(0, Math.min(total - 1, i));
+        scroll.scrollTo({ left: scroll.clientWidth * idx, behavior: 'smooth' });
+      };
+      const currentIndex = () => Math.round(scroll.scrollLeft / (scroll.clientWidth || 1));
+      const sync = () => {
+        const idx = currentIndex();
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        if (counter) counter.textContent = `${idx + 1} / ${total}`;
+      };
+      if (prevBtn) prevBtn.addEventListener('click', () => goTo(currentIndex() - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goTo(currentIndex() + 1));
+      dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.dot))));
+      scroll.addEventListener('scroll', () => window.requestAnimationFrame(sync));
+    }
+  }
 }
 
 // ============ FORM ============
