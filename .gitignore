@@ -1,0 +1,55 @@
+# macOS
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*~
+
+# Резервные копии
+*.bak
+*.backup
+*.old
+
+# Логи
+*.log
+
+# СЕКРЕТЫ — никогда не коммитить
+.env
+.env.local
+*.env
+secrets.json
+credentials.json
+config.local.json
+auth.json
+tokens.txt
+*.pem
+*.key
+private/
+
+# ПЕРСОНАЛЬНЫЕ ДАННЫЕ КЛИЕНТОВ (152-ФЗ)
+clients/
+contracts/
+clients.csv
+clients.xlsx
+leads.json
+applications.json
+zayavki.csv
+
+# Локальная админка — держим вне репозитория
+admin.html
+admin-drafts/
+
+# Node.js
+node_modules/
+
+# Сборки
+build/
+dist/
+.cache/
