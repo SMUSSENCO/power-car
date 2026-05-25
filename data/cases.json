@@ -1,19 +1,19 @@
 [
   {
-    "id": "case-zeekr-001",
-    "carTitle": "Zeekr 001 LR",
-    "clientName": "Алексей М.",
-    "clientCity": "Москва",
-    "country": "Китай",
-    "flag": "🇨🇳",
-    "year": 2023,
-    "deliveryDays": 38,
-    "finalPrice": 4280000,
+    "id": "Mazda-Axela-2014-Tomsk-Irina",
+    "carTitle": "Mazda Axela S 2014",
+    "clientName": "Ирина",
+    "clientCity": "Томск",
+    "country": "Япония",
+    "flag": "🇯🇵",
+    "year": 2014,
+    "deliveryDays": 39,
+    "finalPrice": 980000,
     "showPrice": true,
     "hasClientPhoto": true,
     "photoCount": 12,
-    "quote": "Электромобиль шёл на 700 км запасе хода. Привезли быстрее, чем обещали.",
-    "story": "Хотел электромобиль с большим запасом хода. Менеджер предложил Zeekr 001 LR 2023 года прямо с завода — пробег 12 000 км. Купил через POWER Car, потому что обычные автосалоны в Москве этот лонг-ренж не возят. Подбор занял неделю — нашли вариант через дилерскую сеть в Шанхае. Доставка по морю до Владивостока, далее автовозом до Москвы — 38 дней.",
+    "quote": "ДОПОЛНИТЬ",
+    "story": "Mazda Axela (Комплектация S)\nСтоимость во Владивостоке: до 980 000 ₽\n\nТехнические данные: Двигатель 1.5 л (111 л.с.) | Пробег: 93 000 км (оригинальный, без пробега по РФ).\n\nПреимущества комплектации S\nМодификация S — это оптимальный баланс комфорта и экономии, включающий всё необходимое для ежедневных поездок без переплаты за избыточные опции:\n\nКомфорт: Автоматический климат-контроль, подогрев сидений, электрорегулировка зеркал.\n\nУправление: Мультируль и продвинутая приборная панель с бортовым компьютером.\n\nКачество: Премиальная заводская шумоизоляция, износостойкий пластик салона и легкосплавные диски.\n\nЦелевая аудитория и позиционирование\nБлагодаря высокой ликвидности, японской сборке и экономичности (расход 6–7 л / 100 км), данный автомобиль идеально подходит:\n\nНачинающим водителям: Как надежный, стильный и недорогой в содержании городской автомобиль.\n\nДевушкам и молодым семьям: В качестве маневренного, но вместительного хэтчбека для города и загородных поездок.\n\nРациональным покупателям: Тем, кто ищет честный автомобиль в заводском окрасе напрямую из Японии, альтернативу изношенному вторичному рынку РФ.",
     "videoUrl": "https://vkvideo.ru/clip-239056351_456239018",
     "breakdown": [
       {
@@ -30,7 +30,7 @@
       },
       {
         "label": "СБКТС, оформление",
-        "value": 90000
+        "value": 100000
       }
     ],
     "priority": 90,
@@ -52,20 +52,21 @@
     ]
   },
   {
-    "id": "case-kia-k5",
-    "carTitle": "Kia K5",
-    "clientName": "Дмитрий В.",
+    "id": "Honda N-WGN-2013-Andrey",
+    "carTitle": "Honda N-WGN Custom Turbo",
+    "clientName": "Андрей",
     "clientCity": "Томск",
-    "flag": "🇰🇷",
-    "country": "Корея",
-    "year": 2021,
-    "deliveryDays": 36,
-    "finalPrice": 2480000,
+    "country": "Япония",
+    "flag": "🇯🇵",
+    "year": 2013,
+    "deliveryDays": 28,
+    "finalPrice": 570000,
     "showPrice": true,
-    "hasClientPhoto": false,
-    "photoCount": 8,
-    "quote": "Корейский бизнес-седан в идеале. Документы — без замечаний, поставил на учёт за день.",
-    "story": "Нужен был седан бизнес-класса до 2,5 млн. POWER Car предложил Kia K5 2021 года с пробегом 42 000 км из Кореи. Аукцион в Сеуле, прямые контракты — корейская сборка, левый руль, всё для РФ. Доставка через Владивосток автовозом до Томска — 36 дней. Получил фото-отчёт с осмотра и протокол диагностики до выкупа.",
+    "hasClientPhoto": true,
+    "photoCount": 13,
+    "quote": "Первое обращение в компанию было 13 марта, а уже 10 апреля был получен ЭПТС.\n17 апреля машина уже находилась в пути в\nТомск. Для меня это показатель чёткой и организованной работы на всех этапах.",
+    "story": "Honda N-WGN Custom Turbo (2013)\nТехнические данные: Турбомотор 0.7 л (64 л.с.) | Пробег: 80 000 км | Расход: 5–6 л / 100 км.\n\nАльтернатива на рынке РФ: В данном бюджете внутренний рынок предлагает преимущественно автомобили Lada Granta в базовой комплектации либо подержанные иномарки с непрозрачной сервисной историей.\n\nКлючевые преимущества модели:\nДинамика и габариты: Оптимальное соотношение мощности турбомотора и компактных размеров обеспечивает высокую маневренность и удобство парковки в мегаполисе.\n\nЭкономическая эффективность: Минимальный расход топлива в сочетании с эталонной японской надежностью снижает стоимость владения автомобилем.\n\nЭкстерьер: Премиальная комплектация Custom Turbo обеспечивает современный, визуально привлекательный внешний вид.\n\nЦелевая аудитория:\nРациональные городские жители: Идеальный вариант для тех, кому необходим экономичный, юркий и надежный автомобиль для ежедневных поездок.\n\nМолодые семьи: Альтернатива бюджетному сегменту РФ, гарантирующая честный пробег, заводской окрас и отсутствие скрытых технических дефектов.\n\nПрагматичные покупатели: Для тех, кто ценит личное время и предпочитает прогнозируемую эксплуатацию без регулярных затрат на ремонт устаревшего автопарка.\n\nРезюме: Honda N-WGN Custom Turbo — ликвидное решение, предлагающее высокое японское качество и комфорт по цене отечественного автомобиля.",
+    "videoUrl": "https://vkvideo.ru/clip-239056351_456239021",
     "breakdown": [
       {
         "label": "Цена авто на аукционе",
@@ -88,26 +89,40 @@
         "value": 20000
       }
     ],
-    "videoUrl": null,
-    "published": true,
     "priority": 80,
-    "photos": []
+    "published": true,
+    "photos": [
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-1.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-2.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-3.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-4.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-5.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-6.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-7.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-8.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-9.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-10.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-11.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-12.jpg",
+      "images/cases/Mazda-axela-2014/Honda-N-WGN-2013-Andrey-13.png"
+    ]
   },
   {
-    "id": "case-lexus-rx",
-    "carTitle": "Lexus RX450h",
-    "clientName": "Сергей А.",
-    "clientCity": "Москва",
-    "flag": "🇯🇵",
+    "id": "Mercedes-Benz-C-class-Vyacheslav",
+    "carTitle": "Mercedes Benz C-class",
+    "clientName": "Вячеслав",
+    "clientCity": "Томск",
     "country": "Япония",
-    "year": 2022,
-    "deliveryDays": 54,
-    "finalPrice": 5680000,
+    "flag": "🇯🇵",
+    "year": 2016,
+    "deliveryDays": 35,
+    "finalPrice": 1900000,
     "showPrice": true,
     "hasClientPhoto": true,
     "photoCount": 11,
-    "quote": "Премиальный кроссовер дешевле, чем у официалов. Гибрид, полный фарш.",
-    "story": "Хотел премиальный кроссовер с гибридной установкой. У официалов RX450h стоит от 7 млн, я смотрел в Японии — там нашли вариант 2022 года с пробегом 28 000 км за эквивалент 4,5 млн. POWER Car организовал выкуп, доставку до Владивостока, растаможку и автовоз до Москвы. Итого 54 дня и 5,68 млн под ключ.",
+    "quote": "Отличная компания, заказывал машинку с\nЯпонии Мерседес бенс W 205 спорт +\nПривезли без каких либо проблем, езжу и наслаждаюсь ездой.\nВ общем, если хотите заказать автомобиль обращайтесь в эту компанию РЕКОМЕНДУЮ.",
+    "story": "Коммерческое предложение: Mercedes-Benz C-Class (2016)\nСпецификация автомобиля:\n\nДвигатель: 1.6 л / 156 л.с. (Бензин, M274)\n\nПробег: 40 000 км (подтвержден аукционным листом)\n\nАукционная оценка: 4.5 балла (отличное состояние)\n\nКомплектация: Sport +\n\nФинальная стоимость во Владивостоке: до 1 900 000 ₽\n\nТехнические преимущества двигателя M274\nСиловой агрегат M274 признан экспертами одним из самых надежных и ремонтопригодных ДВС за последние 15 лет благодаря следующим конструктивным решениям:\n\nДоступность в обслуживании: Переднее расположение цепи ГРМ существенно снижает стоимость и время проведения регламентных работ (в отличие от аналогов с задним расположением цепи).\n\nЭксплуатационный ресурс: При соблюдении регламента ТО двигатель рассчитан на 250 000–300 000 км без капитального ремонта; отсутствует склонность к повышенному расходу масла.\n\nКонструктивная надежность: Классическая архитектура без усложненных и дорогостоящих гибридных систем.\n\nПотенциал модернизации (Чип-тюнинг)\nЗаводской запас прочности узлов M274 позволяет произвести безопасное увеличение мощности:\n\nПрирост производительности: +20–25 л.с. и существенное улучшение эластичности двигателя на низких оборотах.\n\nБезопасность: Оптимизация характеристик происходит в пределах расчетных допусков завода-изготовителя, что исключает снижение общего ресурса ДВС.\n\nРезюме\nMercedes-Benz C-Class W205 в комплектации Sport+ с минимальным пробегом 40 000 км — это наиболее рациональный и безопасный способ приобретения автомобиля премиум-сегмента. Данный лот предлагает прозрачную историю, эталонную надежность ключевых узлов и высокую остаточную стоимость при конкурентной цене на рынке РФ.",
+    "videoUrl": "https://vkvideo.ru/clip-239056351_456239022",
     "breakdown": [
       {
         "label": "Цена авто на аукционе",
@@ -126,9 +141,121 @@
         "value": 100000
       }
     ],
-    "videoUrl": null,
+    "priority": 200,
     "published": true,
+    "photos": [
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-1.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-2.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-3.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-4.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-5.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-6.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-7.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-8.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-9.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-10.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-11.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-12.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-13.jpg",
+      "images/cases/Mercedes-Benz-C-class-Vyacheslav/Mercedes-Benz-C-class-2016-14.png"
+    ]
+  },
+  {
+    "id": "Honda-Vezel-2022-Dima",
+    "carTitle": "Honda Vezel 2022",
+    "clientName": "Дмитрий",
+    "clientCity": "Томск",
+    "country": "Корея",
+    "flag": "🇰🇷",
+    "year": 2022,
+    "deliveryDays": 37,
+    "finalPrice": 1950000,
+    "showPrice": true,
+    "hasClientPhoto": true,
+    "photoCount": 12,
+    "quote": "",
+    "story": "Honda Vezel (2022)\nСпецификация лота:\n\nГод выпуска: 2022\n\nДвигатель: 1.5 л (118 л.с.) / Бензин\n\nПробег: 40 000 км\n\nАукционная оценка: 4 балла (отличное состояние)\n\nСтоимость во Владивостоке: 1 950 000 ₽\n\nТехнический потенциал и экономичность\nДанная модификация ориентирована на долгосрочную беспроблемную эксплуатацию. Классический атмосферный двигатель в сочетании с проверенной трансмиссией обеспечивает высокую надежность основных узлов и минимальные затраты на обслуживание в течение первых 5 лет.\n\nРасход топлива: Оптимальный показатель для городского цикла — 6–7 л / 100 км.\n\nГеометрическая проходимость: Дорожный просвет до 185–190 мм (в зависимости от привода) позволяет уверенно эксплуатировать автомобиль в сложных дорожных условиях и на легком бездорожье.\n\nОснащение комплектации G\nБазовая комплектация G предлагает сбалансированный пакет опций для комфортной ежедневной езды:\n\nЭргономика и мультимедиа: Современный мультимедийный комплекс с поддержкой Apple CarPlay и раздельная система климат-контроля.\n\nВспомогательные системы: Электронный стояночный тормоз с функцией Auto Hold, существенно снижающий нагрузку на водителя в городском трафике.\n\nТрансформация салона: Фирменная система конфигурации задних сидений Magic Seats, позволяющая перевозить крупногабаритные и нестандартные грузы.",
+    "videoUrl": "https://vkvideo.ru/clip-239056351_456239023",
+    "breakdown": [
+      {
+        "label": "Цена авто на аукционе",
+        "value": 3680000
+      },
+      {
+        "label": "Доставка морем + автовоз",
+        "value": 480000
+      },
+      {
+        "label": "Утильсбор и таможня",
+        "value": 1420000
+      },
+      {
+        "label": "СБКТС, оформление",
+        "value": 100000
+      }
+    ],
+    "priority": 110,
+    "published": true,
+    "photos": [
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-1.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-2.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-3.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-4.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-5.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-6.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-7.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-8.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-9.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-10.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-11.jpg",
+      "images/cases/Honda-Vezel-2022-Dima/Honda-Vezel-2022-Dima-12.jpg"
+    ]
+  },
+  {
+    "id": "BMW-1-Series-M-Sport-Night Version",
+    "carTitle": "BMW 1-Series M Sport Night Version",
+    "clientName": "Полина",
+    "clientCity": "Красноярск",
+    "country": "Китай",
+    "flag": "🇨🇳",
+    "year": 2021,
+    "deliveryDays": 40,
+    "finalPrice": 1820000,
+    "showPrice": true,
+    "hasClientPhoto": true,
+    "photoCount": 10,
+    "quote": "Привезли в красноярск в расчетные сроки, состояние авто как заявлено, обратная связь в течении всего цикла сделки. 5/5 рекомендую",
+    "story": "BMW 1-Series M Sport Night Version (2021)\nСпецификация лота:\n\nДвигатель: 1.5 л (140 л.с.) / Бензин (турбо) — оптимальное соотношение налоговой эффективности и динамических характеристик.\n\nПробег: 28 000 км (минимальная эксплуатация, подтвержденный пробег).\n\nКомплектация: 120i M Sport Night Version.\n\nФинальная стоимость во Владивостоке: 1 820 000 ₽.\n\nЭкстерьер и особенности комплектации Night Version\nМодификация M Sport Night Version ориентирована на покупателей, ценящих премиальный спортивный дизайн и эксклюзивность:\n\nСтилистика кузова: Аэродинамический обвес в стиле трековых М-версий (спортивные бамперы, пороги) и оригинальная оптика с черным хромированным напылением.\n\nЭргономика салона: Анатомические спортивные сиденья с развитой боковой поддержкой, обеспечивающие эталонную фиксацию и комфорт при динамичном вождении.\n\nПреимущества предложения:\nЛиквидность и состояние: Минимальный пробег до 30 000 км гарантирует состояние практически нового автомобиля и сохранение высокой остаточной стоимости.\n\nФинансовая выгода: Приобретение напрямую через аукцион позволяет получить честный европейский премиум по цене китайских аналогов или масс-маркета на внутреннем рынке РФ.",
+    "videoUrl": "https://vkvideo.ru/clip-239056351_456239024",
     "priority": 70,
-    "photos": []
+    "published": true,
+    "photos": [
+      "### Скрипт для Терминала:",
+      "```bash",
+      "mv \"1.jpg\" \"BMW-1-Series-M-Sport-2021-1.jpg\" 2>/dev/null",
+      "mv \"2.jpg\" \"BMW-1-Series-M-Sport-2021-2.jpg\" 2>/dev/null",
+      "mv \"3.jpg\" \"BMW-1-Series-M-Sport-2021-3.jpg\" 2>/dev/null",
+      "mv \"4.jpg\" \"BMW-1-Series-M-Sport-2021-4.jpg\" 2>/dev/null",
+      "mv \"5.jpg\" \"BMW-1-Series-M-Sport-2021-5.jpg\" 2>/dev/null",
+      "mv \"6.jpg\" \"BMW-1-Series-M-Sport-2021-6.jpg\" 2>/dev/null",
+      "mv \"8ksYUWmRu...ZsY0rG4ux.jpg\" \"BMW-1-Series-M-Sport-2021-7.jpg\" 2>/dev/null",
+      "mv \"9hrYM8sVBIS...MiWZZ1Vy.jpg\" \"BMW-1-Series-M-Sport-2021-8.jpg\" 2>/dev/null",
+      "mv \"fKxan-wrzl56...xr6_xc8ea.jpg\" \"BMW-1-Series-M-Sport-2021-9.jpg\" 2>/dev/null",
+      "mv \"Xs5GRvfHEyF...3PxwC2li.jpg\" \"BMW-1-Series-M-Sport-2021-10.jpg\" 2>/dev/null",
+      "mv \"ZQbuVU7QM...08SyLqGR.jpg\" \"BMW-1-Series-M-Sport-2021-11.jpg\" 2>/dev/null",
+      "```",
+      "---",
+      "### Ссылки для кода:",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-1.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-2.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-3.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-4.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-5.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-6.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-7.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-8.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-9.jpg",
+      "images/cases/BMW-1-Series-M-Sport-2021/BMW-1-Series-M-Sport-2021-10.jpg"
+    ]
   }
 ]
