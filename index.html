@@ -4071,6 +4071,7 @@ function openCarModal(car) {
         <div class="modal-spec-item"><span class="modal-spec-label">Год</span><span class="modal-spec-value">${car.year}</span></div>
         <div class="modal-spec-item"><span class="modal-spec-label">Пробег</span><span class="modal-spec-value">${fmt(car.mileage)} км</span></div>
         <div class="modal-spec-item"><span class="modal-spec-label">Двигатель</span><span class="modal-spec-value">${car.engine}</span></div>
+        ${car.power ? `<div class="modal-spec-item"><span class="modal-spec-label">Мощность</span><span class="modal-spec-value">${car.power} л.с.</span></div>` : ''}
         ${car.transmission ? `<div class="modal-spec-item"><span class="modal-spec-label">Коробка</span><span class="modal-spec-value">${car.transmission}</span></div>` : ''}
         ${car.body ? `<div class="modal-spec-item"><span class="modal-spec-label">Кузов</span><span class="modal-spec-value">${car.body}</span></div>` : ''}
         <div class="modal-spec-item"><span class="modal-spec-label">Руль</span><span class="modal-spec-value">${car.wheel === 'right' ? 'Правый' : 'Левый'}</span></div>
@@ -4743,8 +4744,23 @@ async function initApp() {
   initArticlesCarousel();
 }
 
+// Prevent browser from restoring/jumping scroll position on load (mobile bug fix)
+if (typeof window !== 'undefined' && 'scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 function safeInit() {
   try { initApp(); } catch (e) { console.error('Init error:', e); }
+  // Force scroll to top on load UNLESS the URL has a real anchor (#section)
+  try {
+    var hash = window.location.hash;
+    if (!hash || hash === '#' || hash.length < 2) {
+      // Defer to after layout/reveal so it sticks
+      window.scrollTo(0, 0);
+      requestAnimationFrame(function () { window.scrollTo(0, 0); });
+      setTimeout(function () { window.scrollTo(0, 0); }, 60);
+    }
+  } catch (e) {}
 }
 
 if (document.readyState === 'loading') {
