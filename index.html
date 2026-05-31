@@ -1243,7 +1243,6 @@ section { position: relative; padding: 72px 0; }
   margin: 0 -20px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  /* Soft fade on both edges so cards don't get hard-cut */
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
           mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
 }
@@ -1799,10 +1798,7 @@ section { position: relative; padding: 72px 0; }
   text-transform: uppercase;
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
 }
-.case-video-badge svg {
-  width: 11px;
-  height: 11px;
-}
+.case-video-badge svg { width: 11px; height: 11px; }
 
 .case-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .case-title {
@@ -2870,7 +2866,7 @@ section { position: relative; padding: 72px 0; }
     </div>
   </header>
 
-  <!-- Mobile-only mini-nav: shows Подбор (highlighted) + Отзывы -->
+  <!-- Mobile-only mini-nav: shows Подбор (animated) + Отзывы + Статьи -->
   <nav class="nav-mobile" aria-label="Быстрые разделы">
     <a href="#selector" class="nav-mobile-link nav-mobile-primary">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -3755,7 +3751,7 @@ const state = {
   age: 'all',
   country: 'all',
   mototype: 'all',
-  sortBy: 'priceAsc', // priceAsc | priceDesc | yearDesc | newest
+  sortBy: 'priceAsc',
   channel: 'call'
 };
 
@@ -4094,8 +4090,7 @@ function renderResults() {
   if (!grid) return;
   const allResults = filterCars();
   if (countEl) {
-    const n = allResults.length;
-    countEl.textContent = n === 0 ? '' : `Найдено: ${n}`;
+    countEl.textContent = allResults.length === 0 ? '' : `Найдено: ${allResults.length}`;
   }
   grid.innerHTML = '';
   if (allResults.length === 0) {
