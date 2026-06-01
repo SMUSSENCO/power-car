@@ -384,6 +384,56 @@ section { position: relative; padding: 72px 0; }
 }
 .nav a:hover { color: var(--text); background: var(--surface-2); }
 
+/* Mobile-only mini-nav under the header */
+.nav-mobile {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 16px 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid var(--border, rgba(255,255,255,0.08));
+}
+.nav-mobile::-webkit-scrollbar { display: none; }
+@media (min-width: 1024px) { .nav-mobile { display: none; } }
+.nav-mobile-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  background: var(--surface-2, rgba(255,255,255,0.04));
+  border: 1px solid var(--border, rgba(255,255,255,0.08));
+  transition: all 0.2s var(--ease-out);
+  white-space: nowrap;
+}
+.nav-mobile-link:active { transform: scale(0.95); }
+.nav-mobile-link svg { width: 13px; height: 13px; }
+.nav-mobile-primary {
+  color: #002417;
+  background: linear-gradient(135deg, var(--accent, #10B981), var(--accent-2, #34D399));
+  border-color: transparent;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.28);
+  animation: navPodborPulse 2.4s ease-in-out infinite;
+}
+@keyframes navPodborPulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.28);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 22px rgba(16, 185, 129, 0.55), 0 0 0 4px rgba(16, 185, 129, 0.18);
+    transform: scale(1.04);
+  }
+}
+
 /* Header CTA group */
 .header-cta { display: flex; gap: 6px; align-items: center; }
 
@@ -1193,10 +1243,19 @@ section { position: relative; padding: 72px 0; }
   margin: 0 -20px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
 }
 .top5-track::-webkit-scrollbar { display: none; }
 @media (min-width: 768px) {
-  .top5-track { margin: 0 -40px; scroll-padding-inline-start: 40px; padding-left: 40px; padding-right: 40px; }
+  .top5-track {
+    margin: 0 -40px;
+    scroll-padding-inline-start: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  }
 }
 .top5-track .car-card {
   flex: 0 0 auto;
@@ -1391,6 +1450,42 @@ section { position: relative; padding: 72px 0; }
   align-items: flex-start;
 }
 .results-note svg { width: 18px; height: 18px; color: var(--accent-2); flex-shrink: 0; margin-top: 2px; }
+
+.results-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.results-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.results-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.results-sort select {
+  background: var(--bg-2, rgba(255,255,255,0.04));
+  color: var(--text);
+  border: 1px solid var(--border, rgba(255,255,255,0.1));
+  border-radius: 10px;
+  padding: 7px 32px 7px 12px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2398a2b3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.results-sort select:hover { border-color: var(--accent-2, #34D399); }
 
 .results-grid {
   display: grid;
@@ -1622,15 +1717,23 @@ section { position: relative; padding: 72px 0; }
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding-inline-start: 20px;
-  /* FIX: removed padding-right that caused dead space */
   padding: 4px 20px 24px;
   margin: 0 -20px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
 }
 .cases-scroll::-webkit-scrollbar { display: none; }
 @media (min-width: 768px) {
-  .cases-scroll { margin: 0 -40px; scroll-padding-inline-start: 40px; padding-left: 40px; padding-right: 40px; }
+  .cases-scroll {
+    margin: 0 -40px;
+    scroll-padding-inline-start: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  }
 }
 
 .case {
@@ -1677,6 +1780,26 @@ section { position: relative; padding: 72px 0; }
 }
 .case-img.has-photo::after { display: none; }
 
+.case-video-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.92);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+}
+.case-video-badge svg { width: 11px; height: 11px; }
+
 .case-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .case-title {
   font-family: var(--font-display);
@@ -1720,10 +1843,19 @@ section { position: relative; padding: 72px 0; }
   margin: 0 -20px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
 }
 .articles-track::-webkit-scrollbar { display: none; }
 @media (min-width: 768px) {
-  .articles-track { margin: 0 -40px; scroll-padding-inline-start: 40px; padding-left: 40px; padding-right: 40px; }
+  .articles-track {
+    margin: 0 -40px;
+    scroll-padding-inline-start: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  }
 }
 .article-card {
   flex: 0 0 auto;
@@ -2733,6 +2865,16 @@ section { position: relative; padding: 72px 0; }
       <a href="#cta" class="btn btn-primary btn-sm btn-shine">Заявка</a>
     </div>
   </header>
+
+  <!-- Mobile-only mini-nav: shows Подбор (animated) + Отзывы + Статьи -->
+  <nav class="nav-mobile" aria-label="Быстрые разделы">
+    <a href="#selector" class="nav-mobile-link nav-mobile-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Подбор авто
+    </a>
+    <a href="#cases" class="nav-mobile-link">Отзывы</a>
+    <a href="#articles" class="nav-mobile-link">Статьи</a>
+  </nav>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -3031,6 +3173,20 @@ section { position: relative; padding: 72px 0; }
         <span>Цены в базе рассчитаны под ключ до Владивостока с учетом доставки, СБКТС и ЭПТС.</span>
       </div>
 
+      <!-- Sort + results count -->
+      <div class="results-toolbar">
+        <div class="results-count" id="resultsCount"></div>
+        <label class="results-sort">
+          <span>Сортировать:</span>
+          <select id="sortBy" aria-label="Сортировка">
+            <option value="priceAsc">Сначала дешевле</option>
+            <option value="priceDesc">Сначала дороже</option>
+            <option value="yearDesc">Сначала новее (по году)</option>
+            <option value="newest">Сначала недавно добавленные</option>
+          </select>
+        </label>
+      </div>
+
       <!-- Results -->
       <div class="results-grid" id="resultsGrid">
         <!-- injected by JS -->
@@ -3118,10 +3274,20 @@ section { position: relative; padding: 72px 0; }
 <!-- ============ CASES ============ -->
 <section id="cases">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Кейсы</span>
-      <h2>Наш любимый момент <span class="glow-text">вручение ключей</span></h2>
-      <p></p>
+    <div class="section-head reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:260px;">
+        <span class="eyebrow">Кейсы</span>
+        <h2>Наш любимый момент <span class="glow-text">вручение ключей</span></h2>
+        <p></p>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="casesPrev" aria-label="Предыдущие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="casesNext" aria-label="Следующие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
     </div>
   </div>
   <div class="container">
@@ -3585,6 +3751,7 @@ const state = {
   age: 'all',
   country: 'all',
   mototype: 'all',
+  sortBy: 'priceAsc',
   channel: 'call'
 };
 
@@ -3782,6 +3949,12 @@ function renderCarCard(car, opts = {}) {
     </div>
   `;
   card.querySelector('[data-action="details"]').addEventListener('click', () => openCarModal(car));
+  // Click on photo also opens the modal (with details)
+  const imgArea = card.querySelector('.car-img');
+  if (imgArea) {
+    imgArea.style.cursor = 'pointer';
+    imgArea.addEventListener('click', () => openCarModal(car));
+  }
   return card;
 }
 
@@ -3811,6 +3984,23 @@ function initTop5Carousel() {
   const cardWidth = () => {
     const first = track.querySelector('.car-card');
     return first ? first.offsetWidth + 16 : 320;
+  };
+  prev.addEventListener('click', () => {
+    track.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+  });
+  next.addEventListener('click', () => {
+    track.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+  });
+}
+
+function initCasesCarousel() {
+  const track = $('#casesTrack');
+  const prev = $('#casesPrev');
+  const next = $('#casesNext');
+  if (!track || !prev || !next) return;
+  const cardWidth = () => {
+    const first = track.querySelector('.case');
+    return first ? first.offsetWidth + 16 : 360;
   };
   prev.addEventListener('click', () => {
     track.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
@@ -3879,15 +4069,29 @@ function filterCars() {
     return { car, score, matches };
   });
   scored.sort((a, b) => b.score - a.score);
-  // Return ALL matching cars, pagination handled in renderResults
-  return scored.filter(s => s.matches).map(s => s.car);
+  // Apply user-selected sort to matching results
+  const matching = scored.filter(s => s.matches).map(s => s.car);
+  const sortBy = state.sortBy || 'priceAsc';
+  if (sortBy === 'priceAsc') matching.sort((a, b) => (a.price || 0) - (b.price || 0));
+  else if (sortBy === 'priceDesc') matching.sort((a, b) => (b.price || 0) - (a.price || 0));
+  else if (sortBy === 'yearDesc') matching.sort((a, b) => (b.year || 0) - (a.year || 0));
+  else if (sortBy === 'newest') matching.sort((a, b) => {
+    const da = a.addedAt ? new Date(a.addedAt).getTime() : 0;
+    const db = b.addedAt ? new Date(b.addedAt).getTime() : 0;
+    return db - da;
+  });
+  return matching;
 }
 
 function renderResults() {
   const grid = $('#resultsGrid');
   const loadMoreWrap = $('#loadMoreWrap');
+  const countEl = $('#resultsCount');
   if (!grid) return;
   const allResults = filterCars();
+  if (countEl) {
+    countEl.textContent = allResults.length === 0 ? '' : `Найдено: ${allResults.length}`;
+  }
   grid.innerHTML = '';
   if (allResults.length === 0) {
     grid.innerHTML = `<div class="results-empty" style="grid-column: 1 / -1;">
@@ -3979,6 +4183,17 @@ function initSelector() {
       renderResults();
     });
   });
+
+  // Sort dropdown
+  const sortSel = $('#sortBy');
+  if (sortSel) {
+    sortSel.value = state.sortBy || 'priceAsc';
+    sortSel.addEventListener('change', () => {
+      state.sortBy = sortSel.value;
+      resetPagination();
+      renderResults();
+    });
+  }
 
   renderBudgetChips();
   renderResults();
@@ -4290,6 +4505,7 @@ function renderCases() {
     card.className = 'case';
     card.dataset.id = c.id;
     const hasPhotos = Array.isArray(c.photos) && c.photos.length > 0;
+    const hasVideo = !!c.videoUrl;
     const imgContent = hasPhotos
       ? `<img src="${c.photos[0]}" alt="${c.carTitle}" loading="lazy">`
       : caseImageSvg();
@@ -4299,9 +4515,16 @@ function renderCases() {
           ${c.photos.length} фото
         </div>`
       : '';
+    const videoBadge = hasVideo
+      ? `<div class="case-video-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          С видео
+        </div>`
+      : '';
     card.innerHTML = `
       <div class="case-img${hasPhotos ? ' has-photo' : ''}">
         <div class="car-flag-badge">${c.flag} ${c.country}</div>
+        ${videoBadge}
         ${countBadge}
         ${imgContent}
       </div>
@@ -4735,6 +4958,7 @@ async function initApp() {
   initTop5Carousel();
   initSelector();
   renderCases();
+  initCasesCarousel();
   renderTeam();
   renderOffices();
   renderArticles();
