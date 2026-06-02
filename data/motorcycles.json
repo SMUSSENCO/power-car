@@ -43,24 +43,41 @@
   },
   {
     "id": "kawasaki-z900",
-    "type": "moto",
+    "brand": "Kawasaki",
+    "model": "ZR900B",
+    "year": 2020,
+    "mileage": 57998,
+    "engine": "948",
+    "power": 123,
+    "mototype": "naked",
     "country": "Japan",
     "flag": "🇯🇵",
-    "brand": "Kawasaki",
-    "model": "Z900",
-    "year": 2019,
-    "price": 780000,
-    "priceMarket": 890000,
-    "mileage": 22000,
-    "engine": "948cc",
-    "mototype": "naked",
-    "wheel": "left",
-    "deliveryMin": 45,
-    "deliveryMax": 55,
+    "deliveryMin": 25,
+    "deliveryMax": 33,
     "hit": true,
-    "addedAt": "2026-05-05",
+    "weight": null,
     "published": true,
-    "photos": []
+    "addedAt": "2026-05-05",
+    "type": "moto",
+    "priceMarket": 889997,
+    "calc": {
+      "marketLocal": 599997,
+      "customs": 130305,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 626064,
+    "photos": [
+      "images/motorcycles/Kawasaki-Z900/Kawasaki-Z900-1.jpg",
+      "images/motorcycles/Kawasaki-Z900/Kawasaki-Z900-2.jpg"
+    ],
+    "breakdown": {
+      "auction": 259319,
+      "delivery": 86440,
+      "customs": 130305,
+      "docs": 100000,
+      "commission": 50000
+    }
   },
   {
     "id": "honda-cbr600rr",
@@ -124,5 +141,233 @@
     "addedAt": "2026-04-15",
     "published": true,
     "photos": []
+  },
+  {
+    "id": "Kawasaki-Ninja-400-2023",
+    "brand": "Kawasaki",
+    "model": "Ninja 400",
+    "year": 2023,
+    "mileage": 789,
+    "engine": "398",
+    "power": 45,
+    "mototype": "sport",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-06-02",
+    "type": "moto",
+    "priceMarket": 700000,
+    "calc": {
+      "marketLocal": 590000,
+      "customs": 59153,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 550591,
+    "photos": [
+      "images/motorcycles/Kawasaki-Ninja-400/Kawasaki-Ninja-400-1.jpg",
+      "images/motorcycles/Kawasaki-Ninja-400/Kawasaki-Ninja-400-2.jpg"
+    ],
+    "breakdown": {
+      "auction": 254998,
+      "delivery": 86440,
+      "customs": 59153,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "Kawasaki-Ninja-400-2015",
+    "brand": "Kawasaki",
+    "model": "Ninja 400",
+    "year": 2015,
+    "mileage": 25700,
+    "engine": "400",
+    "power": 45,
+    "mototype": "sport",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-06-02",
+    "type": "moto",
+    "priceMarket": 400000,
+    "calc": {
+      "marketLocal": 26000,
+      "customs": 109413,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 357090,
+    "photos": [
+      "images/motorcycles/Kawasaki-Ninja-400-2015/Kawasaki-Ninja-400-2015-1.jpg",
+      "images/motorcycles/Kawasaki-Ninja-400-2015/Kawasaki-Ninja-400-2015-2.jpg"
+    ],
+    "breakdown": {
+      "auction": 11237,
+      "delivery": 86440,
+      "customs": 109413,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "honda-gb350-348-21hp",
+    "brand": "Honda",
+    "model": "GB350",
+    "year": 2019,
+    "mileage": 2195,
+    "engine": "348",
+    "power": 21,
+    "mototype": "naked",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-06-02",
+    "type": "moto",
+    "priceMarket": 650000,
+    "calc": {
+      "marketLocal": 370000,
+      "customs": 51715,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 448069,
+    "photos": [
+      "images/motorcycles/Honda-GB350/Honda-GB350-1.jpg",
+      "images/motorcycles/Honda-GB350/Honda-GB350-2.jpg"
+    ],
+    "breakdown": {
+      "auction": 159914,
+      "delivery": 86440,
+      "customs": 51715,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "ktm-390-duke-373-44hp",
+    "brand": "KTM",
+    "model": "390 DUKE",
+    "year": 2021,
+    "mileage": 31000,
+    "engine": "373",
+    "power": 44,
+    "mototype": "naked",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-06-02",
+    "type": "moto",
+    "priceMarket": 530167,
+    "calc": {
+      "marketLocal": 270000,
+      "customs": 54687,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 407821,
+    "photos": [
+      "images/motorcycles/Honda-GB350/Honda-GB350-1.jpg",
+      "images/motorcycles/Honda-GB350/Honda-GB350-2.jpg"
+    ],
+    "breakdown": {
+      "auction": 116694,
+      "delivery": 86440,
+      "customs": 54687,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "yamaha-mt-07-700-70hp",
+    "brand": "Yamaha",
+    "model": "MT-07",
+    "year": 2016,
+    "mileage": 8300,
+    "engine": "700",
+    "power": 70,
+    "mototype": "naked",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-06-02",
+    "type": "moto",
+    "priceMarket": 884291,
+    "calc": {
+      "marketLocal": 590000,
+      "customs": 188786,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 680224,
+    "photos": [
+      "images/motorcycles/Honda-GB350/Honda-GB350-1.jpg",
+      "images/motorcycles/Honda-GB350/Honda-GB350-2.jpg"
+    ],
+    "breakdown": {
+      "auction": 254998,
+      "delivery": 86440,
+      "customs": 188786,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "honda-adv160-kf54-160-16hp",
+    "brand": "Honda",
+    "model": "ADV160 KF54",
+    "year": 2023,
+    "mileage": 11500,
+    "engine": "160",
+    "power": 16,
+    "mototype": "tour",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-06-02",
+    "type": "moto",
+    "priceMarket": 600000,
+    "calc": {
+      "marketLocal": 400000,
+      "customs": 26600,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 435920,
+    "photos": [
+      "images/motorcycles/Honda-ADV160-KF54/Honda-ADV160-KF54-1.jpg",
+      "images/motorcycles/Honda-ADV160-KF54/Honda-ADV160-KF54-2.jpg"
+    ],
+    "breakdown": {
+      "auction": 172880,
+      "delivery": 86440,
+      "customs": 26600,
+      "docs": 100000,
+      "commission": 50000
+    }
   }
 ]
