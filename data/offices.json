@@ -24,16 +24,16 @@
     "timezone": "TOMK · UTC+7",
     "address": "проспект Кирова, 58, 305 офис",
     "addressNote": "3 этаж · Советский район · 634012",
-    "phone": "+7 (382) 000-00-00",
-    "phoneRaw": "+73820000000",
+    "phone": "+7(913)853-33-05",
+    "phoneRaw": "+79138533305",
     "hours": "Пн–Сб 9:00–18:00 (Томск)",
     "maxUrl": "https://max.ru/",
     "lat": 56.4751,
     "lng": 84.9486,
     "yandexMapUrl": "https://yandex.ru/maps/?text=Томск, проспект Кирова, 58",
     "comingSoon": false,
-    "published": true,
-    "order": 2
+    "order": 2,
+    "published": true
   },
   {
     "id": "novosibirsk",
@@ -42,15 +42,15 @@
     "timezone": "NOVT · UTC+7",
     "address": "проспект Карла Маркса, 57, 511 офис",
     "addressNote": "5 этаж · Ленинский район · 630073",
-    "phone": "+7 (383) 000-00-00",
-    "phoneRaw": "+73830000000",
+    "phone": "+7 (995) 270-47-10",
+    "phoneRaw": "+79952704710",
     "hours": "Пн–Сб 9:00–18:00 (Нск)",
     "maxUrl": "https://max.ru/",
     "lat": 54.9833,
     "lng": 82.8964,
     "yandexMapUrl": "https://yandex.ru/maps/?text=Новосибирск, проспект Карла Маркса, 57",
     "comingSoon": false,
-    "published": true,
-    "order": 3
+    "order": 3,
+    "published": true
   }
 ]
