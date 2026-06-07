@@ -1052,17 +1052,18 @@
     "deliveryMin": 25,
     "deliveryMax": 35,
     "hit": true,
+    "weight": null,
     "published": true,
     "addedAt": "2026-05-27",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 2132671,
     "calc": {
-      "marketLocal": 52900,
+      "marketLocal": 103000,
       "customs": 221066,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1096931,
+    "price": 1640516,
     "photos": [
       "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-1.jpg",
       "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-2.jpg",
@@ -1075,7 +1076,7 @@
       "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-9.jpg"
     ],
     "breakdown": {
-      "auction": 573965,
+      "auction": 1117550,
       "delivery": 151900,
       "customs": 221066,
       "docs": 100000,
@@ -1905,13 +1906,13 @@
   {
     "id": "chevrolet-trailblazer-1.3-155hp",
     "brand": "Chevrolet",
-    "model": "Trailblazer",
+    "model": "Trailblazer RS",
     "year": 2021,
     "mileage": 42700,
     "engine": "1.3T",
     "power": 155,
     "transmission": "АКПП",
-    "body": "hatchback",
+    "body": "crossover",
     "country": "Korea",
     "flag": "🇰🇷",
     "wheel": "left",
@@ -1922,14 +1923,14 @@
     "published": true,
     "addedAt": "2026-05-28",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 1855694,
     "calc": {
-      "marketLocal": 12300000,
+      "marketLocal": 20900000,
       "customs": 192940,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1020171,
+    "price": 1427457,
     "photos": [
       "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-1.jpg",
       "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-2.jpg",
@@ -1941,7 +1942,7 @@
       "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-8.jpg"
     ],
     "breakdown": {
-      "auction": 582513,
+      "auction": 989799,
       "delivery": 94718,
       "customs": 192940,
       "docs": 100000,
@@ -2584,19 +2585,19 @@
     "type": "auto",
     "priceMarket": 1599999,
     "calc": {
-      "marketLocal": 1700000,
+      "marketLocal": 2100000,
       "customs": 180849,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1152029,
+    "price": 1324909,
     "photos": [
       "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-1.jpg",
       "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-2.jpg",
       "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 734740,
+      "auction": 907620,
       "delivery": 86440,
       "customs": 180849,
       "docs": 100000,
