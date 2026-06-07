@@ -193,6 +193,45 @@ body {
   color: var(--text-muted);
 }
 .art-error h2 { color: var(--text); margin-bottom: 12px; font-family: var(--font-display); }
+
+/* Footer */
+.art-footer {
+  max-width: 800px;
+  margin: 60px auto 0;
+  padding: 28px 0 32px;
+  border-top: 1px solid var(--border);
+}
+.art-footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.art-footer-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+.art-footer-nav a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+.art-footer-nav a:hover { text-decoration: underline; }
+.art-footer-sep { color: var(--text-muted); }
+.art-footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.art-footer-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  line-height: 1.5;
+}
 </style>
 </head>
 <body>
@@ -205,6 +244,25 @@ body {
 <main class="art-content" id="articleContent">
   <div class="art-loading">Загружаем статью…</div>
 </main>
+
+<footer class="art-footer" role="contentinfo">
+  <div class="art-footer-inner">
+    <nav class="art-footer-nav" aria-label="Документы">
+      <a href="docs/privacy.html">Политика конфиденциальности</a>
+      <span class="art-footer-sep">·</span>
+      <a href="docs/terms.html">Пользовательское соглашение</a>
+      <span class="art-footer-sep">·</span>
+      <a href="docs/agreement.html">Договор-оферта</a>
+    </nav>
+    <div class="art-footer-meta">
+      <span>© 2026 POWER Car</span>
+      <span>ИП Степанов Александр Васильевич · ИНН 702205795181 · ОГРНИП 325700000053969</span>
+    </div>
+    <div class="art-footer-note">
+      Информация на сайте носит информационный характер и не является публичной офертой (ст. 437 ГК РФ).
+    </div>
+  </div>
+</footer>
 
 <script>
 'use strict';

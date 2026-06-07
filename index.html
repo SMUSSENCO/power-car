@@ -2885,6 +2885,66 @@ body.menu-open { overflow: hidden; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============ COOKIE BANNER ============ */
+.cookie-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9999;
+  background: rgba(20, 20, 22, 0.96);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.cookie-banner.show { opacity: 1; transform: translateY(0); }
+.cookie-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cookie-banner-text {
+  flex: 1;
+  min-width: 220px;
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.cookie-banner-text a {
+  color: var(--accent-2, #34D399);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cookie-banner-text a:hover { color: var(--accent, #10B981); }
+.cookie-banner-btn {
+  flex: 0 0 auto;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent, #10B981), var(--accent-2, #34D399));
+  color: #002417;
+  font-weight: 700;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.cookie-banner-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(16,185,129,0.4); }
+.cookie-banner-btn:active { transform: scale(0.97); }
+@media (max-width: 540px) {
+  .cookie-banner { left: 10px; right: 10px; bottom: 10px; padding: 12px 14px; }
+  .cookie-banner-btn { width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -3552,13 +3612,19 @@ body.menu-open { overflow: hidden; }
         </div>
 
         <form class="cta-form" id="leadForm">
+          <!-- Honeypot anti-spam (must stay empty; hidden from real users) -->
+          <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+            <label>Не заполняйте это поле</label>
+            <input type="text" name="website" id="lf-honeypot" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="field">
             <label for="lf-name">Ваше имя</label>
             <input id="lf-name" type="text" required minlength="2" autocomplete="given-name" />
           </div>
-          <div class="field">
-            <label for="lf-phone">Телефон</label>
+          <div class="field" id="contactField">
+            <label for="lf-phone" id="contactLabel">Телефон</label>
             <input id="lf-phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required autocomplete="tel" />
+            <span class="hint" id="contactHint" style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;display:none;"></span>
           </div>
           <div class="field">
             <label>Удобный способ связи</label>
@@ -3667,7 +3733,8 @@ body.menu-open { overflow: hidden; }
 
     <div class="footer-legal">
       <span>© 2026 POWER Car · Все права защищены</span>
-      <span>ИП Иванов И.И. · ИНН 0000000000</span>
+      <span>ИП Степанов Александр Васильевич · ИНН 702205795181 · ОГРНИП 325700000053969</span>
+      <span style="opacity:0.7;font-size:0.75rem;">Информация на сайте носит информационный характер и не является публичной офертой (ст. 437 ГК РФ). Финальная стоимость рассчитывается индивидуально под каждый запрос.</span>
     </div>
   </div>
 </footer>
@@ -4954,25 +5021,74 @@ function openCaseModal(c) {
 }
 
 // ============ FORM ============
+
+// Telegram bot settings — REPLACE TOKEN with your fresh one from @BotFather
+const TG_BOT_TOKEN = 'PASTE_YOUR_NEW_BOT_TOKEN_HERE';
+const TG_CHAT_ID   = '-1003891049696';
+
+// Channel meta: какой контакт собираем при выборе способа
+const CHANNEL_META = {
+  call:     { label: 'Номер телефона',  type: 'tel',  placeholder: '+7 (___) ___-__-__', hint: '', mask: 'phone',    name: 'Звонок' },
+  whatsapp: { label: 'Номер WhatsApp',  type: 'tel',  placeholder: '+7 (___) ___-__-__', hint: '', mask: 'phone',    name: 'WhatsApp' },
+  max:      { label: 'Номер MAX',       type: 'tel',  placeholder: '+7 (___) ___-__-__', hint: 'MAX работает по номеру телефона', mask: 'phone', name: 'MAX' },
+  telegram: { label: 'Ник в Telegram',  type: 'text', placeholder: '@username',           hint: 'Если не знаете свой ник — отправьте текущий номер телефона', mask: 'tg', name: 'Telegram' }
+};
+
 function initForm() {
   const form = $('#leadForm');
   if (!form) return;
   const phone = $('#lf-phone');
+  const contactLabel = $('#contactLabel');
+  const contactHint = $('#contactHint');
 
   // Phone mask
-  if (phone) {
-    phone.addEventListener('input', (e) => {
-      let v = e.target.value.replace(/\D/g, '');
-      if (v.startsWith('8')) v = '7' + v.slice(1);
-      if (!v.startsWith('7') && v) v = '7' + v;
-      let out = '+7';
-      if (v.length > 1) out += ' (' + v.slice(1, 4);
-      if (v.length >= 5) out += ') ' + v.slice(4, 7);
-      if (v.length >= 8) out += '-' + v.slice(7, 9);
-      if (v.length >= 10) out += '-' + v.slice(9, 11);
-      e.target.value = out;
-    });
-  }
+  const applyPhoneMask = (e) => {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.startsWith('8')) v = '7' + v.slice(1);
+    if (!v.startsWith('7') && v) v = '7' + v;
+    let out = '+7';
+    if (v.length > 1) out += ' (' + v.slice(1, 4);
+    if (v.length >= 5) out += ') ' + v.slice(4, 7);
+    if (v.length >= 8) out += '-' + v.slice(7, 9);
+    if (v.length >= 10) out += '-' + v.slice(9, 11);
+    e.target.value = out;
+  };
+
+  let currentMask = 'phone';
+  const setMask = (mask) => {
+    currentMask = mask;
+    // Remove old listener by cloning
+    const newInput = phone.cloneNode(true);
+    phone.parentNode.replaceChild(newInput, phone);
+    if (mask === 'phone') {
+      newInput.addEventListener('input', applyPhoneMask);
+    }
+    // Re-assign reference
+    return newInput;
+  };
+
+  // Apply channel-specific UI to input
+  const applyChannelUI = (channel) => {
+    const meta = CHANNEL_META[channel] || CHANNEL_META.call;
+    const input = $('#lf-phone');
+    if (!input) return;
+    contactLabel.textContent = meta.label;
+    input.type = meta.type;
+    input.placeholder = meta.placeholder;
+    input.inputMode = meta.type === 'tel' ? 'tel' : 'text';
+    input.autocomplete = meta.type === 'tel' ? 'tel' : 'off';
+    input.value = ''; // reset when switching
+    if (meta.hint) {
+      contactHint.textContent = meta.hint;
+      contactHint.style.display = 'block';
+    } else {
+      contactHint.style.display = 'none';
+    }
+    setMask(meta.mask);
+  };
+
+  // Initial mask
+  if (phone) phone.addEventListener('input', applyPhoneMask);
 
   // Channel chips
   $$('#channelChips .channel-chip').forEach(c => {
@@ -4983,12 +5099,22 @@ function initForm() {
         x.classList.toggle('active', active);
         x.setAttribute('aria-pressed', String(active));
       });
+      applyChannelUI(state.channel);
     });
   });
 
   // Submit
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Honeypot — if filled, silently ignore (likely a bot)
+    const hp = $('#lf-honeypot');
+    if (hp && hp.value) {
+      console.warn('Honeypot triggered, dropping submission');
+      return;
+    }
+
+    // Consent check
     const consent = $('#consent');
     if (consent && !consent.checked) {
       const toggle = consent.nextElementSibling;
@@ -5000,20 +5126,106 @@ function initForm() {
       alert('Для отправки заявки необходимо согласиться с обработкой персональных данных');
       return;
     }
+
+    // Collect data
+    const name = ($('#lf-name') && $('#lf-name').value || '').trim();
+    const contact = ($('#lf-phone') && $('#lf-phone').value || '').trim();
+    const channel = state.channel || 'call';
+    const channelMeta = CHANNEL_META[channel] || CHANNEL_META.call;
+
+    if (!name || name.length < 2) { alert('Укажите имя'); return; }
+    if (!contact || contact.length < 4) { alert(`Укажите ${channelMeta.label.toLowerCase()}`); return; }
+
     const submitBtn = form.querySelector('button[type=submit]');
+    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '✓ Заявка принята';
-      submitBtn.style.background = 'linear-gradient(180deg, #34D399, #10B981)';
+      submitBtn.innerHTML = 'Отправляем...';
     }
-    setTimeout(() => {
-      form.reset();
+
+    // Build Telegram message
+    const ts = new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tomsk' });
+    const url = (typeof window !== 'undefined' && window.location) ? window.location.href : '';
+    const text = [
+      '🚗 <b>НОВАЯ ЗАЯВКА — POWER Car</b>',
+      '',
+      `👤 <b>Имя:</b> ${escapeTg(name)}`,
+      `📞 <b>${escapeTg(channelMeta.label)}:</b> ${escapeTg(contact)}`,
+      `💬 <b>Способ связи:</b> ${escapeTg(channelMeta.name)}`,
+      '',
+      `🕒 ${escapeTg(ts)} (Томск)`,
+      `🔗 ${escapeTg(url)}`
+    ].join('\n');
+
+    try {
+      const sent = await sendToTelegram(text);
+      if (submitBtn) {
+        submitBtn.disabled = !sent;
+        submitBtn.innerHTML = sent ? '✓ Заявка принята' : '⚠ Не удалось отправить';
+        if (sent) submitBtn.style.background = 'linear-gradient(180deg, #34D399, #10B981)';
+      }
+      if (sent) {
+        setTimeout(() => {
+          form.reset();
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml || 'Отправить';
+            submitBtn.style.background = '';
+          }
+        }, 3500);
+      } else {
+        // Restore button after 2.5s so user can retry
+        setTimeout(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml || 'Отправить';
+          }
+        }, 2500);
+        alert('Не удалось отправить заявку. Позвоните нам напрямую или попробуйте позже.');
+      }
+    } catch (err) {
+      console.error('Form submit error:', err);
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Получить 3 варианта бесплатно';
+        submitBtn.innerHTML = originalBtnHtml || 'Отправить';
       }
-    }, 3500);
+      alert('Не удалось отправить заявку. Позвоните нам напрямую или попробуйте позже.');
+    }
   });
+}
+
+// Escape Telegram HTML special chars
+function escapeTg(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Send message to Telegram bot
+async function sendToTelegram(text) {
+  if (!TG_BOT_TOKEN || TG_BOT_TOKEN.indexOf('PASTE_YOUR') === 0) {
+    console.warn('TG_BOT_TOKEN is not set yet — submission would normally go to Telegram');
+    return false;
+  }
+  try {
+    const r = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: TG_CHAT_ID,
+        text: text,
+        parse_mode: 'HTML',
+        disable_web_page_preview: true
+      })
+    });
+    if (!r.ok) {
+      console.error('Telegram API error:', r.status, await r.text());
+      return false;
+    }
+    const data = await r.json();
+    return !!data.ok;
+  } catch (e) {
+    console.error('Telegram fetch failed:', e);
+    return false;
+  }
 }
 
 // ============ INIT ============
@@ -5121,6 +5333,44 @@ if (typeof window !== 'undefined') {
   window.openLightbox = openLightbox;
   window.openCaseModal = openCaseModal;
 }
-</script>
+
+// ============ COOKIE CONSENT ============
+function initCookieConsent() {
+  if (typeof window === 'undefined' || !window.localStorage) return;
+  try {
+    if (localStorage.getItem('powercar_cookie_consent') === 'yes') return;
+  } catch (e) { /* ignore */ }
+  const banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.setAttribute('role', 'region');
+  banner.setAttribute('aria-label', 'Уведомление об использовании cookies');
+  banner.innerHTML = `
+    <div class="cookie-banner-inner">
+      <div class="cookie-banner-text">
+        Мы используем файлы cookie для удобства работы сайта и улучшения сервиса.
+        Продолжая использовать сайт, вы соглашаетесь с этим.
+        Подробнее в <a href="docs/privacy.html" target="_blank" rel="noopener">политике конфиденциальности</a>.
+      </div>
+      <button type="button" class="cookie-banner-btn" id="cookieAccept">Понятно</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+  // Анимация появления
+  requestAnimationFrame(() => banner.classList.add('show'));
+  const accept = document.getElementById('cookieAccept');
+  if (accept) {
+    accept.addEventListener('click', () => {
+      try { localStorage.setItem('powercar_cookie_consent', 'yes'); } catch (e) {}
+      banner.classList.remove('show');
+      setTimeout(() => banner.remove(), 350);
+    });
+  }
+}
+// run as soon as DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCookieConsent);
+} else {
+  initCookieConsent();
+}</script>
 </body>
 </html>
