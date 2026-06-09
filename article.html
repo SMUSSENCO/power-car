@@ -251,8 +251,8 @@ body {
 <body>
 
 <header class="art-header">
-  <a href="index.html" class="art-logo"><img src="images/logo/logo-50.svg" alt="POWER Car" width="50" height="23" style="height:36px;width:auto;display:block;" /></a>
-  <a href="index.html#articles" class="art-back">← К статьям</a>
+  <a href="/" class="art-logo"><img src="images/logo/logo-50.svg" alt="POWER Car" width="50" height="23" style="height:36px;width:auto;display:block;" /></a>
+  <a href="/#articles" class="art-back">← К статьям</a>
 </header>
 
 <main class="art-content" id="articleContent">
@@ -302,7 +302,7 @@ async function loadArticle() {
     content.innerHTML = `<div class="art-error">
       <h2>Статья не найдена</h2>
       <p>Не указан идентификатор статьи в адресе.</p>
-      <a href="index.html#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
+      <a href="/#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
     </div>`;
     return;
   }
@@ -317,7 +317,7 @@ async function loadArticle() {
       content.innerHTML = `<div class="art-error">
         <h2>Статья не найдена</h2>
         <p>Статья с идентификатором «${slug}» не найдена или не опубликована.</p>
-        <a href="index.html#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
+        <a href="/#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
       </div>`;
       return;
     }
@@ -346,8 +346,8 @@ async function loadArticle() {
     const coverHtml = article.cover ? `<div class="art-cover"><img src="${article.cover}" alt="${article.title}"></div>` : '';
     content.innerHTML = `
       <nav class="art-breadcrumbs">
-        <a href="index.html">Главная</a> ›
-        <a href="index.html#articles">Статьи</a> ›
+        <a href="/">Главная</a> ›
+        <a href="/#articles">Статьи</a> ›
         <span>${article.title}</span>
       </nav>
       ${article.category ? `<span class="art-category-pill">${article.category}</span>` : ''}
@@ -363,7 +363,7 @@ async function loadArticle() {
       <div class="art-cta">
         <h3>Готовы заказать авто из Азии?</h3>
         <p>Получите 3 варианта под ваш бюджет — бесплатно. Менеджер свяжется в течение рабочего дня.</p>
-        <a href="index.html#cta">Оставить заявку →</a>
+        <a href="/#cta">Оставить заявку →</a>
       </div>
     `;
   } catch (e) {
@@ -371,7 +371,7 @@ async function loadArticle() {
     content.innerHTML = `<div class="art-error">
       <h2>Не удалось загрузить статью</h2>
       <p>Проверьте соединение с интернетом или попробуйте позже.</p>
-      <a href="index.html#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
+      <a href="/#articles" class="art-back" style="margin-top:16px;display:inline-block;">← Все статьи</a>
     </div>`;
   }
 }
