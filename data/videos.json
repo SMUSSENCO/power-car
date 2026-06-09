@@ -1,0 +1,47 @@
+[
+  {
+    "id": "vid_1",
+    "title": "Видео-обзор #1",
+    "thumbnail": "",
+    "vkEmbedUrl": "",
+    "duration": "",
+    "active": true,
+    "order": 1
+  },
+  {
+    "id": "vid_2",
+    "title": "Видео-обзор #2",
+    "thumbnail": "",
+    "vkEmbedUrl": "",
+    "duration": "",
+    "active": true,
+    "order": 2
+  },
+  {
+    "id": "vid_3",
+    "title": "Видео-обзор #3",
+    "thumbnail": "",
+    "vkEmbedUrl": "",
+    "duration": "",
+    "active": true,
+    "order": 3
+  },
+  {
+    "id": "vid_4",
+    "title": "Видео-обзор #4",
+    "thumbnail": "",
+    "vkEmbedUrl": "",
+    "duration": "",
+    "active": true,
+    "order": 4
+  },
+  {
+    "id": "vid_5",
+    "title": "Видео-обзор #5",
+    "thumbnail": "",
+    "vkEmbedUrl": "",
+    "duration": "",
+    "active": true,
+    "order": 5
+  }
+]

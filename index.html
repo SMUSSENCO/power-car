@@ -2945,7 +2945,195 @@ body.menu-open { overflow: hidden; }
   .cookie-banner { left: 10px; right: 10px; bottom: 10px; padding: 12px 14px; }
   .cookie-banner-btn { width: 100%; }
 }
+
+/* ============ VIDEOS SECTION ============ */
+.videos-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 20px;
+  padding: 8px 20px 24px;
+  margin: 0 -20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+}
+.videos-track::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) {
+  .videos-track {
+    margin: 0 -40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  }
+}
+.video-card {
+  flex: 0 0 auto;
+  width: min(220px, 58vw);
+  aspect-ratio: 9 / 16;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: transform 0.28s var(--ease-out), box-shadow 0.28s, border-color 0.2s;
+  display: block;
+}
+.video-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.4), 0 0 24px rgba(16,185,129,0.15);
+  border-color: rgba(52,211,153,0.35);
+}
+.video-card-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-card-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, #1a1d21 0%, #0d1014 100%);
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  text-align: center;
+  padding: 16px;
+}
+.video-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+  transition: background 0.2s;
+}
+.video-card:hover .video-card-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%); }
+.video-card-play {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(16,185,129,0.45), 0 0 0 6px rgba(16,185,129,0.15);
+  transition: transform 0.2s;
+}
+.video-card:hover .video-card-play { transform: scale(1.1); }
+.video-card-play svg { width: 22px; height: 22px; margin-left: 3px; color: #002417; }
+
+/* Video modal */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.video-modal.open { display: flex; }
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+.video-modal-frame {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 92vw);
+  aspect-ratio: 9 / 16;
+  max-height: 90vh;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+}
+.video-modal-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.video-modal-empty {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 92vw);
+  aspect-ratio: 9 / 16;
+  border-radius: 22px;
+  background: linear-gradient(160deg, #1a1d21 0%, #0d1014 100%);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+}
+.video-modal-empty-inner { max-width: 280px; }
+.video-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.video-modal-close svg { width: 20px; height: 20px; }
+.video-modal-close:hover { background: rgba(239,68,68,0.85); border-color: transparent; }
+.video-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.video-modal-nav:hover { background: rgba(16,185,129,0.85); border-color: transparent; }
+.video-modal-nav svg { width: 22px; height: 22px; }
+.video-modal-prev { left: 16px; }
+.video-modal-next { right: 16px; }
+@media (max-width: 540px) {
+  .video-modal-prev { left: 6px; width: 40px; height: 40px; }
+  .video-modal-next { right: 6px; width: 40px; height: 40px; }
+}
 </style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=109736434", "ym");
+
+   ym(109736434, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109736434" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
 
@@ -3421,6 +3609,54 @@ body.menu-open { overflow: hidden; }
   </div>
 </section>
 
+<!-- ============ VIDEOS ============ -->
+<section id="videos">
+  <div class="container">
+    <div class="section-head-row reveal">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">Видео-обзоры</span>
+        <h2>Смотрите как мы привозим <span class="glow-text">авто</span></h2>
+        <p>Короткие ролики — от подбора лота до вручения ключей. Реальные авто, реальные клиенты.</p>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="videosPrev" aria-label="Предыдущие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="videosNext" aria-label="Следующие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="videos-track" id="videosTrack" role="region" aria-label="Видео-обзоры">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Video modal -->
+<div class="video-modal" id="videoModal" aria-hidden="true">
+  <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+  <button class="video-modal-close" id="videoModalClose" aria-label="Закрыть">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="video-modal-nav video-modal-prev" id="videoModalPrev" aria-label="Предыдущее">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="video-modal-nav video-modal-next" id="videoModalNext" aria-label="Следующее">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="video-modal-frame" id="videoModalFrame">
+    <!-- iframe injected here -->
+  </div>
+  <div class="video-modal-empty" id="videoModalEmpty" style="display:none;">
+    <div class="video-modal-empty-inner">
+      <div style="font-size:3rem;margin-bottom:12px;">🎬</div>
+      <h3 style="margin:0 0 8px;font-family:var(--font-display);">Видео скоро появится</h3>
+      <p style="margin:0;color:var(--text-muted);">Этот ролик пока заглушка. Загрузите видео из VK через админку.</p>
+    </div>
+  </div>
+</div>
+
 <!-- ============ CASES ============ -->
 <section id="cases">
   <div class="container">
@@ -3786,6 +4022,38 @@ body.menu-open { overflow: hidden; }
 <script>
 'use strict';
 
+// ============ ANALYTICS HELPER ============
+// Безопасный вызов Метрики — работает даже если ym() ещё не загрузился
+const YM_COUNTER = 109736434;
+const trackedFlags = {}; // защита от повторного отсчёта одной и той же цели за визит
+function track(goalName, params) {
+  if (!goalName) return;
+  try {
+    if (typeof window.ym === 'function') {
+      if (params) {
+        window.ym(YM_COUNTER, 'reachGoal', goalName, params);
+      } else {
+        window.ym(YM_COUNTER, 'reachGoal', goalName);
+      }
+    } else {
+      // Метрика ещё не загружена — отложить
+      setTimeout(() => { try { if (typeof window.ym === 'function') window.ym(YM_COUNTER, 'reachGoal', goalName, params || {}); } catch(e){} }, 1500);
+    }
+  } catch (e) {
+    console.warn('track() error:', e);
+  }
+}
+// trackOnce — событие только один раз за визит (для form_viewed и подобных)
+function trackOnce(goalName, params) {
+  if (trackedFlags[goalName]) return;
+  trackedFlags[goalName] = true;
+  track(goalName, params);
+}
+if (typeof window !== 'undefined') {
+  window.track = track;
+  window.trackOnce = trackOnce;
+}
+
 
 // ============ DATA SOURCE ============
 // Architecture: data loaded from JSON files in /data/.
@@ -3801,7 +4069,8 @@ const DataSource = (() => {
     cases: 'data/cases.json',
     team: 'data/team.json',
     offices: 'data/offices.json',
-    articles: 'data/articles.json'
+    articles: 'data/articles.json',
+    videos: 'data/videos.json'
   };
 
   function readCache() {
@@ -3881,6 +4150,7 @@ let CASES = [];
 let TEAM = [];
 let OFFICES = [];
 let ARTICLES = [];
+let VIDEOS = [];
 
 // ============ FILTER CONFIG ============
 const BUDGETS_AUTO = [
@@ -4183,6 +4453,7 @@ function renderBudgetChips() {
     btn.dataset.budget = b.id;
     btn.textContent = b.label;
     btn.addEventListener('click', () => {
+      trackOnce('calc_used');
       state.budget = b.id;
       container.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.budget === b.id));
       resetPagination();
@@ -4295,6 +4566,7 @@ function initSelector() {
   if (!toggle) return;
   toggle.querySelectorAll('button[data-type]').forEach(btn => {
     btn.addEventListener('click', () => {
+      trackOnce('calc_used'); // Цель Метрики: первое использование подборщика
       state.type = btn.dataset.type;
       toggle.dataset.type = state.type;
       toggle.querySelectorAll('button').forEach(b => {
@@ -4315,6 +4587,7 @@ function initSelector() {
   // Age chips
   $$('#ageChips .chip').forEach(c => {
     c.addEventListener('click', () => {
+      trackOnce('calc_used');
       state.age = c.dataset.age;
       $$('#ageChips .chip').forEach(x => x.classList.toggle('active', x === c));
       resetPagination();
@@ -4325,6 +4598,7 @@ function initSelector() {
   // Country chips
   $$('#countryChips .chip').forEach(c => {
     c.addEventListener('click', () => {
+      trackOnce('calc_used');
       state.country = c.dataset.country;
       $$('#countryChips .chip').forEach(x => x.classList.toggle('active', x === c));
       resetPagination();
@@ -4335,6 +4609,7 @@ function initSelector() {
   // Moto type chips
   $$('#motoTypeChips .chip').forEach(c => {
     c.addEventListener('click', () => {
+      trackOnce('calc_used');
       state.mototype = c.dataset.mototype;
       $$('#motoTypeChips .chip').forEach(x => x.classList.toggle('active', x === c));
       resetPagination();
@@ -4362,6 +4637,9 @@ function openCarModal(car) {
   const content = $('#modalContent');
   const backdrop = $('#modalBackdrop');
   if (!content || !backdrop) return;
+
+  // Цель Метрики: открыта карточка авто
+  track('car_opened', { name: (car && car.name) || 'unknown', price: (car && car.priceRub) || 0 });
 
   const badges = badgesFor(car);
   const badgesHtml = badges.map(b => `<span class="car-badge ${b.cls}">${b.text}</span>`).join('');
@@ -5024,7 +5302,7 @@ function openCaseModal(c) {
 // ============ FORM ============
 
 // Telegram bot settings — REPLACE TOKEN with your fresh one from @BotFather
-const TG_BOT_TOKEN = '8770272916:AAHyWKNPFR_vXJ8fA8wjG9F761DRAqlm03A';
+const TG_BOT_TOKEN = 'PASTE_YOUR_NEW_BOT_TOKEN_HERE';
 const TG_CHAT_ID   = '-1003891049696';
 
 // Наши контакты для клиента (показываются в подсказке под полем формы)
@@ -5157,6 +5435,19 @@ function initForm() {
   // Стартовая инициализация подсказки с нашим контактом
   applyChannelUI(state.channel || 'call');
 
+  // Цель Метрики: пользователь дошёл до формы
+  if (typeof IntersectionObserver !== 'undefined') {
+    const formObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          trackOnce('form_viewed');
+          formObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    formObserver.observe(form);
+  }
+
   // Submit
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -5249,6 +5540,10 @@ function initForm() {
 
     try {
       const sent = await sendToTelegram(text);
+      if (sent) {
+        // Цель Метрики: заявка успешно отправлена
+        track('lead_submitted', { channel: channelMeta.name });
+      }
       if (submitBtn) {
         submitBtn.disabled = !sent;
         submitBtn.innerHTML = sent ? '✓ Заявка принята' : '⚠ Не удалось отправить';
@@ -5338,6 +5633,7 @@ async function initApp() {
   TEAM = data.team || [];
   OFFICES = data.offices || [];
   ARTICLES = data.articles || [];
+  VIDEOS = data.videos || [];
 
   if (source === 'cache') {
     console.info('Data loaded from cache');
@@ -5355,6 +5651,9 @@ async function initApp() {
   renderOffices();
   renderArticles();
   initArticlesCarousel();
+  renderVideos();
+  initVideosCarousel();
+  initVideoModal();
   initMobileMenu();
 }
 
@@ -5371,6 +5670,7 @@ function initMobileMenu() {
     menu.setAttribute('aria-hidden', 'false');
     burger.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
+    track('menu_opened'); // Цель Метрики
   };
   const close = () => {
     menu.classList.remove('open');
@@ -5425,6 +5725,187 @@ if (typeof window !== 'undefined') {
 }
 
 // ============ COOKIE CONSENT ============
+// ============ VIDEOS SECTION ============
+function renderVideos() {
+  const track = $('#videosTrack');
+  if (!track) return;
+  const list = (VIDEOS || []).filter(v => v.active !== false);
+  track.innerHTML = '';
+  if (!list.length) {
+    // Если совсем нет видео — скрываем секцию
+    const section = $('#videos');
+    if (section) section.style.display = 'none';
+    return;
+  }
+  list.forEach((v, idx) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'video-card';
+    card.dataset.idx = String(idx);
+    card.setAttribute('aria-label', 'Открыть видео-обзор');
+    let thumbHtml;
+    if (v.thumbnail && v.thumbnail.trim()) {
+      thumbHtml = `<img class="video-card-thumb" src="${escapeHtml(v.thumbnail)}" alt="" loading="lazy" />`;
+    } else {
+      // Заглушка для видео без обложки
+      thumbHtml = `<div class="video-card-placeholder"><div style="font-size:2rem;margin-bottom:6px;">🎬</div><div>Видео ${idx + 1}</div></div>`;
+    }
+    card.innerHTML = `
+      ${thumbHtml}
+      <div class="video-card-overlay">
+        <div class="video-card-play">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => openVideoModal(idx));
+    track.appendChild(card);
+  });
+}
+
+// escape для безопасной вставки в HTML
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, ch => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[ch]));
+}
+
+function initVideosCarousel() {
+  const track = $('#videosTrack');
+  const prev = $('#videosPrev');
+  const next = $('#videosNext');
+  if (!track || !prev || !next) return;
+  const scrollBy = () => Math.round(track.clientWidth * 0.85);
+  prev.addEventListener('click', () => track.scrollBy({ left: -scrollBy(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: scrollBy(), behavior: 'smooth' }));
+}
+
+let videoModalCurrentIdx = 0;
+function openVideoModal(idx) {
+  const modal = $('#videoModal');
+  const frame = $('#videoModalFrame');
+  const empty = $('#videoModalEmpty');
+  if (!modal || !frame || !empty) return;
+  const list = (VIDEOS || []).filter(v => v.active !== false);
+  if (!list.length) return;
+  videoModalCurrentIdx = Math.max(0, Math.min(idx, list.length - 1));
+  const v = list[videoModalCurrentIdx];
+  // Цель Метрики
+  track('video_opened', { idx: videoModalCurrentIdx, title: (v && v.title) || '' });
+  // Если есть ссылка — рендерим iframe, иначе показываем заглушку
+  if (v && v.vkEmbedUrl && v.vkEmbedUrl.trim()) {
+    let url = v.vkEmbedUrl.trim();
+    // Добавим autoplay=1 если ещё не передан
+    if (!/[?&]autoplay=/.test(url)) url += (url.indexOf('?') >= 0 ? '&' : '?') + 'autoplay=1';
+    if (!/[?&]js_api=/.test(url)) url += '&js_api=1';
+    frame.innerHTML = `<iframe src="${escapeHtml(url)}" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>`;
+    frame.style.display = 'block';
+    empty.style.display = 'none';
+  } else {
+    frame.innerHTML = '';
+    frame.style.display = 'none';
+    empty.style.display = 'grid';
+  }
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('menu-open'); // блокируем скролл фона
+}
+
+function closeVideoModal() {
+  const modal = $('#videoModal');
+  const frame = $('#videoModalFrame');
+  if (!modal || !frame) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  // Очищаем iframe чтобы остановить видео
+  frame.innerHTML = '';
+  document.body.classList.remove('menu-open');
+}
+
+function videoModalNav(direction) {
+  const list = (VIDEOS || []).filter(v => v.active !== false);
+  if (!list.length) return;
+  let next = videoModalCurrentIdx + direction;
+  if (next < 0) next = list.length - 1;
+  if (next >= list.length) next = 0;
+  openVideoModal(next);
+}
+
+function initVideoModal() {
+  const modal = $('#videoModal');
+  if (!modal) return;
+  const closeBtn = $('#videoModalClose');
+  const backdrop = $('#videoModalBackdrop');
+  const prev = $('#videoModalPrev');
+  const next = $('#videoModalNext');
+  if (closeBtn) closeBtn.addEventListener('click', closeVideoModal);
+  if (backdrop) backdrop.addEventListener('click', closeVideoModal);
+  if (prev) prev.addEventListener('click', () => videoModalNav(-1));
+  if (next) next.addEventListener('click', () => videoModalNav(1));
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeVideoModal();
+    if (e.key === 'ArrowLeft') videoModalNav(-1);
+    if (e.key === 'ArrowRight') videoModalNav(1);
+  });
+  // Свайпы на мобильном
+  let touchStartX = 0;
+  let touchStartY = 0;
+  modal.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  modal.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+      videoModalNav(dx > 0 ? -1 : 1);
+    } else if (dy > 80 && Math.abs(dy) > Math.abs(dx)) {
+      closeVideoModal();
+    }
+  }, { passive: true });
+}
+
+// ============ GLOBAL CLICK TRACKING (Метрика) ============
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+
+  // Звонок — tel:
+  if (href.startsWith('tel:')) {
+    track('phone_clicked', { number: href.replace('tel:', '') });
+    return;
+  }
+
+  // WhatsApp / MAX мессенджеры (по содержимому ссылки)
+  if (/wa\.me|whatsapp/i.test(href) || /max\.ru/i.test(href)) {
+    track('messenger_clicked', { service: /wa\.me|whatsapp/i.test(href) ? 'whatsapp' : 'max' });
+    return;
+  }
+
+  // Соцсети
+  if (/instagram\.com/i.test(href)) { track('social_clicked', { network: 'instagram' }); return; }
+  if (/vk\.com/i.test(href))       { track('social_clicked', { network: 'vk' }); return; }
+  if (/t\.me|telegram/i.test(href)){ track('social_clicked', { network: 'telegram' }); return; }
+
+  // Статьи (article.html?slug=... или внутренние якоря на статьи)
+  if (/article\.html/i.test(href) || href === '#articles') {
+    track('articles_visited');
+    return;
+  }
+
+  // Документы — политика / соглашение / договор
+  if (/docs\/privacy|docs\/terms|docs\/agreement|^privacy\.html|^terms\.html|^agreement\.html/i.test(href)) {
+    let docType = 'other';
+    if (/privacy/i.test(href)) docType = 'privacy';
+    else if (/terms/i.test(href)) docType = 'terms';
+    else if (/agreement/i.test(href)) docType = 'agreement';
+    track('doc_opened', { type: docType });
+    return;
+  }
+}, { capture: false });
+
 function initCookieConsent() {
   if (typeof window === 'undefined' || !window.localStorage) return;
   try {
