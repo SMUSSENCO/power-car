@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /docs/
 Disallow: /admin.html
+Disallow: /data/
 
-Sitemap: https://smussenco.github.io/power-car/sitemap.xml
+Sitemap: https://power-car.ru/sitemap.xml
