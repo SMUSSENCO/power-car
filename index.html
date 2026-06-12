@@ -36,8 +36,9 @@
 <meta name="theme-color" content="#10B981" />
 <link rel="mask-icon" href="images/logo/logo-32.svg" color="#10B981" />
 
-<link rel="preconnect" href="https://fonts.bunny.net">
-<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:400,500,600,700,800|manrope:400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link rel="preconnect" href="https://mc.yandex.ru">
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet">
 
 <!-- JSON-LD LocalBusiness -->
 <script type="application/ld+json">
@@ -3225,6 +3226,7 @@ body.menu-open { overflow: hidden; }
 </div>
 
 <!-- ============ HERO ============ -->
+<main id="main-content">
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
@@ -3937,6 +3939,7 @@ body.menu-open { overflow: hidden; }
   </div>
 </section>
 
+</main>
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container">
@@ -4825,7 +4828,7 @@ function openLightbox(photos, startIndex) {
 
   // Build slides
   stage.innerHTML = photos.map((p, i) =>
-    `<img src="${p}" alt="Фото ${i+1}" data-lb-idx="${i}" />`
+    `<img src="${p}" alt="Фото ${i+1}" data-lb-idx="${i}" loading="lazy" decoding="async" />`
   ).join('');
 
   // Build dots (only if more than 1)
@@ -5003,7 +5006,7 @@ function renderTeam() {
   TEAM.forEach(m => {
     const el = document.createElement('div');
     el.className = 'member';
-    const photoHtml = m.photo ? `<img src="${m.photo}" alt="${m.name}" style="width:100%;height:100%;object-fit:cover;display:block;">` : memberPhotoSvg();
+    const photoHtml = m.photo ? `<img src="${m.photo}" alt="${m.name}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">` : memberPhotoSvg();
     el.innerHTML = `
       <div class="member-photo">${photoHtml}</div>
       <div class="member-body">
@@ -5039,10 +5042,11 @@ function renderOffices() {
     let mapHtml = '';
     if (!o.comingSoon && o.lat && o.lng) {
       const mapSrc = `https://yandex.ru/map-widget/v1/?ll=${o.lng}%2C${o.lat}&z=16&pt=${o.lng},${o.lat},pm2grm`;
+      const cityLabel = o.city || 'офис';
       mapHtml = `
         <div class="office-map">
-          <iframe src="${mapSrc}" loading="lazy" frameborder="0" allowfullscreen="true"></iframe>
-          ${o.yandexMapUrl ? `<a href="${o.yandexMapUrl}" target="_blank" rel="noopener" class="office-map-link">Открыть в Яндекс.Картах →</a>` : ''}
+          <iframe src="${mapSrc}" loading="lazy" frameborder="0" allowfullscreen="true" title="Карта офиса в городе ${cityLabel}"></iframe>
+          ${o.yandexMapUrl ? `<a href="${o.yandexMapUrl}" target="_blank" rel="noopener" class="office-map-link" aria-label="Открыть карту офиса в Яндекс.Картах: ${cityLabel}">Открыть в Яндекс.Картах →</a>` : ''}
         </div>
       `;
     }
@@ -5311,7 +5315,7 @@ function openCaseModal(c) {
 // ============ FORM ============
 
 // Telegram bot settings — REPLACE TOKEN with your fresh one from @BotFather
-const TG_BOT_TOKEN = '8770272916:AAEdYrcrGKiI05YcF05_IiWydhv4652FrS8';
+const TG_BOT_TOKEN = 'PASTE_YOUR_NEW_BOT_TOKEN_HERE';
 const TG_CHAT_ID   = '-1003891049696';
 
 // Наши контакты для клиента (показываются в подсказке под полем формы)
