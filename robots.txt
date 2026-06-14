@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
-Disallow: /data/
 
 Sitemap: https://power-car.ru/sitemap.xml
