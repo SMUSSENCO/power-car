@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Автомобиль под ключ — POWER Car</title>
+<meta name="description" content="Импорт авто и мото из Японии, Кореи и Китая под ключ за 25–40 дней. POWER Car — прозрачный расчёт, доставка в Томск, Новосибирск, Москву.">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:type" content="product">
+<meta property="og:image" content="https://power-car.ru/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link rel="preconnect" href="https://mc.yandex.ru">
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0A0A0A;--bg2:#0E0E10;--surf:rgba(255,255,255,.04);--surf2:rgba(255,255,255,.07);--bd:rgba(255,255,255,.09);
+--bd2:rgba(255,255,255,.16);--tx:#FAFAFA;--mut:rgba(255,255,255,.62);--dim:rgba(255,255,255,.42);--acc:#10B981;--acc2:#34D399;--accsoft:rgba(16,185,129,.12);--r:20px}
+html{scroll-behavior:smooth}body{background:var(--bg);color:var(--tx);font-family:'Manrope',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;letter-spacing:-.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.gh{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+.gh-logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.15rem}.gh-logo b{color:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-weight:600;font-size:.92rem;border:1px solid var(--bd2);transition:.2s;cursor:pointer;white-space:nowrap}
+.btn-primary{background:var(--acc);color:#04130d;border-color:var(--acc)}.btn-primary:hover{background:var(--acc2)}.btn-ghost:hover{background:var(--surf2)}
+.bc{color:var(--dim);font-size:.85rem;padding:18px 0}.bc a:hover{color:var(--tx)}
+.top{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;padding:6px 0 40px}
+@media(max-width:880px){.top{grid-template-columns:1fr}}
+.gallery .main{aspect-ratio:16/10;border-radius:var(--r);overflow:hidden;background:var(--bg2);border:1px solid var(--bd)}
+.gallery .main img{width:100%;height:100%;object-fit:cover}
+.gallery .thumbs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.gallery .thumbs img{width:84px;height:58px;object-fit:cover;border-radius:10px;border:1px solid var(--bd);cursor:pointer}
+.flag{font-size:1.3rem}
+h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:6px 0 4px}
+.sub{color:var(--mut);margin-bottom:18px}
+.price{font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:700}
+.price .market{color:var(--dim);font-size:1.05rem;text-decoration:line-through;font-weight:400;margin-left:10px}
+.save{display:inline-block;margin:8px 0 0;background:var(--accsoft);color:var(--acc2);font-weight:600;font-size:.85rem;padding:6px 12px;border-radius:999px}
+.specs{width:100%;border-collapse:collapse;margin-top:18px}
+.specs td{padding:11px 0;border-bottom:1px solid var(--bd);font-size:.95rem}.specs td:first-child{color:var(--mut)}.specs td:last-child{text-align:right;font-weight:600}
+.cta-box{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+section{padding:34px 0}.sec-h{font-size:1.4rem;margin-bottom:8px}.sec-sub{color:var(--mut);margin-bottom:20px}
+.card{background:var(--surf);border:1px solid var(--bd);border-radius:var(--r);padding:24px}
+.bd{width:100%;border-collapse:collapse}.bd td{padding:12px 0;border-bottom:1px solid var(--bd);font-size:.96rem}.bd td:first-child{color:var(--mut)}.bd td:last-child{text-align:right;font-weight:600}
+.bd tr.total td{border-bottom:none;padding-top:16px;font-size:1.1rem}.bd tr.total td:last-child{color:var(--acc2);font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem}
+.note{color:var(--dim);font-size:.83rem;margin-top:10px}
+.cta{background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(16,185,129,.04));border:1px solid var(--bd2);border-radius:var(--r);padding:34px 26px;text-align:center;margin:18px 0}
+.cta h2{font-size:1.6rem;margin-bottom:10px}.cta p{color:var(--mut);margin-bottom:20px}
+.gf{border-top:1px solid var(--bd);padding:30px 0 50px;color:var(--mut);font-size:.88rem}
+.gf .slogan{color:var(--acc2);font-weight:600;margin:6px 0}.gf-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}.gf a:hover{color:var(--tx)}
+.empty{text-align:center;padding:80px 20px}.empty h1{margin-bottom:14px}.empty p{color:var(--mut);margin-bottom:24px}
+.loading{text-align:center;padding:80px 20px;color:var(--dim)}
+</style>
+</head>
+<body>
+<header class="gh">
+  <a href="/" class="gh-logo">POWER <b>Car</b></a>
+  <a href="/#selector" class="btn btn-primary">Подобрать авто</a>
+</header>
+<main id="app" class="wrap"><div class="loading">Загружаем карточку…</div></main>
+<footer class="gf"><div class="wrap">
+  <a href="/" class="gh-logo">POWER <b>Car</b></a>
+  <div class="slogan">Надёжность, рождённая в Сибири</div>
+  <div class="gf-links"><a href="/">Главная</a><a href="/#selector">Каталог</a>
+    <a href="/avto-iz-yaponii-tomsk.html">Томск</a><a href="/avto-iz-yaponii-novosibirsk.html">Новосибирск</a><a href="/avto-iz-yaponii-moskva.html">Москва</a></div>
+  <p style="margin-top:12px">ИП Степанов А.В., ИНН 702205795181.</p>
+</div></footer>
+
+<script>
+const CMAP={Japan:"Японии",Korea:"Кореи",China:"Китая"};
+const COUNTRY={Japan:"Япония",Korea:"Корея",China:"Китай"};
+const BODY={crossover:"кроссовер",sedan:"седан",hatchback:"хэтчбек",suv:"внедорожник",minivan:"минивэн",wagon:"универсал"};
+const WHEEL={left:"левый",right:"правый"};
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>(Math.round(n)).toLocaleString("ru-RU").replace(/,/g," ")+" ₽";
+const num=n=>(n==null?"":Number(n).toLocaleString("ru-RU").replace(/,/g," "));
+const param=new URLSearchParams(location.search).get("id");
+
+function setMeta(name,val,prop){
+  let sel=prop?`meta[property="${name}"]`:`meta[name="${name}"]`;
+  let el=document.head.querySelector(sel);
+  if(!el){el=document.createElement("meta");el.setAttribute(prop?"property":"name",name);document.head.appendChild(el);}
+  el.setAttribute("content",val);
+}
+function setCanonical(href){
+  let el=document.head.querySelector('link[rel="canonical"]');
+  if(!el){el=document.createElement("link");el.rel="canonical";document.head.appendChild(el);}
+  el.href=href;
+}
+function injectLD(obj){
+  const s=document.createElement("script");s.type="application/ld+json";
+  s.textContent=JSON.stringify(obj);document.head.appendChild(s);
+}
+
+function renderCar(c){
+  const name=`${c.brand} ${c.model} ${c.year}`;
+  const country=CMAP[c.country]||"";
+  const url=`https://power-car.ru/car.html?id=${encodeURIComponent(c.id)}`;
+  const title=`${name} из ${country} под ключ — ${fmt(c.price)} | POWER Car`;
+  const desc=`${name}, ${c.engine||""}, ${c.transmission||""}. Импорт из ${country} под ключ за 25–40 дней. Цена под ключ ${fmt(c.price)}, прозрачный расчёт. POWER Car.`;
+  document.title=title;
+  setMeta("description",desc);
+  setMeta("og:title",title,true);setMeta("og:description",desc,true);setMeta("og:url",url,true);
+  setCanonical(url);
+  const photos=Array.isArray(c.photos)?c.photos:[];
+  if(photos[0])setMeta("og:image",photos[0].startsWith("http")?photos[0]:"https://power-car.ru/"+photos[0],true);
+
+  const main=photos[0]?`<img id="cm" src="${esc(photos[0])}" alt="${esc(name)} — импорт из ${country} под ключ">`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--dim);font-weight:700">POWER Car</div>`;
+  const thumbs=photos.slice(1,6).map((p,i)=>`<img src="${esc(p)}" alt="${esc(name)} фото ${i+2}" loading="lazy" onclick="document.getElementById('cm').src=this.src">`).join("");
+  const market=(c.priceMarket||0)>c.price?`<span class="market">${fmt(c.priceMarket)}</span>`:"";
+  const save=(c.priceMarket||0)>c.price?`<div class="save">Выгода ≈ ${fmt(c.priceMarket-c.price)} к рынку РФ</div>`:"";
+
+  const specs=[["Год выпуска",c.year],["Пробег",c.mileage!=null?num(c.mileage)+" км":"—"],
+    ["Двигатель",c.engine||"—"],["Коробка",c.transmission||"—"],
+    ["Кузов",BODY[c.body]||c.body||"—"],["Руль",WHEEL[c.wheel]||c.wheel||"—"],
+    ["Страна вывоза",COUNTRY[c.country]||"—"]];
+  const specsHtml=specs.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join("");
+
+  const b=c.breakdown||{};
+  const rows=[["Стоимость на аукционе",b.auction],["Доставка до РФ",b.delivery],
+    ["Таможенная пошлина",b.customs],["Оформление документов / СБКТС",b.docs],["Комиссия POWER Car",b.commission]];
+  const bdHtml=rows.filter(([,v])=>v).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${fmt(v)}</td></tr>`).join("");
+  const breakdownBlock=bdHtml?`<section><h2 class="sec-h">Расчёт стоимости под ключ</h2>
+    <p class="sec-sub">Прозрачно, без скрытых платежей. Все суммы фиксируются в договоре.</p>
+    <div class="card"><table class="bd">${bdHtml}<tr class="total"><td>Итого под ключ</td><td>${fmt(c.price)}</td></tr></table>
+    <p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа.</p></div></section>`:"";
+
+  document.getElementById("app").innerHTML=`
+    <nav class="bc"><a href="/">Главная</a> → <a href="/#selector">Каталог</a> → ${esc(name)}</nav>
+    <div class="top">
+      <div class="gallery"><div class="main">${main}</div><div class="thumbs">${thumbs}</div></div>
+      <div>
+        <span class="flag">${esc(c.flag||"")}</span>
+        <h1>${esc(name)}</h1>
+        <div class="sub">Импорт из ${country} под ключ · доставка 25–40 дней</div>
+        <div class="price">${fmt(c.price)}${market}</div>${save}
+        <table class="specs">${specsHtml}</table>
+        <div class="cta-box">
+          <a href="/#cta" class="btn btn-primary">Заказать под ключ</a>
+          <a href="tel:+79138533305" class="btn btn-ghost">Позвонить</a>
+        </div>
+      </div>
+    </div>
+    ${breakdownBlock}
+    <section><div class="cta" id="cta">
+      <h2>Заказать ${esc(c.brand)} ${esc(c.model)} под ключ</h2>
+      <p>Бесплатный расчёт и сопровождение до выдачи. Без предоплаты за подбор. Доставка в Томск, Новосибирск, Москву и другие регионы.</p>
+      <a href="/#selector" class="btn btn-primary">Перейти в подборщик</a>
+    </div></section>`;
+
+  injectLD({"@context":"https://schema.org","@type":"Car","name":name,"url":url,
+    "brand":{"@type":"Brand","name":c.brand},"model":c.model,"vehicleModelDate":String(c.year),
+    "bodyType":BODY[c.body]||c.body||"",
+    "steeringPosition":c.wheel==="right"?"RightHandDriving":"LeftHandDriving",
+    "image":photos[0]?(photos[0].startsWith("http")?photos[0]:"https://power-car.ru/"+photos[0]):"https://power-car.ru/og-cover.jpg",
+    "offers":{"@type":"Offer","price":c.price,"priceCurrency":"RUB","availability":"https://schema.org/InStock","url":url,
+      "seller":{"@type":"AutoDealer","name":"POWER Car","url":"https://power-car.ru/"}}});
+  injectLD({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Главная","item":"https://power-car.ru/"},
+    {"@type":"ListItem","position":2,"name":"Каталог","item":"https://power-car.ru/#selector"},
+    {"@type":"ListItem","position":3,"name":name,"item":url}]});
+}
+
+function renderNotFound(){
+  document.title="Автомобиль не найден — POWER Car";
+  document.getElementById("app").innerHTML=`<div class="empty">
+    <h1>Этого автомобиля уже нет в наличии</h1>
+    <p>Возможно, он продан или снят с продажи. Посмотрите актуальные варианты в каталоге — подберём похожий под ваш бюджет.</p>
+    <a href="/#selector" class="btn btn-primary">Открыть каталог</a>
+  </div>`;
+}
+
+(async function(){
+  if(!param){renderNotFound();return;}
+  try{
+    const res=await fetch("data/cars.json",{cache:"no-store"});
+    const cars=await res.json();
+    const car=cars.find(c=>String(c.id)===String(param) && c.published!==false);
+    if(car)renderCar(car);else renderNotFound();
+  }catch(e){renderNotFound();}
+})();
+</script>
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
+for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=109736434","ym");
+ym(109736434,'init',{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:true,trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109736434" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+</body>
+</html>

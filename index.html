@@ -1386,7 +1386,12 @@ body.menu-open { overflow: hidden; }
   font-size: 1.15rem;
   letter-spacing: -0.02em;
   line-height: 1.15;
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
 }
+a.car-title:hover { color: var(--accent-2); }
 .car-meta {
   display: flex;
   gap: 6px;
@@ -2350,6 +2355,18 @@ body.menu-open { overflow: hidden; }
 }
 .office-max:hover { transform: translateY(-2px); }
 .office-max svg { width: 16px; height: 16px; }
+.office-geo-link {
+  display: block;
+  margin-top: 12px;
+  color: var(--accent-2);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  transition: color 0.2s;
+}
+.office-geo-link:hover { color: var(--accent-3); }
 
 .office-address-note {
   display: block;
@@ -4081,6 +4098,22 @@ body.menu-open { overflow: hidden; }
 
 </main>
 <!-- ============ FOOTER ============ -->
+<!-- ============ SEO TEXT / ВНУТР. ПЕРЕЛИНКОВКА ============ -->
+<section class="seo-text" aria-label="О компании и городах">
+  <div class="container" style="padding-top:8px;padding-bottom:40px">
+    <div style="max-width:880px;color:var(--text-muted);font-size:.92rem;line-height:1.65">
+      <h2 style="font-size:1.2rem;color:var(--text);margin-bottom:12px">Импорт авто и мото из Японии, Кореи и Китая под ключ</h2>
+      <p style="margin-bottom:12px">POWER Car привозит автомобили и мотоциклы под ключ за 25–40 дней. Из <b>Японии</b> — Toyota, Lexus, Honda, Nissan, Mazda, Subaru, Mitsubishi; из <b>Кореи</b> — Hyundai, Kia, Genesis; из <b>Китая</b> — Geely, Chery, Haval, Changan, а также модели BMW, Mercedes-Benz и Audi китайской сборки. Подбираем под любой бюджет, рассчитываем пошлину и утильсбор при вас по официальным базам.</p>
+      <p style="margin-bottom:12px">Работаем на репутацию: прозрачный расчёт без скрытых платежей, договор, страхование на всех этапах логистики и сопровождение до выдачи. Вы — первый собственник в РФ. Подбор и расчёт сметы — бесплатно, без предоплаты.</p>
+      <p>Доставка и выдача в городах присутствия:
+        <a href="/avto-iz-yaponii-tomsk.html" style="color:var(--accent-2);text-decoration:underline">авто из Японии в Томске</a>,
+        <a href="/avto-iz-yaponii-novosibirsk.html" style="color:var(--accent-2);text-decoration:underline">в Новосибирске</a>,
+        <a href="/avto-iz-yaponii-moskva.html" style="color:var(--accent-2);text-decoration:underline">в Москве</a>.
+        Привозим во все регионы России — автовозом из Владивостока.</p>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -4509,7 +4542,7 @@ function renderCarCard(car, opts = {}) {
       ${photoCount}
     </div>
     <div class="car-body">
-      <div class="car-title">${car.brand} ${car.model}</div>
+      <a class="car-title" href="car.html?id=${encodeURIComponent(car.id)}">${car.brand} ${car.model}</a>
       <div class="car-meta">
         <span class="car-meta-item">${car.year} г.</span>
         <span class="car-meta-item">${fmt(car.mileage)} км</span>
@@ -5199,6 +5232,8 @@ function renderOffices() {
     const hoursHtml = `<div class="office-hours">${clockIconSvg()} ${o.hours || ''}</div>`;
     // MAX button
     const maxHtml = o.maxUrl && !o.comingSoon ? `<a href="${o.maxUrl}" class="office-max" target="_blank" rel="noopener">${maxIconSvg()} Написать в MAX</a>` : '';
+    // Ссылка на гео-страницу города (доставка/маршрут/популярные авто)
+    const geoHtml = o.geoUrl ? `<a href="${o.geoUrl}" class="office-geo-link">Доставка авто в ${o.city} — подробнее →</a>` : '';
 
     el.innerHTML = `
       <span class="office-flag">${o.emoji || ''} ${o.city} · ${o.timezone || ''}</span>
@@ -5208,6 +5243,7 @@ function renderOffices() {
       ${phoneHtml}
       ${hoursHtml}
       ${maxHtml}
+      ${geoHtml}
     `;
     grid.appendChild(el);
   });

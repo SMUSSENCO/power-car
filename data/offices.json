@@ -15,7 +15,8 @@
     "yandexMapUrl": null,
     "comingSoon": true,
     "published": true,
-    "order": 1
+    "order": 1,
+    "geoUrl": "/avto-iz-yaponii-moskva.html"
   },
   {
     "id": "tomsk",
@@ -33,7 +34,8 @@
     "yandexMapUrl": "https://yandex.ru/maps/?text=Томск, проспект Кирова, 58",
     "comingSoon": false,
     "order": 2,
-    "published": true
+    "published": true,
+    "geoUrl": "/avto-iz-yaponii-tomsk.html"
   },
   {
     "id": "novosibirsk",
@@ -51,6 +53,7 @@
     "yandexMapUrl": "https://yandex.ru/maps/?text=Новосибирск, проспект Карла Маркса, 57",
     "comingSoon": false,
     "order": 3,
-    "published": true
+    "published": true,
+    "geoUrl": "/avto-iz-yaponii-novosibirsk.html"
   }
 ]
