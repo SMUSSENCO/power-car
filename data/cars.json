@@ -313,7 +313,7 @@
     "brand": "BMW",
     "model": "3 Series 320Li M Sport Package",
     "year": 2021,
-    "mileage": 22000,
+    "mileage": 73000,
     "engine": "2.0T бензин",
     "power": 156,
     "transmission": "АКПП",
@@ -324,6 +324,7 @@
     "deliveryMin": 35,
     "deliveryMax": 45,
     "hit": true,
+    "weight": null,
     "published": true,
     "addedAt": "2026-05-13",
     "type": "auto",
@@ -334,7 +335,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2604097,
+    "price": 2731047,
     "photos": [
       "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-1.jpg",
       "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-2.jpg",
@@ -349,8 +350,8 @@
       "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-11.jpg"
     ],
     "breakdown": {
-      "auction": 1833650,
-      "delivery": 151900,
+      "auction": 2112500,
+      "delivery": 0,
       "customs": 468547,
       "docs": 100000,
       "commission": 50000

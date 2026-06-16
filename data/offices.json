@@ -6,17 +6,16 @@
     "timezone": "МСК · UTC+3",
     "address": "Адрес уточняется",
     "addressNote": "📍 Открываем офис скоро — следите за новостями",
-    "phone": "+7 (495) 000-00-00",
-    "phoneRaw": "+74950000000",
+    "phone": "+7 (499) 390-07-06",
+    "phoneRaw": "+74993900706",
     "hours": "Скоро откроемся",
-    "maxUrl": "https://max.ru/",
+    "maxUrl": "https://max.ru/u/f9LHodD0cOI9eHTkYhvgyDA5GJPrbLz2Dmm3flinFzGzzfRpYx7xeF1KRpM",
     "lat": null,
     "lng": null,
-    "yandexMapUrl": null,
+    "yandexMapUrl": "",
     "comingSoon": true,
-    "published": true,
     "order": 1,
-    "geoUrl": "/avto-iz-yaponii-moskva.html"
+    "published": true
   },
   {
     "id": "tomsk",
@@ -34,8 +33,7 @@
     "yandexMapUrl": "https://yandex.ru/maps/?text=Томск, проспект Кирова, 58",
     "comingSoon": false,
     "order": 2,
-    "published": true,
-    "geoUrl": "/avto-iz-yaponii-tomsk.html"
+    "published": true
   },
   {
     "id": "novosibirsk",
@@ -53,7 +51,6 @@
     "yandexMapUrl": "https://yandex.ru/maps/?text=Новосибирск, проспект Карла Маркса, 57",
     "comingSoon": false,
     "order": 3,
-    "published": true,
-    "geoUrl": "/avto-iz-yaponii-novosibirsk.html"
+    "published": true
   }
 ]
