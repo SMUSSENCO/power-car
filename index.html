@@ -4539,7 +4539,7 @@ function renderCarCard(car, opts = {}) {
       ${photoCount}
     </div>
     <div class="car-body">
-      <a class="car-title" href="car.html?id=${encodeURIComponent(car.id)}">${car.brand} ${car.model}</a>
+      <a class="car-title" href="/auto/${car.id.replace(/[^A-Za-z0-9_-]+/g,'-').replace(/^-+|-+$/g,'')}.html">${car.brand} ${car.model}</a>
       <div class="car-meta">
         <span class="car-meta-item">${car.year} г.</span>
         <span class="car-meta-item">${fmt(car.mileage)} км</span>
@@ -5259,7 +5259,7 @@ function renderArticles() {
   ARTICLES.forEach(a => {
     const card = document.createElement('a');
     card.className = 'article-card';
-    card.href = `article.html?slug=${encodeURIComponent(a.slug)}`;
+    card.href = `/articles/${a.slug}.html`;
     const coverHtml = a.cover
       ? `<img src="${a.cover}" alt="${a.title}" loading="lazy">`
       : `<div class="article-cover-placeholder">${(a.category || '📝').charAt(0)}</div>`;
@@ -6078,7 +6078,7 @@ document.addEventListener('click', (e) => {
   if (/t\.me|telegram/i.test(href)){ track('social_clicked', { network: 'telegram' }); return; }
 
   // Статьи (article.html?slug=... или внутренние якоря на статьи)
-  if (/article\.html/i.test(href) || href === '#articles') {
+  if (/article\.html|\/articles\//i.test(href) || href === '#articles') {
     track('articles_visited');
     return;
   }

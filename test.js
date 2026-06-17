@@ -702,12 +702,12 @@ test('Articles: render from articles.json (3+ cards)', async () => {
   assert(cards.length >= 3, `Expected 3+ article cards, got ${cards.length}`);
 });
 
-test('Articles: cards link to article.html with slug param', async () => {
+test('Articles: cards link to static article page', async () => {
   const { document } = await setup();
   const firstCard = document.querySelector('#articlesTrack .article-card');
   assert(firstCard, 'No article cards');
   const href = firstCard.getAttribute('href');
-  assert(href && href.includes('article.html?slug='), `Card href should be article.html?slug=..., got: ${href}`);
+  assert(href && /^\/articles\/[^/]+\.html$/.test(href), `Card href should be /articles/<slug>.html, got: ${href}`);
 });
 
 // ============ v2.3: DOCUMENTS ============
