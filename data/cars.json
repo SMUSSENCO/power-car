@@ -132,10 +132,9 @@
     "brand": "Changan",
     "model": "Eado Plus GDI DCT Premium Edition",
     "year": 2023,
-    "price": 1015000,
-    "priceMarket": 1600000,
     "mileage": 20000,
     "engine": "1.4T-160лс",
+    "power": null,
     "transmission": "DCT",
     "body": "sedan",
     "country": "China",
@@ -144,16 +143,18 @@
     "deliveryMin": 25,
     "deliveryMax": 45,
     "hit": true,
+    "weight": null,
     "published": true,
     "addedAt": "2026-05-12",
     "type": "auto",
-    "breakdown": {
-      "auction": 500185,
-      "delivery": 151900,
-      "customs": 213493,
-      "docs": 99996,
-      "commission": 50000
+    "priceMarket": 1600000,
+    "calc": {
+      "marketLocal": 83000,
+      "customs": 136000,
+      "commission": 50000,
+      "docs": 100000
     },
+    "price": 1323500,
     "photos": [
       "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-1.jpg",
       "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-2.jpg",
@@ -168,7 +169,14 @@
       "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-11.jpg",
       "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-12.jpg",
       "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-13.jpg"
-    ]
+    ],
+    "breakdown": {
+      "auction": 1037500,
+      "delivery": 0,
+      "customs": 136000,
+      "docs": 100000,
+      "commission": 50000
+    }
   },
   {
     "id": "Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model",
