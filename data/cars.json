@@ -362,10 +362,9 @@
     "brand": "Hyundai",
     "model": "Sonata inspiration",
     "year": 2020,
-    "price": 1682400,
-    "priceMarket": 2400000,
     "mileage": 30000,
     "engine": "2.0 146лс",
+    "power": null,
     "transmission": "АКПП",
     "body": "sedan",
     "country": "Korea",
@@ -373,17 +372,19 @@
     "wheel": "left",
     "deliveryMin": 20,
     "deliveryMax": 45,
-    "hit": true,
+    "hit": false,
+    "weight": null,
     "published": true,
     "addedAt": "2026-05-09",
     "type": "auto",
-    "breakdown": {
-      "auction": 981000,
-      "delivery": 100000,
-      "customs": 452200,
-      "docs": 100000,
-      "commission": 50000
+    "priceMarket": 2400000,
+    "calc": {
+      "marketLocal": 21000000,
+      "customs": 138000,
+      "commission": 50000,
+      "docs": 100000
     },
+    "price": 1653000,
     "photos": [
       "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-1.jpg",
       "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-2.jpg",
@@ -395,7 +396,14 @@
       "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-8.jpg",
       "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-9.jpg",
       "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-10.jpg"
-    ]
+    ],
+    "breakdown": {
+      "auction": 1365000,
+      "delivery": 0,
+      "customs": 138000,
+      "docs": 100000,
+      "commission": 50000
+    }
   },
   {
     "id": "Hyundai-Elantra-2021",
