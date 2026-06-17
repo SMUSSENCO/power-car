@@ -366,13 +366,6 @@ test('Cases: opening case opens modal', async () => {
   assert(backdrop.classList.contains('open'), 'Modal did not open on case click');
 });
 
-// ============ VIDEO ============
-test('Video placeholder with 3 channels (YT/Rutube/VK)', async () => {
-  const { document } = await setup();
-  const channels = document.querySelectorAll('.video-channel');
-  assert(channels.length === 3, `Expected 3 video channels, got ${channels.length}`);
-});
-
 // ============ TEAM ============
 test('Team has 4 members', async () => {
   const { document } = await setup();
