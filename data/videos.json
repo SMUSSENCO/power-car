@@ -1,12 +1,12 @@
 [
   {
-    "id": "vid_1",
-    "title": "Видео-обзор #1",
-    "thumbnail": "",
-    "vkEmbedUrl": "",
-    "duration": "",
-    "active": true,
-    "order": 1
+    "id": "mazda_za_1_million",
+    "title": "Mazda за миллион",
+    "thumbnail": "images/cover/mazda_lemon.png",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239047",
+    "duration": "0:56",
+    "order": 1,
+    "active": true
   },
   {
     "id": "vid_2",
