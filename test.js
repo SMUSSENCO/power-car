@@ -147,15 +147,12 @@ test('Stats section has 3 items', async () => {
   assert(stats.length === 3, `Expected 3 stats, got ${stats.length}`);
 });
 
-// ============ ADVANTAGES ============
-test('Advantages section has 6 cards', async () => {
+// ============ ADVANTAGES (removed in 2026-06 redesign) ============
+test('Advantages section is removed', async () => {
   const { document } = await setup();
   const advs = document.querySelectorAll('.adv');
-  assert(advs.length === 6, `Expected 6 advantages, got ${advs.length}`);
-});
-
-test('Advantages: до 45 дней (not just 45)', async () => {
-  assert(/До 45 дней/.test(html) || /до 45 дней/.test(html), 'Missing "до 45 дней"');
+  assert(advs.length === 0, `Advantages section should be removed, got ${advs.length} cards`);
+  assert(!document.querySelector('#advantages'), 'Stale #advantages section detected');
 });
 
 // ============ TOP-5 CAROUSEL ============
@@ -412,16 +409,27 @@ test('CTA: new subtitle (about reports)', async () => {
   assert(/Сегодня менеджер подберёт лучшие варианты/.test(html), 'Missing new CTA subtitle');
 });
 
-test('CTA: only 1 anchor plaque (Подбор бесплатно)', async () => {
+test('CTA: anchor plaque is removed (replaced by quiz section)', async () => {
   const { document } = await setup();
   const anchors = document.querySelectorAll('.cta-anchor');
-  assert(anchors.length === 1, `Expected 1 CTA anchor, got ${anchors.length}`);
+  assert(anchors.length === 0, `CTA anchor plaque should be removed, got ${anchors.length}`);
 });
 
-test('CTA: anchor "Подбор бесплатно" is present', async () => {
+test('Quiz: section, shell and 7 screens are present', async () => {
   const { document } = await setup();
-  const anchor = document.querySelector('.cta-anchor');
-  assert(anchor && /Подбор и консультация — бесплатно/.test(anchor.textContent), 'Missing main anchor text');
+  assert(document.querySelector('#quiz'), 'Missing #quiz section');
+  assert(document.querySelector('#quizShell'), 'Missing #quizShell');
+  const screens = document.querySelectorAll('[data-quiz-screen]');
+  assert(screens.length === 7, `Expected 7 quiz screens (start + 5 steps + result), got ${screens.length}`);
+});
+
+test('Quiz: 5 progress segments + advanced accordion + submit buttons', async () => {
+  const { document } = await setup();
+  const segs = document.querySelectorAll('#quizProgress .quiz-progress-seg');
+  assert(segs.length === 5, `Expected 5 progress segments, got ${segs.length}`);
+  assert(document.querySelector('#quizAdvanced'), 'Missing #quizAdvanced accordion');
+  assert(document.querySelector('#quizTgBtn'), 'Missing Telegram submit button');
+  assert(document.querySelector('#quizWaBtn'), 'Missing WhatsApp submit button');
 });
 
 test('CTA: anchors "Фото-отчёт" and "Логистика" REMOVED', async () => {

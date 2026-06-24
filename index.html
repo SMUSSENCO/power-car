@@ -918,6 +918,10 @@ body.menu-open { overflow: hidden; }
   margin: 0 auto;
 }
 .routes-map svg { width: 100%; height: 100%; display: block; overflow: visible; }
+/* Hide on mobile (< 768px) — frees space, layout less crowded */
+@media (max-width: 767px) {
+  .routes-map { display: none; }
+}
 .route-dot-pulse {
   animation: dotPulse 2.4s var(--ease-out) infinite;
   transform-origin: center;
@@ -1651,6 +1655,49 @@ a.car-title:hover { color: var(--accent-2); }
 }
 .more-filters[open] summary svg { transform: rotate(180deg); }
 
+/* Precise power slider (inside .more-filters) */
+.power-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--surface-3);
+  border-radius: 999px;
+  outline: none;
+  margin: 4px 0 6px;
+}
+.power-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.power-slider::-moz-range-thumb {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 3px solid var(--bg);
+}
+.power-value {
+  color: var(--accent-2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.power-warn {
+  font-size: 0.78rem;
+  color: var(--warning);
+  display: none;
+  margin: 2px 0 12px;
+  line-height: 1.4;
+}
+.power-warn.show { display: block; }
+
 /* Results */
 .results-note {
   margin: 32px 0 16px;
@@ -1891,40 +1938,6 @@ a.car-title:hover { color: var(--accent-2); }
   gap: 6px;
 }
 .step-highlight svg { width: 14px; height: 14px; flex-shrink: 0; }
-
-/* ============ LEGAL PROTECTION ============ */
-.legal-grid {
-  display: grid;
-  gap: 14px;
-  grid-template-columns: 1fr 1fr;
-}
-@media (min-width: 768px) { .legal-grid { grid-template-columns: repeat(4, 1fr); } }
-.legal {
-  padding: 20px;
-  border-radius: var(--r-md);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-.legal-icon {
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: var(--accent-soft);
-  display: grid; place-items: center;
-  color: var(--accent-2);
-}
-.legal-icon svg { width: 22px; height: 22px; }
-.legal h4 {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-.legal p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
 
 /* ============ CASES (with fix) ============ */
 .cases-scroll {
@@ -3303,6 +3316,537 @@ a.car-title:hover { color: var(--accent-2); }
   .video-modal-next { right: 6px; width: 40px; height: 40px; }
 }
 </style>
+<style>
+/* ============ MENU COUNTER (green badge) ============ */
+.menu-counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  margin-left: 8px;
+  background: var(--accent);
+  color: #002417;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+  vertical-align: middle;
+}
+.menu-counter:empty { display: none; }
+
+/* ============ CTA ANCHOR LINK (clickable plate) ============ */
+a.cta-anchor-link {
+  text-decoration: none;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out), transform 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+a.cta-anchor-link:hover {
+  border-color: var(--accent);
+  background: rgba(16,185,129,0.10);
+}
+a.cta-anchor-link:active { transform: scale(0.99); }
+a.cta-anchor-link .cta-anchor-arrow {
+  margin-left: auto;
+  color: var(--accent-2);
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-out);
+}
+a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
+
+/* ============ STEPS COLLAPSE ============ */
+.steps-collapse { width: 100%; }
+.steps-collapse > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0;
+  margin: 0 0 24px;
+  -webkit-tap-highlight-color: transparent;
+}
+.steps-collapse > summary::-webkit-details-marker { display: none; }
+.steps-collapse > summary > .section-head { flex: 1; margin-bottom: 0; }
+.steps-toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  transition: transform 0.3s var(--ease-out), background 0.2s, color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.steps-toggle svg { width: 20px; height: 20px; }
+.steps-collapse[open] .steps-toggle {
+  transform: rotate(180deg);
+  background: var(--accent-soft);
+  color: var(--accent-2);
+  border-color: var(--accent);
+}
+.steps-collapse > summary:hover .steps-toggle { background: var(--surface-3); }
+.steps-collapse > summary:focus-visible .steps-toggle {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.steps-collapse[open] > .steps-grid { margin-top: 32px; }
+
+/* ============ SUBSCRIBE STRIP (TG channel) ============ */
+.subscribe-strip {
+  padding: 18px 20px;
+  border-radius: var(--r-md);
+  background: linear-gradient(90deg, rgba(42,171,238,0.10), rgba(34,158,217,0.10));
+  border: 1px solid rgba(42,171,238,0.28);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.subscribe-strip-text { flex: 1; min-width: 220px; }
+.subscribe-strip-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.subscribe-strip-title-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  color: white;
+  flex-shrink: 0;
+}
+.subscribe-strip-title-icon svg { width: 16px; height: 16px; }
+.subscribe-strip-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.btn-tg {
+  background: linear-gradient(135deg, #2AABEE, #229ED9) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+.btn-tg:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+.btn-wa {
+  background: linear-gradient(135deg, #25D366, #128C7E) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+.btn-wa:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+</style>
+<style>
+/* ============ QUIZ ============ */
+.quiz-shell {
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .quiz-shell { padding: 48px 40px; }
+}
+
+/* Decorative question marks (background) */
+.quiz-shell::before,
+.quiz-shell::after {
+  content: '?';
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.05;
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+.quiz-shell::before {
+  font-size: clamp(160px, 28vw, 360px);
+  top: -40px;
+  right: -30px;
+  transform: rotate(15deg);
+}
+.quiz-shell::after {
+  font-size: clamp(100px, 18vw, 220px);
+  bottom: -30px;
+  left: -20px;
+  transform: rotate(-12deg);
+  opacity: 0.04;
+}
+.quiz-shell > * { position: relative; z-index: 1; }
+
+/* Screens */
+.quiz-screen { display: none; }
+.quiz-screen.active { display: block; animation: quizFade 0.35s var(--ease-out); }
+@keyframes quizFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Start screen */
+.quiz-start-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.quiz-start-sub {
+  margin-top: 14px;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 640px;
+}
+.quiz-bonus {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(245,158,11,0.10);
+  border: 1px solid rgba(245,158,11,0.35);
+  color: #FBBF24;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.quiz-bonus svg { width: 18px; height: 18px; flex-shrink: 0; }
+.quiz-start-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Progress bar */
+.quiz-progress {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+.quiz-progress-seg {
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  transition: background 0.3s var(--ease-out);
+}
+.quiz-progress-seg.done { background: var(--accent); }
+.quiz-progress-seg.current { background: var(--accent-2); }
+
+/* Step header */
+.quiz-step-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.quiz-back {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.quiz-back:hover { background: var(--surface-3); }
+.quiz-back svg { width: 20px; height: 20px; }
+.quiz-step-meta { color: var(--text-muted); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.quiz-step-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+/* Options */
+.quiz-options { display: grid; gap: 10px; }
+@media (min-width: 640px) { .quiz-options-2 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 768px) { .quiz-options-3 { grid-template-columns: repeat(3, 1fr); } }
+
+.quiz-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--r-sm);
+  background: rgba(0,0,0,0.30);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 56px;
+}
+.quiz-opt:hover {
+  border-color: var(--border-2);
+  background: rgba(0,0,0,0.45);
+}
+.quiz-opt:active { transform: scale(0.99); }
+.quiz-opt.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.quiz-opt-check {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.4);
+  border: 1.5px solid var(--border-2);
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.2s;
+}
+.quiz-opt-check.radio { border-radius: 50%; }
+.quiz-opt-check svg { width: 14px; height: 14px; color: #002417; opacity: 0; transition: opacity 0.2s; }
+.quiz-opt.selected .quiz-opt-check {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.quiz-opt.selected .quiz-opt-check svg { opacity: 1; }
+.quiz-opt-text { flex: 1; line-height: 1.35; }
+.quiz-opt-label { display: block; font-weight: 600; }
+.quiz-opt-hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Step nav (Next / Skip) */
+.quiz-step-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.quiz-step-nav .btn { min-width: 160px; }
+
+/* Results screen */
+.quiz-result-head { text-align: left; margin-bottom: 28px; }
+.quiz-result-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.quiz-result-sub {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.quiz-cars {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .quiz-cars { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .quiz-cars { grid-template-columns: 1fr 1fr 1fr; } }
+
+.quiz-car {
+  border-radius: var(--r-md);
+  background: rgba(0,0,0,0.30);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.quiz-car:hover {
+  border-color: var(--border-2);
+  transform: translateY(-2px);
+}
+.quiz-car-img {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, #0d2a23, #0a1a16);
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.quiz-car-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(16,185,129,0.18), transparent 60%);
+}
+.quiz-car-img-icon {
+  width: 56px; height: 56px;
+  color: var(--accent-2);
+  opacity: 0.75;
+  position: relative;
+  z-index: 1;
+}
+.quiz-car-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.quiz-car-img:has(img)::after { display: none; }
+
+/* Empty state */
+.quiz-cars-empty {
+  grid-column: 1 / -1;
+  padding: 36px 24px;
+  text-align: center;
+  border-radius: var(--r-md);
+  background: rgba(0,0,0,0.25);
+  border: 1px dashed var(--border-2);
+}
+.quiz-cars-empty-icon {
+  width: 48px; height: 48px;
+  margin: 0 auto 14px;
+  display: grid; place-items: center;
+  color: var(--text-muted);
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+}
+.quiz-cars-empty-icon svg { width: 22px; height: 22px; }
+.quiz-cars-empty h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.quiz-cars-empty p { color: var(--text-muted); max-width: 460px; margin: 0 auto; line-height: 1.5; }
+.quiz-car-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.quiz-car-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.quiz-car-spec {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.quiz-car-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(16,185,129,0.18);
+  border: 1px solid var(--accent);
+  color: var(--accent-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  align-self: flex-start;
+}
+.quiz-car-badge svg { width: 12px; height: 12px; }
+.quiz-car-btn {
+  margin-top: auto;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(16,185,129,0.4);
+  color: var(--accent-2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+}
+.quiz-car-btn:hover {
+  background: var(--accent);
+  color: #002417;
+  border-color: var(--accent);
+}
+
+/* Final submit block */
+.quiz-final-block {
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, rgba(16,185,129,0.10), rgba(16,185,129,0.02));
+  border: 1px solid rgba(16,185,129,0.30);
+  text-align: left;
+}
+.quiz-final-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.quiz-final-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.quiz-final-actions .btn { flex: 1; min-width: 220px; }
+
+.quiz-restart {
+  margin-top: 18px;
+  text-align: center;
+}
+.quiz-restart button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px 12px;
+}
+.quiz-restart button:hover { color: var(--text); }
+</style>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -3340,9 +3884,9 @@ a.car-title:hover { color: var(--accent-2); }
     </a>
 
     <nav class="nav" aria-label="Главное меню">
-      <a href="#advantages">Преимущества</a>
       <a href="#top5">Топ-10</a>
       <a href="#selector">Подбор</a>
+      <a href="/quiz.html">Квиз</a>
       <a href="#cases">Отзывы</a>
       <a href="#offices">Офисы</a>
       <a href="#faq">Вопросы</a>
@@ -3350,23 +3894,10 @@ a.car-title:hover { color: var(--accent-2); }
     </nav>
 
     <div class="header-cta">
-      <!-- Mobile-only: иконка Подбор (лупа+машинка) с пульсом -->
-      <a href="#selector" class="btn btn-icon btn-sm header-podbor-icon" aria-label="Подбор авто">
-        <svg width="20" height="20" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <!-- лупа -->
-          <circle cx="11" cy="11" r="7"/>
-          <line x1="20" y1="20" x2="25" y2="25"/>
-          <!-- машинка внутри лупы -->
-          <path d="M7 12.5 L8 10 L14 10 L15 12.5" stroke-width="1.6"/>
-          <line x1="7" y1="12.5" x2="15" y2="12.5" stroke-width="1.6"/>
-          <circle cx="9" cy="12.8" r="0.9" fill="currentColor" stroke="none"/>
-          <circle cx="13" cy="12.8" r="0.9" fill="currentColor" stroke="none"/>
-        </svg>
-      </a>
       <a href="tel:+79138533305" class="btn btn-call btn-sm btn-icon btn-pulse" aria-label="Позвонить">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </a>
-      <a href="#cta" class="btn btn-primary btn-sm btn-shine header-cta-apply">Связаться</a>
+      <a href="#cta" class="btn btn-primary btn-sm btn-shine header-cta-apply">Получить расчёт</a>
       <!-- Mobile-only: бургер для остальных ссылок -->
       <button class="btn btn-icon btn-sm header-burger" id="headerBurger" aria-label="Меню" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
@@ -3386,10 +3917,10 @@ a.car-title:hover { color: var(--accent-2); }
     <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <a href="#advantages" class="mobile-menu-link">Преимущества</a>
     <a href="#top5" class="mobile-menu-link">Топ-10</a>
     <a href="#selector" class="mobile-menu-link">Подбор</a>
-    <a href="#cases" class="mobile-menu-link">Отзывы</a>
+    <a href="/quiz.html" class="mobile-menu-link">Квиз</a>
+    <a href="#cases" class="mobile-menu-link">Отзывы<span class="menu-counter" id="menuCasesCount" aria-label="количество кейсов"></span></a>
     <a href="#offices" class="mobile-menu-link">Офисы</a>
     <a href="#faq" class="mobile-menu-link">FAQ</a>
     <a href="#articles" class="mobile-menu-link">Статьи</a>
@@ -3408,14 +3939,14 @@ a.car-title:hover { color: var(--accent-2); }
           <span class="word">из <span class="country-rotator" id="rotator">Кореи</span> под ключ</span>
         </h1>
         <p class="hero-sub">
-          Импорт автомобилей и мотоциклов под заказ. Расчет цены, пошлины и утильсбора при вас и по официальным базам. Вы первый собственник в РФ.
+          Любой бюджет, низкая комиссия, отчётность на каждом шаге.
         </p>
         <div class="hero-cta-row">
           <a href="#selector" class="btn btn-primary btn-shine">
-            Подобрать авто
+            Каталог авто
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
-          <a href="#cases" class="btn btn-ghost">Смотреть кейсы</a>
+          <a href="#cases" class="btn btn-ghost">Отзывы</a>
         </div>
 
         <div class="stats">
@@ -3542,69 +4073,13 @@ a.car-title:hover { color: var(--accent-2); }
     </div>
   </div>
 </section>
-<!-- ============ ADVANTAGES ============ -->
-<section id="advantages">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Преимущества</span>
-      <h2>Почему <span class="glow-text">POWER Car</span></h2>
-      <p>Контроль и прозрачность на каждом этапе.</p>
-    </div>
-    <div class="advantages-grid reveal-stagger">
-      <div class="adv">
-        <div class="adv-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        </div>
-        <h3>Расчет и подбор</h3>
-        <p>Считаем смету в офисе или онлайн. Вы видите всю математику.</p>
-      </div>
-      <div class="adv">
-        <div class="adv-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Договор и оплата</h3>
-        <p>Защита ваших средств: оплата инвойса напрямую на аукцион через надежный SWIFT</p>
-      </div>
-      <div class="adv">
-        <div class="adv-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        </div>
-        <h3>Диагностика перед выкупом</h3>
-        <p>Проверка кузова толщиномером, компьютерный тест и фотоотчет.</p>
-      </div>
-      <div class="adv">
-        <div class="adv-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3>Япония, Корея, Китай</h3>
-        <p>Заказ авто с площадок: Encar, Sumotori, Che168. Вы видите лот и его цену.</p>
-      </div>
-      <div class="adv">
-        <div class="adv-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h3>Логистика</h3>
-        <p>Доставка до РФ осуществляет партнер на основании договора фрахтования.</p>
-      </div>
-      <div class="adv">
-        <div class="adv-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <h3>25–40 дней под ключ</h3>
-        <p>Оформление: СВХ, СБКТС и ЭПТС. Оплата пошлин и утиля напрямую по гос счетам.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ TOP-5 ============ -->
 <section id="top5">
   <div class="container">
     <div class="section-head-row reveal">
       <div class="section-head" style="margin-bottom:0;">
         <span class="eyebrow">🏆 Топ предложений</span>
-        <h2>Лучшие авто и мото <span class="glow-text">сейчас</span></h2>
-        <p>Горячие предложения от редакции Power Car.</p>
+        <h2><span class="glow-text">Горячие предложения</span></h2>
       </div>
       <div class="carousel-controls">
         <button class="carousel-btn" id="top5Prev" aria-label="Предыдущие">
@@ -3627,7 +4102,6 @@ a.car-title:hover { color: var(--accent-2); }
     <div class="section-head reveal">
       <span class="eyebrow">Подбор</span>
       <h2>Найдите авто и мото <span class="glow-text">под ваш бюджет</span></h2>
-      <p>База отборных автомобилей и мотоциклов, доступных к выкупу.</p>
     </div>
 
     <div class="selector reveal">
@@ -3674,6 +4148,20 @@ a.car-title:hover { color: var(--accent-2); }
           <button class="chip" data-country="Korea">🇰🇷 Корея</button>
         </div>
 
+        <label class="selector-label" for="powerSlider">
+          Точная мощность: до <span class="power-value" id="powerValue">500</span> л.с.
+        </label>
+        <input type="range" id="powerSlider" class="power-slider" min="50" max="500" step="10" value="500" />
+        <div class="power-warn" id="powerWarn">При мощности &gt; 160 л.с. утильсбор и акциз вырастают в разы.</div>
+
+        <label class="selector-label">Привод</label>
+        <div class="chips" id="driveChips" role="radiogroup">
+          <button class="chip active" data-drive="all">Любой</button>
+          <button class="chip" data-drive="FWD">Передний</button>
+          <button class="chip" data-drive="RWD">Задний</button>
+          <button class="chip" data-drive="4WD">Полный (4WD)</button>
+        </div>
+
         <div id="motoExtraFilters" style="display:none;">
           <label class="selector-label">Тип мотоцикла</label>
           <div class="chips" id="motoTypeChips" role="radiogroup">
@@ -3690,7 +4178,7 @@ a.car-title:hover { color: var(--accent-2); }
       <!-- Note above results -->
       <div class="results-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        <span>Цены в базе рассчитаны под ключ до Владивостока с учетом доставки, СБКТС и ЭПТС.</span>
+        <span>Цены рассчитаны под ключ до Владивостока.</span>
       </div>
 
       <!-- Sort + results count -->
@@ -3719,98 +4207,12 @@ a.car-title:hover { color: var(--accent-2); }
       <div class="individual-cta">
         <div class="individual-cta-text">
           Не нашли нужную модель в каталоге?
-          <small>Напишите менеджеру — подберём бесплатно под ваши параметры.</small>
         </div>
         <a href="#cta" class="btn btn-primary">
           Подобрать индивидуально
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ STEPS ============ -->
-<section id="steps">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Этапы</span>
-      <h2>Как это <span class="glow-text">работает</span></h2>
-      <p>Прямой импорт авто без скрытых наценок. Фиксируем в договоре только нашу комиссию, а расходы на растаможку вы оплачиваете по фактическому курсу ЦБ на день подачи декларации.</p>
-    </div>
-    <div class="steps-grid reveal-stagger">
-      <article class="step">
-        <div class="step-num">01</div>
-        <h3>Подбор и расчет сметы</h3>
-        <p>Выполняем поиск по вашему ТЗ, рассчитываем стоимость лота, пошлину и утильсбор по официальным калькуляторам ведомств по текущему курсу валют.</p>
-      </article>
-      <article class="step">
-        <div class="step-num">02</div>
-        <h3>Выкуп и логистика</h3>
-        <p>Партнеры проводят диагностику техники с протоколом и фото-отчетом. Бронируем лот. Ваш платеж по инвойсу осуществляется напрямую на азиатские реквизиты. Мы организуем доставку во Владивосток или в Усурийск.</p>
-      </article>
-      <article class="step">
-        <div class="step-num">03</div>
-        <h3>Растаможка в РФ</h3>
-        <p>Таможенная очистка в порту Владивостока или в Усурийске. Брокер проходит лабораторию для СБКТС, делает вам прописку в ДВФО и готовит ЭПТС.</p>
-      </article>
-      <article class="step">
-        <div class="step-num">04</div>
-        <h3>Учет и выдача</h3>
-        <p>Автомобиль или мотоцикл имеет полный пакет необходимых документов и полностью легализирован. Забираете транспорт самостоятельно либо помогаем в логистике до города назначения. </p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ LEGAL PROTECTION ============ -->
-<section id="legal" style="padding-top:0;">
-  <div class="container">
-    <div class="legal-grid reveal-stagger">
-      <div class="legal">
-        <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
-        <h4>Бесплатный подбор</h4>
-        <p>Проводим глубокий поиск вариантов по заданным критериям из нашей базы или на площадках Азии.</p>
-      </div>
-      <div class="legal">
-        <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M22 10H2"/></svg></div>
-        <h4>Депозит 100 000 ₽</h4>
-        <p>Вносится при одобрении лота для брони транспорта и полностью идет в зачет итоговой сметы.</p>
-      </div>
-      <div class="legal">
-        <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>Прозрачный возврат</h4>
-        <p>Депозит можно вернуть до оплаты инвойса за вычетом 100$ за каждый согласованный техосмотр.</p>
-      </div>
-      <div class="legal">
-        <div class="legal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <h4>Брокер с лицензией</h4>
-        <p>Декларирование в ФТС на имя заказчика. Исключаем риски доначислений пошлин и утилизационного сбора.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ VIDEOS ============ -->
-<section id="videos">
-  <div class="container">
-    <div class="section-head-row reveal">
-      <div class="section-head" style="margin-bottom:0;">
-        <span class="eyebrow">Видео-обзоры</span>
-        <h2>Смотрите как мы привозим <span class="glow-text">авто</span></h2>
-        <p>Короткие ролики — от подбора лота до вручения ключей. Реальные авто, реальные клиенты.</p>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="videosPrev" aria-label="Предыдущие">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="carousel-btn" id="videosNext" aria-label="Следующие">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="videos-track" id="videosTrack" role="region" aria-label="Видео-обзоры">
-      <!-- injected by JS -->
     </div>
   </div>
 </section>
@@ -3865,6 +4267,69 @@ a.car-title:hover { color: var(--accent-2); }
   </div>
 </section>
 
+<!-- ============ VIDEOS ============ -->
+<section id="videos">
+  <div class="container">
+    <div class="section-head-row reveal">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">Видео-обзоры</span>
+        <h2>Смотрите как мы привозим <span class="glow-text">авто</span></h2>
+        <p>Короткие ролики — от подбора лота до вручения ключей. Реальные авто, реальные клиенты.</p>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="videosPrev" aria-label="Предыдущие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="videosNext" aria-label="Следующие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="videos-track" id="videosTrack" role="region" aria-label="Видео-обзоры">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEPS (collapsible) ============ -->
+<section id="steps">
+  <div class="container">
+    <details class="steps-collapse" id="stepsCollapse">
+      <summary class="steps-summary">
+        <div class="section-head reveal" style="margin-bottom:0;">
+          <span class="eyebrow">Этапы</span>
+          <h2>Как это <span class="glow-text">работает</span></h2>
+        </div>
+        <span class="steps-toggle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </summary>
+      <div class="steps-grid reveal-stagger">
+        <article class="step">
+          <div class="step-num">01</div>
+          <h3>Подбор и расчет сметы</h3>
+          <p>Выполняем поиск по вашему ТЗ, рассчитываем стоимость лота, пошлину и утильсбор по официальным калькуляторам ведомств по текущему курсу валют.</p>
+        </article>
+        <article class="step">
+          <div class="step-num">02</div>
+          <h3>Выкуп и логистика</h3>
+          <p>Партнеры проводят диагностику техники с протоколом и фото-отчетом. Бронируем лот. Ваш платеж по инвойсу осуществляется напрямую на азиатские реквизиты. Мы организуем доставку во Владивосток или в Усурийск.</p>
+        </article>
+        <article class="step">
+          <div class="step-num">03</div>
+          <h3>Растаможка в РФ</h3>
+          <p>Таможенная очистка в порту Владивостока или в Усурийске. Брокер проходит лабораторию для СБКТС, делает вам прописку в ДВФО и готовит ЭПТС.</p>
+        </article>
+        <article class="step">
+          <div class="step-num">04</div>
+          <h3>Учет и выдача</h3>
+          <p>Автомобиль или мотоцикл имеет полный пакет необходимых документов и полностью легализирован. Забираете транспорт самостоятельно либо помогаем в логистике до города назначения. </p>
+        </article>
+      </div>
+    </details>
+  </div>
+</section>
+
 
 <!-- ============ TEAM ============ -->
 <section id="team">
@@ -3872,7 +4337,6 @@ a.car-title:hover { color: var(--accent-2); }
     <div class="section-head reveal">
       <span class="eyebrow">Команда</span>
       <h2>Кто <span class="glow-text">работает с вами</span></h2>
-      <p>Специалисты в импорте, логистике и таможенном оформлении. Готовы ответить на любые вопросы.</p>
     </div>
     <div class="team-grid reveal-stagger"><!-- rendered by JS --></div>
   </div>
@@ -3991,6 +4455,219 @@ a.car-title:hover { color: var(--accent-2); }
   </div>
 </section>
 
+<!-- ============ QUIZ ============ -->
+<section id="quiz">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Квиз</span>
+      <h2>Узнай, какие <span class="glow-text">авто подходят именно тебе</span></h2>
+    </div>
+
+    <div class="quiz-shell reveal" id="quizShell">
+
+      <!-- ===== Screen: START ===== -->
+      <div class="quiz-screen active" data-quiz-screen="start">
+        <h3 class="quiz-start-title">Узнай, какие автомобили подходят именно тебе</h3>
+        <p class="quiz-start-sub">5 коротких вопросов — подберём из каталога модели под твой бюджет и параметры.</p>
+        <div class="quiz-bonus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+          Скидка 10 000 ₽ + чек-лист проверки аукционного листа
+        </div>
+        <div class="quiz-start-actions">
+          <button type="button" class="btn btn-primary btn-shine" data-quiz-action="start">
+            Начать
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Progress (hidden on start, visible on steps + result) ===== -->
+      <div class="quiz-progress" id="quizProgress" hidden>
+        <div class="quiz-progress-seg" data-seg="1"></div>
+        <div class="quiz-progress-seg" data-seg="2"></div>
+        <div class="quiz-progress-seg" data-seg="3"></div>
+        <div class="quiz-progress-seg" data-seg="4"></div>
+        <div class="quiz-progress-seg" data-seg="5"></div>
+      </div>
+
+      <!-- ===== Step 1: BUDGET ===== -->
+      <div class="quiz-screen" data-quiz-screen="1">
+        <div class="quiz-step-head">
+          <button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="quiz-step-meta">Шаг 1 из 5</span>
+        </div>
+        <h3 class="quiz-step-title">Бюджет под ключ до Москвы</h3>
+        <div class="quiz-options quiz-options-2" data-quiz-group="budget" data-quiz-multi="false">
+          <button type="button" class="quiz-opt" data-quiz-value="b1">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">До 700 000 ₽</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="b2">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">700 000 – 1 000 000 ₽</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="b3">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">1 000 000 – 1 500 000 ₽</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="b4">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">1 500 000 – 2 500 000 ₽</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="b5">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">2 500 000 – 4 000 000 ₽</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="b6">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Свыше 4 000 000 ₽</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Step 2: STEERING ===== -->
+      <div class="quiz-screen" data-quiz-screen="2">
+        <div class="quiz-step-head">
+          <button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="quiz-step-meta">Шаг 2 из 5</span>
+        </div>
+        <h3 class="quiz-step-title">Расположение руля</h3>
+        <div class="quiz-options" data-quiz-group="steering" data-quiz-multi="false">
+          <button type="button" class="quiz-opt" data-quiz-value="right">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Правый руль</span><span class="quiz-opt-hint">экономия до 40%</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="left">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Левый руль</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="both">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Оба варианта</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Step 3: BODY TYPE (multi) ===== -->
+      <div class="quiz-screen" data-quiz-screen="3">
+        <div class="quiz-step-head">
+          <button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="quiz-step-meta">Шаг 3 из 5 · Можно выбрать несколько</span>
+        </div>
+        <h3 class="quiz-step-title">Тип кузова</h3>
+        <div class="quiz-options" data-quiz-group="bodyTypes" data-quiz-multi="true">
+          <button type="button" class="quiz-opt" data-quiz-value="kei">
+            <span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Кей-кар</span><span class="quiz-opt-hint">объём до 660 куб. см — минимальный налог</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="sedan">
+            <span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Хэтчбек / Седан</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="suv">
+            <span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Кроссовер / Внедорожник</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="wagon">
+            <span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Универсал</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="van">
+            <span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Минивэн / Микроавтобус</span></span>
+          </button>
+        </div>
+        <div class="quiz-step-nav">
+          <button type="button" class="btn btn-primary" data-quiz-action="next">
+            Далее
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Step 4: POWER ===== -->
+      <div class="quiz-screen" data-quiz-screen="4">
+        <div class="quiz-step-head">
+          <button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="quiz-step-meta">Шаг 4 из 5</span>
+        </div>
+        <h3 class="quiz-step-title">Мощность двигателя</h3>
+        <div class="quiz-options" data-quiz-group="power" data-quiz-multi="false">
+          <button type="button" class="quiz-opt" data-quiz-value="low">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">До 160 л.с.</span><span class="quiz-opt-hint">выгодный привоз — минимальный акциз (64 ₽/л.с.) и базовый утильсбор</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="high">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Свыше 160 л.с.</span><span class="quiz-opt-hint">ставка акциза выше в 10× (613 ₽/л.с.), повышенный утильсбор</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Step 5: AGE ===== -->
+      <div class="quiz-screen" data-quiz-screen="5">
+        <div class="quiz-step-head">
+          <button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="quiz-step-meta">Шаг 5 из 5</span>
+        </div>
+        <h3 class="quiz-step-title">Возраст автомобиля</h3>
+        <div class="quiz-options" data-quiz-group="age" data-quiz-multi="false">
+          <button type="button" class="quiz-opt" data-quiz-value="3-5">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">От 3 до 5 лет</span><span class="quiz-opt-hint">минимальная пошлина на таможне РФ</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="5+">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Старше 5 лет</span><span class="quiz-opt-hint">выгодно только для моторов до 1.2 л</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="<3">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Младше 3 лет</span><span class="quiz-opt-hint">пошлина рассчитывается от стоимости покупки за границей</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Screen: RESULT ===== -->
+      <div class="quiz-screen" data-quiz-screen="result">
+        <div class="quiz-result-head">
+          <h3 class="quiz-result-title">Расчёт завершён!</h3>
+          <p class="quiz-result-sub">Под ваши параметры подобрано 5 моделей с минимальной таможенной ставкой.</p>
+        </div>
+        <div class="quiz-cars" id="quizCars"><!-- injected by JS --></div>
+
+        <div class="quiz-final-block">
+          <p class="quiz-final-text">Получите подробную калькуляцию пошлин по всем 5 моделям до вашего города, фотографии лотов и купон на скидку 10 000 ₽.</p>
+          <div class="quiz-final-actions">
+            <a class="btn btn-tg" id="quizTgBtn" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.93 3.821c.42-1.747-.518-2.459-1.499-2.077L1.114 9.515C-.295 10.052-.272 10.801.873 11.157l5.617 1.747L19.27 4.74c.612-.366 1.169-.165.711.219z"/></svg>
+              Получить расчёт в Telegram
+            </a>
+            <a class="btn btn-wa" id="quizWaBtn" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.713.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375a9.869 9.869 0 0 1-1.516-5.26c0-5.445 4.455-9.885 9.942-9.885 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>
+              Получить расчёт в WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="quiz-restart">
+          <button type="button" data-quiz-action="restart">Пройти заново</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============ FINAL CTA ============ -->
 <section id="cta">
   <div class="container">
@@ -3999,17 +4676,6 @@ a.car-title:hover { color: var(--accent-2); }
         <div>
           <span class="eyebrow">Готовы заказать?</span>
           <h2 style="margin-top:18px;">Получите 3 варианта под ваш бюджет — <span class="glow-text">бесплатно</span></h2>
-          <p style="margin-top:18px;color:var(--text-muted);max-width:520px;line-height:1.55;">
-            Менеджер подберёт оптимальные варианты с отчётом о состоянии и нюансах конкретной модели и лота.
-          </p>
-          <div class="cta-anchors">
-            <div class="cta-anchor">
-              <div class="cta-anchor-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="cta-anchor-text"><b>Подбор и консультация — бесплатно</b></div>
-            </div>
-          </div>
         </div>
 
         <form class="cta-form" id="leadForm" novalidate>
@@ -4070,6 +4736,27 @@ a.car-title:hover { color: var(--accent-2); }
   </div>
 </section>
 
+<!-- ============ SUBSCRIBE (TG channel) ============ -->
+<section id="subscribe" style="padding: 0 0 24px;">
+  <div class="container">
+    <div class="subscribe-strip reveal">
+      <div class="subscribe-strip-text">
+        <div class="subscribe-strip-title">
+          <span class="subscribe-strip-title-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.93 3.821c.42-1.747-.518-2.459-1.499-2.077L1.114 9.515C-.295 10.052-.272 10.801.873 11.157l5.617 1.747L19.27 4.74c.612-.366 1.169-.165.711.219z"/></svg>
+          </span>
+          Подпишитесь на канал обновлений
+        </div>
+        <div class="subscribe-strip-sub">Новые лоты, статьи и закрытые предложения. Без спама.</div>
+      </div>
+      <a href="https://t.me/powercar_70" target="_blank" rel="noopener" class="btn btn-tg" data-track="tg_subscribe">
+        Подписаться в Telegram
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CREDIT (compact strip) ============ -->
 <section id="credit" style="padding: 0 0 40px;">
   <div class="container">
@@ -4095,22 +4782,6 @@ a.car-title:hover { color: var(--accent-2); }
 
 </main>
 <!-- ============ FOOTER ============ -->
-<!-- ============ SEO TEXT / ВНУТР. ПЕРЕЛИНКОВКА ============ -->
-<section class="seo-text" aria-label="О компании и городах">
-  <div class="container" style="padding-top:8px;padding-bottom:40px">
-    <div style="max-width:880px;color:var(--text-muted);font-size:.92rem;line-height:1.65">
-      <h2 style="font-size:1.2rem;color:var(--text);margin-bottom:12px">Импорт авто и мото из Японии, Кореи и Китая под ключ</h2>
-      <p style="margin-bottom:12px">POWER Car привозит автомобили и мотоциклы под ключ за 25–40 дней. Из <b>Японии</b> — Toyota, Lexus, Honda, Nissan, Mazda, Subaru, Mitsubishi; из <b>Кореи</b> — Hyundai, Kia, Genesis; из <b>Китая</b> — Geely, Chery, Haval, Changan, а также модели BMW, Mercedes-Benz и Audi китайской сборки. Подбираем под любой бюджет, рассчитываем пошлину и утильсбор при вас по официальным базам.</p>
-      <p style="margin-bottom:12px">Работаем на репутацию: прозрачный расчёт без скрытых платежей, договор, страхование на всех этапах логистики и сопровождение до выдачи. Вы — первый собственник в РФ. Подбор и расчёт сметы — бесплатно, без предоплаты.</p>
-      <p>Доставка и выдача в городах присутствия:
-        <a href="/avto-iz-yaponii-tomsk.html" style="color:var(--accent-2);text-decoration:underline">авто из Японии в Томске</a>,
-        <a href="/avto-iz-yaponii-novosibirsk.html" style="color:var(--accent-2);text-decoration:underline">в Новосибирске</a>,
-        <a href="/avto-iz-yaponii-moskva.html" style="color:var(--accent-2);text-decoration:underline">в Москве</a>.
-        Привозим во все регионы России — автовозом из Владивостока.</p>
-    </div>
-  </div>
-</section>
-
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -4161,11 +4832,11 @@ a.car-title:hover { color: var(--accent-2); }
 
 <!-- ============ MOBILE FAB ============ -->
 <nav class="fab" aria-label="Быстрые контакты">
-  <a href="https://max.ru/" class="fab-btn fab-max">
+  <a href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" class="fab-btn fab-max">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
     MAX
   </a>
-  <a href="https://t.me/" class="fab-btn fab-tg">
+  <a href="https://t.me/powercar_70" target="_blank" rel="noopener" class="fab-btn fab-tg">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.93 3.821c.42-1.747-.518-2.459-1.499-2.077L1.114 9.515C-.295 10.052-.272 10.801.873 11.157l5.617 1.747L19.27 4.74c.612-.366 1.169-.165.711.219z"/></svg>
     TG
   </a>
@@ -4288,8 +4959,15 @@ const DataSource = (() => {
     let filtered = items.filter(it => it.published !== false);
     if (name === 'team' || name === 'offices') {
       filtered.sort((a, b) => (a.order || 0) - (b.order || 0));
-    } else if (name === 'cases' || name === 'articles') {
+    } else if (name === 'cases') {
       filtered.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+    } else if (name === 'articles') {
+      // Сортировка по дате добавления (publishedAt) — новые сверху
+      filtered.sort((a, b) => {
+        const da = Date.parse(a.publishedAt || a.date || '') || 0;
+        const db = Date.parse(b.publishedAt || b.date || '') || 0;
+        return db - da;
+      });
     }
     return filtered;
   }
@@ -4362,6 +5040,8 @@ const state = {
   age: 'all',
   country: 'all',
   mototype: 'all',
+  power: 500,        // max л.с. (500 = без фильтра)
+  drive: 'all',      // FWD | RWD | 4WD | all
   sortBy: 'priceAsc',
   channel: 'call'
 };
@@ -4675,6 +5355,15 @@ function filterCars() {
     const carAge = ageOf(car.year);
     if (carAge < age.min || carAge > age.max) { matches = false; }
     if (state.country !== 'all' && car.country !== state.country) { matches = false; }
+    // Точная мощность (фильтр активен только если двинут со значения по умолчанию = 500)
+    if (state.power < 500) {
+      const p = Number(car.power);
+      if (!p || p > state.power) { matches = false; }
+    }
+    // Привод (фильтрует только лоты с заполненным car.drive)
+    if (state.drive !== 'all') {
+      if (!car.drive || car.drive !== state.drive) { matches = false; }
+    }
     if (state.type === 'moto' && state.mototype !== 'all' && car.mototype !== state.mototype) { matches = false; }
     if (matches) score += 100;
     if (car.hit) score += 5;
@@ -4785,6 +5474,33 @@ function initSelector() {
       trackOnce('calc_used');
       state.country = c.dataset.country;
       $$('#countryChips .chip').forEach(x => x.classList.toggle('active', x === c));
+      resetPagination();
+      renderResults();
+    });
+  });
+
+  // Power slider (точная мощность)
+  const powerSlider = $('#powerSlider');
+  const powerValue  = $('#powerValue');
+  const powerWarn   = $('#powerWarn');
+  if (powerSlider) {
+    powerSlider.addEventListener('input', () => {
+      const v = Number(powerSlider.value);
+      state.power = v;
+      if (powerValue) powerValue.textContent = String(v);
+      if (powerWarn)  powerWarn.classList.toggle('show', v > 160);
+      trackOnce('calc_used');
+      resetPagination();
+      renderResults();
+    });
+  }
+
+  // Drive chips
+  $$('#driveChips .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      trackOnce('calc_used');
+      state.drive = c.dataset.drive;
+      $$('#driveChips .chip').forEach(x => x.classList.toggle('active', x === c));
       resetPagination();
       renderResults();
     });
@@ -5843,6 +6559,385 @@ async function initApp() {
   initVideosCarousel();
   initVideoModal();
   initMobileMenu();
+  initQuiz();
+
+  // Счётчик кейсов рядом с пунктом "Отзывы" в бургер-меню
+  const menuCount = document.getElementById('menuCasesCount');
+  if (menuCount && CASES.length) {
+    menuCount.textContent = String(CASES.length);
+  }
+
+  // Сворачиваемый блок "Как это работает": открыт на desktop, закрыт на mobile
+  const stepsCollapse = document.getElementById('stepsCollapse');
+  if (stepsCollapse) {
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    stepsCollapse.open = isDesktop;
+    stepsCollapse.addEventListener('toggle', () => {
+      track(stepsCollapse.open ? 'steps_expanded' : 'steps_collapsed');
+    });
+  }
+}
+
+// ============ QUIZ (5-step car selector) ============
+// Бюджетные диапазоны (₽) для фильтра по price
+const QUIZ_BUDGETS = {
+  b1: [0,        700000],
+  b2: [700000,   1000000],
+  b3: [1000000,  1500000],
+  b4: [1500000,  2500000],
+  b5: [2500000,  4000000],
+  b6: [4000000,  Infinity]
+};
+// Маппинг квиз-кузова → реальные body в cars.json
+const QUIZ_BODY_MAP = {
+  kei:   ['hatchback'],               // примерное соответствие (мини-хэтч)
+  sedan: ['sedan', 'hatchback'],
+  suv:   ['crossover', 'suv'],
+  wagon: ['wagon'],
+  van:   ['minivan']
+};
+// Подпись для body
+const QUIZ_BODY_LABEL = {
+  crossover:'Кроссовер', sedan:'Седан', hatchback:'Хэтчбек',
+  suv:'Внедорожник', wagon:'Универсал', minivan:'Минивэн'
+};
+
+const QUIZ_LABELS = {
+  budget: {
+    b1: 'до 700 000 ₽', b2: '700к – 1 млн ₽', b3: '1 – 1,5 млн ₽',
+    b4: '1,5 – 2,5 млн ₽', b5: '2,5 – 4 млн ₽', b6: 'свыше 4 млн ₽'
+  },
+  steering: { right: 'правый руль', left: 'левый руль', both: 'оба варианта' },
+  bodyTypes: {
+    kei: 'кей-кар', sedan: 'хэтчбек/седан', suv: 'кроссовер/внедорожник',
+    wagon: 'универсал', van: 'минивэн'
+  },
+  power: { low: 'до 160 л.с.', high: 'свыше 160 л.с.' },
+  age: { '3-5': '3–5 лет', '5+': 'старше 5 лет', '<3': 'младше 3 лет' }
+};
+
+const QUIZ_TG  = 'https://t.me/powercar_70';
+const QUIZ_WA  = 'https://wa.me/79138533305';
+const QUIZ_LS_KEY = 'pc_quiz_v1';
+
+let QUIZ_STATE = {
+  currentStep: 0, // 0 = start
+  userSelection: { budget: '', steering: '', bodyTypes: [], power: '', age: '' }
+};
+
+function quizLoadState() {
+  try {
+    const raw = localStorage.getItem(QUIZ_LS_KEY);
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (saved && typeof saved === 'object') {
+        QUIZ_STATE = Object.assign(QUIZ_STATE, saved);
+        QUIZ_STATE.userSelection = Object.assign({budget:'',steering:'',bodyTypes:[],power:'',age:''}, saved.userSelection || {});
+      }
+    }
+  } catch (e) {}
+}
+function quizSaveState() {
+  try { localStorage.setItem(QUIZ_LS_KEY, JSON.stringify(QUIZ_STATE)); } catch (e) {}
+}
+
+function quizCarSvgIcon() {
+  return `<svg class="quiz-car-img-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M10 38 L14 26 C15 23 17 22 20 22 L44 22 C47 22 49 23 50 26 L54 38"/>
+    <line x1="8" y1="38" x2="56" y2="38"/>
+    <rect x="8" y="38" width="48" height="10" rx="2"/>
+    <circle cx="18" cy="48" r="4" fill="currentColor"/>
+    <circle cx="46" cy="48" r="4" fill="currentColor"/>
+    <line x1="22" y1="30" x2="42" y2="30"/>
+  </svg>`;
+}
+
+function quizBuildSummaryText() {
+  const s = QUIZ_STATE.userSelection;
+  const lines = [];
+  lines.push('Здравствуйте! Я прошёл квиз на сайте POWER Car. Параметры:');
+  if (s.budget)    lines.push('• Бюджет: ' + (QUIZ_LABELS.budget[s.budget] || s.budget));
+  if (s.steering)  lines.push('• Руль: ' + (QUIZ_LABELS.steering[s.steering] || s.steering));
+  if (s.bodyTypes && s.bodyTypes.length) {
+    lines.push('• Кузов: ' + s.bodyTypes.map(b => QUIZ_LABELS.bodyTypes[b] || b).join(', '));
+  }
+  if (s.power)     lines.push('• Мощность: ' + (QUIZ_LABELS.power[s.power] || s.power));
+  if (s.age)       lines.push('• Возраст: ' + (QUIZ_LABELS.age[s.age] || s.age));
+  lines.push('');
+  lines.push('Прошу прислать расчёт пошлины и купон на скидку 10 000 ₽.');
+  return lines.join('\n');
+}
+
+function quizUpdateSubmitLinks() {
+  const text = encodeURIComponent(quizBuildSummaryText());
+  const tg = document.getElementById('quizTgBtn');
+  const wa = document.getElementById('quizWaBtn');
+  if (tg) tg.href = QUIZ_TG + '?text=' + text;
+  if (wa) wa.href = QUIZ_WA + '?text=' + text;
+}
+
+function quizFilterCatalog() {
+  if (!Array.isArray(window.CARS) || !window.CARS.length) return [];
+  const s = QUIZ_STATE.userSelection;
+
+  // Budget → price
+  const [pMin, pMax] = QUIZ_BUDGETS[s.budget] || [0, Infinity];
+
+  // Steering → wheel
+  const wheelMap = { right: 'right', left: 'left', both: null };
+  const wheelWanted = wheelMap[s.steering];
+
+  // Body types (multi) → set of catalog body keys
+  let wantedBodies = null;
+  if (Array.isArray(s.bodyTypes) && s.bodyTypes.length) {
+    wantedBodies = new Set();
+    s.bodyTypes.forEach(t => (QUIZ_BODY_MAP[t] || []).forEach(b => wantedBodies.add(b)));
+  }
+
+  // Power: low ≤160, high >160 (cars with no power data: leave in for low, exclude for high)
+  const powerLow  = s.power === 'low';
+  const powerHigh = s.power === 'high';
+
+  // Age (NOW = 2026, как в остальном коде)
+  const NOW = 2026;
+  let yearMin = -Infinity, yearMax = Infinity;
+  if (s.age === '3-5')      { yearMin = NOW - 5; yearMax = NOW - 3; }
+  else if (s.age === '5+')  { yearMax = NOW - 5; }
+  else if (s.age === '<3')  { yearMin = NOW - 2; }
+
+  const result = window.CARS.filter(car => {
+    if (typeof car.price === 'number' && (car.price < pMin || car.price > pMax)) return false;
+    if (wheelWanted && car.wheel !== wheelWanted) return false;
+    if (wantedBodies && !wantedBodies.has(car.body)) return false;
+    if (powerLow  && car.power && car.power > 160) return false;
+    if (powerHigh && (!car.power || car.power <= 160)) return false;
+    if (car.year < yearMin || car.year > yearMax) return false;
+    return true;
+  });
+
+  // Sort: хиты вперёд, потом по цене возрастанию
+  result.sort((a, b) => {
+    if (a.hit && !b.hit) return -1;
+    if (!a.hit && b.hit) return 1;
+    return (a.price || 0) - (b.price || 0);
+  });
+
+  return result.slice(0, 5);
+}
+
+function quizCarBadge(car) {
+  if (car.hit) return 'Хит каталога';
+  if (car.power && car.power <= 160) return 'Минимальный акциз';
+  if (car.year >= 2021 && car.year <= 2023) return 'Проходной возраст';
+  if (car.country === 'China') return 'Низкая пошлина (КНР)';
+  return 'Подходит под параметры';
+}
+
+function quizRenderCars() {
+  const wrap = document.getElementById('quizCars');
+  if (!wrap) return;
+  const list = quizFilterCatalog();
+
+  if (!list.length) {
+    wrap.innerHTML = `
+      <div class="quiz-cars-empty">
+        <div class="quiz-cars-empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h4>В каталоге пока нет точных совпадений</h4>
+        <p>Найдём авто под ваши параметры на аукционе — пришлите ответы в Telegram, подберём индивидуально.</p>
+      </div>
+    `;
+    return;
+  }
+
+  wrap.innerHTML = list.map(car => {
+    const title = `${escapeHtml(car.brand)} ${escapeHtml(car.model)} ${car.year}`;
+    const specParts = [];
+    if (car.engine) specParts.push(escapeHtml(car.engine));
+    specParts.push(car.wheel === 'right' ? 'Правый руль' : 'Левый руль');
+    if (QUIZ_BODY_LABEL[car.body]) specParts.push(QUIZ_BODY_LABEL[car.body]);
+    if (car.price) specParts.push(new Intl.NumberFormat('ru-RU').format(car.price) + ' ₽');
+    const spec = specParts.join(' · ');
+    const photo = (car.photos && car.photos[0])
+      ? `<img src="${escapeHtml(car.photos[0])}" alt="${title}" loading="lazy" />`
+      : quizCarSvgIcon();
+    const badge = quizCarBadge(car);
+    const carText = encodeURIComponent(
+      `Здравствуйте! Интересует «${car.brand} ${car.model} ${car.year}» из квиза POWER Car. Жду фото лота и купон на 10 000 ₽.`
+    );
+    return `
+    <article class="quiz-car" data-car-id="${escapeHtml(car.id || '')}">
+      <div class="quiz-car-img">${photo}</div>
+      <div class="quiz-car-body">
+        <div class="quiz-car-name">${title}</div>
+        <div class="quiz-car-spec">${spec}</div>
+        <span class="quiz-car-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          ${escapeHtml(badge)}
+        </span>
+        <a class="quiz-car-btn" href="${QUIZ_TG}?text=${carText}" target="_blank" rel="noopener" data-quiz-car-cta="${escapeHtml(car.brand)} ${escapeHtml(car.model)}">
+          Получить скидку 10 000 ₽
+        </a>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+function quizShowScreen(step) {
+  const shell = document.getElementById('quizShell');
+  if (!shell) return;
+  shell.querySelectorAll('.quiz-screen').forEach(el => el.classList.remove('active'));
+  let target;
+  if (step === 0) target = shell.querySelector('[data-quiz-screen="start"]');
+  else if (step === 'result') target = shell.querySelector('[data-quiz-screen="result"]');
+  else target = shell.querySelector('[data-quiz-screen="' + step + '"]');
+  if (target) target.classList.add('active');
+
+  // Progress bar visibility + state
+  const prog = document.getElementById('quizProgress');
+  if (prog) {
+    if (step === 0) {
+      prog.hidden = true;
+    } else {
+      prog.hidden = false;
+      const stepNum = step === 'result' ? 6 : Number(step);
+      prog.querySelectorAll('.quiz-progress-seg').forEach(seg => {
+        const n = Number(seg.dataset.seg);
+        seg.classList.remove('done', 'current');
+        if (n < stepNum) seg.classList.add('done');
+        else if (n === stepNum) seg.classList.add('current');
+      });
+    }
+  }
+
+  QUIZ_STATE.currentStep = step;
+  quizSaveState();
+}
+
+function quizPaintSelections() {
+  const shell = document.getElementById('quizShell');
+  if (!shell) return;
+  shell.querySelectorAll('.quiz-options').forEach(group => {
+    const key = group.dataset.quizGroup;
+    const multi = group.dataset.quizMulti === 'true';
+    const val = QUIZ_STATE.userSelection[key];
+    group.querySelectorAll('.quiz-opt').forEach(opt => {
+      const v = opt.dataset.quizValue;
+      let selected = false;
+      if (multi && Array.isArray(val)) selected = val.includes(v);
+      else selected = (val === v);
+      opt.classList.toggle('selected', selected);
+    });
+  });
+}
+
+function initQuiz() {
+  const shell = document.getElementById('quizShell');
+  if (!shell) return;
+
+  quizLoadState();
+  quizPaintSelections();
+
+  // Start from saved step if user reloads mid-quiz; restart on result if they don't reopen
+  quizShowScreen(QUIZ_STATE.currentStep || 0);
+  if (QUIZ_STATE.currentStep === 'result') {
+    quizRenderCars();
+    quizUpdateSubmitLinks();
+  }
+
+  // Option clicks
+  shell.addEventListener('click', (e) => {
+    const opt = e.target.closest('.quiz-opt');
+    if (opt) {
+      const group = opt.closest('.quiz-options');
+      const key = group.dataset.quizGroup;
+      const multi = group.dataset.quizMulti === 'true';
+      const value = opt.dataset.quizValue;
+
+      if (multi) {
+        const arr = Array.isArray(QUIZ_STATE.userSelection[key]) ? QUIZ_STATE.userSelection[key] : [];
+        const i = arr.indexOf(value);
+        if (i >= 0) arr.splice(i, 1); else arr.push(value);
+        QUIZ_STATE.userSelection[key] = arr;
+        quizPaintSelections();
+        quizSaveState();
+      } else {
+        QUIZ_STATE.userSelection[key] = value;
+        quizPaintSelections();
+        quizSaveState();
+        // Auto-advance on single-select
+        setTimeout(() => {
+          const cur = QUIZ_STATE.currentStep;
+          if (cur === 5) {
+            quizShowScreen('result');
+            quizRenderCars();
+            quizUpdateSubmitLinks();
+            track('quiz_completed', { budget: QUIZ_STATE.userSelection.budget });
+          } else if (typeof cur === 'number' && cur >= 1 && cur < 5) {
+            quizShowScreen(cur + 1);
+            track('quiz_step_' + (cur + 1));
+          }
+        }, 220);
+      }
+      return;
+    }
+
+    const action = e.target.closest('[data-quiz-action]');
+    if (action) {
+      const a = action.dataset.quizAction;
+      if (a === 'start') {
+        quizShowScreen(1);
+        track('quiz_started');
+      } else if (a === 'back') {
+        const cur = QUIZ_STATE.currentStep;
+        if (cur === 'result') quizShowScreen(5);
+        else if (typeof cur === 'number' && cur > 1) quizShowScreen(cur - 1);
+        else if (cur === 1) quizShowScreen(0);
+      } else if (a === 'next') {
+        const cur = QUIZ_STATE.currentStep;
+        // Multi-select step 3: require at least 1 body type
+        if (cur === 3) {
+          const arr = QUIZ_STATE.userSelection.bodyTypes;
+          if (!arr || arr.length === 0) {
+            // light error: shake the options
+            const grp = shell.querySelector('[data-quiz-group="bodyTypes"]');
+            if (grp) {
+              grp.animate(
+                [{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],
+                {duration: 280}
+              );
+            }
+            return;
+          }
+          quizShowScreen(4);
+          track('quiz_step_4');
+        } else if (typeof cur === 'number' && cur >= 1 && cur < 5) {
+          quizShowScreen(cur + 1);
+        } else if (cur === 5) {
+          quizShowScreen('result');
+          quizRenderCars();
+          quizUpdateSubmitLinks();
+          track('quiz_completed', { budget: QUIZ_STATE.userSelection.budget });
+        }
+      } else if (a === 'restart') {
+        QUIZ_STATE = {
+          currentStep: 0,
+          userSelection: { budget: '', steering: '', bodyTypes: [], power: '', age: '' }
+        };
+        quizSaveState();
+        quizPaintSelections();
+        quizShowScreen(0);
+        track('quiz_restarted');
+      }
+    }
+  });
+
+  // Track car-card clicks
+  shell.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-quiz-car-cta]');
+    if (btn) track('quiz_car_cta', { car: btn.dataset.quizCarCta });
+  });
 }
 
 // ============ MOBILE MENU ============

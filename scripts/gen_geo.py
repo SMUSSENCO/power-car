@@ -294,8 +294,8 @@ def page(cfg):
 <header class="gh">
   <a href="/" class="gh-logo">POWER <b>Car</b></a>
   <nav class="gh-nav">
-    <a href="/#advantages">Преимущества</a>
     <a href="/#selector">Подбор</a>
+    <a href="/#cases">Отзывы</a>
     <a href="/#offices">Офисы</a>
     <a href="/#faq">Вопросы</a>
   </nav>

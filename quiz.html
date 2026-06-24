@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+<meta name="theme-color" content="#10B981" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>Квиз: какие автомобили подходят именно тебе | POWER Car</title>
+<meta name="description" content="Пройдите квиз из 5 вопросов и получите подборку авто из Японии, Кореи и Китая под ваш бюджет. Скидка 10 000 ₽ и чек-лист аукционного листа в подарок." />
+
+<link rel="canonical" href="https://power-car.ru/quiz.html" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Квиз: какие автомобили подходят именно тебе | POWER Car" />
+<meta property="og:description" content="5 вопросов — подберём 5 моделей из каталога под ваш бюджет. Скидка 10 000 ₽ + чек-лист." />
+<meta property="og:image" content="https://power-car.ru/og-cover.jpg" />
+<meta property="og:url" content="https://power-car.ru/quiz.html" />
+<meta property="og:site_name" content="POWER Car" />
+<meta property="og:locale" content="ru_RU" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Квиз: какие автомобили подходят именно тебе | POWER Car" />
+<meta name="twitter:description" content="5 вопросов — подберём 5 моделей из каталога под ваш бюджет." />
+<meta name="twitter:image" content="https://power-car.ru/og-cover.jpg" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet">
+
+<!-- JSON-LD Quiz -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": "Какие автомобили подходят именно тебе",
+  "about": "Подбор автомобиля из Японии, Кореи или Китая под бюджет, руль, тип кузова, мощность и возраст",
+  "educationalAlignment": {
+    "@type": "AlignmentObject",
+    "alignmentType": "educationalSubject",
+    "targetName": "Импорт автомобилей"
+  },
+  "provider": {
+    "@type": "AutoDealer",
+    "name": "POWER Car",
+    "url": "https://power-car.ru/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Главная","item":"https://power-car.ru/"},
+    {"@type":"ListItem","position":2,"name":"Квиз","item":"https://power-car.ru/quiz.html"}
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #0A0A0A;
+  --bg-alt: #0E0E10;
+  --surface: rgba(255,255,255,0.035);
+  --surface-2: rgba(255,255,255,0.06);
+  --surface-3: rgba(255,255,255,0.10);
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --text: #FAFAFA;
+  --text-muted: rgba(255,255,255,0.62);
+  --accent: #10B981;
+  --accent-2: #34D399;
+  --accent-soft: rgba(16,185,129,0.12);
+  --accent-glow: rgba(16,185,129,0.35);
+  --warning: #F59E0B;
+  --r-xs: 8px; --r-sm: 14px; --r-md: 22px; --r-lg: 32px;
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.ambient::before, .ambient::after {
+  content: ''; position: absolute; width: 60vw; height: 60vw;
+  border-radius: 50%; filter: blur(120px); opacity: 0.4;
+}
+.ambient::before { top: -20%; left: -10%; background: radial-gradient(circle, var(--accent) 0%, transparent 60%); }
+.ambient::after  { bottom: -30%; right: -20%; background: radial-gradient(circle, #064E3B 0%, transparent 60%); }
+
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-xs); }
+
+.qpage-header {
+  position: sticky; top: 0;
+  z-index: 10;
+  background: rgba(10,10,10,0.78);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid var(--border);
+  padding: calc(14px + var(--sat)) 16px 14px;
+}
+.qpage-header-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.qpage-logo { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 700; font-size: 1rem; }
+.qpage-logo img { height: 26px; width: auto; display: block; }
+.qpage-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 16px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border-2);
+  color: var(--text-muted);
+  font-size: 0.88rem; font-weight: 500;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+.qpage-back:hover { background: var(--surface-3); color: var(--text); }
+.qpage-back svg { width: 16px; height: 16px; }
+
+.qpage-main {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 16px 60px;
+}
+@media (min-width: 768px) {
+  .qpage-main { padding: 64px 32px 80px; }
+}
+
+.qpage-intro { max-width: 720px; margin-bottom: 36px; }
+.qpage-eyebrow {
+  font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.qpage-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+.qpage-h1 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  letter-spacing: -0.03em; line-height: 1.05;
+  margin: 16px 0 18px;
+}
+.qpage-h1 span { background: linear-gradient(120deg, #fff 0%, var(--accent-2) 50%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.qpage-lead { font-size: 1.08rem; color: var(--text-muted); line-height: 1.6; max-width: 580px; }
+
+/* === Reused quiz styles === */
+.quiz-shell {
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 768px) { .quiz-shell { padding: 48px 40px; } }
+
+.quiz-shell::before, .quiz-shell::after {
+  content: '?';
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.05;
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+.quiz-shell::before { font-size: clamp(160px, 28vw, 360px); top: -40px; right: -30px; transform: rotate(15deg); }
+.quiz-shell::after  { font-size: clamp(100px, 18vw, 220px); bottom: -30px; left: -20px; transform: rotate(-12deg); opacity: 0.04; }
+.quiz-shell > * { position: relative; z-index: 1; }
+
+.quiz-screen { display: none; }
+.quiz-screen.active { display: block; animation: qf 0.35s var(--ease-out); }
+@keyframes qf { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.quiz-start-title { font-family: var(--font-display); font-size: clamp(1.4rem, 3.2vw, 2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.quiz-start-sub   { margin-top: 14px; font-size: 1rem; line-height: 1.55; color: var(--text-muted); max-width: 640px; }
+.quiz-bonus       {
+  margin-top: 24px; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 18px; border-radius: 999px;
+  background: rgba(245,158,11,0.10); border: 1px solid rgba(245,158,11,0.35);
+  color: #FBBF24; font-weight: 600; font-size: 0.92rem;
+}
+.quiz-bonus svg { width: 18px; height: 18px; flex-shrink: 0; }
+.quiz-start-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+.quiz-progress { display: flex; gap: 4px; margin-bottom: 32px; }
+.quiz-progress-seg { flex: 1; height: 4px; border-radius: 999px; background: var(--surface-3); transition: background 0.3s var(--ease-out); }
+.quiz-progress-seg.done { background: var(--accent); }
+.quiz-progress-seg.current { background: var(--accent-2); }
+
+.quiz-step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.quiz-back {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--surface-2); border: 1px solid var(--border-2);
+  color: var(--text); cursor: pointer; flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.quiz-back:hover { background: var(--surface-3); }
+.quiz-back svg { width: 20px; height: 20px; }
+.quiz-step-meta { color: var(--text-muted); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.quiz-step-title { font-family: var(--font-display); font-size: clamp(1.25rem, 2.6vw, 1.7rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 24px; }
+
+.quiz-options { display: grid; gap: 10px; }
+.quiz-opt {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 18px; border-radius: var(--r-sm);
+  background: rgba(0,0,0,0.30); border: 1px solid var(--border);
+  color: var(--text); text-align: left; cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 500;
+  min-height: 56px;
+  -webkit-tap-highlight-color: transparent;
+}
+.quiz-opt:hover { border-color: var(--border-2); background: rgba(0,0,0,0.45); }
+.quiz-opt:active { transform: scale(0.99); }
+.quiz-opt.selected { border-color: var(--accent); background: var(--accent-soft); }
+.quiz-opt-check {
+  display: grid; place-items: center; width: 22px; height: 22px;
+  border-radius: 6px; background: rgba(0,0,0,0.4); border: 1.5px solid var(--border-2);
+  flex-shrink: 0; margin-top: 1px;
+}
+.quiz-opt-check.radio { border-radius: 50%; }
+.quiz-opt-check svg { width: 14px; height: 14px; color: #002417; opacity: 0; transition: opacity 0.2s; }
+.quiz-opt.selected .quiz-opt-check { background: var(--accent); border-color: var(--accent); }
+.quiz-opt.selected .quiz-opt-check svg { opacity: 1; }
+.quiz-opt-text { flex: 1; line-height: 1.35; }
+.quiz-opt-label { display: block; font-weight: 600; }
+.quiz-opt-hint  { display: block; margin-top: 4px; font-size: 0.82rem; color: var(--text-muted); font-weight: 400; line-height: 1.4; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  padding: 13px 22px; border-radius: 999px; border: 1px solid transparent;
+  cursor: pointer; text-decoration: none; min-height: 46px;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.25s var(--ease-out);
+}
+.btn-primary { background: linear-gradient(180deg, var(--accent-2), var(--accent)); color: #002417; box-shadow: 0 12px 28px -8px var(--accent-glow); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -8px var(--accent-glow); }
+.btn-tg { background: linear-gradient(135deg, #2AABEE, #229ED9); color: white; }
+.btn-tg:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.btn-wa { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
+.btn-wa:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.quiz-step-nav { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+.quiz-step-nav .btn { min-width: 160px; }
+
+.quiz-result-head { margin-bottom: 28px; }
+.quiz-result-title { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+.quiz-result-sub   { margin-top: 10px; color: var(--text-muted); font-size: 0.98rem; line-height: 1.55; }
+
+.quiz-cars { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px)  { .quiz-cars { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .quiz-cars { grid-template-columns: 1fr 1fr 1fr; } }
+.quiz-car { border-radius: var(--r-md); background: rgba(0,0,0,0.30); border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; }
+.quiz-car-img { aspect-ratio: 16 / 10; background: linear-gradient(135deg, #0d2a23, #0a1a16); position: relative; display: grid; place-items: center; overflow: hidden; }
+.quiz-car-img img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
+.quiz-car-img-icon { width: 56px; height: 56px; color: var(--accent-2); opacity: 0.75; position: relative; z-index: 1; }
+.quiz-car-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.quiz-car-name { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; line-height: 1.2; }
+.quiz-car-spec { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+.quiz-car-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; background: rgba(16,185,129,0.18); border: 1px solid var(--accent); color: var(--accent-2); font-size: 0.75rem; font-weight: 600; align-self: flex-start; }
+.quiz-car-badge svg { width: 12px; height: 12px; }
+.quiz-car-btn { margin-top: auto; padding: 10px 14px; border-radius: 999px; background: var(--accent-soft); border: 1px solid rgba(16,185,129,0.4); color: var(--accent-2); font-size: 0.85rem; font-weight: 600; text-align: center; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.quiz-car-btn:hover { background: var(--accent); color: #002417; }
+
+.quiz-cars-empty { grid-column: 1 / -1; padding: 36px 24px; text-align: center; border-radius: var(--r-md); background: rgba(0,0,0,0.25); border: 1px dashed var(--border-2); }
+.quiz-cars-empty-icon { width: 48px; height: 48px; margin: 0 auto 14px; display: grid; place-items: center; color: var(--text-muted); border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border-2); }
+.quiz-cars-empty-icon svg { width: 22px; height: 22px; }
+.quiz-cars-empty h4 { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: -0.01em; margin-bottom: 8px; }
+.quiz-cars-empty p { color: var(--text-muted); max-width: 460px; margin: 0 auto; line-height: 1.5; }
+
+.quiz-final-block { margin-top: 32px; padding: 24px; border-radius: var(--r-md); background: linear-gradient(135deg, rgba(16,185,129,0.10), rgba(16,185,129,0.02)); border: 1px solid rgba(16,185,129,0.30); }
+.quiz-final-text { font-size: 1rem; line-height: 1.5; margin-bottom: 18px; }
+.quiz-final-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.quiz-final-actions .btn { flex: 1; min-width: 220px; }
+.quiz-restart { margin-top: 18px; text-align: center; }
+.quiz-restart button { background: none; border: none; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; padding: 8px 12px; }
+.quiz-restart button:hover { color: var(--text); }
+
+.qpage-footer {
+  position: relative; z-index: 2;
+  padding: 28px 16px calc(28px + var(--sab));
+  border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.85rem;
+  text-align: center;
+}
+.qpage-footer a { color: var(--text); margin: 0 8px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+</style>
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true"></div>
+
+<header class="qpage-header">
+  <div class="qpage-header-inner">
+    <a href="/" class="qpage-logo" aria-label="POWER Car — на главную">
+      <img src="images/logo/logo-50.svg" alt="POWER Car" width="50" height="23" />
+      <span>POWER Car</span>
+    </a>
+    <a href="/" class="qpage-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      На главную
+    </a>
+  </div>
+</header>
+
+<main class="qpage-main">
+  <div class="qpage-intro">
+    <span class="qpage-eyebrow">Квиз</span>
+    <h1 class="qpage-h1">Узнай, какие <span>авто подходят именно тебе</span></h1>
+    <p class="qpage-lead">5 коротких вопросов — подберём из каталога модели под твой бюджет, тип кузова, мощность и возраст. Скидка 10 000 ₽ и чек-лист аукционного листа — на финале.</p>
+  </div>
+
+  <div class="quiz-shell" id="quizShell">
+
+    <!-- Screen: START -->
+    <div class="quiz-screen active" data-quiz-screen="start">
+      <h3 class="quiz-start-title">Узнай, какие автомобили подходят именно тебе</h3>
+      <p class="quiz-start-sub">5 коротких вопросов — подберём из каталога модели под твой бюджет и параметры.</p>
+      <div class="quiz-bonus">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        Скидка 10 000 ₽ + чек-лист проверки аукционного листа
+      </div>
+      <div class="quiz-start-actions">
+        <button type="button" class="btn btn-primary" data-quiz-action="start">
+          Начать
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="quiz-progress" id="quizProgress" hidden>
+      <div class="quiz-progress-seg" data-seg="1"></div>
+      <div class="quiz-progress-seg" data-seg="2"></div>
+      <div class="quiz-progress-seg" data-seg="3"></div>
+      <div class="quiz-progress-seg" data-seg="4"></div>
+      <div class="quiz-progress-seg" data-seg="5"></div>
+    </div>
+
+    <!-- Step 1: BUDGET -->
+    <div class="quiz-screen" data-quiz-screen="1">
+      <div class="quiz-step-head"><button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><span class="quiz-step-meta">Шаг 1 из 5</span></div>
+      <h3 class="quiz-step-title">Бюджет под ключ до Москвы</h3>
+      <div class="quiz-options" data-quiz-group="budget" data-quiz-multi="false">
+        <button type="button" class="quiz-opt" data-quiz-value="b1"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">До 700 000 ₽</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="b2"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">700 000 – 1 000 000 ₽</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="b3"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">1 000 000 – 1 500 000 ₽</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="b4"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">1 500 000 – 2 500 000 ₽</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="b5"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">2 500 000 – 4 000 000 ₽</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="b6"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Свыше 4 000 000 ₽</span></span></button>
+      </div>
+    </div>
+
+    <!-- Step 2: STEERING -->
+    <div class="quiz-screen" data-quiz-screen="2">
+      <div class="quiz-step-head"><button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><span class="quiz-step-meta">Шаг 2 из 5</span></div>
+      <h3 class="quiz-step-title">Расположение руля</h3>
+      <div class="quiz-options" data-quiz-group="steering" data-quiz-multi="false">
+        <button type="button" class="quiz-opt" data-quiz-value="right"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Правый руль</span><span class="quiz-opt-hint">экономия до 40%</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="left"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Левый руль</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="both"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Оба варианта</span></span></button>
+      </div>
+    </div>
+
+    <!-- Step 3: BODY (multi) -->
+    <div class="quiz-screen" data-quiz-screen="3">
+      <div class="quiz-step-head"><button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><span class="quiz-step-meta">Шаг 3 из 5 · Можно выбрать несколько</span></div>
+      <h3 class="quiz-step-title">Тип кузова</h3>
+      <div class="quiz-options" data-quiz-group="bodyTypes" data-quiz-multi="true">
+        <button type="button" class="quiz-opt" data-quiz-value="kei"><span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Кей-кар</span><span class="quiz-opt-hint">объём до 660 куб. см — минимальный налог</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="sedan"><span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Хэтчбек / Седан</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="suv"><span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Кроссовер / Внедорожник</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="wagon"><span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Универсал</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="van"><span class="quiz-opt-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Минивэн / Микроавтобус</span></span></button>
+      </div>
+      <div class="quiz-step-nav">
+        <button type="button" class="btn btn-primary" data-quiz-action="next">Далее
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 4: POWER -->
+    <div class="quiz-screen" data-quiz-screen="4">
+      <div class="quiz-step-head"><button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><span class="quiz-step-meta">Шаг 4 из 5</span></div>
+      <h3 class="quiz-step-title">Мощность двигателя</h3>
+      <div class="quiz-options" data-quiz-group="power" data-quiz-multi="false">
+        <button type="button" class="quiz-opt" data-quiz-value="low"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">До 160 л.с.</span><span class="quiz-opt-hint">выгодный привоз — минимальный акциз (64 ₽/л.с.) и базовый утильсбор</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="high"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Свыше 160 л.с.</span><span class="quiz-opt-hint">ставка акциза выше в 10× (613 ₽/л.с.), повышенный утильсбор</span></span></button>
+      </div>
+    </div>
+
+    <!-- Step 5: AGE -->
+    <div class="quiz-screen" data-quiz-screen="5">
+      <div class="quiz-step-head"><button type="button" class="quiz-back" data-quiz-action="back" aria-label="Назад"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button><span class="quiz-step-meta">Шаг 5 из 5</span></div>
+      <h3 class="quiz-step-title">Возраст автомобиля</h3>
+      <div class="quiz-options" data-quiz-group="age" data-quiz-multi="false">
+        <button type="button" class="quiz-opt" data-quiz-value="3-5"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">От 3 до 5 лет</span><span class="quiz-opt-hint">минимальная пошлина на таможне РФ</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="5+"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Старше 5 лет</span><span class="quiz-opt-hint">выгодно только для моторов до 1.2 л</span></span></button>
+        <button type="button" class="quiz-opt" data-quiz-value="<3"><span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="quiz-opt-text"><span class="quiz-opt-label">Младше 3 лет</span><span class="quiz-opt-hint">пошлина рассчитывается от стоимости покупки за границей</span></span></button>
+      </div>
+    </div>
+
+    <!-- Screen: RESULT -->
+    <div class="quiz-screen" data-quiz-screen="result">
+      <div class="quiz-result-head">
+        <h3 class="quiz-result-title">Расчёт завершён!</h3>
+        <p class="quiz-result-sub">Под ваши параметры подобрано до 5 моделей из каталога.</p>
+      </div>
+      <div class="quiz-cars" id="quizCars"></div>
+
+      <div class="quiz-final-block">
+        <p class="quiz-final-text">Получите подробную калькуляцию пошлин по всем моделям до вашего города, фотографии лотов и купон на скидку 10 000 ₽.</p>
+        <div class="quiz-final-actions">
+          <a class="btn btn-tg" id="quizTgBtn" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.93 3.821c.42-1.747-.518-2.459-1.499-2.077L1.114 9.515C-.295 10.052-.272 10.801.873 11.157l5.617 1.747L19.27 4.74c.612-.366 1.169-.165.711.219z"/></svg>
+            Получить расчёт в Telegram
+          </a>
+          <a class="btn btn-wa" id="quizWaBtn" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.713.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375a9.869 9.869 0 0 1-1.516-5.26c0-5.445 4.455-9.885 9.942-9.885 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>
+            Получить расчёт в WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="quiz-restart">
+        <button type="button" data-quiz-action="restart">Пройти заново</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="qpage-footer">
+  © 2026 POWER Car · <a href="/">Главная</a> · <a href="docs/privacy.html">Конфиденциальность</a> · <a href="docs/terms.html">Условия</a>
+</footer>
+
+<script>
+'use strict';
+
+const QUIZ_BUDGETS = {
+  b1: [0, 700000], b2: [700000, 1000000], b3: [1000000, 1500000],
+  b4: [1500000, 2500000], b5: [2500000, 4000000], b6: [4000000, Infinity]
+};
+const QUIZ_BODY_MAP = {
+  kei: ['hatchback'], sedan: ['sedan', 'hatchback'],
+  suv: ['crossover', 'suv'], wagon: ['wagon'], van: ['minivan']
+};
+const QUIZ_BODY_LABEL = {
+  crossover: 'Кроссовер', sedan: 'Седан', hatchback: 'Хэтчбек',
+  suv: 'Внедорожник', wagon: 'Универсал', minivan: 'Минивэн'
+};
+const QUIZ_LABELS = {
+  budget: { b1:'до 700 000 ₽', b2:'700к – 1 млн ₽', b3:'1 – 1,5 млн ₽', b4:'1,5 – 2,5 млн ₽', b5:'2,5 – 4 млн ₽', b6:'свыше 4 млн ₽' },
+  steering: { right:'правый руль', left:'левый руль', both:'оба варианта' },
+  bodyTypes: { kei:'кей-кар', sedan:'хэтчбек/седан', suv:'кроссовер/внедорожник', wagon:'универсал', van:'минивэн' },
+  power: { low:'до 160 л.с.', high:'свыше 160 л.с.' },
+  age: { '3-5':'3–5 лет', '5+':'старше 5 лет', '<3':'младше 3 лет' }
+};
+const QUIZ_TG = 'https://t.me/powercar_70';
+const QUIZ_WA = 'https://wa.me/79138533305';
+const QUIZ_LS_KEY = 'pc_quiz_v1';
+
+let QUIZ_STATE = {
+  currentStep: 0,
+  userSelection: { budget:'', steering:'', bodyTypes:[], power:'', age:'' }
+};
+let CARS = [];
+
+const $  = (s) => document.querySelector(s);
+const escapeHtml = (s) => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function quizLoadState() {
+  try {
+    const raw = localStorage.getItem(QUIZ_LS_KEY);
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (saved && typeof saved === 'object') {
+        QUIZ_STATE = Object.assign(QUIZ_STATE, saved);
+        QUIZ_STATE.userSelection = Object.assign({budget:'',steering:'',bodyTypes:[],power:'',age:''}, saved.userSelection||{});
+      }
+    }
+  } catch (e) {}
+}
+function quizSaveState() { try { localStorage.setItem(QUIZ_LS_KEY, JSON.stringify(QUIZ_STATE)); } catch (e) {} }
+
+function quizCarSvgIcon() {
+  return `<svg class="quiz-car-img-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M10 38 L14 26 C15 23 17 22 20 22 L44 22 C47 22 49 23 50 26 L54 38"/>
+    <line x1="8" y1="38" x2="56" y2="38"/>
+    <rect x="8" y="38" width="48" height="10" rx="2"/>
+    <circle cx="18" cy="48" r="4" fill="currentColor"/>
+    <circle cx="46" cy="48" r="4" fill="currentColor"/>
+  </svg>`;
+}
+
+function quizBuildSummaryText() {
+  const s = QUIZ_STATE.userSelection;
+  const lines = ['Здравствуйте! Я прошёл квиз POWER Car. Параметры:'];
+  if (s.budget) lines.push('• Бюджет: ' + (QUIZ_LABELS.budget[s.budget]||s.budget));
+  if (s.steering) lines.push('• Руль: ' + (QUIZ_LABELS.steering[s.steering]||s.steering));
+  if (s.bodyTypes && s.bodyTypes.length) lines.push('• Кузов: ' + s.bodyTypes.map(b => QUIZ_LABELS.bodyTypes[b]||b).join(', '));
+  if (s.power) lines.push('• Мощность: ' + (QUIZ_LABELS.power[s.power]||s.power));
+  if (s.age) lines.push('• Возраст: ' + (QUIZ_LABELS.age[s.age]||s.age));
+  lines.push('');
+  lines.push('Прошу прислать расчёт и купон на скидку 10 000 ₽.');
+  return lines.join('\n');
+}
+
+function quizUpdateSubmitLinks() {
+  const text = encodeURIComponent(quizBuildSummaryText());
+  const tg = $('#quizTgBtn'); const wa = $('#quizWaBtn');
+  if (tg) tg.href = QUIZ_TG + '?text=' + text;
+  if (wa) wa.href = QUIZ_WA + '?text=' + text;
+}
+
+function quizFilterCatalog() {
+  if (!Array.isArray(CARS) || !CARS.length) return [];
+  const s = QUIZ_STATE.userSelection;
+  const [pMin, pMax] = QUIZ_BUDGETS[s.budget] || [0, Infinity];
+  const wheelMap = { right: 'right', left: 'left', both: null };
+  const wheelWanted = wheelMap[s.steering];
+  let wantedBodies = null;
+  if (Array.isArray(s.bodyTypes) && s.bodyTypes.length) {
+    wantedBodies = new Set();
+    s.bodyTypes.forEach(t => (QUIZ_BODY_MAP[t]||[]).forEach(b => wantedBodies.add(b)));
+  }
+  const powerLow  = s.power === 'low';
+  const powerHigh = s.power === 'high';
+  const NOW = 2026;
+  let yearMin = -Infinity, yearMax = Infinity;
+  if (s.age === '3-5')     { yearMin = NOW - 5; yearMax = NOW - 3; }
+  else if (s.age === '5+') { yearMax = NOW - 5; }
+  else if (s.age === '<3') { yearMin = NOW - 2; }
+  const result = CARS.filter(c => {
+    if (c.published === false) return false;
+    if (typeof c.price === 'number' && (c.price < pMin || c.price > pMax)) return false;
+    if (wheelWanted && c.wheel !== wheelWanted) return false;
+    if (wantedBodies && !wantedBodies.has(c.body)) return false;
+    if (powerLow  && c.power && c.power > 160) return false;
+    if (powerHigh && (!c.power || c.power <= 160)) return false;
+    if (c.year < yearMin || c.year > yearMax) return false;
+    return true;
+  });
+  result.sort((a, b) => {
+    if (a.hit && !b.hit) return -1;
+    if (!a.hit && b.hit) return 1;
+    return (a.price||0) - (b.price||0);
+  });
+  return result.slice(0, 5);
+}
+
+function quizCarBadge(c) {
+  if (c.hit) return 'Хит каталога';
+  if (c.power && c.power <= 160) return 'Минимальный акциз';
+  if (c.year >= 2021 && c.year <= 2023) return 'Проходной возраст';
+  if (c.country === 'China') return 'Низкая пошлина (КНР)';
+  return 'Подходит под параметры';
+}
+
+function quizRenderCars() {
+  const wrap = $('#quizCars'); if (!wrap) return;
+  const list = quizFilterCatalog();
+  if (!list.length) {
+    wrap.innerHTML = '<div class="quiz-cars-empty"><div class="quiz-cars-empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><h4>В каталоге пока нет точных совпадений</h4><p>Подберём авто под ваши параметры на аукционе — пришлите ответы в Telegram.</p></div>';
+    return;
+  }
+  wrap.innerHTML = list.map(c => {
+    const title = escapeHtml(c.brand) + ' ' + escapeHtml(c.model) + ' ' + c.year;
+    const parts = [];
+    if (c.engine) parts.push(escapeHtml(c.engine));
+    parts.push(c.wheel === 'right' ? 'Правый руль' : 'Левый руль');
+    if (QUIZ_BODY_LABEL[c.body]) parts.push(QUIZ_BODY_LABEL[c.body]);
+    if (c.price) parts.push(new Intl.NumberFormat('ru-RU').format(c.price) + ' ₽');
+    const spec = parts.join(' · ');
+    const photo = (c.photos && c.photos[0]) ? `<img src="${escapeHtml(c.photos[0])}" alt="${title}" loading="lazy" />` : quizCarSvgIcon();
+    const badge = quizCarBadge(c);
+    const carText = encodeURIComponent('Здравствуйте! Интересует «' + c.brand + ' ' + c.model + ' ' + c.year + '» из квиза POWER Car. Жду фото лота и купон на 10 000 ₽.');
+    return `<article class="quiz-car">
+      <div class="quiz-car-img">${photo}</div>
+      <div class="quiz-car-body">
+        <div class="quiz-car-name">${title}</div>
+        <div class="quiz-car-spec">${spec}</div>
+        <span class="quiz-car-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>${escapeHtml(badge)}</span>
+        <a class="quiz-car-btn" href="${QUIZ_TG}?text=${carText}" target="_blank" rel="noopener">Получить скидку 10 000 ₽</a>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+function quizShowScreen(step) {
+  const shell = $('#quizShell'); if (!shell) return;
+  shell.querySelectorAll('.quiz-screen').forEach(el => el.classList.remove('active'));
+  let target;
+  if (step === 0) target = shell.querySelector('[data-quiz-screen="start"]');
+  else if (step === 'result') target = shell.querySelector('[data-quiz-screen="result"]');
+  else target = shell.querySelector('[data-quiz-screen="' + step + '"]');
+  if (target) target.classList.add('active');
+  const prog = $('#quizProgress');
+  if (prog) {
+    if (step === 0) { prog.hidden = true; }
+    else {
+      prog.hidden = false;
+      const stepNum = step === 'result' ? 6 : Number(step);
+      prog.querySelectorAll('.quiz-progress-seg').forEach(seg => {
+        const n = Number(seg.dataset.seg);
+        seg.classList.remove('done', 'current');
+        if (n < stepNum) seg.classList.add('done');
+        else if (n === stepNum) seg.classList.add('current');
+      });
+    }
+  }
+  QUIZ_STATE.currentStep = step;
+  quizSaveState();
+}
+
+function quizPaintSelections() {
+  const shell = $('#quizShell'); if (!shell) return;
+  shell.querySelectorAll('.quiz-options').forEach(g => {
+    const key = g.dataset.quizGroup;
+    const multi = g.dataset.quizMulti === 'true';
+    const val = QUIZ_STATE.userSelection[key];
+    g.querySelectorAll('.quiz-opt').forEach(opt => {
+      const v = opt.dataset.quizValue;
+      let sel = false;
+      if (multi && Array.isArray(val)) sel = val.includes(v);
+      else sel = (val === v);
+      opt.classList.toggle('selected', sel);
+    });
+  });
+}
+
+async function initQuiz() {
+  quizLoadState();
+  quizPaintSelections();
+  quizShowScreen(QUIZ_STATE.currentStep || 0);
+
+  // Load catalog
+  try {
+    const res = await fetch('data/cars.json', { cache: 'no-cache' });
+    if (res.ok) CARS = await res.json();
+  } catch (e) { console.warn('cars.json load failed', e); }
+
+  if (QUIZ_STATE.currentStep === 'result') {
+    quizRenderCars();
+    quizUpdateSubmitLinks();
+  }
+
+  const shell = $('#quizShell');
+  shell.addEventListener('click', (e) => {
+    const opt = e.target.closest('.quiz-opt');
+    if (opt) {
+      const g = opt.closest('.quiz-options');
+      const key = g.dataset.quizGroup;
+      const multi = g.dataset.quizMulti === 'true';
+      const v = opt.dataset.quizValue;
+      if (multi) {
+        const arr = Array.isArray(QUIZ_STATE.userSelection[key]) ? QUIZ_STATE.userSelection[key] : [];
+        const i = arr.indexOf(v);
+        if (i >= 0) arr.splice(i, 1); else arr.push(v);
+        QUIZ_STATE.userSelection[key] = arr;
+        quizPaintSelections(); quizSaveState();
+      } else {
+        QUIZ_STATE.userSelection[key] = v;
+        quizPaintSelections(); quizSaveState();
+        setTimeout(() => {
+          const cur = QUIZ_STATE.currentStep;
+          if (cur === 5) { quizShowScreen('result'); quizRenderCars(); quizUpdateSubmitLinks(); }
+          else if (typeof cur === 'number' && cur >= 1 && cur < 5) quizShowScreen(cur + 1);
+        }, 220);
+      }
+      return;
+    }
+    const a = e.target.closest('[data-quiz-action]');
+    if (a) {
+      const act = a.dataset.quizAction;
+      if (act === 'start') quizShowScreen(1);
+      else if (act === 'back') {
+        const c = QUIZ_STATE.currentStep;
+        if (c === 'result') quizShowScreen(5);
+        else if (typeof c === 'number' && c > 1) quizShowScreen(c - 1);
+        else if (c === 1) quizShowScreen(0);
+      } else if (act === 'next') {
+        const c = QUIZ_STATE.currentStep;
+        if (c === 3) {
+          const arr = QUIZ_STATE.userSelection.bodyTypes;
+          if (!arr || !arr.length) {
+            const grp = shell.querySelector('[data-quiz-group="bodyTypes"]');
+            if (grp) grp.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}], {duration:280});
+            return;
+          }
+          quizShowScreen(4);
+        } else if (typeof c === 'number' && c >= 1 && c < 5) quizShowScreen(c + 1);
+        else if (c === 5) { quizShowScreen('result'); quizRenderCars(); quizUpdateSubmitLinks(); }
+      } else if (act === 'restart') {
+        QUIZ_STATE = { currentStep: 0, userSelection: { budget:'', steering:'', bodyTypes:[], power:'', age:'' } };
+        quizSaveState(); quizPaintSelections(); quizShowScreen(0);
+      }
+    }
+  });
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initQuiz);
+else initQuiz();
+</script>
+
+</body>
+</html>

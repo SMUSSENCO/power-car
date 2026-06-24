@@ -13,13 +13,15 @@ title / description / canonical / schema — чтобы поисковик не 
 Удаляет: устаревшие файлы в articles/ и auto/, которых больше нет в JSON.
 """
 import json, os, re, html, glob
+from datetime import date
 from urllib.parse import quote
 from xml.sax.saxutils import escape
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 BASE = "https://power-car.ru/"
-TODAY = "2026-06-17"
+# Use today's date for <lastmod> in generated sitemap (was hardcoded to a stale value)
+TODAY = date.today().isoformat()
 
 def read(p):
     with open(p, encoding="utf-8") as f: return f.read()
@@ -287,6 +289,7 @@ nc, rc = sync_dir("auto", car_files)
 def u(loc, pri, freq):
     return f"  <url>\n    <loc>{escape(loc)}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n  </url>"
 urls = [u(BASE, "1.0", "daily")]
+urls.append(u(BASE+"quiz.html", "0.9", "weekly"))
 for s in ["avto-iz-yaponii-tomsk","avto-iz-yaponii-novosibirsk","avto-iz-yaponii-moskva"]:
     urls.append(u(BASE+s+".html", "0.8", "weekly"))
 for a in articles:
