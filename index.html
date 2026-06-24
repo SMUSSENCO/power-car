@@ -6677,7 +6677,7 @@ function quizUpdateSubmitLinks() {
 }
 
 function quizFilterCatalog() {
-  if (!Array.isArray(window.CARS) || !window.CARS.length) return [];
+  if (!Array.isArray(CARS) || !CARS.length) return [];
   const s = QUIZ_STATE.userSelection;
 
   // Budget → price
@@ -6705,7 +6705,7 @@ function quizFilterCatalog() {
   else if (s.age === '5+')  { yearMax = NOW - 5; }
   else if (s.age === '<3')  { yearMin = NOW - 2; }
 
-  const result = window.CARS.filter(car => {
+  const result = CARS.filter(car => {
     if (typeof car.price === 'number' && (car.price < pMin || car.price > pMax)) return false;
     if (wheelWanted && car.wheel !== wheelWanted) return false;
     if (wantedBodies && !wantedBodies.has(car.body)) return false;
