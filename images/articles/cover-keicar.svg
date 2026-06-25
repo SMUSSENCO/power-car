@@ -1,55 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Купить кей-кар из Японии от 570 тыс рублей">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%" style="background-color: #0A0B0D;">
+  <rect width="1200" height="630" fill="#0A0B0D" />
+  
+  <path d="M 0,150 L 1200,150 M 0,300 L 1200,300 M 0,450 L 1200,450 M 0,600 L 1200,600" stroke="#16181C" stroke-width="1.5" />
+  <path d="M 150,0 L 150,630 M 300,0 L 300,630 M 450,0 L 450,630 M 600,0 L 600,630 M 750,0 L 750,630 M 900,0 L 900,630 M 1050,0 L 1050,630" stroke="#16181C" stroke-width="1.5" />
+  
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0A0A0A"/>
-      <stop offset="0.55" stop-color="#0d2a23"/>
-      <stop offset="1" stop-color="#064E3B"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.7" cy="0.3" r="0.6">
-      <stop offset="0" stop-color="#10B981" stop-opacity="0.45"/>
-      <stop offset="1" stop-color="#10B981" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="accentLine" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#10B981"/>
-      <stop offset="1" stop-color="#34D399"/>
-    </linearGradient>
+    <filter id="glow-keicar" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
 
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#glow)"/>
-
-  <!-- Eyebrow -->
-  <g transform="translate(600,150)">
-    <line x1="-50" y1="0" x2="-12" y2="0" stroke="#10B981" stroke-width="2.5"/>
-    <text x="0" y="6" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="22" font-weight="700"
-          fill="#34D399" letter-spacing="6">
-      РАСЧЁТЫ · ИМПОРТ ИЗ ЯПОНИИ
-    </text>
-    <line x1="12" y1="0" x2="50" y2="0" stroke="#10B981" stroke-width="2.5"/>
+  <circle cx="600" cy="180" r="90" fill="none" stroke="#16181C" stroke-width="2" />
+  <circle cx="600" cy="180" r="120" fill="none" stroke="#22252A" stroke-width="1.5" stroke-dasharray="8 8" />
+  
+  <g transform="translate(600, 180)" filter="url(#glow-keicar)">
+    <path d="M -50,15 C -30,-15 30,-15 50,15 L 50,30 L -50,30 Z" fill="none" stroke="#00FF88" stroke-width="4" />
+    <circle cx="-25" cy="30" r="12" fill="#FF5E00" />
+    <circle cx="25" cy="30" r="12" fill="#FF5E00" />
+    <path d="M -50,15 L -25,-15 L 25,-15 L 50,15" stroke="#00FF88" stroke-width="3" fill="none" />
   </g>
 
-  <!-- Headline (centered on x=600) -->
-  <text x="600" y="270" text-anchor="middle" font-family="'Bricolage Grotesque','Manrope',sans-serif"
-        font-size="76" font-weight="700" fill="#FAFAFA" letter-spacing="-2">
-    Купить кей-кар
-  </text>
-  <text x="600" y="350" text-anchor="middle" font-family="'Bricolage Grotesque','Manrope',sans-serif"
-        font-size="76" font-weight="700" letter-spacing="-2">
-    <tspan fill="#FAFAFA">от </tspan><tspan fill="#34D399">570 тыс ₽</tspan>
-  </text>
+  <text x="600" y="320" text-anchor="middle" fill="#00FF88" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" letter-spacing="4">ИМПОРТ МАЛОЛИТРАЖНЫХ АВТО: ФТС РФ</text>
+  <text x="600" y="380" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" letter-spacing="-1">КУПИТЬ КЕЙКАР ОТ 570 ТЫС РУБЛЕЙ</text>
+  <text x="600" y="440" text-anchor="middle" fill="#FF5E00" font-family="system-ui, -apple-system, sans-serif" font-size="46" font-weight="900" letter-spacing="-1">РЕАЛЬНЫЕ ЦЕНЫ И СТАВКИ ПОШЛИН</text>
+  
+  <line x1="450" y1="475" x2="750" y2="475" stroke="#22252A" stroke-width="3" />
 
-  <!-- Sub -->
-  <text x="600" y="420" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="26"
-        font-weight="500" fill="rgba(255,255,255,0.7)">
-    Реальная математика пошлин и кейс Honda N-WGN
-  </text>
+  <text x="600" y="515" text-anchor="middle" fill="#8E929A" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">Минимальная таможенная пошлина 1.5 евро за кубический сантиметр [6, 8]</text>
+  <text x="600" y="545" text-anchor="middle" fill="#FF5E00" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">Льготный утилизационный сбор ФТС в размере 5 200 рублей [6, 5]</text>
 
-  <!-- Decorative accent line -->
-  <line x1="500" y1="465" x2="700" y2="465" stroke="url(#accentLine)" stroke-width="4" stroke-linecap="round"/>
-
-  <!-- Brand mark bottom -->
-  <text x="600" y="555" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="22"
-        font-weight="700" fill="#10B981" letter-spacing="4">POWER Car</text>
-  <text x="600" y="590" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="16"
-        font-weight="500" fill="rgba(255,255,255,0.5)" letter-spacing="2">power-car.ru</text>
+  <text x="600" y="595" text-anchor="middle" fill="#4A4E57" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" letter-spacing="3">POWER CAR</text>
 </svg>

@@ -5017,6 +5017,7 @@ let VIDEOS = [];
 // ============ FILTER CONFIG ============
 const BUDGETS_AUTO = [
   { id:'all', label:'Все', min:0, max:Infinity },
+  { id:'lt700k', label:'до 700к', min:0, max:700000 },
   { id:'700k-1m', label:'700к–1 млн', min:700000, max:1000000 },
   { id:'1-1.5m', label:'1–1,5 млн', min:1000000, max:1500000 },
   { id:'1.5-2.5m', label:'1,5–2,5 млн', min:1500000, max:2500000 },
@@ -5334,6 +5335,15 @@ function getBudgetRange() {
   return list.find(b => b.id === state.budget) || list[0];
 }
 
+// Алиасы марок: в cars.json иногда модель попадает в поле brand («AUDI A1» вместо «Audi»).
+// Приводим к канонической марке — используется и в чипах, и в фильтре, чтобы клики совпадали.
+const BRAND_ALIAS = { 'audi a1': 'Audi' };
+function normalizeBrand(b) {
+  const raw = String(b || '').trim();
+  const aliased = BRAND_ALIAS[raw.toLowerCase()];
+  return aliased || raw;
+}
+
 // Динамически собираем уникальные марки из текущего пула (auto / moto)
 // Дедуп case-insensitively — в данных бывает "Honda" и "HONDA"; предпочитаем не-капс для отображения.
 function renderBrandChips() {
@@ -5343,7 +5353,7 @@ function renderBrandChips() {
   const map = new Map();
   pool.forEach(car => {
     if (!car || !car.brand) return;
-    const raw = String(car.brand).trim();
+    const raw = normalizeBrand(car.brand);
     const key = raw.toLowerCase();
     const cur = map.get(key);
     // Если в map уже All-Caps, а текущий не All-Caps — заменяем на более читаемое
@@ -5409,7 +5419,7 @@ function filterCars() {
     const carAge = ageOf(car.year);
     if (carAge < age.min || carAge > age.max) { matches = false; }
     if (state.country !== 'all' && car.country !== state.country) { matches = false; }
-    if (state.brand !== 'all' && (car.brand || '').toLowerCase() !== state.brand.toLowerCase()) { matches = false; }
+    if (state.brand !== 'all' && normalizeBrand(car.brand).toLowerCase() !== state.brand.toLowerCase()) { matches = false; }
     // Точная мощность (фильтр активен только если двинут со значения по умолчанию = 500)
     if (state.power < 500) {
       const p = Number(car.power);
