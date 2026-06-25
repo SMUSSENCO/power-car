@@ -6,16 +6,16 @@
 <meta name="theme-color" content="#0A0A0A" />
 <meta name="format-detection" content="telephone=no" />
 
-<title>Авто и Мото из Японии, Кореи, Китая под ключ | POWER Car</title>
-<meta name="description" content="Импорт авто и мото из Японии, Кореи и Китая под ключ за 25–40 дней: подбор, выкуп на аукционе, доставка, растаможка и оформление. Расчёт пошлины при вас. Офисы в Москве, Томске и Новосибирске." />
+<title>Импорт авто от 570 тыс ₽ и мото от 200 тыс из Японии, Кореи, Китая под ключ | POWER Car</title>
+<meta name="description" content="Импортируем авто и мото из Японии, Кореи и Китая под ключ за 25–40 дней. Кей-кары от 570 тыс ₽, мото от 200 тыс. Прозрачный расчёт без скрытых платежей." />
 
 <!-- Canonical -->
 <link rel="canonical" href="https://power-car.ru/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Авто и Мото из Японии, Кореи, Китая под ключ | POWER Car" />
-<meta property="og:description" content="Импорт авто и мото из Японии, Кореи и Китая под ключ за 25–40 дней: подбор, выкуп на аукционе, доставка, растаможка и оформление. Расчёт пошлины при вас. Офисы в Москве, Томске и Новосибирске." />
+<meta property="og:title" content="Импорт авто от 570 тыс ₽ и мото от 200 тыс из Японии, Кореи, Китая под ключ | POWER Car" />
+<meta property="og:description" content="Импортируем авто и мото из Японии, Кореи и Китая под ключ за 25–40 дней. Кей-кары от 570 тыс ₽, мото от 200 тыс. Прозрачный расчёт без скрытых платежей." />
 <meta property="og:image" content="https://power-car.ru/og-cover.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -3548,6 +3548,9 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
   gap: 4px;
   margin-bottom: 32px;
 }
+.quiz-progress[hidden] { display: none; }
+/* Чтобы кнопка "Начать" дышала, когда прогресс скрыт */
+[data-quiz-screen="start"] .quiz-start-actions { padding: 40px 0 24px; }
 .quiz-progress-seg {
   flex: 1;
   height: 4px;
@@ -3935,11 +3938,11 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
       <div>
         <span class="eyebrow">Надёжность, рождённая в Сибири</span>
         <h1>
-          <span class="word">Авто и мото</span><br/>
-          <span class="word">из <span class="country-rotator" id="rotator">Кореи</span> под ключ</span>
+          <span class="word">Привезём авто от 570 тыс,</span><br/>
+          <span class="word">мото от 250 тыс из <span class="country-rotator" id="rotator">Кореи</span></span>
         </h1>
         <p class="hero-sub">
-          Любой бюджет, низкая комиссия, отчётность на каждом шаге.
+          Находим исключение из правил. Живой и уникальный транспорт по доступной цене, полностью свободный от скрытых расходов.
         </p>
         <div class="hero-cta-row">
           <a href="#selector" class="btn btn-primary btn-shine">
@@ -4148,6 +4151,11 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
           <button class="chip" data-country="Korea">🇰🇷 Корея</button>
         </div>
 
+        <label class="selector-label">Марка</label>
+        <div class="chips" id="brandChips" role="radiogroup">
+          <!-- injected by renderBrandChips() based on current pool -->
+        </div>
+
         <label class="selector-label" for="powerSlider">
           Точная мощность: до <span class="power-value" id="powerValue">500</span> л.с.
         </label>
@@ -4263,194 +4271,6 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
   <div class="container">
     <div class="cases-scroll" id="casesTrack">
       <!-- injected by JS -->
-    </div>
-  </div>
-</section>
-
-<!-- ============ VIDEOS ============ -->
-<section id="videos">
-  <div class="container">
-    <div class="section-head-row reveal">
-      <div class="section-head" style="margin-bottom:0;">
-        <span class="eyebrow">Видео-обзоры</span>
-        <h2>Смотрите как мы привозим <span class="glow-text">авто</span></h2>
-        <p>Короткие ролики — от подбора лота до вручения ключей. Реальные авто, реальные клиенты.</p>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="videosPrev" aria-label="Предыдущие">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="carousel-btn" id="videosNext" aria-label="Следующие">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="videos-track" id="videosTrack" role="region" aria-label="Видео-обзоры">
-      <!-- injected by JS -->
-    </div>
-  </div>
-</section>
-
-<!-- ============ STEPS (collapsible) ============ -->
-<section id="steps">
-  <div class="container">
-    <details class="steps-collapse" id="stepsCollapse">
-      <summary class="steps-summary">
-        <div class="section-head reveal" style="margin-bottom:0;">
-          <span class="eyebrow">Этапы</span>
-          <h2>Как это <span class="glow-text">работает</span></h2>
-        </div>
-        <span class="steps-toggle" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-      </summary>
-      <div class="steps-grid reveal-stagger">
-        <article class="step">
-          <div class="step-num">01</div>
-          <h3>Подбор и расчет сметы</h3>
-          <p>Выполняем поиск по вашему ТЗ, рассчитываем стоимость лота, пошлину и утильсбор по официальным калькуляторам ведомств по текущему курсу валют.</p>
-        </article>
-        <article class="step">
-          <div class="step-num">02</div>
-          <h3>Выкуп и логистика</h3>
-          <p>Партнеры проводят диагностику техники с протоколом и фото-отчетом. Бронируем лот. Ваш платеж по инвойсу осуществляется напрямую на азиатские реквизиты. Мы организуем доставку во Владивосток или в Усурийск.</p>
-        </article>
-        <article class="step">
-          <div class="step-num">03</div>
-          <h3>Растаможка в РФ</h3>
-          <p>Таможенная очистка в порту Владивостока или в Усурийске. Брокер проходит лабораторию для СБКТС, делает вам прописку в ДВФО и готовит ЭПТС.</p>
-        </article>
-        <article class="step">
-          <div class="step-num">04</div>
-          <h3>Учет и выдача</h3>
-          <p>Автомобиль или мотоцикл имеет полный пакет необходимых документов и полностью легализирован. Забираете транспорт самостоятельно либо помогаем в логистике до города назначения. </p>
-        </article>
-      </div>
-    </details>
-  </div>
-</section>
-
-
-<!-- ============ TEAM ============ -->
-<section id="team">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Команда</span>
-      <h2>Кто <span class="glow-text">работает с вами</span></h2>
-    </div>
-    <div class="team-grid reveal-stagger"><!-- rendered by JS --></div>
-  </div>
-</section>
-
-<!-- ============ ARTICLES ============ -->
-<section id="articles">
-  <div class="container">
-    <div class="section-head-row reveal">
-      <div class="section-head" style="margin-bottom:0;">
-        <span class="eyebrow">Полезные статьи</span>
-        <h2>Гайды и <span class="glow-text">обзоры</span></h2>
-        <p>Разбираем нюансы импорта авто: расчёты, законы, сравнения моделей. Опыт наших клиентов и собственная экспертиза.</p>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="articlesPrev" aria-label="Предыдущие">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="carousel-btn" id="articlesNext" aria-label="Следующие">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="articles-track" id="articlesTrack" role="region" aria-label="Статьи о импорте авто">
-      <!-- injected by JS -->
-    </div>
-  </div>
-</section>
-
-<!-- ============ OFFICES ============ -->
-<section id="offices">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Офисы</span>
-      <h2>Где мы <span class="glow-text">находимся</span></h2>
-      <p>Три офиса в России — приходите познакомиться, обсудить вашу мечту.</p>
-    </div>
-
-    <div class="offices-grid reveal-stagger"><!-- rendered by JS --></div>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section id="faq">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">FAQ</span>
-      <h2>Частые <span class="glow-text">вопросы</span></h2>
-    </div>
-
-    <div class="faq-list reveal-stagger">
-      <details class="faq-item">
-        <summary>
-          Каковы сроки доставки и от чего они зависят?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Доставка из Южной Кореи до Владивостока занимает от 2 до 3 недель, а из Японии и Китая — от 3 до 4 недель. Сроки зависят от удаленности площадки выкупа от экспортного порта, расписания морских судов, скорости оплаты инвойса клиентом и загруженности таможенного поста во Владивостоке.</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          Как считается итоговая стоимость?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Цена авто на аукционе + доставка до РФ + таможенная пошлина + утильсбор + СБКТС + наша фиксированная комиссия. Никаких скрытых платежей.</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          Производится ли страховка автомобиля?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Да, все автомобили в обязательном порядке страхуются на полную стоимость на каждом этапе транспортировки — от выкупа на зарубежной площадке до выдачи во Владивостоке.</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          Можно ли посмотреть авто до покупки?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Конечно. На площадках зачастую есть схема дефектов автомобиля, в соответствии с требованиями клиента ориентируемся на состояние авто. Так же наш специалист на месте делает технический осмотр и исследование кузова с помощью толщиномера, после чего высылает подробный фото-отчет и техническое заключение.</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          Кто организует доставку?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Доставку до Владивостока организует наш партнер — международная логистическая компания Феникс Азия. После растаможки вы можете забрать автомобиль самостоятельно во Владивостоке либо мы организуем доставку в ваш регион автовозом или железной дорогой. Доставка из Владивостока оплачивается отдельно и не входит в изначальную стоимость на сайте.</div>
-      </details>
-      <details class="faq-item">
-         <summary>
-          Предоставляется ли техническая гарантия на автомобиль?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Юридически мы выступаем вашим агентом по импорту, поэтому предоставить техническую гарантию на подержанный автомобиль не можем. Однако японские аукционы и корейские дилеры несут строгую юридическую ответственность перед законом за достоверность аукционного листа и заявленного состояния автомобиля, за умышленное сокрытие дефектов или скрученный пробег их лишают лицензий!</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          Какие авто вы НЕ привозите?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Не возим автомобили старше 2008 года — из-за повышенных таможенных ставок и высоких рисков по техсостоянию. Также не работаем с авто после серьёзных ДТП и без документов.</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          Зачем нужна временная прописка в ДВФО при растаможке?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Владивостокская таможня регистрирует ввозимые физическими лицами автомобили без личного присутствия только при наличии прописки в Дальневосточном федеральном округе. Чтобы вам не пришлось лично лететь во Владивосток для подачи документов, мы помогаем оформить временную регистрацию в ДВФО через портал Госуслуги, что позволяет растаможить машину дистанционно и абсолютно законно.</div>
-      </details>
-      <details class="faq-item">
-        <summary>
-          Работаете ли с регионами?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-content">Доставляем во все регионы России — автовозом или индивидуальным транспортом. Стоимость доставки рассчитывается отдельно для каждого города.</div>
-      </details>
     </div>
   </div>
 </section>
@@ -4658,6 +4478,193 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS ============ -->
+<section id="videos">
+  <div class="container">
+    <div class="section-head-row reveal">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">Видео-обзоры</span>
+        <h2>Обзор привезённых <span class="glow-text">авто и мото</span></h2>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="videosPrev" aria-label="Предыдущие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="videosNext" aria-label="Следующие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="videos-track" id="videosTrack" role="region" aria-label="Видео-обзоры">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEPS (collapsible) ============ -->
+<section id="steps">
+  <div class="container">
+    <details class="steps-collapse" id="stepsCollapse">
+      <summary class="steps-summary">
+        <div class="section-head reveal" style="margin-bottom:0;">
+          <span class="eyebrow">Этапы</span>
+          <h2>Как это <span class="glow-text">работает</span></h2>
+        </div>
+        <span class="steps-toggle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </summary>
+      <div class="steps-grid reveal-stagger">
+        <article class="step">
+          <div class="step-num">01</div>
+          <h3>Подбор и расчет сметы</h3>
+          <p>Выполняем поиск по вашему ТЗ, рассчитываем стоимость лота, пошлину и утильсбор по официальным калькуляторам ведомств по текущему курсу валют.</p>
+        </article>
+        <article class="step">
+          <div class="step-num">02</div>
+          <h3>Выкуп и логистика</h3>
+          <p>Партнеры проводят диагностику техники с протоколом и фото-отчетом. Бронируем лот. Ваш платеж по инвойсу осуществляется напрямую на азиатские реквизиты. Мы организуем доставку во Владивосток или в Усурийск.</p>
+        </article>
+        <article class="step">
+          <div class="step-num">03</div>
+          <h3>Растаможка в РФ</h3>
+          <p>Таможенная очистка в порту Владивостока или в Усурийске. Брокер проходит лабораторию для СБКТС, делает вам прописку в ДВФО и готовит ЭПТС.</p>
+        </article>
+        <article class="step">
+          <div class="step-num">04</div>
+          <h3>Учет и выдача</h3>
+          <p>Автомобиль или мотоцикл имеет полный пакет необходимых документов и полностью легализирован. Забираете транспорт самостоятельно либо помогаем в логистике до города назначения. </p>
+        </article>
+      </div>
+    </details>
+  </div>
+</section>
+
+
+<!-- ============ TEAM ============ -->
+<section id="team">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Команда</span>
+      <h2>Кто <span class="glow-text">работает с вами</span></h2>
+    </div>
+    <div class="team-grid reveal-stagger"><!-- rendered by JS --></div>
+  </div>
+</section>
+
+<!-- ============ ARTICLES ============ -->
+<section id="articles">
+  <div class="container">
+    <div class="section-head-row reveal">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">Полезные статьи</span>
+        <h2>Гайды и <span class="glow-text">обзоры</span></h2>
+        <p>Разбираем нюансы импорта авто: расчёты, законы, сравнения моделей. Опыт наших клиентов и собственная экспертиза.</p>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="articlesPrev" aria-label="Предыдущие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="articlesNext" aria-label="Следующие">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="articles-track" id="articlesTrack" role="region" aria-label="Статьи о импорте авто">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFFICES ============ -->
+<section id="offices">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Офисы</span>
+      <h2>Где мы <span class="glow-text">находимся</span></h2>
+      <p>Три офиса в России — приходите познакомиться, обсудить вашу мечту.</p>
+    </div>
+
+    <div class="offices-grid reveal-stagger"><!-- rendered by JS --></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Частые <span class="glow-text">вопросы</span></h2>
+    </div>
+
+    <div class="faq-list reveal-stagger">
+      <details class="faq-item">
+        <summary>
+          Каковы сроки доставки и от чего они зависят?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Доставка из Южной Кореи до Владивостока занимает от 2 до 3 недель, а из Японии и Китая — от 3 до 4 недель. Сроки зависят от удаленности площадки выкупа от экспортного порта, расписания морских судов, скорости оплаты инвойса клиентом и загруженности таможенного поста во Владивостоке.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Как считается итоговая стоимость?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Цена авто на аукционе + доставка до РФ + таможенная пошлина + утильсбор + СБКТС + наша фиксированная комиссия. Никаких скрытых платежей.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Производится ли страховка автомобиля?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Да, все автомобили в обязательном порядке страхуются на полную стоимость на каждом этапе транспортировки — от выкупа на зарубежной площадке до выдачи во Владивостоке.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Можно ли посмотреть авто до покупки?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Конечно. На площадках зачастую есть схема дефектов автомобиля, в соответствии с требованиями клиента ориентируемся на состояние авто. Так же наш специалист на месте делает технический осмотр и исследование кузова с помощью толщиномера, после чего высылает подробный фото-отчет и техническое заключение.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Кто организует доставку?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Доставку до Владивостока организует наш партнер — международная логистическая компания Феникс Азия. После растаможки вы можете забрать автомобиль самостоятельно во Владивостоке либо мы организуем доставку в ваш регион автовозом или железной дорогой. Доставка из Владивостока оплачивается отдельно и не входит в изначальную стоимость на сайте.</div>
+      </details>
+      <details class="faq-item">
+         <summary>
+          Предоставляется ли техническая гарантия на автомобиль?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Юридически мы выступаем вашим агентом по импорту, поэтому предоставить техническую гарантию на подержанный автомобиль не можем. Однако японские аукционы и корейские дилеры несут строгую юридическую ответственность перед законом за достоверность аукционного листа и заявленного состояния автомобиля, за умышленное сокрытие дефектов или скрученный пробег их лишают лицензий!</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Какие авто вы НЕ привозите?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Не возим автомобили старше 2008 года — из-за повышенных таможенных ставок и высоких рисков по техсостоянию. Также не работаем с авто после серьёзных ДТП и без документов.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Зачем нужна временная прописка в ДВФО при растаможке?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Владивостокская таможня регистрирует ввозимые физическими лицами автомобили без личного присутствия только при наличии прописки в Дальневосточном федеральном округе. Чтобы вам не пришлось лично лететь во Владивосток для подачи документов, мы помогаем оформить временную регистрацию в ДВФО через портал Госуслуги, что позволяет растаможить машину дистанционно и абсолютно законно.</div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          Работаете ли с регионами?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-content">Доставляем во все регионы России — автовозом или индивидуальным транспортом. Стоимость доставки рассчитывается отдельно для каждого города.</div>
+      </details>
     </div>
   </div>
 </section>
@@ -5033,6 +5040,7 @@ const state = {
   budget: 'all',
   age: 'all',
   country: 'all',
+  brand: 'all',      // фильтр по марке из caталога (динамически)
   mototype: 'all',
   power: 500,        // max л.с. (500 = без фильтра)
   drive: 'all',      // FWD | RWD | 4WD | all
@@ -5326,6 +5334,58 @@ function getBudgetRange() {
   return list.find(b => b.id === state.budget) || list[0];
 }
 
+// Динамически собираем уникальные марки из текущего пула (auto / moto)
+// Дедуп case-insensitively — в данных бывает "Honda" и "HONDA"; предпочитаем не-капс для отображения.
+function renderBrandChips() {
+  const container = $('#brandChips');
+  if (!container) return;
+  const pool = state.type === 'auto' ? CARS : MOTOS;
+  const map = new Map();
+  pool.forEach(car => {
+    if (!car || !car.brand) return;
+    const raw = String(car.brand).trim();
+    const key = raw.toLowerCase();
+    const cur = map.get(key);
+    // Если в map уже All-Caps, а текущий не All-Caps — заменяем на более читаемое
+    if (!cur || (cur === cur.toUpperCase() && raw !== raw.toUpperCase())) {
+      map.set(key, raw);
+    }
+  });
+  const brands = Array.from(map.values()).sort((a, b) => a.localeCompare(b, 'ru'));
+  // Сброс state.brand если выбранная марка отсутствует в новом пуле
+  if (state.brand !== 'all' && !brands.find(b => b.toLowerCase() === state.brand.toLowerCase())) {
+    state.brand = 'all';
+  }
+  container.innerHTML = '';
+  const all = document.createElement('button');
+  all.type = 'button';
+  all.className = 'chip' + (state.brand === 'all' ? ' active' : '');
+  all.dataset.brand = 'all';
+  all.textContent = 'Все';
+  container.appendChild(all);
+  brands.forEach(b => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'chip' + (state.brand.toLowerCase() === b.toLowerCase() ? ' active' : '');
+    btn.dataset.brand = b;
+    btn.textContent = b;
+    container.appendChild(btn);
+  });
+  // Делегированный клик: один слушатель на контейнер вместо привязки к каждому чипу
+  if (!container.dataset.wired) {
+    container.addEventListener('click', (e) => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      trackOnce('calc_used');
+      state.brand = chip.dataset.brand;
+      container.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === chip));
+      resetPagination();
+      renderResults();
+    });
+    container.dataset.wired = '1';
+  }
+}
+
 function getAgeRange() {
   if (state.age === 'all') return { min: 0, max: 100 };
   const [min, max] = state.age.split('-').map(Number);
@@ -5349,6 +5409,7 @@ function filterCars() {
     const carAge = ageOf(car.year);
     if (carAge < age.min || carAge > age.max) { matches = false; }
     if (state.country !== 'all' && car.country !== state.country) { matches = false; }
+    if (state.brand !== 'all' && (car.brand || '').toLowerCase() !== state.brand.toLowerCase()) { matches = false; }
     // Точная мощность (фильтр активен только если двинут со значения по умолчанию = 500)
     if (state.power < 500) {
       const p = Number(car.power);
@@ -5447,6 +5508,7 @@ function initSelector() {
       // re-render
       resetPagination();
       renderBudgetChips();
+      renderBrandChips();
       renderResults();
     });
   });
@@ -5523,6 +5585,7 @@ function initSelector() {
   }
 
   renderBudgetChips();
+  renderBrandChips();
   renderResults();
 }
 

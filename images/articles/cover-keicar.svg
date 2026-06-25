@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Купить кей-кар из Японии от 570 тыс рублей">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A0A0A"/>
+      <stop offset="0.55" stop-color="#0d2a23"/>
+      <stop offset="1" stop-color="#064E3B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.7" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#10B981" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accentLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10B981"/>
+      <stop offset="1" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Eyebrow -->
+  <g transform="translate(600,150)">
+    <line x1="-50" y1="0" x2="-12" y2="0" stroke="#10B981" stroke-width="2.5"/>
+    <text x="0" y="6" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="22" font-weight="700"
+          fill="#34D399" letter-spacing="6">
+      РАСЧЁТЫ · ИМПОРТ ИЗ ЯПОНИИ
+    </text>
+    <line x1="12" y1="0" x2="50" y2="0" stroke="#10B981" stroke-width="2.5"/>
+  </g>
+
+  <!-- Headline (centered on x=600) -->
+  <text x="600" y="270" text-anchor="middle" font-family="'Bricolage Grotesque','Manrope',sans-serif"
+        font-size="76" font-weight="700" fill="#FAFAFA" letter-spacing="-2">
+    Купить кей-кар
+  </text>
+  <text x="600" y="350" text-anchor="middle" font-family="'Bricolage Grotesque','Manrope',sans-serif"
+        font-size="76" font-weight="700" letter-spacing="-2">
+    <tspan fill="#FAFAFA">от </tspan><tspan fill="#34D399">570 тыс ₽</tspan>
+  </text>
+
+  <!-- Sub -->
+  <text x="600" y="420" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="26"
+        font-weight="500" fill="rgba(255,255,255,0.7)">
+    Реальная математика пошлин и кейс Honda N-WGN
+  </text>
+
+  <!-- Decorative accent line -->
+  <line x1="500" y1="465" x2="700" y2="465" stroke="url(#accentLine)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Brand mark bottom -->
+  <text x="600" y="555" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="22"
+        font-weight="700" fill="#10B981" letter-spacing="4">POWER Car</text>
+  <text x="600" y="590" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="16"
+        font-weight="500" fill="rgba(255,255,255,0.5)" letter-spacing="2">power-car.ru</text>
+</svg>
