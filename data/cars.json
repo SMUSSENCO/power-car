@@ -3107,22 +3107,28 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 5429461,
+    "price": 5702931,
     "photos": [
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-1.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-2.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-3.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-4.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-5.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-6.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-7.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-8.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-9.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-10.jpg"
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-1.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-2.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-3.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-4.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-5.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-6.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-7.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-8.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-9.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-10.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-11.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-12.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-13.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-14.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-15.jpg",
+      "images/cars/Mercedes-Benz-C-Class-2026/Mercedes-Benz-C-Class-2026-16.jpg"
     ],
     "breakdown": {
-      "auction": 2797130,
-      "delivery": 151900,
+      "auction": 3222500,
+      "delivery": 0,
       "customs": 2330431,
       "docs": 100000,
       "commission": 50000
@@ -3476,6 +3482,170 @@
       "auction": 651000,
       "delivery": 151900,
       "customs": 134000,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "Honda-N-BOX-2021",
+    "brand": "Honda",
+    "model": "N BOX G",
+    "year": 2021,
+    "mileage": 115000,
+    "engine": "0,66",
+    "power": 58,
+    "transmission": "АКПП",
+    "body": "minivan",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "wheel": "right",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": true,
+    "weight": 4,
+    "published": true,
+    "addedAt": "2026-06-25",
+    "type": "auto",
+    "priceMarket": 355000,
+    "calc": {
+      "marketLocal": 315000,
+      "customs": 90761,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 414011,
+    "photos": [
+      "images/cars/Honda-N-BOX/Honda-N-BOX-1.jpeg",
+      "images/cars/Honda-N-BOX/Honda-N-BOX-2.jpeg",
+      "images/cars/Honda-N-BOX/Honda-N-BOX-3.jpeg"
+    ],
+    "breakdown": {
+      "auction": 173250,
+      "delivery": 0,
+      "customs": 90761,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "Suzuki-Alto-2023",
+    "brand": "SUZUKI",
+    "model": "ALTO",
+    "year": 2023,
+    "mileage": 107000,
+    "engine": "0,660",
+    "power": 46,
+    "transmission": "АКПП",
+    "body": "minivan",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "wheel": "right",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": true,
+    "weight": 2,
+    "published": true,
+    "addedAt": "2026-06-25",
+    "type": "auto",
+    "priceMarket": 500000,
+    "calc": {
+      "marketLocal": 509000,
+      "customs": 91900,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 521850,
+    "photos": [
+      "images/cars/Suzuki-Alto/Suzuki-Alto-1.jpeg",
+      "images/cars/Suzuki-Alto/Suzuki-Alto-2.jpeg",
+      "images/cars/Suzuki-Alto/Suzuki-Alto-3.jpeg"
+    ],
+    "breakdown": {
+      "auction": 279950,
+      "delivery": 0,
+      "customs": 91900,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "Toyota-Aqua-2021",
+    "brand": "Toyota",
+    "model": "Aqua",
+    "year": 2023,
+    "mileage": 90000,
+    "engine": "1,5",
+    "power": 74,
+    "transmission": "АКПП",
+    "body": "hatchback",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "wheel": "right",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": true,
+    "weight": 10,
+    "published": true,
+    "addedAt": "2026-06-25",
+    "type": "auto",
+    "priceMarket": 1250000,
+    "calc": {
+      "marketLocal": 830000,
+      "customs": 227338,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 833838,
+    "photos": [
+      "images/cars/Toyota-Aqua/Toyota-Aqua-1.jpeg",
+      "images/cars/Toyota-Aqua/Toyota-Aqua-2.jpeg",
+      "images/cars/Toyota-Aqua/Toyota-Aqua-3.jpeg"
+    ],
+    "breakdown": {
+      "auction": 456500,
+      "delivery": 0,
+      "customs": 227338,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "Suzuki-Jimny-2023",
+    "brand": "SUZUKI",
+    "model": "JIMNY 4WD XC",
+    "year": 2023,
+    "mileage": 24000,
+    "engine": "",
+    "power": 64,
+    "transmission": "АКПП",
+    "body": "minivan",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "wheel": "right",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-06-25",
+    "type": "auto",
+    "priceMarket": 1850000,
+    "calc": {
+      "marketLocal": 1640000,
+      "customs": 95000,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 1147000,
+    "photos": [
+      "images/cars/Suzuki-Jimny/Suzuki-Jimny-1.jpeg",
+      "images/cars/Suzuki-Jimny/Suzuki-Jimny-2.jpeg",
+      "images/cars/Suzuki-Jimny/Suzuki-Jimny-3.jpeg"
+    ],
+    "breakdown": {
+      "auction": 902000,
+      "delivery": 0,
+      "customs": 95000,
       "docs": 100000,
       "commission": 50000
     }
