@@ -1,5 +1,17 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
+# Шаблоны-роутеры — дают дубли с параметрами ?slug= и ?id=
+Disallow: /article.html
+Disallow: /car.html
+
+# Yandex-специфичные директивы для канонизации параметров
+User-agent: Yandex
+Allow: /
+Disallow: /admin.html
+Disallow: /article.html
+Disallow: /car.html
+Clean-param: slug /article.html
+Clean-param: id /car.html
 
 Sitemap: https://power-car.ru/sitemap.xml

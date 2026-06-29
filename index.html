@@ -42,7 +42,8 @@
 
 <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
 <link rel="preconnect" href="https://mc.yandex.ru">
-<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet">
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet"></noscript>
 
 <!-- JSON-LD LocalBusiness -->
 <script type="application/ld+json">
@@ -818,16 +819,11 @@ body.menu-open { overflow: hidden; }
 @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
 
 .hero h1 { margin-top: 18px; }
-.hero h1 .word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: rise 0.9s var(--ease-out) forwards;
-}
-.hero h1 .word:nth-child(1) { animation-delay: 0.1s; }
-.hero h1 .word:nth-child(2) { animation-delay: 0.2s; }
-.hero h1 .word:nth-child(3) { animation-delay: 0.3s; }
-@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+/* LCP fix: hero h1 виден сразу (без opacity:0). Yandex Metrika показывала задержку LCP 3590мс
+   из-за того что текст ждал animation:rise завершения. Анимацию keyframes оставляем —
+   она используется hero-sub / hero-cta / stats ниже (они below-fold, не влияют на LCP). */
+.hero h1 .word { display: inline-block; }
+@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
 .country-rotator {
   display: inline-block;
