@@ -3497,6 +3497,43 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
   transform: rotate(-12deg);
   opacity: 0.04;
 }
+/* Доп. слой паттерна "?" — рассыпанные мелкие знаки вопроса по всей плашке */
+.quiz-shell {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='%2310B981' fill-opacity='0.05' font-family='Manrope,sans-serif' font-weight='900' text-anchor='middle'><text x='80' y='110' font-size='90' transform='rotate(15 80 110)'>%3F</text><text x='400' y='80' font-size='65' transform='rotate(-10 400 80)'>%3F</text><text x='200' y='280' font-size='120' transform='rotate(20 200 280)'>%3F</text><text x='480' y='340' font-size='75' transform='rotate(-15 480 340)'>%3F</text><text x='100' y='480' font-size='80' transform='rotate(8 100 480)'>%3F</text><text x='550' y='500' font-size='55' transform='rotate(-22 550 500)'>%3F</text><text x='320' y='550' font-size='70' transform='rotate(12 320 550)'>%3F</text></g></svg>");
+}
+
+/* Lead-текст на start-экране */
+.quiz-start-lead {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 8px auto 28px;
+  max-width: 480px;
+  position: relative;
+  z-index: 1;
+}
+.quiz-start-lead b { color: var(--accent-2); font-weight: 700; }
+
+/* Цена в карточке результата квиза — крупно, как в каталоге */
+.quiz-car-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-top: 4px;
+}
+.quiz-car-price-market {
+  display: inline-block;
+  margin-left: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  text-decoration: line-through;
+}
 .quiz-shell > * { position: relative; z-index: 1; }
 
 /* Screens */
@@ -3546,7 +3583,8 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
 }
 .quiz-progress[hidden] { display: none; }
 /* Чтобы кнопка "Начать" дышала, когда прогресс скрыт */
-[data-quiz-screen="start"] .quiz-start-actions { padding: 40px 0 24px; }
+[data-quiz-screen="start"] .quiz-start-actions { padding: 18px 0 32px; text-align: center; }
+[data-quiz-screen="start"] .quiz-start-actions .btn { min-width: 200px; justify-content: center; }
 .quiz-progress-seg {
   flex: 1;
   height: 4px;
@@ -4283,6 +4321,7 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
 
       <!-- ===== Screen: START ===== -->
       <div class="quiz-screen active" data-quiz-screen="start">
+        <p class="quiz-start-lead">5 вопросов и найдём лучших авто для тебя. А так же подарим <b>скидку 10 000 ₽</b>.</p>
         <div class="quiz-start-actions">
           <button type="button" class="btn btn-primary btn-shine" data-quiz-action="start">
             Начать
@@ -4413,11 +4452,15 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
         <div class="quiz-options" data-quiz-group="power" data-quiz-multi="false">
           <button type="button" class="quiz-opt" data-quiz-value="low">
             <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="quiz-opt-text"><span class="quiz-opt-label">До 160 л.с.</span><span class="quiz-opt-hint">выгодный привоз — минимальный акциз (64 ₽/л.с.) и базовый утильсбор</span></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">До 160 л.с.</span><span class="quiz-opt-hint">льготный утильсбор и минимальная пошлина</span></span>
           </button>
           <button type="button" class="quiz-opt" data-quiz-value="high">
             <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <span class="quiz-opt-text"><span class="quiz-opt-label">Свыше 160 л.с.</span><span class="quiz-opt-hint">ставка акциза выше в 10× (613 ₽/л.с.), повышенный утильсбор</span></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Свыше 160 л.с.</span><span class="quiz-opt-hint">повышенный утильсбор</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="any">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Оба варианта</span></span>
           </button>
         </div>
       </div>
@@ -4443,6 +4486,10 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
           <button type="button" class="quiz-opt" data-quiz-value="<3">
             <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
             <span class="quiz-opt-text"><span class="quiz-opt-label">Младше 3 лет</span><span class="quiz-opt-hint">пошлина рассчитывается от стоимости покупки за границей</span></span>
+          </button>
+          <button type="button" class="quiz-opt" data-quiz-value="any">
+            <span class="quiz-opt-check radio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="quiz-opt-text"><span class="quiz-opt-label">Нет предпочтений</span></span>
           </button>
         </div>
       </div>
@@ -6820,27 +6867,27 @@ function quizRenderCars() {
     if (car.engine) specParts.push(escapeHtml(car.engine));
     specParts.push(car.wheel === 'right' ? 'Правый руль' : 'Левый руль');
     if (QUIZ_BODY_LABEL[car.body]) specParts.push(QUIZ_BODY_LABEL[car.body]);
-    if (car.price) specParts.push(new Intl.NumberFormat('ru-RU').format(car.price) + ' ₽');
     const spec = specParts.join(' · ');
     const photo = (car.photos && car.photos[0])
       ? `<img src="${escapeHtml(car.photos[0])}" alt="${title}" loading="lazy" />`
       : quizCarSvgIcon();
-    const badge = quizCarBadge(car);
-    const carText = encodeURIComponent(
-      `Здравствуйте! Интересует «${car.brand} ${car.model} ${car.year}» из квиза POWER Car. Жду фото лота и купон на 10 000 ₽.`
-    );
+    // Цена крупно (как в каталоге) + зачёркнутая рыночная если есть
+    const priceFmt = (n) => new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
+    const priceMarket = (car.priceMarket && car.priceMarket > car.price)
+      ? `<span class="quiz-car-price-market">${priceFmt(car.priceMarket)}</span>` : '';
+    const priceBlock = car.price ? `<div class="quiz-car-price">${priceFmt(car.price)}${priceMarket}</div>` : '';
+    // Ссылка на страницу авто (slugify как в build.py: [^A-Za-z0-9_-] → -)
+    const slug = String(car.id || '').replace(/[^A-Za-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
+    const href = slug ? `/auto/${slug}.html` : '#cta';
     return `
     <article class="quiz-car" data-car-id="${escapeHtml(car.id || '')}">
       <div class="quiz-car-img">${photo}</div>
       <div class="quiz-car-body">
         <div class="quiz-car-name">${title}</div>
         <div class="quiz-car-spec">${spec}</div>
-        <span class="quiz-car-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          ${escapeHtml(badge)}
-        </span>
-        <a class="quiz-car-btn" href="${QUIZ_TG}?text=${carText}" target="_blank" rel="noopener" data-quiz-car-cta="${escapeHtml(car.brand)} ${escapeHtml(car.model)}">
-          Получить скидку 10 000 ₽
+        ${priceBlock}
+        <a class="quiz-car-btn" href="${href}" data-quiz-car-cta="${escapeHtml(car.brand)} ${escapeHtml(car.model)}">
+          Узнать подробности
         </a>
       </div>
     </article>`;
