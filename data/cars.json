@@ -82,47 +82,6 @@
     }
   },
   {
-    "id": "Toyota-Aqua-2021",
-    "brand": "Toyota",
-    "model": "Aqua",
-    "year": 2023,
-    "mileage": 90000,
-    "engine": "1,5",
-    "power": 74,
-    "transmission": "АКПП",
-    "body": "hatchback",
-    "country": "Japan",
-    "flag": "🇯🇵",
-    "wheel": "right",
-    "deliveryMin": 14,
-    "deliveryMax": 21,
-    "hit": true,
-    "weight": 10,
-    "published": true,
-    "addedAt": "2026-06-25",
-    "type": "auto",
-    "priceMarket": 1250000,
-    "calc": {
-      "marketLocal": 830000,
-      "customs": 227338,
-      "commission": 50000,
-      "docs": 100000
-    },
-    "price": 833838,
-    "photos": [
-      "images/cars/Toyota-Aqua/Toyota-Aqua-1.jpeg",
-      "images/cars/Toyota-Aqua/Toyota-Aqua-2.jpeg",
-      "images/cars/Toyota-Aqua/Toyota-Aqua-3.jpeg"
-    ],
-    "breakdown": {
-      "auction": 456500,
-      "delivery": 0,
-      "customs": 227338,
-      "docs": 100000,
-      "commission": 50000
-    }
-  },
-  {
     "id": "Suzuki-Jimny-2023",
     "brand": "SUZUKI",
     "model": "JIMNY 4WD XC",
