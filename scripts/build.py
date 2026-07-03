@@ -290,6 +290,10 @@ def u(loc, pri, freq):
     return f"  <url>\n    <loc>{escape(loc)}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n  </url>"
 urls = [u(BASE, "1.0", "daily")]
 urls.append(u(BASE+"quiz.html", "0.9", "weekly"))
+# Страновые SEO-лендинги (scripts/gen_countries.py)
+for s in ["avto-iz-yaponii","avto-iz-korei","moto-iz-yaponii"]:
+    urls.append(u(BASE+s+".html", "0.85", "weekly"))
+# Городские SEO-лендинги (scripts/gen_geo.py)
 for s in ["avto-iz-yaponii-tomsk","avto-iz-yaponii-novosibirsk","avto-iz-yaponii-moskva"]:
     urls.append(u(BASE+s+".html", "0.8", "weekly"))
 for a in articles:
