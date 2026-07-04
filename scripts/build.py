@@ -256,7 +256,7 @@ def car_page(c):
   <a href="/" class="gh-logo">POWER <b>Car</b></a>
   <div class="slogan">Надёжность, рождённая в Сибири</div>
   <div class="gf-links"><a href="/">Главная</a><a href="/#selector">Каталог</a>
-    <a href="/avto-iz-yaponii-tomsk.html">Томск</a><a href="/avto-iz-yaponii-novosibirsk.html">Новосибирск</a><a href="/avto-iz-yaponii-moskva.html">Москва</a></div>
+    <a href="/import-avto-tomsk.html">Томск</a><a href="/import-avto-novosibirsk.html">Новосибирск</a><a href="/import-avto-moskva.html">Москва</a></div>
   <p style="margin-top:12px">ИП Степанов А.В., ИНН 702205795181.</p>
 </div></footer>
 {METRIKA}
@@ -291,10 +291,10 @@ def u(loc, pri, freq):
 urls = [u(BASE, "1.0", "daily")]
 urls.append(u(BASE+"quiz.html", "0.9", "weekly"))
 # Страновые SEO-лендинги (scripts/gen_countries.py)
-for s in ["avto-iz-yaponii","avto-iz-korei","moto-iz-yaponii"]:
+for s in ["avto-iz-yaponii","avto-iz-korei","avto-iz-kitaya","moto-iz-yaponii"]:
     urls.append(u(BASE+s+".html", "0.85", "weekly"))
 # Городские SEO-лендинги (scripts/gen_geo.py)
-for s in ["avto-iz-yaponii-tomsk","avto-iz-yaponii-novosibirsk","avto-iz-yaponii-moskva"]:
+for s in ["import-avto-tomsk","import-avto-novosibirsk","import-avto-moskva"]:
     urls.append(u(BASE+s+".html", "0.8", "weekly"))
 for a in articles:
     urls.append(u(BASE+"articles/"+a["slug"]+".html", "0.7", "weekly"))

@@ -212,11 +212,11 @@ HEADER = """<div class="ambient" aria-hidden="true"></div>
   <div class="header">
     <a href="/" class="logo">POWER <b>Car</b></a>
     <nav class="nav" aria-label="Главное меню">
-      <a href="/#selector">Подбор</a>
-      <a href="/#cases">Отзывы</a>
+      <a href="#cars">Каталог</a>
+      <a href="#cases">Отзывы</a>
+      <a href="#faq">Вопросы</a>
       <a href="/#offices">Офисы</a>
-      <a href="/#faq">Вопросы</a>
-      <a href="/#articles">Статьи</a>
+      <a href="/">Главная</a>
     </nav>
     <div class="header-cta">
       <a href="tel:+79138533305" class="btn btn-call btn-sm btn-icon" aria-label="Позвонить">
@@ -239,13 +239,14 @@ FOOTER = """<footer class="footer">
         <h4>Страны</h4>
         <a href="/avto-iz-yaponii.html">Авто из Японии</a>
         <a href="/avto-iz-korei.html">Авто из Кореи</a>
+        <a href="/avto-iz-kitaya.html">Авто из Китая</a>
         <a href="/moto-iz-yaponii.html">Мото из Японии</a>
       </div>
       <div>
         <h4>Города</h4>
-        <a href="/avto-iz-yaponii-tomsk.html">🏔 Томск</a>
-        <a href="/avto-iz-yaponii-novosibirsk.html">🌆 Новосибирск</a>
-        <a href="/avto-iz-yaponii-moskva.html">🏛 Москва</a>
+        <a href="/import-avto-tomsk.html">🏔 Томск</a>
+        <a href="/import-avto-novosibirsk.html">🌆 Новосибирск</a>
+        <a href="/import-avto-moskva.html">🏛 Москва</a>
       </div>
     </div>
     <div class="footer-legal">
@@ -492,7 +493,7 @@ def build_page(cfg):
         <h1>{html.escape(cfg["h1_top"])}<br><span class="accent">{html.escape(cfg["h1_bot"])}</span></h1>
         <p class="hero-sub">{html.escape(cfg["hero_p"])}</p>
         <div class="hero-cta-row">
-          <a href="#cars" class="btn btn-primary btn-shine">Смотреть каталог</a>
+          <a href="#cars" class="btn btn-primary btn-shine">Свежие лоты ниже ↓</a>
           <a href="/#cta" class="btn btn-ghost">Оставить заявку</a>
         </div>
         <div class="stats">
@@ -539,7 +540,7 @@ def build_page(cfg):
       <div class="skel"></div><div class="skel"></div><div class="skel"></div>
     </div>
     <div style="text-align:center;margin-top:32px">
-      <a href="/#selector" class="btn btn-primary btn-shine">Открыть подборщик — весь каталог</a>
+      <a href="/#selector" class="btn btn-primary btn-shine">Полный каталог сайта — все страны →</a>
     </div>
   </div>
 </section>
@@ -718,7 +719,50 @@ def main():
         ]
     }
 
-    for cfg in [japan, korea, moto]:
+    # ==================== КИТАЙ ====================
+    china = {
+        "slug": "avto-iz-kitaya",
+        "country_en": "China",
+        "country_rod": "Китая",
+        "catalog_type": "auto",
+        "cases_country_ru": "Китай",
+        "title": "Авто из Китая под заказ: BMW/Mercedes/Audi китайской сборки и электрокары от 1 млн ₽",
+        "desc": "Импорт авто из Китая под ключ: BMW, Mercedes, Audi китайской сборки на 30–40% дешевле дилеров. Электрокары Zeekr, Lixiang, Voyah, Nio, BYD от 1.8 млн ₽. Сроки 25–35 дней.",
+        "eyebrow": "Авто из Китая",
+        "breadcrumb": "Авто из Китая",
+        "hero_flag": "🇨🇳",
+        "h1_top": "Премиум и электрокары",
+        "h1_bot": "из Китая под ключ",
+        "hero_p": "BMW, Mercedes, Audi китайской сборки на 30–40% дешевле российских дилеров. Электрокары Zeekr, Lixiang, Voyah — от 1.8 млн ₽. Прямой выкуп на Che168 и Autohome.",
+        "stat_label": "авто в наличии",
+        "cars_h2_top": "Авто из Китая",
+        "cars_h2_bot": "в наличии сейчас",
+        "why_sub": "Китай — 23,6% рынка ввозимых б/у авто в РФ и мировой лидер по электрокарам.",
+        "why": [
+            (ICO_STAR, "Премиум-марки вдвое дешевле", "BMW 3-Series, Mercedes GLC, Audi Q3/Q5 китайской сборки — те же линии, те же комплектующие, но на 30–40% дешевле дилеров в РФ. Часто с расширенной комплектацией (панорама, HUD, вентиляция сидений в базе)."),
+            (ICO_BOLT, "Лучшие электрокары мира", "Zeekr 001/007, Lixiang L6/L7/L9, Voyah Free/Dream, Nio ET5, BYD Han/Seal, HiPhi X. Технологии впереди европейских. Нулевая пошлина на EV."),
+            (ICO_COIN, "От 1 млн ₽ под ключ", "Geely, Changan, Chery, Haval — свежие 2022–2024 г.в. с полным пакетом опций. Порог входа в бюджетный китайский сегмент — от 900 000 ₽."),
+            (ICO_SHIP, "Быстрая доставка", "Китай → Владивосток морем 7–14 дней или ж/д 12–18 дней. Общий срок под ключ — 25–35 дней."),
+        ],
+        "faq": [
+            ("В чём разница между китайской сборкой BMW/Mercedes и глобальной?",
+             "BMW Brilliance и Beijing Benz — совместные предприятия немецких концернов и китайских партнёров. Автомобили производятся на тех же линиях, из тех же комплектующих. Ключевые отличия: удлинённая колёсная база на седанах (L-версии) и расширенные комплектации в базе. Качество и надёжность идентичны. Подробно — в <a href='/articles/china-hybrid-customs-2026.html'>нашей статье про растаможку из Китая</a>."),
+            ("Есть ли русская навигация в китайских авто?",
+             "В большинстве моделей от 2020+ есть встроенная поддержка русского языка в мультимедиа. Если нет — прошиваем локально во Владивостоке или заменяем головное устройство. Стоимость русификации — 15–30 тыс ₽."),
+            ("Какие электрокары везёте из Китая?",
+             "Zeekr 001/007/009, Lixiang L6/L7/L9, Voyah Free/Dream, Nio ET5/ES6, BYD Han/Tang/Seal, Xpeng G9, HiPhi X, Denza D9. Электрокары освобождены от таможенной пошлины (0%), платится только льготный утильсбор + НДС. Для физлиц — от 1.8 млн ₽ под ключ."),
+            ("Сроки доставки из Китая до Владивостока?",
+             "Морская доставка: 7–14 дней. Железная дорога: 12–18 дней. Плюс 3–5 дней на выкуп и 4–7 дней на растаможку. Общий срок под ключ — 25–35 дней."),
+            ("Как проверить китайский автомобиль перед покупкой?",
+             "Работаем с Che168 (крупнейшая площадка б/у авто в КНР) и Autohome. Наши партнёры в Китае делают технический осмотр с толщиномером, компьютерную диагностику и подробный фотоотчёт. Все данные — до оплаты, вы принимаете решение на основе фактов."),
+            ("Гарантия и обслуживание китайских авто в РФ?",
+             "На новые электрокары Zeekr, Lixiang и Voyah действует официальная гарантия производителя (5 лет / 100 тыс км), валидируется в РФ через сеть партнёров. По BMW/Mercedes китайской сборки — обслуживание в любом дилерском центре РФ без ограничений (они не различают китайскую и немецкую сборку в базах)."),
+            ("Правда что в 2026 году утильсбор на китайские авто резко вырос?",
+             "На автомобили с ДВС свыше 2 литров и мощностью более 250 л.с. — да, утильсбор в 2026 году составляет 3.5–5 млн ₽ для физлиц (было ~1.5 млн). На малолитражки до 2 л и электрокары ставки остались льготными. Подробный <a href='/articles/china-export-180-days-2026.html'>расчёт по новым правилам</a>.")
+        ]
+    }
+
+    for cfg in [japan, korea, china, moto]:
         page = build_page(cfg)
         outfile = f"{cfg['slug']}.html"
         with open(outfile, "w", encoding="utf-8") as f:

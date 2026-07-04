@@ -1,418 +1,781 @@
 #!/usr/bin/env python3
-# Генератор гео-страниц POWER Car. Данные: offices.json + cars.json + проверенные источники.
-import json, html, os, re
-from urllib.parse import quote
-from collections import Counter
+# -*- coding: utf-8 -*-
+"""
+Генератор городских SEO-лендингов POWER Car (v2 — премиум-стиль главной).
 
-OUT = "/mnt/user-data/outputs"
-def slug(s): return re.sub(r"[^A-Za-z0-9_-]+","-",s).strip("-")
-cars = [c for c in json.load(open("data/cars.json")) if c.get("published")]
-offices = {o["id"]: o for o in json.load(open("data/offices.json"))}
+Изменения v1 → v2:
+  - Стиль 1:1 с главной (ambient bg, glass-cards, btn с градиентом, шрифты)
+  - Cars грузятся динамически из /data/cars.json на клиенте — новые машины подхватываются авто
+  - Cases фильтруются по clientCity
+  - Уникальные title/description/H1 для каждого города (снимаем «малоценность»)
+  - Убраны: старый route-strip и «Что учесть в X» блоки
+  - Добавлены: карточка офиса с Яндекс.Картой + анимированный маршрут внизу
+  - FAQ с шевроном (как на главной)
 
-def fmt(n):
-    return f"{int(n):,}".replace(",", " ") + " ₽"
+Запуск: python3 scripts/gen_geo.py
+"""
+import json, os, html, re
+from urllib.parse import quote_plus
 
-# --- РЕАЛЬНАЯ статистика каталога (для честного блока «в наличии у нас») ---
-def brand_key(b):
-    return "Mercedes-Benz" if b.strip().lower().replace("-", " ") == "mercedes benz" else b
-inv_country = Counter({"Япония": 0, "Корея": 0, "Китай": 0})
-cmap = {"Japan": "Япония", "Korea": "Корея", "China": "Китай"}
-for c in cars:
-    k = cmap.get(c.get("country"))
-    if k: inv_country[k] += 1
-inv_brand = Counter(brand_key(c["brand"]) for c in cars).most_common(6)
-total_inv = len(cars)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(ROOT)
+BASE = "https://power-car.ru/"
 
-# --- Данные Автостата (проверено поиском, источники указаны на странице) ---
-# Структура импорта б/у авто в РФ, 1 кв. 2026 (Автостат)
-import_structure = [("Япония", 57.7), ("Китай", 23.6), ("Корея", 7.4), ("Прочие", 11.3)]
+def read_json(p):
+    with open(p, encoding="utf-8") as f: return json.load(f)
 
-ACCENT = "#10B981"
 
-def svg_bars(data, unit="%", maxv=None, color=ACCENT):
-    """Горизонтальные бар-чарты на чистом SVG (без внешних зависимостей)."""
-    maxv = maxv or max(v for _, v in data)
-    rowh, gap, lblw, barw = 34, 10, 132, 360
-    h = len(data) * (rowh + gap) + 6
-    rows = []
-    y = 6
-    for label, v in data:
-        w = max(2, barw * v / maxv)
-        rows.append(f'''<text x="0" y="{y+rowh*0.62}" class="gc-lbl">{html.escape(label)}</text>
-<rect x="{lblw}" y="{y+4}" rx="6" width="{barw}" height="{rowh-8}" class="gc-track"/>
-<rect x="{lblw}" y="{y+4}" rx="6" width="{w:.1f}" height="{rowh-8}" fill="{color}"/>
-<text x="{lblw+w+8:.1f}" y="{y+rowh*0.62}" class="gc-val">{v}{unit}</text>''')
-        y += rowh + gap
-    return f'<svg viewBox="0 0 {lblw+barw+70} {h}" class="geo-chart" role="img">{"".join(rows)}</svg>'
-
-def car_card(c):
-    photo = (c.get("photos") or [None])[0]
-    alt = html.escape(f'{c["brand"]} {c["model"]} {c["year"]} — импорт под ключ')
-    img = f'<img src="{photo}" alt="{alt}" loading="lazy" width="320" height="200">' if photo \
-        else '<div class="cc-noimg">POWER Car</div>'
-    pm = c.get("priceMarket") or 0
-    market = f'<span class="cc-market">{fmt(pm)}</span>' if pm > (c.get("price") or 0) else ""
-    return f'''<a class="car-card" href="/car.html?id={quote(c["id"])}">
-  <div class="cc-img">{img}<span class="cc-flag">{c.get("flag","")}</span></div>
-  <div class="cc-body">
-    <div class="cc-title">{html.escape(c["brand"])} {html.escape(c["model"])}</div>
-    <div class="cc-meta">{c["year"]} · {html.escape(str(c.get("engine","")))} · {html.escape(str(c.get("transmission","")))}</div>
-    <div class="cc-price">{fmt(c["price"])} {market}</div>
-    <span class="cc-cta">Заказать в {{prep_acc}} →</span>
-  </div>
-</a>'''
-
-# выбор карточек: приоритет кроссоверам/SUV (актуально для Сибири), затем хиты
-def pick_cars(n=6):
-    hits = [c for c in cars if c.get("hit") and c.get("photos")]
-    suv = [c for c in hits if c.get("body") in ("crossover", "suv", "wagon")]
-    rest = [c for c in hits if c not in suv]
-    chosen = (suv + rest)[:n]
-    if len(chosen) < n:
-        chosen += [c for c in cars if c.get("photos") and c not in chosen][: n - len(chosen)]
-    return chosen[:n]
-
-CARS_PICK = pick_cars(6)
-
-CSS = """
+# ============================================================
+#   CSS — общий стиль с gen_countries.py + анимированный маршрут
+# ============================================================
+CSS = r"""
+:root{
+  --bg:#0A0A0A;--bg-alt:#0E0E10;--bg-elevated:#131316;
+  --surface:rgba(255,255,255,0.035);--surface-2:rgba(255,255,255,0.06);--surface-3:rgba(255,255,255,0.10);
+  --border:rgba(255,255,255,0.08);--border-2:rgba(255,255,255,0.14);
+  --text:#FAFAFA;--text-muted:rgba(255,255,255,0.62);--text-dim:rgba(255,255,255,0.42);
+  --accent:#10B981;--accent-2:#34D399;--accent-dark:#047857;
+  --accent-glow:rgba(16,185,129,0.35);--accent-soft:rgba(16,185,129,0.12);
+  --r-sm:14px;--r-md:22px;--r-lg:32px;
+  --font-display:'Bricolage Grotesque',system-ui,-apple-system,sans-serif;
+  --font-body:'Manrope',system-ui,-apple-system,sans-serif;
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+  --sat:env(safe-area-inset-top);--sab:env(safe-area-inset-bottom);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0A0A0A;--bg2:#0E0E10;--surf:rgba(255,255,255,.04);--surf2:rgba(255,255,255,.07);
---bd:rgba(255,255,255,.09);--bd2:rgba(255,255,255,.16);--tx:#FAFAFA;--mut:rgba(255,255,255,.62);
---dim:rgba(255,255,255,.42);--acc:#10B981;--acc2:#34D399;--accsoft:rgba(16,185,129,.12);--r:22px}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:'Manrope',system-ui,-apple-system,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;min-height:100%;position:relative}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;line-height:1.1;letter-spacing:-.01em}
-.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
-/* header */
-.gh{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;justify-content:space-between;
-padding:14px 20px;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
-.gh-logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.15rem}
-.gh-logo b{color:var(--acc)}
-.gh-nav{display:flex;gap:20px;font-size:.92rem;color:var(--mut)}
-.gh-nav a:hover{color:var(--tx)}
-.gh-cta{display:flex;gap:10px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-weight:600;font-size:.92rem;
-border:1px solid var(--bd2);transition:.2s;cursor:pointer;white-space:nowrap}
-.btn-primary{background:var(--acc);color:#04130d;border-color:var(--acc)}
-.btn-primary:hover{background:var(--acc2)}
-.btn-ghost:hover{background:var(--surf2)}
-@media(max-width:780px){.gh-nav{display:none}}
-/* hero */
-.hero{position:relative;padding:72px 0 56px;overflow:hidden}
-.hero::after{content:"";position:absolute;top:-180px;right:-120px;width:520px;height:520px;border-radius:50%;
-background:radial-gradient(closest-side,var(--accsoft),transparent);pointer-events:none}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--acc2);font-weight:600;font-size:.82rem;
-letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--acc)}
-.hero h1{font-size:clamp(2rem,5vw,3.3rem);margin-bottom:16px}
-.hero h1 span{color:var(--acc2)}
-.hero p{color:var(--mut);font-size:1.08rem;max-width:640px;margin-bottom:26px}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:30px;margin-top:34px;flex-wrap:wrap}
-.hero-stats .s b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.7rem;color:var(--tx)}
-.hero-stats .s span{color:var(--dim);font-size:.86rem}
-/* sections */
-section{padding:46px 0}
-.sec-h{font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:8px}
-.sec-sub{color:var(--mut);margin-bottom:26px;max-width:720px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-@media(max-width:860px){.grid2{grid-template-columns:1fr}}
-.card{background:var(--surf);border:1px solid var(--bd);border-radius:var(--r);padding:24px}
-.card h3{font-size:1.15rem;margin-bottom:12px}
-.card p{color:var(--mut);font-size:.96rem}
-.card ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:6px}
-.card li{color:var(--mut);font-size:.95rem;padding-left:24px;position:relative}
-.card li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
-.src{color:var(--dim);font-size:.78rem;margin-top:14px}
-.src a{color:var(--mut);text-decoration:underline}
-/* delivery / route */
-.route{background:var(--surf);border:1px solid var(--bd);border-radius:var(--r);padding:24px;margin-top:18px}
-.route-strip{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:14px 0}
-.route-strip .pt{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:64px}
-.route-strip .dot{width:12px;height:12px;border-radius:50%;background:var(--acc)}
-.route-strip .dot.mid{width:8px;height:8px;background:var(--dim)}
-.route-strip .pt small{color:var(--dim);font-size:.72rem;text-align:center}
-.route-strip .ln{flex:1;height:2px;min-width:14px;background:linear-gradient(90deg,var(--acc),var(--dim))}
-.route-map{margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid var(--bd)}
-.route-map iframe{width:100%;height:300px;border:0;display:block}
-/* charts */
-.geo-chart{width:100%;height:auto}
-.gc-lbl{fill:var(--tx);font:600 13px Manrope,sans-serif}
-.gc-val{fill:var(--acc2);font:700 13px Manrope,sans-serif}
-.gc-track{fill:rgba(255,255,255,.06)}
-/* cars */
-.cars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
-.car-card{background:var(--surf);border:1px solid var(--bd);border-radius:18px;overflow:hidden;transition:.2s;display:block}
-.car-card:hover{border-color:var(--bd2);transform:translateY(-3px)}
-.cc-img{position:relative;aspect-ratio:16/10;background:var(--bg2);overflow:hidden}
-.cc-img img{width:100%;height:100%;object-fit:cover}
-.cc-noimg{display:flex;align-items:center;justify-content:center;height:100%;color:var(--dim);font-weight:700}
-.cc-flag{position:absolute;top:10px;left:10px;font-size:1.2rem}
-.cc-body{padding:14px 16px 18px}
-.cc-title{font-weight:700;font-size:1.02rem;margin-bottom:4px}
-.cc-meta{color:var(--dim);font-size:.82rem;margin-bottom:10px}
-.cc-price{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.18rem}
-.cc-market{color:var(--dim);font-size:.85rem;text-decoration:line-through;font-weight:400;margin-left:6px}
-.cc-cta{display:inline-block;margin-top:10px;color:var(--acc2);font-size:.88rem;font-weight:600}
-/* cta band */
-.cta{background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(16,185,129,.04));border:1px solid var(--bd2);
-border-radius:var(--r);padding:38px 28px;text-align:center;margin:18px 0}
-.cta h2{font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:10px}
-.cta p{color:var(--mut);margin-bottom:22px}
-/* faq */
-.faq details{border:1px solid var(--bd);border-radius:14px;padding:0 18px;margin-bottom:12px;background:var(--surf)}
-.faq summary{cursor:pointer;padding:16px 0;font-weight:600;list-style:none}
-.faq summary::-webkit-details-marker{display:none}
-.faq details[open] summary{color:var(--acc2)}
-.faq .a{color:var(--mut);padding:0 0 16px;font-size:.96rem}
-/* footer */
-.gf{border-top:1px solid var(--bd);padding:34px 0 50px;color:var(--mut);font-size:.9rem}
-.gf-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:18px}
-.gf .slogan{color:var(--acc2);font-weight:600;margin-top:6px}
-.gf a:hover{color:var(--tx)}
-.gf-links{display:flex;gap:18px;flex-wrap:wrap}
-.note{color:var(--dim);font-size:.84rem;margin-top:8px}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.025em;line-height:1.1}
+
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;transform:translateZ(0)}
+.ambient::before,.ambient::after{content:'';position:absolute;width:60vw;height:60vw;border-radius:50%;filter:blur(120px);opacity:0.4}
+.ambient::before{top:-20%;left:-10%;background:radial-gradient(circle,var(--accent) 0%,transparent 60%);animation:drift1 22s var(--ease-out) infinite alternate}
+.ambient::after{bottom:-30%;right:-20%;width:70vw;height:70vw;background:radial-gradient(circle,#064E3B 0%,transparent 60%);animation:drift2 28s var(--ease-out) infinite alternate}
+@keyframes drift1{to{transform:translate(20vw,10vh) scale(1.15)}}
+@keyframes drift2{to{transform:translate(-15vw,-10vh) scale(1.1)}}
+@media (prefers-reduced-motion:reduce){.ambient::before,.ambient::after{animation:none}}
+
+.container{max-width:1200px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+@media(min-width:768px){.container{padding:0 40px}}
+section{position:relative;padding:64px 0}
+@media(min-width:768px){section{padding:96px 0}}
+
+.header-wrap{position:sticky;top:0;left:0;right:0;z-index:100;padding-top:calc(20px + var(--sat));padding-bottom:20px}
+.header{margin:0 16px;border-radius:999px;padding:8px 8px 8px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(10,10,10,0.78);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%)}
+@media(min-width:768px){.header{margin:0 32px;padding:10px 10px 10px 22px}}
+.logo{display:flex;align-items:center;color:var(--text);font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:-0.02em}
+.logo b{color:var(--accent-2)}
+.nav{display:none;gap:2px;align-items:center}
+@media(min-width:1024px){.nav{display:flex}}
+.nav a{color:var(--text-muted);font-size:0.88rem;font-weight:500;padding:8px 14px;border-radius:999px;transition:all 0.3s var(--ease-out)}
+.nav a:hover{color:var(--text);background:var(--surface-2)}
+.header-cta{display:flex;gap:6px;align-items:center}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-body);font-weight:600;font-size:0.95rem;padding:13px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:all 0.3s var(--ease-out);white-space:nowrap;min-height:46px;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.btn-primary{background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#002417;box-shadow:0 1px 0 rgba(255,255,255,0.4) inset,0 -1px 0 rgba(0,0,0,0.2) inset,0 12px 28px -8px var(--accent-glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,0.4) inset,0 -1px 0 rgba(0,0,0,0.2) inset,0 18px 40px -8px var(--accent-glow)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{background:var(--surface-2);color:var(--text);border-color:var(--border-2);backdrop-filter:blur(12px)}
+.btn-ghost:hover{background:var(--surface-3)}
+.btn-sm{padding:9px 16px;font-size:0.85rem;min-height:40px}
+.btn-icon{padding:12px;min-width:46px;min-height:46px;border-radius:50%}
+.btn-call{background:var(--accent-soft);color:var(--accent-2);border-color:rgba(16,185,129,0.3)}
+.btn-call:hover{background:var(--accent-glow);color:var(--text)}
+.btn-shine::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transform:translateX(-100%);animation:btnShine 4.5s var(--ease-out) infinite}
+@keyframes btnShine{0%{transform:translateX(-100%)}18%,100%{transform:translateX(100%)}}
+
+.eyebrow{font-family:var(--font-body);font-size:0.78rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--accent)}
+.section-head{max-width:720px;margin-bottom:40px}
+.section-head h2{margin-top:16px;font-size:clamp(1.75rem,4.5vw,2.75rem)}
+.section-head p{margin-top:14px;font-size:clamp(0.95rem,1.7vw,1.1rem);color:var(--text-muted)}
+.glow-text{background:linear-gradient(120deg,#fff 0%,var(--accent-2) 50%,#fff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+
+.hero{padding-top:56px;padding-bottom:24px}
+@media(min-width:768px){.hero{padding-top:72px;padding-bottom:56px}}
+.hero-inner{display:grid;gap:32px;align-items:center}
+@media(min-width:1024px){.hero-inner{grid-template-columns:1.2fr 1fr;gap:48px}}
+.hero h1{margin-top:18px;font-size:clamp(1.85rem,4.8vw,3.5rem);font-weight:700;letter-spacing:-0.04em;line-height:1.08}
+.hero h1 .accent{background:linear-gradient(120deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{margin-top:20px;font-size:clamp(0.95rem,1.9vw,1.15rem);color:var(--text-muted);max-width:540px;line-height:1.55}
+.hero-cta-row{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+.hero-city-frame{aspect-ratio:1;display:grid;place-items:center;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);max-width:420px;margin:0 auto;padding:40px;position:relative;overflow:hidden}
+.hero-city-icon{font-size:clamp(4rem,10vw,7rem);line-height:1;filter:drop-shadow(0 8px 40px var(--accent-glow));text-align:center}
+.hero-city-name{margin-top:16px;font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;color:var(--text);text-align:center}
+.hero-city-office{margin-top:8px;color:var(--text-muted);font-size:0.9rem;text-align:center}
+
+.stats{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:18px;border-radius:var(--r-md);background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%)}
+.stat{text-align:left;padding:0 10px;position:relative}
+.stat+.stat::before{content:'';position:absolute;left:0;top:12%;bottom:12%;width:1px;background:var(--border)}
+.stat-value{font-family:var(--font-display);font-size:clamp(1.3rem,3vw,2rem);font-weight:700;letter-spacing:-0.04em;line-height:1;background:linear-gradient(180deg,#fff,#aaa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{margin-top:6px;font-size:0.75rem;color:var(--text-muted);line-height:1.3}
+
+.cars-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:640px){.cars-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.cars-grid{grid-template-columns:1fr 1fr 1fr}}
+.car-card{position:relative;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);overflow:hidden;transition:all 0.4s var(--ease-out);display:flex;flex-direction:column;color:var(--text)}
+.car-card:hover{border-color:var(--border-2);background:var(--surface-2);transform:translateY(-4px)}
+.car-img{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0d2a23,#0a1a16);overflow:hidden}
+.car-img img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+.car-flag-badge{position:absolute;top:12px;left:12px;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,0.55);border:1px solid var(--border-2);backdrop-filter:blur(20px);font-size:0.72rem;font-weight:600;display:flex;align-items:center;gap:6px;z-index:2}
+.car-body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.car-title{font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:-0.02em;line-height:1.15;color:var(--text)}
+.car-meta{display:flex;gap:6px;flex-wrap:wrap;font-size:0.78rem;color:var(--text-muted)}
+.car-meta-item{display:inline-flex;align-items:center;gap:4px}
+.car-meta-item::after{content:'·';margin-left:6px;opacity:0.5}
+.car-meta-item:last-child::after{display:none}
+.car-price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.car-price{font-family:var(--font-display);font-weight:700;font-size:1.35rem;letter-spacing:-0.03em;color:var(--text)}
+.car-price-market{font-size:0.85rem;color:var(--text-dim);text-decoration:line-through}
+.car-actions{display:flex;gap:8px;margin-top:auto;padding-top:6px}
+.car-actions .btn{flex:1;padding:11px 14px;font-size:0.85rem;min-height:42px}
+
+.cases-scroll{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline-start:20px;padding:4px 20px 24px;margin:0 -20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.cases-scroll::-webkit-scrollbar{display:none}
+@media(min-width:768px){.cases-scroll{margin:0 -40px;padding:4px 40px 24px}}
+.case{flex:0 0 auto;width:min(340px,82vw);scroll-snap-align:start;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);overflow:hidden;transition:all 0.4s var(--ease-out);display:flex;flex-direction:column}
+.case:hover{border-color:var(--border-2);background:var(--surface-2);transform:translateY(-4px)}
+.case-photo{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0d2a23,#0a1a16);overflow:hidden}
+.case-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.case-photo-overlay{position:absolute;inset:auto 0 0 0;padding:50px 16px 16px;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 100%)}
+.case-client{color:#FAFAFA;font-weight:700;font-size:0.98rem;letter-spacing:-0.01em}
+.case-city{color:rgba(255,255,255,0.75);font-size:0.82rem}
+.case-flag{position:absolute;top:12px;right:12px;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,0.55);border:1px solid var(--border-2);backdrop-filter:blur(20px);font-size:0.72rem;font-weight:600;z-index:2}
+.case-body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.case-title{font-family:var(--font-display);font-weight:600;font-size:1.05rem;letter-spacing:-0.02em;line-height:1.2}
+.case-quote{color:var(--text-muted);font-size:0.9rem;line-height:1.5;font-style:italic;position:relative;padding-left:12px;border-left:2px solid var(--accent);margin-top:4px}
+.case-meta{display:flex;gap:14px;color:var(--text-muted);font-size:0.82rem;flex-wrap:wrap;margin-top:auto;padding-top:8px;border-top:1px solid var(--border)}
+.case-meta b{color:var(--accent-2)}
+
+.office-card{display:grid;gap:0;grid-template-columns:1fr;border-radius:var(--r-lg);overflow:hidden;background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%)}
+@media(min-width:768px){.office-card{grid-template-columns:1fr 1.3fr}}
+.office-info{padding:32px;display:flex;flex-direction:column;gap:16px}
+.office-city{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;letter-spacing:-0.02em}
+.office-row{display:flex;gap:14px;align-items:flex-start;color:var(--text)}
+.office-row svg{width:20px;height:20px;color:var(--accent-2);flex-shrink:0;margin-top:2px}
+.office-row-label{color:var(--text-muted);font-size:0.82rem;margin-bottom:2px}
+.office-row-value{font-weight:600;font-size:0.96rem;line-height:1.35}
+.office-row-value a{color:var(--accent-2)}
+.office-map{position:relative;min-height:280px;background:var(--bg-elevated)}
+.office-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{border-radius:var(--r-md);background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);overflow:hidden;transition:all 0.4s var(--ease-out)}
+.faq-item[open]{border-color:var(--border-2);background:var(--surface-2)}
+.faq-item summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--font-display);font-weight:600;font-size:1rem;letter-spacing:-0.01em;-webkit-tap-highlight-color:transparent}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-chev{width:36px;height:36px;border-radius:50%;background:var(--accent-soft);border:1px solid rgba(16,185,129,0.28);display:grid;place-items:center;color:var(--accent-2);flex-shrink:0;transition:transform 0.3s var(--ease-out)}
+.faq-chev svg{width:16px;height:16px;transition:transform 0.3s var(--ease-out)}
+.faq-item[open] .faq-chev{background:var(--accent);color:#002417}
+.faq-item[open] .faq-chev svg{transform:rotate(180deg)}
+.faq-content{padding:0 24px 22px;color:var(--text-muted);font-size:0.95rem;line-height:1.6}
+.faq-content a{color:var(--accent-2);text-decoration:underline;text-decoration-color:rgba(52,211,153,0.4);text-underline-offset:3px}
+.faq-content a:hover{text-decoration-color:var(--accent-2)}
+
+.cta-card{position:relative;overflow:hidden;padding:40px 28px;border-radius:var(--r-lg);background:linear-gradient(135deg,rgba(16,185,129,0.14),rgba(16,185,129,0.03));border:1px solid rgba(16,185,129,0.28);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);text-align:center}
+@media(min-width:768px){.cta-card{padding:56px 48px}}
+.cta-card h2{font-size:clamp(1.5rem,3.4vw,2.25rem);margin-bottom:12px}
+.cta-card p{color:var(--text-muted);margin-bottom:24px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.route-card{padding:32px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%)}
+.route-svg{width:100%;height:auto;max-height:220px;display:block}
+.route-line{stroke:var(--accent);stroke-width:2;fill:none;stroke-dasharray:8 6;stroke-dashoffset:0;animation:routeFlow 14s linear infinite}
+@keyframes routeFlow{to{stroke-dashoffset:-280}}
+.route-dot{fill:var(--accent)}
+.route-dot-pulse{animation:pulseDot 2.4s var(--ease-out) infinite;transform-origin:center;transform-box:fill-box}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:0.45}}
+.route-label{font-family:var(--font-body);font-size:12px;font-weight:600;fill:var(--text-muted)}
+.route-label.end{fill:var(--accent-2);font-weight:700}
+.route-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:24px}
+@media(max-width:640px){.route-stats{grid-template-columns:1fr}}
+.route-stat{padding:16px;border-radius:var(--r-sm);background:rgba(0,0,0,0.25);border:1px solid var(--border)}
+.route-stat-value{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--accent-2);letter-spacing:-0.02em}
+.route-stat-label{color:var(--text-muted);font-size:0.82rem;margin-top:4px}
+
+.footer{padding:40px 0 24px;border-top:1px solid var(--border);margin-top:40px;position:relative;z-index:2}
+.footer-grid{display:grid;gap:24px;grid-template-columns:1fr}
+@media(min-width:768px){.footer-grid{grid-template-columns:1.6fr 1fr 1fr;gap:40px}}
+.footer .logo{font-size:1.15rem}
+.footer-slogan{margin-top:10px;color:var(--accent);font-size:0.82rem;font-weight:600;letter-spacing:0.04em}
+.footer p{margin-top:12px;color:var(--text-muted);font-size:0.82rem;max-width:360px;line-height:1.5}
+.footer h4{font-family:var(--font-body);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:10px;margin-top:14px;font-weight:700}
+.footer a{color:var(--text);display:block;padding:3px 0;font-size:0.85rem;transition:color 0.3s var(--ease-out)}
+.footer a:hover{color:var(--accent-2)}
+.footer-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.78rem;line-height:1.6}
+
+.skel{background:linear-gradient(90deg,var(--surface) 0%,var(--surface-2) 50%,var(--surface) 100%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:var(--r-lg);aspect-ratio:4/3}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.empty-state{padding:40px 20px;text-align:center;color:var(--text-muted);background:var(--surface);border:1px dashed var(--border-2);border-radius:var(--r-md)}
 """
 
-METRIKA = """<script type="text/javascript">
+
+# ============================================================
+#   HEADER / FOOTER
+# ============================================================
+HEADER_TPL = """<div class="ambient" aria-hidden="true"></div>
+<header class="header-wrap">
+  <div class="header">
+    <a href="/" class="logo">POWER <b>Car</b></a>
+    <nav class="nav" aria-label="Главное меню">
+      <a href="#cars">Каталог</a>
+      <a href="#cases">Отзывы</a>
+      <a href="#office">Офис</a>
+      <a href="#faq">Вопросы</a>
+      <a href="/">Главная</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:{phone_raw}" class="btn btn-call btn-sm btn-icon" aria-label="Позвонить">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="/#cta" class="btn btn-primary btn-sm btn-shine">Получить расчёт</a>
+    </div>
+  </div>
+</header>"""
+
+FOOTER = """<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo">POWER <b>Car</b></a>
+        <div class="footer-slogan">Надёжность, рождённая в Сибири</div>
+        <p>Импорт автомобилей и мотоциклов из Японии, Кореи и Китая под ключ. Прозрачные расчёты и сопровождение на каждом этапе.</p>
+      </div>
+      <div>
+        <h4>Страны</h4>
+        <a href="/avto-iz-yaponii.html">Авто из Японии</a>
+        <a href="/avto-iz-korei.html">Авто из Кореи</a>
+        <a href="/avto-iz-kitaya.html">Авто из Китая</a>
+        <a href="/moto-iz-yaponii.html">Мото из Японии</a>
+      </div>
+      <div>
+        <h4>Города</h4>
+        <a href="/import-avto-tomsk.html">🏔 Томск</a>
+        <a href="/import-avto-novosibirsk.html">🌆 Новосибирск</a>
+        <a href="/import-avto-moskva.html">🏛 Москва</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      © 2026 POWER Car · ИП Степанов А. В. · ИНН 702205795181<br>
+      Информация на сайте носит информационный характер и не является публичной офертой (ст. 437 ГК РФ).
+    </div>
+  </div>
+</footer>
+<script type="text/javascript">
 (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
 for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
 k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 (window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=109736434","ym");
 ym(109736434,'init',{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:true,trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/109736434" style="position:absolute;left:-9999px;" alt=""/></div></noscript>"""
+<noscript><div><img src="https://mc.yandex.ru/watch/109736434" style="position:absolute;left:-9999px" alt=""/></div></noscript>"""
 
-def page(cfg):
-    o = offices.get(cfg["office_id"], {})
-    city = cfg["city"]; prep_loc = cfg["prep_loc"]; prep_acc = cfg["prep_acc"]
-    soon = o.get("comingSoon")
-    title = f"Авто и мото из Японии, Кореи, Китая {prep_loc} под ключ | POWER Car"
-    desc = f"Импорт авто и мото из Японии, Кореи и Китая {prep_loc} под ключ за 25–40 дней. Доставка из Владивостока {prep_acc}, расчёт пошлины при вас, выдача {prep_loc}. POWER Car."
-    url = f"https://power-car.ru/{cfg['slug']}.html"
 
-    # route strip
-    pts = ["Владивосток"] + cfg["waypoints"] + [city]
-    strip = []
-    for i, p in enumerate(pts):
-        mid = 0 < i < len(pts) - 1
-        strip.append(f'<div class="pt"><span class="dot{" mid" if mid else ""}"></span><small>{html.escape(p)}</small></div>')
-        if i < len(pts) - 1:
-            strip.append('<span class="ln"></span>')
-    route_strip = "".join(strip)
+# ============================================================
+#   JS — динамическая загрузка cars.json / cases.json
+# ============================================================
+def build_js(city_ru, price_min, price_max, brand_priorities):
+    return f"""
+<script>
+const CITY_RU = {json.dumps(city_ru)};
+const PRICE_MIN = {price_min};
+const PRICE_MAX = {price_max};
+const BRAND_PRIORITIES = {json.dumps(brand_priorities)};
 
-    # office block
-    if soon:
-        office_block = f'''<div class="card"><h3>Офис {prep_loc} — открываем скоро</h3>
-<p>Сейчас оформляем заказы {prep_loc} дистанционно с доставкой до адреса. Личный офис {prep_loc} откроется в ближайшее время — следите за новостями.</p>
-<p class="note">Пока офис не открыт, забрать авто можно в наших офисах в Томске и Новосибирске или заказать доставку до {prep_acc}.</p></div>'''
-        map_block = ""
-    else:
-        map_src = f"https://yandex.ru/map-widget/v1/?ll={o['lng']}%2C{o['lat']}&z=16&pt={o['lng']},{o['lat']},pm2grm"
-        office_block = f'''<div class="card"><h3>Офис {prep_loc}</h3>
-<p><b>{html.escape(o["address"])}</b><br><span class="note">{html.escape(o.get("addressNote",""))}</span></p>
-<p style="margin-top:10px">📞 <a href="tel:{o.get('phoneRaw',o.get('phone'))}" style="color:var(--acc2)">{html.escape(o.get("phone",""))}</a><br>🕒 {html.escape(o.get("hours",""))}</p></div>'''
-        map_block = f'''<div class="route-map"><iframe src="{map_src}" loading="lazy" title="Карта офиса POWER Car {prep_loc}"></iframe></div>'''
+const fmt = n => new Intl.NumberFormat('ru-RU').format(n);
+const fmtPrice = n => fmt(n) + ' ₽';
+const esc = s => String(s || '').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c]));
+function slugify(s) {{ return String(s||'').replace(/[^A-Za-z0-9_-]+/g,'-').replace(/^-+|-+$/g,''); }}
 
-    cards_html = "".join(car_card(c).replace("{prep_acc}", prep_acc) for c in CARS_PICK)
+function carCard(car) {{
+  const slug = slugify(car.id);
+  const brand = esc(car.brand || '');
+  const model = esc(car.model || '');
+  const title = `${{brand}} ${{model}}`.trim();
+  const flag = esc(car.flag || '');
+  const country = esc(car.country || '');
+  const photo = (car.photos && car.photos[0])
+    ? `<img src="/${{esc(car.photos[0])}}" alt="${{title}} — импорт под ключ" loading="lazy" width="320" height="240">`
+    : `<div style="display:grid;place-items:center;height:100%;color:var(--text-dim);font-weight:700">POWER Car</div>`;
+  const meta = [
+    car.year && `<span class="car-meta-item">${{car.year}}</span>`,
+    car.engine && `<span class="car-meta-item">${{esc(car.engine)}}</span>`,
+    car.transmission && `<span class="car-meta-item">${{esc(car.transmission)}}</span>`
+  ].filter(Boolean).join('');
+  const market = (car.priceMarket && car.priceMarket > car.price)
+    ? `<span class="car-price-market">${{fmtPrice(car.priceMarket)}}</span>` : '';
+  const price = car.price ? `<div class="car-price-row"><span class="car-price">${{fmtPrice(car.price)}}</span>${{market}}</div>` : '';
+  return `
+    <article class="car-card">
+      <div class="car-img">
+        ${{photo}}
+        ${{flag ? `<span class="car-flag-badge">${{flag}} ${{country}}</span>` : ''}}
+      </div>
+      <div class="car-body">
+        <div class="car-title">${{title}}</div>
+        <div class="car-meta">${{meta}}</div>
+        ${{price}}
+        <div class="car-actions">
+          <a class="btn btn-primary" href="/auto/${{slug}}.html">Подробнее</a>
+        </div>
+      </div>
+    </article>`;
+}}
 
-    # FAQ (geo)
-    faq = [
-        (f"Сколько идёт авто из Японии до {city}?",
-         f"Полный цикл под ключ занимает 25–40 дней: выкуп на аукционе, морская доставка во Владивосток, растаможка и автовоз {prep_acc}. Сам автовоз Владивосток → {city} идёт примерно {cfg['autovoz']} дней и уже входит в этот общий срок."),
-        (f"Где забрать автомобиль {prep_loc}?" if not soon else f"Как получить авто {prep_loc}, если офис ещё не открыт?",
-         (f"В нашем офисе: {o.get('address','')}. {o.get('addressNote','')}. Либо организуем доставку до вашего адреса." if not soon
-          else f"Оформляем заказ дистанционно и доставляем авто до адреса {prep_loc}. Также можно забрать машину в офисах в Томске или Новосибирске.")),
-        (f"Какие авто популярны для {city} и Сибири?" if cfg['siberia'] else f"Какие авто чаще заказывают {prep_loc}?",
-         "По данным «Автостата», основной объём ввозимых б/у авто в РФ — из Японии (57,7%), лидер по маркам — Toyota. " +
-         ("Для сибирских дорог и зим чаще берут полноприводные кроссоверы и внедорожники — в нашем наличии их около 42%." if cfg['siberia']
-          else "В нашем каталоге представлены авто из Японии, Кореи и Китая под любой бюджет.")),
-        ("Нужна ли предоплата за подбор?",
-         "Нет. Подбор и расчёт сметы — бесплатно. Вы видите полную стоимость (аукцион + доставка + пошлина + утильсбор + комиссия) до начала работы."),
-    ]
-    faq_html = "".join(f'<details><summary>{html.escape(q)}</summary><div class="a">{html.escape(a)}</div></details>' for q, a in faq)
+function caseCard(c) {{
+  const photo = (c.photos && c.photos[0])
+    ? `<img src="/${{esc(c.photos[0])}}" alt="Кейс ${{esc(c.carTitle || '')}}" loading="lazy">`
+    : `<div style="display:grid;place-items:center;height:100%;color:var(--text-dim);font-weight:700">${{esc(c.carTitle || 'POWER Car')}}</div>`;
+  const q = (c.quote && c.quote !== 'ДОПОЛНИТЬ') ? c.quote : (c.story || '').slice(0, 180);
+  const quote = q ? `<div class="case-quote">${{esc(q).slice(0, 200)}}${{q.length > 200 ? '…' : ''}}</div>` : '';
+  const meta = [];
+  if (c.deliveryDays) meta.push(`⏱ <b>${{c.deliveryDays}}</b> дней`);
+  if (c.showPrice && c.finalPrice) meta.push(`💰 <b>${{fmtPrice(c.finalPrice)}}</b>`);
+  if (c.photoCount) meta.push(`📷 ${{c.photoCount}} фото`);
+  return `
+    <article class="case">
+      <div class="case-photo">
+        ${{photo}}
+        ${{c.flag ? `<span class="case-flag">${{esc(c.flag)}} ${{esc(c.country || '')}}</span>` : ''}}
+        <div class="case-photo-overlay">
+          <div class="case-client">${{esc(c.clientName || 'Клиент')}}</div>
+          <div class="case-city">${{esc(c.clientCity || '')}}</div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-title">${{esc(c.carTitle || '')}}</div>
+        ${{quote}}
+        <div class="case-meta">${{meta.join('')}}</div>
+      </div>
+    </article>`;
+}}
 
-    # JSON-LD
-    ld_business = {
-        "@context": "https://schema.org", "@type": "AutoDealer",
-        "name": f"POWER Car — {city}", "url": url,
-        "description": desc, "telephone": o.get("phone", "+7 913 853-33-05").replace("(", "").replace(")", ""),
-        "areaServed": {"@type": "City", "name": city},
-        "priceRange": "₽₽", "image": "https://power-car.ru/og-cover.jpg",
-        "parentOrganization": {"@type": "Organization", "name": "POWER Car", "url": "https://power-car.ru/"},
+async function loadCatalog() {{
+  const wrap = document.getElementById('carsGrid');
+  const countLabel = document.getElementById('carsCount');
+  if (!wrap) return;
+  try {{
+    const res = await fetch('/data/cars.json', {{cache:'no-cache'}});
+    const all = await res.json();
+    let pool = all.filter(c =>
+      c.published !== false &&
+      c.price >= PRICE_MIN &&
+      c.price <= PRICE_MAX
+    );
+    pool.sort((a, b) => {{
+      const brA = String(a.brand || '').toLowerCase();
+      const brB = String(b.brand || '').toLowerCase();
+      const pA = BRAND_PRIORITIES.findIndex(p => brA.includes(p.toLowerCase()));
+      const pB = BRAND_PRIORITIES.findIndex(p => brB.includes(p.toLowerCase()));
+      if (pA !== pB) {{
+        if (pA === -1) return 1;
+        if (pB === -1) return -1;
+        return pA - pB;
+      }}
+      const dA = a.addedAt || '', dB = b.addedAt || '';
+      return dB.localeCompare(dA);
+    }});
+    if (countLabel) countLabel.textContent = pool.length;
+    const top = pool.slice(0, 6);
+    if (!top.length) {{
+      wrap.innerHTML = '<div class="empty-state">В этом сегменте пока нет лотов. Оставьте заявку — подберём под запрос.</div>';
+      return;
+    }}
+    wrap.innerHTML = top.map(carCard).join('');
+  }} catch (e) {{
+    wrap.innerHTML = '<div class="empty-state">Ошибка загрузки. Обновите страницу.</div>';
+    console.warn('catalog load failed', e);
+  }}
+}}
+
+async function loadCases() {{
+  const wrap = document.getElementById('casesTrack');
+  if (!wrap) return;
+  try {{
+    const res = await fetch('/data/cases.json', {{cache:'no-cache'}});
+    const all = await res.json();
+    const pool = all.filter(c => c.published !== false && c.clientCity === CITY_RU);
+    pool.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+    const top = pool.slice(0, 6);
+    if (!top.length) {{
+      const sec = document.getElementById('cases-section');
+      if (sec) sec.style.display = 'none';
+      return;
+    }}
+    wrap.innerHTML = top.map(caseCard).join('');
+  }} catch (e) {{
+    console.warn('cases load failed', e);
+  }}
+}}
+
+loadCatalog();
+loadCases();
+</script>"""
+
+
+# ============================================================
+#   ГЕНЕРАЦИЯ СТРАНИЦЫ
+# ============================================================
+def build_page(cfg, office):
+    slug = cfg["slug"]
+    url = BASE + slug + ".html"
+
+    faq_items = "".join(
+        f'''<details class="faq-item">
+  <summary>{html.escape(q)}<span class="faq-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+  <div class="faq-content">{a}</div>
+</details>''' for q, a in cfg["faq"]
+    )
+    faq_ld = {
+        "@context": "https://schema.org", "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r'<[^>]+>', '', a)}}
+            for q, a in cfg["faq"]
+        ]
     }
-    if not soon:
-        ld_business["address"] = {"@type": "PostalAddress", "streetAddress": o["address"], "addressLocality": city,
-                                  "postalCode": "".join(ch for ch in o.get("addressNote", "") if ch.isdigit())[:6], "addressCountry": "RU"}
-        ld_business["geo"] = {"@type": "GeoCoordinates", "latitude": o["lat"], "longitude": o["lng"]}
-        ld_business["openingHours"] = "Mo-Sa 09:00-18:00"
-    ld_faq = {"@context": "https://schema.org", "@type": "FAQPage",
-              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
-    ld_bc = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://power-car.ru/"},
-        {"@type": "ListItem", "position": 2, "name": f"Авто из Японии, Кореи, Китая {prep_loc}", "item": url}]}
-    ld = "\n".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld_business, ld_faq, ld_bc))
+    breadcrumb_ld = {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Главная", "item": BASE},
+            {"@type": "ListItem", "position": 2, "name": cfg["breadcrumb"], "item": url}
+        ]
+    }
+    autodealer_ld = {
+        "@context": "https://schema.org", "@type": "AutoDealer",
+        "name": f"POWER Car — {office['city']}",
+        "url": url, "description": cfg["desc"],
+        "telephone": office["phone"],
+        "areaServed": {"@type": "City", "name": office["city"]},
+        "priceRange": "₽₽",
+        "image": BASE + "og-cover.jpg",
+        "parentOrganization": {"@type": "Organization", "name": "POWER Car", "url": BASE},
+        "address": {"@type": "PostalAddress", "streetAddress": office["address"], "addressLocality": office["city"], "addressCountry": "RU"},
+        "openingHours": "Mo-Sa 09:00-18:00"
+    }
+    if office.get("lat") and office.get("lng"):
+        autodealer_ld["geo"] = {"@type": "GeoCoordinates", "latitude": office["lat"], "longitude": office["lng"]}
 
-    yandex_route = f"https://yandex.ru/maps/?rtext=Владивосток~{city}&rtt=auto"
+    if office.get("lat") and office.get("lng"):
+        map_src = f"https://yandex.ru/map-widget/v1/?ll={office['lng']}%2C{office['lat']}&z=16&pt={office['lng']},{office['lat']},pm2grm"
+    else:
+        map_src = f"https://yandex.ru/map-widget/v1/?text={quote_plus(office['city'])}"
 
-    siberia_card = f'''<div class="card"><h3>Что учесть {prep_loc}</h3><ul>
-<li>Резко-континентальный климат: зимой нередко −30…−40 °C — желателен предпусковой подогреватель и аккумулятор с запасом.</li>
-<li>Снег, наледь и перепады — увереннее идут полный привод (AWD/4WD) и кроссоверы; обязательна зимняя резина.</li>
-<li>Реагентов на дорогах меньше, чем в мегаполисах, но межсезонная влага и сколы — рекомендуем антикор-обработку при подготовке.</li>
-<li>Японские авто хорошо держат вторичную цену и ликвидны в регионе.</li>
-</ul></div>''' if cfg['siberia'] else f'''<div class="card"><h3>Что учесть {prep_loc}</h3><ul>
-<li>Большой выбор сервисов и запчастей для японских, корейских и европейских марок.</li>
-<li>Для крупного города практичны экономичные кроссоверы и седаны; гибриды снижают расходы в пробках.</li>
-<li>Проверяйте комплектацию под левый/правый руль — подбираем под ваши требования.</li>
-</ul></div>'''
+    yandex_map_url = office.get("yandexMapUrl") or f"https://yandex.ru/maps/?text={quote_plus(office['city'] + ' ' + office['address'])}"
 
-    return f'''<!doctype html>
+    header = HEADER_TPL.replace('{phone_raw}', office['phoneRaw'])
+
+    return f"""<!doctype html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{title}</title>
-<meta name="description" content="{html.escape(desc)}">
+<title>{html.escape(cfg["title"])}</title>
+<meta name="description" content="{html.escape(cfg["desc"])}">
 <link rel="canonical" href="{url}">
 <meta name="theme-color" content="#0A0A0A">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{title}">
-<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:title" content="{html.escape(cfg["title"])}">
+<meta property="og:description" content="{html.escape(cfg["desc"])}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="https://power-car.ru/og-cover.jpg">
+<meta property="og:image" content="{BASE}og-cover.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet"></noscript>
 <style>{CSS}</style>
-{ld}
+<script type="application/ld+json">{json.dumps(autodealer_ld, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(faq_ld, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(breadcrumb_ld, ensure_ascii=False)}</script>
 </head>
 <body>
-<header class="gh">
-  <a href="/" class="gh-logo">POWER <b>Car</b></a>
-  <nav class="gh-nav">
-    <a href="/#selector">Подбор</a>
-    <a href="/#cases">Отзывы</a>
-    <a href="/#offices">Офисы</a>
-    <a href="/#faq">Вопросы</a>
-  </nav>
-  <div class="gh-cta">
-    <a href="tel:+79138533305" class="btn btn-ghost">Позвонить</a>
-    <a href="/#selector" class="btn btn-primary">Подобрать авто</a>
-  </div>
-</header>
+{header}
 
 <main>
-<section class="hero"><div class="wrap">
-  <span class="eyebrow">POWER Car {prep_loc}</span>
-  <h1>Авто и мото из Японии, Кореи, Китая<br><span>{prep_loc} под ключ</span></h1>
-  <p>{html.escape(f"Привозим автомобили и мотоциклы из Японии, Кореи и Китая {prep_loc} за 25–40 дней. Расчёт пошлины и утильсбора при вас, по официальным базам. Вы — первый собственник в РФ.")}</p>
-  <div class="hero-cta">
-    <a href="/#selector" class="btn btn-primary">Подобрать авто {prep_acc}</a>
-    <a href="#cars" class="btn btn-ghost">Популярные модели</a>
-  </div>
-  <div class="hero-stats">
-    <div class="s"><b>25–40</b><span>дней под ключ</span></div>
-    <div class="s"><b>≈ {cfg['distance']:,}</b><span>км из Владивостока</span></div>
-    <div class="s"><b>0 ₽</b><span>предоплата за подбор</span></div>
-  </div>
-</div></section>
 
-<section><div class="wrap">
-  <h2 class="sec-h">Доставка и маршрут до {prep_acc}</h2>
-  <p class="sec-sub">После выкупа и растаможки во Владивостоке автомобиль идёт {prep_acc} автовозом. Это финальный этап общего срока 25–40 дней под ключ.</p>
-  <div class="route">
-    <div class="route-strip">{route_strip}</div>
-    <div class="grid2" style="margin-top:18px">
-      <div><b>Расстояние от Владивостока</b><p class="note">≈ {cfg['distance']:,} км по автодороге (Транссибирское направление).</p></div>
-      <div><b>Срок автовоза</b><p class="note">≈ {cfg['autovoz']} дней (оценка по типовым перевозкам; входит в общий срок 25–40 дней).</p></div>
-    </div>
-    {map_block}
-    <a href="{yandex_route}" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top:14px">Маршрут на Яндекс.Картах →</a>
-    <p class="src">Расстояния — по данным маршрутных сервисов (avtodispetcher.ru, ati.su). Сроки автовоза — усреднённая оценка по перевозчикам Владивосток → {city}.</p>
-  </div>
-</div></section>
-
-<section><div class="wrap">
-  <h2 class="sec-h">Какие авто популярны: рынок и наличие</h2>
-  <p class="sec-sub">Слева — структура импорта подержанных авто в Россию по данным «Автостата». Справа — что сейчас в наличии у POWER Car под заказ.</p>
-  <div class="grid2">
-    <div class="card"><h3>Импорт б/у авто в РФ по странам</h3>
-      {svg_bars(import_structure)}
-      <p class="src">Источник: аналитическое агентство «Автостат», 1 кв. 2026 (доли стран-поставщиков подержанных авто). Лидер по маркам среди ввозимых из Японии — Toyota (33,5%).</p>
-    </div>
-    <div class="card"><h3>В наличии у POWER Car: {total_inv} авто</h3>
-      {svg_bars([(k, v) for k, v in inv_country.items()], unit=" шт", color="#34D399")}
-      <p class="note" style="margin-top:12px">Топ марок в наличии: {", ".join(f"{b} ({n})" for b, n in inv_brand)}.</p>
-      <p class="src">Данные нашего каталога на момент публикации. Состав наличия обновляется.</p>
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">POWER Car {cfg["eyebrow_prep"]}</span>
+        <h1>{html.escape(cfg["h1_top"])}<br><span class="accent">{html.escape(cfg["h1_bot"])}</span></h1>
+        <p class="hero-sub">{html.escape(cfg["hero_p"])}</p>
+        <div class="hero-cta-row">
+          <a href="#cars" class="btn btn-primary btn-shine">Смотреть базу лотов ↓</a>
+          <a href="/#cta" class="btn btn-ghost">Оставить заявку</a>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value" id="carsCount">…</div>
+            <div class="stat-label">лотов в базе</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">25–40</div>
+            <div class="stat-label">дней под&nbsp;ключ</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">0&nbsp;₽</div>
+            <div class="stat-label">за&nbsp;подбор</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-city-frame">
+        <div class="hero-city-icon">{cfg["hero_icon"]}</div>
+        <div class="hero-city-name">{html.escape(office["city"])}</div>
+        <div class="hero-city-office">{html.escape(office.get("addressNote") or office.get("address") or "")}</div>
+      </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<section id="cars"><div class="wrap">
-  <h2 class="sec-h">Популярные модели под заказ {prep_loc}</h2>
-  <p class="sec-sub">{"Для сибирских дорог отдаём приоритет полноприводным кроссоверам, но привезём любую модель под ваш бюджет." if cfg['siberia'] else "Подберём под ваш бюджет и задачи — от экономичных седанов до премиум-кроссоверов."}</p>
-  <div class="cars-grid">{cards_html}</div>
-  <div style="text-align:center;margin-top:26px"><a href="/#selector" class="btn btn-primary">Открыть подборщик — весь каталог →</a></div>
-</div></section>
-
-<section><div class="wrap">
-  <div class="grid2">
-    {office_block}
-    {siberia_card}
+<section id="cars">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Каталог</span>
+      <h2>{html.escape(cfg["cars_h2_top"])} <span class="glow-text">{html.escape(cfg["cars_h2_bot"])}</span></h2>
+      <p>{html.escape(cfg["cars_sub"])}</p>
+    </div>
+    <div class="cars-grid" id="carsGrid">
+      <div class="skel"></div><div class="skel"></div><div class="skel"></div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="/#selector" class="btn btn-primary btn-shine">Полный каталог сайта — все марки →</a>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section><div class="wrap">
-  <div class="cta" id="cta">
-    <h2>Получите 3 варианта под ваш бюджет {prep_loc}</h2>
-    <p>Бесплатный подбор и честный расчёт стоимости под ключ. Без предоплаты за подбор.</p>
-    <a href="/#selector" class="btn btn-primary">Подобрать авто {prep_acc}</a>
+<section id="office">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Офис</span>
+      <h2>Приёмка в <span class="glow-text">{html.escape(office["city"])}</span></h2>
+      <p>Приходите обсудить лот вживую или заберите машину лично после доставки.</p>
+    </div>
+    <div class="office-card">
+      <div class="office-info">
+        <div class="office-city">POWER Car {cfg["eyebrow_prep"]}</div>
+        <div class="office-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><div class="office-row-label">Адрес</div><div class="office-row-value">{html.escape(office["address"])}</div></div>
+        </div>
+        <div class="office-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><div class="office-row-label">Телефон</div><div class="office-row-value"><a href="tel:{office['phoneRaw']}">{html.escape(office['phone'])}</a></div></div>
+        </div>
+        <div class="office-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><div class="office-row-label">Часы работы</div><div class="office-row-value">{html.escape(office.get("hours") or "Пн–Сб 9:00–18:00")}</div></div>
+        </div>
+        <a href="{yandex_map_url}" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top:8px">Проложить маршрут →</a>
+      </div>
+      <div class="office-map">
+        <iframe src="{map_src}" loading="lazy" title="Карта офиса POWER Car в {html.escape(office['city'])}"></iframe>
+      </div>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section class="faq"><div class="wrap">
-  <h2 class="sec-h">Частые вопросы — доставка {prep_loc}</h2>
-  <div style="margin-top:20px">{faq_html}</div>
-</div></section>
+<section id="cases-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Отзывы</span>
+      <h2>Клиенты <span class="glow-text">{cfg["cases_h2"]}</span></h2>
+      <p>Реальные истории клиентов из {office["city"]}: сроки, итоговые цены и впечатления.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="cases-scroll" id="casesTrack"></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Частые вопросы про <span class="glow-text">{office["city"]}</span></h2>
+    </div>
+    <div class="faq-list">{faq_items}</div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Маршрут</span>
+      <h2>Владивосток → <span class="glow-text">{html.escape(office["city"])}</span></h2>
+      <p>Ваш путь: аукцион → морская доставка → таможня во Владивостоке → автовоз до вашего города.</p>
+    </div>
+    <div class="route-card">
+      <svg viewBox="0 0 800 160" class="route-svg" role="img" aria-label="Маршрут Владивосток → {html.escape(office['city'])}">
+        <path id="rp" class="route-line" d="M 60 100 Q 200 30, 400 80 T 740 100" fill="none"/>
+        <circle cx="60" cy="100" r="8" class="route-dot route-dot-pulse"/>
+        <circle cx="740" cy="100" r="10" class="route-dot"/>
+        <text x="60" y="135" text-anchor="middle" class="route-label">⚓ Владивосток</text>
+        <text x="740" y="135" text-anchor="middle" class="route-label end">{cfg["route_end_emoji"]} {html.escape(office["city"])}</text>
+      </svg>
+      <div class="route-stats">
+        <div class="route-stat">
+          <div class="route-stat-value">{cfg["route_km"]}</div>
+          <div class="route-stat-label">км от Владивостока</div>
+        </div>
+        <div class="route-stat">
+          <div class="route-stat-value">{cfg["route_days"]}</div>
+          <div class="route-stat-label">дней автовоза</div>
+        </div>
+        <div class="route-stat">
+          <div class="route-stat-value">от {cfg["route_price"]}к ₽</div>
+          <div class="route-stat-label">доставка автовозом</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-band">
+  <div class="container">
+    <div class="cta-card">
+      <span class="eyebrow">Готовы обсудить?</span>
+      <h2 style="margin-top:14px">Получите 3 варианта из Азии <span class="glow-text">под ваш бюджет</span></h2>
+      <p>Бесплатный подбор и честный расчёт стоимости под ключ. Без предоплаты за подбор.</p>
+      <a href="/#cta" class="btn btn-primary btn-shine">Оставить заявку</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<footer class="gf"><div class="wrap">
-  <div class="gf-top">
-    <div>
-      <a href="/" class="gh-logo">POWER <b>Car</b></a>
-      <div class="slogan">Надёжность, рождённая в Сибири</div>
-    </div>
-    <nav class="gf-links">
-      <a href="/">Главная</a><a href="/#selector">Подбор</a><a href="/avto-iz-yaponii-tomsk.html">Томск</a>
-      <a href="/avto-iz-yaponii-novosibirsk.html">Новосибирск</a><a href="/avto-iz-yaponii-moskva.html">Москва</a>
-    </nav>
-  </div>
-  <p>POWER Car — импорт авто и мото из Японии, Кореи и Китая под ключ. ИП Степанов А.В., ИНН 702205795181.</p>
-</div></footer>
-{METRIKA}
+{FOOTER}
+{build_js(office["city"], cfg["price_min"], cfg["price_max"], cfg["brand_priorities"])}
 </body>
-</html>'''
+</html>"""
 
-CITIES = [
-    {"slug": "avto-iz-yaponii-tomsk", "office_id": "tomsk", "city": "Томск", "prep_loc": "в Томске", "prep_acc": "Томск",
-     "distance": 5600, "autovoz": "11–15", "siberia": True,
-     "waypoints": ["Чита", "Иркутск", "Красноярск"]},
-    {"slug": "avto-iz-yaponii-novosibirsk", "office_id": "novosibirsk", "city": "Новосибирск", "prep_loc": "в Новосибирске", "prep_acc": "Новосибирск",
-     "distance": 5800, "autovoz": "10–14", "siberia": True,
-     "waypoints": ["Чита", "Иркутск", "Красноярск"]},
-    {"slug": "avto-iz-yaponii-moskva", "office_id": "moscow", "city": "Москва", "prep_loc": "в Москве", "prep_acc": "Москву",
-     "distance": 9100, "autovoz": "19–22", "siberia": False,
-     "waypoints": ["Иркутск", "Красноярск", "Новосибирск", "Казань"]},
-]
 
-os.makedirs(OUT, exist_ok=True)
-for cfg in CITIES:
-    html_doc = page(cfg)
-    with open(os.path.join(OUT, cfg["slug"] + ".html"), "w", encoding="utf-8") as f:
-        f.write(html_doc)
-    print("generated:", cfg["slug"] + ".html", len(html_doc), "bytes")
+# ============================================================
+#   MAIN
+# ============================================================
+def main():
+    offices = {o["id"]: o for o in read_json("data/offices.json")}
+
+    # ==================== ТОМСК ====================
+    tomsk = {
+        "slug": "import-avto-tomsk",
+        "office_id": "tomsk",
+        "title": "База авто от 570к ₽ и мото от 250к ₽ в Томск — офис на Кирова",
+        "desc": "База лотов с ценой под ключ до Владивостока + автовоз до Томска. Приём в офисе на пр. Кирова 58. Подбор 0 ₽ — смотрите базу.",
+        "eyebrow_prep": "в Томске",
+        "breadcrumb": "Авто из Азии в Томске",
+        "hero_icon": "🏔",
+        "h1_top": "База выгодных авто от 570к ₽ и мото от 250к ₽",
+        "h1_bot": "с доставкой в Томск",
+        "hero_p": "Подобрали автомобили и мотоциклы из Японии, Кореи и Китая с ценой под ключ до Владивостока. Автовоз до Томска и приёмка в офисе на пр. Кирова 58.",
+        "cars_h2_top": "База лотов",
+        "cars_h2_bot": "для Томска",
+        "cars_sub": "Свежие предложения из каталога — обновляются автоматически. Цены под ключ до Владивостока, автовоз до Томска отдельно.",
+        "price_min": 400000, "price_max": 2000000,
+        "brand_priorities": ["Toyota", "Honda", "Subaru", "Suzuki", "Nissan"],
+        "cases_h2": "из Томска про импорт",
+        "route_end_emoji": "🏔", "route_km": "5 600", "route_days": "11–15", "route_price": "30",
+        "faq": [
+            ("Сколько идёт авто из Японии до Томска?",
+             "Полный цикл под ключ занимает 25–40 дней: выкуп на аукционе, морская доставка во Владивосток, растаможка и автовоз до Томска. Автовоз Владивосток → Томск идёт примерно 11–15 дней и уже входит в общий срок."),
+            ("Где забрать автомобиль в Томске?",
+             "В нашем офисе: пр. Кирова 58, офис 305, Советский район. Либо организуем доставку до вашего адреса. Помогаем с постановкой на учёт в ГИБДД."),
+            ("Какие авто популярны для сибирских дорог?",
+             "Для Томска и Сибири в первую очередь берут полноприводные кроссоверы (Subaru Forester, Toyota RAV4, Honda CR-V) и внедорожники — из-за морозов до −40°C, гололёда и трассы М-53. В нашей базе таких около 42%."),
+            ("Как читать цену: под ключ до Владивостока или до Томска?",
+             "Все цены в каталоге — под ключ до Владивостока (лот + доставка морем + пошлина + утильсбор + СБКТС + ЭПТС + наша комиссия). Автовоз Владивосток → Томск оплачивается отдельно, ~30 000 ₽, срок 11–15 дней."),
+            ("Нужна ли предоплата за подбор?",
+             "Нет. Подбор и расчёт сметы — бесплатно. Депозит 100 000 ₽ вносится только при одобрении конкретного лота и полностью возвращается до оплаты инвойса (за вычетом 100 $ за проведённый осмотр)."),
+            ("Помогаете ли с постановкой на учёт в ГИБДД Томска?",
+             "Да, полное сопровождение: пакет документов из Владивостока (ЭПТС на ваше имя), помощь с оформлением ОСАГО, консультация по постановке в МРЭО Томска. При необходимости выезжаем с вами.")
+        ]
+    }
+
+    # ==================== НОВОСИБИРСК ====================
+    nsk = {
+        "slug": "import-avto-novosibirsk",
+        "office_id": "novosibirsk",
+        "title": "База авто и мото из Азии в Новосибирск — автовоз от 25 000 ₽",
+        "desc": "База лотов с ценой под ключ до Владивостока + автовоз до НСК от 25 000 ₽. Кроссоверы, кей-кары, седаны. Офис на Карла Маркса 57. Подбор 0 ₽.",
+        "eyebrow_prep": "в Новосибирске",
+        "breadcrumb": "Авто из Азии в Новосибирске",
+        "hero_icon": "🌆",
+        "h1_top": "База лотов авто и мото из Азии",
+        "h1_bot": "в Новосибирск — от 570к ₽",
+        "hero_p": "Собрали в базе живые лоты с ценой под ключ до Владивостока. Автовоз до Новосибирска от 25 000 ₽, приёмка в офисе на пр. Карла Маркса 57.",
+        "cars_h2_top": "База лотов",
+        "cars_h2_bot": "для Новосибирска",
+        "cars_sub": "Свежие предложения из каталога — обновляются автоматически. Цены под ключ до Владивостока, автовоз до НСК отдельно (от 25 000 ₽).",
+        "price_min": 500000, "price_max": 3000000,
+        "brand_priorities": ["Toyota", "Honda", "Kia", "Hyundai", "Subaru"],
+        "cases_h2": "из Новосибирска про импорт",
+        "route_end_emoji": "🌆", "route_km": "4 200", "route_days": "8–12", "route_price": "25",
+        "faq": [
+            ("Сколько идёт авто из Японии/Кореи до Новосибирска?",
+             "Полный цикл — 25–35 дней под ключ: выкуп на аукционе, доставка во Владивосток, растаможка, автовоз до НСК (8–12 дней). Морская доставка из Кореи быстрее — 20–30 дней."),
+            ("Где забрать автомобиль в Новосибирске?",
+             "В нашем офисе: пр. Карла Маркса 57, офис 511, Ленинский район. Либо организуем доставку до вашего адреса."),
+            ("Какие модели чаще всего берут в НСК?",
+             "В Новосибирске популярны корейские кроссоверы (Kia Sportage, Hyundai Tucson), японские седаны и универсалы (Toyota Camry, Honda Fit), а также китайские Geely/Chery — сочетание цены и оснащения."),
+            ("Как читать цену: под ключ до Владивостока или до НСК?",
+             "Все цены в каталоге — под ключ до Владивостока. Автовоз Владивосток → Новосибирск оплачивается отдельно, от 25 000 ₽, срок 8–12 дней."),
+            ("Можно забрать машину лично во Владивостоке?",
+             "Да. Многие клиенты из НСК так и делают — экономят 25 000 ₽ на автовозе и сами перегоняют. Мы передаём машину с полным пакетом документов (ЭПТС, ПТС, договор)."),
+            ("Нужна ли предоплата за подбор?",
+             "Нет. Подбор и расчёт сметы — бесплатно. Депозит 100 000 ₽ вносится только при одобрении конкретного лота и возвращается до оплаты инвойса.")
+        ]
+    }
+
+    # ==================== МОСКВА ====================
+    moscow = {
+        "slug": "import-avto-moskva",
+        "office_id": "moscow",
+        "title": "BMW и Mercedes из Азии в Москве от 1,8 млн ₽ — база лотов POWER Car",
+        "desc": "База лотов с ценой под ключ до Владивостока + автовоз до МКАД за 12 дней. BMW/Mercedes/Audi китайской сборки от 1,8 млн ₽. Подбор 0 ₽.",
+        "eyebrow_prep": "в Москве",
+        "breadcrumb": "Авто из Азии в Москве",
+        "hero_icon": "🏛",
+        "h1_top": "BMW, Mercedes, Audi из Азии в Москву",
+        "h1_bot": "— от 1,8 млн ₽ под ключ",
+        "hero_p": "База лотов BMW, Mercedes и Audi китайской сборки — идентичны глобальным версиям, но на 30–40% дешевле дилеров РФ. Автовоз до МКАД за 12 дней.",
+        "cars_h2_top": "Премиум из Азии",
+        "cars_h2_bot": "для Москвы",
+        "cars_sub": "BMW, Mercedes, Audi китайской сборки и корейские кроссоверы. Цены под ключ до Владивостока, автовоз до МКАД отдельно.",
+        "price_min": 1500000, "price_max": 15000000,
+        "brand_priorities": ["BMW", "Mercedes", "Audi", "Genesis", "Lexus"],
+        "cases_h2": "из Москвы про импорт",
+        "route_end_emoji": "🏛", "route_km": "9 000", "route_days": "12–15", "route_price": "50",
+        "faq": [
+            ("Почему BMW/Mercedes из Китая дешевле на 30–40%?",
+             "BMW Brilliance и Beijing Benz — совместные предприятия немецких концернов и китайских партнёров. Автомобили производятся на тех же линиях, из тех же комплектующих. Дилеры в РФ работают с наценкой параллельного импорта из ОАЭ/Казахстана (+40-80%). Прямая покупка в Китае обходит эту цепочку."),
+            ("Отличается ли качество китайской сборки BMW от европейской?",
+             "Нет. BMW и Mercedes контролируют китайские линии на уровне немецких. Различия только в комплектациях (в Китае больше опций в базе) и в удлинённой колёсной базе на седанах (L-версии). Механика, двигатели, электроника идентичны."),
+            ("Обслуживают ли китайские BMW/Mercedes в дилерских центрах Москвы?",
+             "Да. Дилерские центры не различают китайскую и немецкую сборку — VIN проверяется по общей базе производителя. Гарантийные и постгарантийные работы проводятся в полном объёме."),
+            ("Сколько идёт автовоз из Владивостока до Москвы?",
+             "12–15 дней автовозом или 18–24 дня железной дорогой. Стоимость — 50–60 тыс ₽ автовозом, 35–45 тыс ₽ ж/д. Точная цена зависит от габаритов машины."),
+            ("Где приёмка машины в Москве?",
+             "Офис в центре Москвы, телефон +7 499 390-07-06. Адрес уточняем при подготовке к выдаче. Либо организуем доставку до вашего адреса в пределах МКАД (входит в стоимость автовоза)."),
+            ("Что с ЭПТС и растаможкой?",
+             "ЭПТС оформляется во Владивостоке на ваше имя как первого собственника в РФ. Растаможка через лицензированного брокера — все платежи официальные и по официальным ставкам ФТС. Пакет документов передаём вам вместе с машиной.")
+        ]
+    }
+
+    for cfg in [tomsk, nsk, moscow]:
+        office = offices[cfg["office_id"]]
+        page = build_page(cfg, office)
+        outfile = f"{cfg['slug']}.html"
+        with open(outfile, "w", encoding="utf-8") as f:
+            f.write(page)
+        print(f"  ✓ {outfile}  ({len(page):,} байт)")
+
+    print()
+    print("Done. Cars и cases грузятся из /data/*.json — новые машины подтянутся сами.")
+
+
+if __name__ == "__main__":
+    main()
