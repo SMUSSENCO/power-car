@@ -66,14 +66,15 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 626064,
+    "price": 720303,
     "photos": [
       "images/motorcycles/Kawasaki-Z900/Kawasaki-Z900-1.jpg",
       "images/motorcycles/Kawasaki-Z900/Kawasaki-Z900-2.jpg"
     ],
     "breakdown": {
-      "auction": 259319,
-      "delivery": 86440,
+      "auction": 329998,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 130305,
       "docs": 100000,
       "commission": 50000
@@ -167,14 +168,15 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 550591,
+    "price": 643653,
     "photos": [
       "images/motorcycles/Kawasaki-Ninja-400/Kawasaki-Ninja-400-1.jpg",
       "images/motorcycles/Kawasaki-Ninja-400/Kawasaki-Ninja-400-2.jpg"
     ],
     "breakdown": {
-      "auction": 254998,
-      "delivery": 86440,
+      "auction": 324500,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 59153,
       "docs": 100000,
       "commission": 50000
@@ -205,14 +207,15 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 357090,
+    "price": 383713,
     "photos": [
       "images/motorcycles/Kawasaki-Ninja-400-2015/Kawasaki-Ninja-400-2015-1.jpg",
       "images/motorcycles/Kawasaki-Ninja-400-2015/Kawasaki-Ninja-400-2015-2.jpg"
     ],
     "breakdown": {
-      "auction": 11237,
-      "delivery": 86440,
+      "auction": 14300,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 109413,
       "docs": 100000,
       "commission": 50000
@@ -243,14 +246,15 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 448069,
+    "price": 515215,
     "photos": [
       "images/motorcycles/Honda-GB350/Honda-GB350-1.jpg",
       "images/motorcycles/Honda-GB350/Honda-GB350-2.jpg"
     ],
     "breakdown": {
-      "auction": 159914,
-      "delivery": 86440,
+      "auction": 203500,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 51715,
       "docs": 100000,
       "commission": 50000
@@ -281,14 +285,15 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 407821,
+    "price": 463187,
     "photos": [
       "images/motorcycles/Honda-GB350/Honda-GB350-1.jpg",
       "images/motorcycles/Honda-GB350/Honda-GB350-2.jpg"
     ],
     "breakdown": {
-      "auction": 116694,
-      "delivery": 86440,
+      "auction": 148500,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 54687,
       "docs": 100000,
       "commission": 50000
@@ -319,14 +324,15 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 680224,
+    "price": 773286,
     "photos": [
       "images/motorcycles/Honda-GB350/Honda-GB350-1.jpg",
       "images/motorcycles/Honda-GB350/Honda-GB350-2.jpg"
     ],
     "breakdown": {
-      "auction": 254998,
-      "delivery": 86440,
+      "auction": 324500,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 188786,
       "docs": 100000,
       "commission": 50000
@@ -357,14 +363,15 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 435920,
+    "price": 506600,
     "photos": [
       "images/motorcycles/Honda-ADV160-KF54/Honda-ADV160-KF54-1.jpg",
       "images/motorcycles/Honda-ADV160-KF54/Honda-ADV160-KF54-2.jpg"
     ],
     "breakdown": {
-      "auction": 172880,
-      "delivery": 86440,
+      "auction": 220000,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 26600,
       "docs": 100000,
       "commission": 50000

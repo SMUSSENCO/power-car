@@ -4,5 +4,8 @@
   "rateKRW": 0.065,
   "freightChina": 0,
   "freightJapan": 0,
-  "freightKorea": 0
+  "freightKorea": 0,
+  "domesticChina": 14000,
+  "domesticJapan": 200000,
+  "domesticKorea": 2000000
 }

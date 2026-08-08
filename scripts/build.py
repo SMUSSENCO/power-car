@@ -178,7 +178,7 @@ def car_page(c):
              ("Страна вывоза",COUNTRY.get(c.get("country"),"—"))]
     specs_html = "".join(f"<tr><td>{html.escape(str(k))}</td><td>{html.escape(str(v))}</td></tr>" for k,v in specs)
     b = c.get("breakdown") or {}
-    rows = [("Стоимость на аукционе",b.get("auction")),("Доставка до РФ",b.get("delivery")),
+    rows = [("Стоимость на аукционе",b.get("auction")),("Логистика внутри страны",b.get("domestic")),("Доставка до РФ",b.get("delivery")),
             ("Таможенная пошлина",b.get("customs")),("Оформление документов / СБКТС",b.get("docs")),("Комиссия POWER Car",b.get("commission"))]
     bd = "".join(f'<tr><td>{html.escape(k)}</td><td>{fmt_price(v)}</td></tr>' for k,v in rows if v)
     breakdown = (f'<section><h2 class="sec-h">Расчёт стоимости под ключ</h2>'

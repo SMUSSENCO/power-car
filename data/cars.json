@@ -26,7 +26,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 414011,
+    "price": 524011,
     "photos": [
       "images/cars/Honda-N-BOX/Honda-N-BOX-1.jpeg",
       "images/cars/Honda-N-BOX/Honda-N-BOX-2.jpeg",
@@ -34,6 +34,7 @@
     ],
     "breakdown": {
       "auction": 173250,
+      "domestic": 110000,
       "delivery": 0,
       "customs": 90761,
       "docs": 100000,
@@ -67,7 +68,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 521850,
+    "price": 631850,
     "photos": [
       "images/cars/Suzuki-Alto/Suzuki-Alto-1.jpeg",
       "images/cars/Suzuki-Alto/Suzuki-Alto-2.jpeg",
@@ -75,6 +76,7 @@
     ],
     "breakdown": {
       "auction": 279950,
+      "domestic": 110000,
       "delivery": 0,
       "customs": 91900,
       "docs": 100000,
@@ -108,7 +110,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1147000,
+    "price": 1257000,
     "photos": [
       "images/cars/Suzuki-Jimny/Suzuki-Jimny-1.jpeg",
       "images/cars/Suzuki-Jimny/Suzuki-Jimny-2.jpeg",
@@ -116,6 +118,7 @@
     ],
     "breakdown": {
       "auction": 902000,
+      "domestic": 110000,
       "delivery": 0,
       "customs": 95000,
       "docs": 100000,
@@ -277,7 +280,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1323500,
+    "price": 1498500,
     "photos": [
       "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-1.jpg",
       "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-2.jpg",
@@ -295,6 +298,7 @@
     ],
     "breakdown": {
       "auction": 1037500,
+      "domestic": 175000,
       "delivery": 0,
       "customs": 136000,
       "docs": 100000,
@@ -327,7 +331,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2436891,
+    "price": 2671191,
     "photos": [
       "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-1.jpg",
       "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-2.jpg",
@@ -345,8 +349,9 @@
       "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-14.jpg"
     ],
     "breakdown": {
-      "auction": 1388800,
-      "delivery": 151900,
+      "auction": 1600000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 746191,
       "docs": 100000,
       "commission": 50000
@@ -424,7 +429,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2467500,
+    "price": 2642500,
     "photos": [
       "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-1.jpg",
       "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-2.jpg",
@@ -441,6 +446,7 @@
     ],
     "breakdown": {
       "auction": 2187500,
+      "domestic": 175000,
       "delivery": 0,
       "customs": 130000,
       "docs": 100000,
@@ -474,7 +480,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2731047,
+    "price": 2906047,
     "photos": [
       "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-1.jpg",
       "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-2.jpg",
@@ -490,6 +496,7 @@
     ],
     "breakdown": {
       "auction": 2112500,
+      "domestic": 175000,
       "delivery": 0,
       "customs": 468547,
       "docs": 100000,
@@ -523,7 +530,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1653000,
+    "price": 1783000,
     "photos": [
       "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-1.jpg",
       "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-2.jpg",
@@ -538,6 +545,7 @@
     ],
     "breakdown": {
       "auction": 1365000,
+      "domestic": 130000,
       "delivery": 0,
       "customs": 138000,
       "docs": 100000,
@@ -658,7 +666,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 4389619,
+    "price": 4564619,
     "photos": [
       "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-1.jpg",
       "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-2.jpg",
@@ -672,6 +680,7 @@
     ],
     "breakdown": {
       "auction": 2287538,
+      "domestic": 175000,
       "delivery": 0,
       "customs": 1952081,
       "docs": 100000,
@@ -825,7 +834,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2960139,
+    "price": 3354489,
     "photos": [
       "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-1.jpg",
       "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-2.jpg",
@@ -838,8 +847,9 @@
       "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-9.jpg"
     ],
     "breakdown": {
-      "auction": 2441250,
-      "delivery": 151900,
+      "auction": 2812500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 216989,
       "docs": 100000,
       "commission": 50000
@@ -864,14 +874,14 @@
     "published": true,
     "addedAt": "2026-07-31",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 3775911,
     "calc": {
       "marketLocal": 168800,
       "customs": 469547,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2602927,
+    "price": 2904547,
     "photos": [
       "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-1.jpg",
       "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-2.jpg",
@@ -883,8 +893,9 @@
       "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-8.jpg"
     ],
     "breakdown": {
-      "auction": 1831480,
-      "delivery": 151900,
+      "auction": 2110000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 469547,
       "docs": 100000,
       "commission": 50000
@@ -917,7 +928,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1620032,
+    "price": 1795032,
     "photos": [
       "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-1.jpg",
       "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-2.jpg",
@@ -930,6 +941,7 @@
     ],
     "breakdown": {
       "auction": 1247500,
+      "domestic": 175000,
       "delivery": 0,
       "customs": 222532,
       "docs": 100000,
@@ -955,14 +967,14 @@
     "published": true,
     "addedAt": "2026-06-13",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 3613336,
     "calc": {
       "marketLocal": 179000,
       "customs": 216989,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2461039,
+    "price": 2779489,
     "photos": [
       "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-1.jpg",
       "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-2.jpg",
@@ -973,8 +985,9 @@
       "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-7.jpg"
     ],
     "breakdown": {
-      "auction": 1942150,
-      "delivery": 151900,
+      "auction": 2237500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 216989,
       "docs": 100000,
       "commission": 50000
@@ -1006,7 +1019,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2599919,
+    "price": 2939489,
     "photos": [
       "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-1.jpg",
       "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-2.jpg",
@@ -1016,8 +1029,9 @@
       "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-6.jpg"
     ],
     "breakdown": {
-      "auction": 2081030,
-      "delivery": 151900,
+      "auction": 2397500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 216989,
       "docs": 100000,
       "commission": 50000
@@ -1049,7 +1063,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 3134875,
+    "price": 3553645,
     "photos": [
       "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-1.jpg",
       "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-2.jpg",
@@ -1061,8 +1075,9 @@
       "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-8.jpg"
     ],
     "breakdown": {
-      "auction": 2601830,
-      "delivery": 151900,
+      "auction": 2997500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 231145,
       "docs": 100000,
       "commission": 50000
@@ -1094,7 +1109,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2407929,
+    "price": 2716149,
     "photos": [
       "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-1.jpg",
       "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-2.jpg",
@@ -1105,8 +1120,9 @@
       "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-7.jpg"
     ],
     "breakdown": {
-      "auction": 1874880,
-      "delivery": 151900,
+      "auction": 2160000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 231149,
       "docs": 100000,
       "commission": 50000
@@ -1138,7 +1154,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1927186,
+    "price": 2164451,
     "photos": [
       "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-1.jpg",
       "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-2.jpg",
@@ -1149,8 +1165,9 @@
       "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-7.jpg"
     ],
     "breakdown": {
-      "auction": 1408297,
-      "delivery": 151900,
+      "auction": 1622462,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 216989,
       "docs": 100000,
       "commission": 50000
@@ -1182,7 +1199,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1314312,
+    "price": 1457532,
     "photos": [
       "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-1.jpg",
       "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-2.jpg",
@@ -1192,8 +1209,9 @@
       "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-6.jpg"
     ],
     "breakdown": {
-      "auction": 789880,
-      "delivery": 151900,
+      "auction": 910000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 222532,
       "docs": 100000,
       "commission": 50000
@@ -1226,7 +1244,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1640516,
+    "price": 1833566,
     "photos": [
       "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-1.jpg",
       "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-2.jpg",
@@ -1239,8 +1257,9 @@
       "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-9.jpg"
     ],
     "breakdown": {
-      "auction": 1117550,
-      "delivery": 151900,
+      "auction": 1287500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 221066,
       "docs": 100000,
       "commission": 50000
@@ -1265,14 +1284,14 @@
     "published": true,
     "addedAt": "2026-05-27",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 1821317,
     "calc": {
       "marketLocal": 58800,
       "customs": 341013,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1280893,
+    "price": 1401013,
     "photos": [
       "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-1.jpg",
       "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-2.jpg",
@@ -1283,8 +1302,9 @@
       "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-7.jpg"
     ],
     "breakdown": {
-      "auction": 637980,
-      "delivery": 151900,
+      "auction": 735000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 341013,
       "docs": 100000,
       "commission": 50000
@@ -1316,7 +1336,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2349271,
+    "price": 2612941,
     "photos": [
       "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-1.jpg",
       "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-2.jpg",
@@ -1328,8 +1348,9 @@
       "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-8.jpg"
     ],
     "breakdown": {
-      "auction": 1581930,
-      "delivery": 151900,
+      "auction": 1822500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 465441,
       "docs": 100000,
       "commission": 50000
@@ -1355,14 +1376,14 @@
     "published": true,
     "addedAt": "2026-05-27",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 2958309,
     "calc": {
       "marketLocal": 138800,
       "customs": 215622,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2023502,
+    "price": 2275622,
     "photos": [
       "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-1.jpg",
       "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-2.jpg",
@@ -1375,8 +1396,9 @@
       "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-9.jpg"
     ],
     "breakdown": {
-      "auction": 1505980,
-      "delivery": 151900,
+      "auction": 1735000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 215622,
       "docs": 100000,
       "commission": 50000
@@ -1401,14 +1423,14 @@
     "published": true,
     "addedAt": "2026-05-27",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 2136633,
     "calc": {
       "marketLocal": 87800,
       "customs": 221064,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1475594,
+    "price": 1643564,
     "photos": [
       "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-1.jpg",
       "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-2.jpg",
@@ -1419,8 +1441,9 @@
       "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-7.jpg"
     ],
     "breakdown": {
-      "auction": 952630,
-      "delivery": 151900,
+      "auction": 1097500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 221064,
       "docs": 100000,
       "commission": 50000
@@ -1445,14 +1468,14 @@
     "published": true,
     "addedAt": "2026-06-27",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 2812056,
     "calc": {
       "marketLocal": 129800,
       "customs": 215620,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1925850,
+    "price": 2163120,
     "photos": [
       "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-1.jpg",
       "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-2.jpg",
@@ -1463,8 +1486,9 @@
       "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-7.jpg"
     ],
     "breakdown": {
-      "auction": 1408330,
-      "delivery": 151900,
+      "auction": 1622500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 215620,
       "docs": 100000,
       "commission": 50000
@@ -1496,7 +1520,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1824900,
+    "price": 2046000,
     "photos": [
       "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-1.jpg",
       "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-2.jpg",
@@ -1507,8 +1531,9 @@
       "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-7.jpg"
     ],
     "breakdown": {
-      "auction": 1302000,
-      "delivery": 151900,
+      "auction": 1500000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 221000,
       "docs": 100000,
       "commission": 50000
@@ -1533,14 +1558,14 @@
     "published": true,
     "addedAt": "2026-05-27",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 2170675,
     "calc": {
       "marketLocal": 89900,
       "customs": 221000,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1498315,
+    "price": 1669750,
     "photos": [
       "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-1.jpg",
       "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-2.jpg",
@@ -1551,8 +1576,9 @@
       "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-7.jpg"
     ],
     "breakdown": {
-      "auction": 975415,
-      "delivery": 151900,
+      "auction": 1123750,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 221000,
       "docs": 100000,
       "commission": 50000
@@ -1585,7 +1611,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 712833,
+    "price": 827500,
     "photos": [
       "images/cars/Chevrolet-Spark/Chevrolet-Spark-1.jpg",
       "images/cars/Chevrolet-Spark/Chevrolet-Spark-2.jpg",
@@ -1594,8 +1620,9 @@
       "images/cars/Chevrolet-Spark/Chevrolet-Spark-5.jpg"
     ],
     "breakdown": {
-      "auction": 213115,
-      "delivery": 94718,
+      "auction": 292500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 255000,
       "docs": 100000,
       "commission": 50000
@@ -1628,7 +1655,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2175441,
+    "price": 2305441,
     "photos": [
       "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-1.jpg",
       "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-2.jpg",
@@ -1639,6 +1666,7 @@
     ],
     "breakdown": {
       "auction": 1560000,
+      "domestic": 130000,
       "delivery": 0,
       "customs": 465441,
       "docs": 100000,
@@ -1672,7 +1700,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2505058,
+    "price": 3208941,
     "photos": [
       "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-1.jpg",
       "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-2.jpg",
@@ -1685,8 +1713,9 @@
       "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-9.jpg"
     ],
     "breakdown": {
-      "auction": 1794899,
-      "delivery": 94718,
+      "auction": 2463500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 465441,
       "docs": 100000,
       "commission": 50000
@@ -1719,7 +1748,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1687220,
+    "price": 2189994,
     "photos": [
       "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-1.jpg",
       "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-2.jpg",
@@ -1732,8 +1761,9 @@
       "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-9.jpg"
     ],
     "breakdown": {
-      "auction": 1255008,
-      "delivery": 94718,
+      "auction": 1722500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 187494,
       "docs": 100000,
       "commission": 50000
@@ -1766,7 +1796,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1690045,
+    "price": 2090500,
     "photos": [
       "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-1.jpg",
       "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-2.jpg",
@@ -1779,8 +1809,9 @@
       "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-9.jpg"
     ],
     "breakdown": {
-      "auction": 980327,
-      "delivery": 94718,
+      "auction": 1345500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 465000,
       "docs": 100000,
       "commission": 50000
@@ -1813,7 +1844,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1366267,
+    "price": 1689101,
     "photos": [
       "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-1.jpg",
       "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-2.jpg",
@@ -1824,8 +1855,9 @@
       "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-7.jpg"
     ],
     "breakdown": {
-      "auction": 771948,
-      "delivery": 94718,
+      "auction": 1059500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 349601,
       "docs": 100000,
       "commission": 50000
@@ -1858,7 +1890,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1404528,
+    "price": 1790870,
     "photos": [
       "images/cars/Peugeot-2008/Peugeot-2008-1.jpg",
       "images/cars/Peugeot-2008/Peugeot-2008-2.jpg",
@@ -1872,8 +1904,9 @@
       "images/cars/Peugeot-2008/Peugeot-2008-10.jpg"
     ],
     "breakdown": {
-      "auction": 942440,
-      "delivery": 94718,
+      "auction": 1293500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 217370,
       "docs": 100000,
       "commission": 50000
@@ -1906,7 +1939,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1684311,
+    "price": 2176500,
     "photos": [
       "images/cars/Peugeot-308-2022/Peugeot-308-2022-1.jpg",
       "images/cars/Peugeot-308-2022/Peugeot-308-2022-2.jpg",
@@ -1918,8 +1951,9 @@
       "images/cars/Peugeot-308-2022/Peugeot-308-2022-8.jpg"
     ],
     "breakdown": {
-      "auction": 1226593,
-      "delivery": 94718,
+      "auction": 1683500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 213000,
       "docs": 100000,
       "commission": 50000
@@ -1952,7 +1986,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1400085,
+    "price": 1795247,
     "photos": [
       "images/cars/Renault-XM3-2021/Renault-XM3-2021-1.jpg",
       "images/cars/Renault-XM3-2021/Renault-XM3-2021-2.jpg",
@@ -1966,8 +2000,9 @@
       "images/cars/Renault-XM3-2021/Renault-XM3-2021-10.jpg"
     ],
     "breakdown": {
-      "auction": 966120,
-      "delivery": 94718,
+      "auction": 1326000,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 189247,
       "docs": 100000,
       "commission": 50000
@@ -2000,7 +2035,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2943423,
+    "price": 3816662,
     "photos": [
       "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-1.jpg",
       "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-2.jpg",
@@ -2014,8 +2049,9 @@
       "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-10.jpg"
     ],
     "breakdown": {
-      "auction": 2249543,
-      "delivery": 94718,
+      "auction": 3087500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 449162,
       "docs": 100000,
       "commission": 50000
@@ -2048,7 +2084,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1580253,
+    "price": 1986000,
     "photos": [
       "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-1.jpg",
       "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-2.jpg",
@@ -2059,8 +2095,9 @@
       "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-7.jpg"
     ],
     "breakdown": {
-      "auction": 994535,
-      "delivery": 94718,
+      "auction": 1365000,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 341000,
       "docs": 100000,
       "commission": 50000
@@ -2093,7 +2130,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1427457,
+    "price": 1831440,
     "photos": [
       "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-1.jpg",
       "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-2.jpg",
@@ -2105,8 +2142,9 @@
       "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-8.jpg"
     ],
     "breakdown": {
-      "auction": 989799,
-      "delivery": 94718,
+      "auction": 1358500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 192940,
       "docs": 100000,
       "commission": 50000
@@ -2132,14 +2170,14 @@
     "published": true,
     "addedAt": "2026-05-28",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 2421089,
     "calc": {
       "marketLocal": 21000000,
       "customs": 217376,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1456629,
+    "price": 1862376,
     "photos": [
       "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-1.jpg",
       "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-2.jpg",
@@ -2151,8 +2189,9 @@
       "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-8.jpg"
     ],
     "breakdown": {
-      "auction": 994535,
-      "delivery": 94718,
+      "auction": 1365000,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 217376,
       "docs": 100000,
       "commission": 50000
@@ -2185,7 +2224,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2599772,
+    "price": 3338938,
     "photos": [
       "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-1.jpg",
       "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-2.jpg",
@@ -2199,8 +2238,9 @@
       "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-10.jpg"
     ],
     "breakdown": {
-      "auction": 1889616,
-      "delivery": 94718,
+      "auction": 2593500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 465438,
       "docs": 100000,
       "commission": 50000
@@ -2233,7 +2273,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 955848,
+    "price": 1202824,
     "photos": [
       "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-1.jpg",
       "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-2.jpg",
@@ -2251,8 +2291,9 @@
       "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-14.jpg"
     ],
     "breakdown": {
-      "auction": 568306,
-      "delivery": 94718,
+      "auction": 780000,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 142824,
       "docs": 100000,
       "commission": 50000
@@ -2285,7 +2326,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1633656,
+    "price": 2012941,
     "photos": [
       "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-1.jpg",
       "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-2.jpg",
@@ -2297,8 +2338,9 @@
       "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-8.jpg"
     ],
     "breakdown": {
-      "auction": 923497,
-      "delivery": 94718,
+      "auction": 1267500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 465441,
       "docs": 100000,
       "commission": 50000
@@ -2331,7 +2373,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1357231,
+    "price": 1630669,
     "photos": [
       "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-1.jpg",
       "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-2.jpg",
@@ -2344,8 +2386,9 @@
       "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-9.jpg"
     ],
     "breakdown": {
-      "auction": 639344,
-      "delivery": 94718,
+      "auction": 877500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 473169,
       "docs": 100000,
       "commission": 50000
@@ -2378,7 +2421,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1427795,
+    "price": 1727519,
     "photos": [
       "images/cars/Jeep-Renegade/Jeep-Renegade-1.jpg",
       "images/cars/Jeep-Renegade/Jeep-Renegade-2.jpg",
@@ -2391,8 +2434,9 @@
       "images/cars/Jeep-Renegade/Jeep-Renegade-9.jpg"
     ],
     "breakdown": {
-      "auction": 709908,
-      "delivery": 94718,
+      "auction": 974350,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 473169,
       "docs": 100000,
       "commission": 50000
@@ -2425,15 +2469,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1101651,
+    "price": 1324057,
     "photos": [
       "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-1.jpg",
       "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-2.jpg",
       "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-3.jpg"
     ],
     "breakdown": {
-      "auction": 729554,
-      "delivery": 86440,
+      "auction": 928400,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 135657,
       "docs": 100000,
       "commission": 50000
@@ -2466,15 +2511,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 866742,
+    "price": 1008927,
     "photos": [
       "images/cars/Renault-Lutecia/Renault-Lutecia-1.jpg",
       "images/cars/Renault-Lutecia/Renault-Lutecia-2.jpg",
       "images/cars/Renault-Lutecia/Renault-Lutecia-3.jpg"
     ],
     "breakdown": {
-      "auction": 435225,
-      "delivery": 86440,
+      "auction": 553850,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 195077,
       "docs": 100000,
       "commission": 50000
@@ -2507,15 +2553,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 956244,
+    "price": 1126701,
     "photos": [
       "images/cars/Nissan-Kix/Nissan-Kix-1.jpg",
       "images/cars/Nissan-Kix/Nissan-Kix-2.jpg",
       "images/cars/Nissan-Kix/Nissan-Kix-3.jpg"
     ],
     "breakdown": {
-      "auction": 538953,
-      "delivery": 86440,
+      "auction": 685850,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 180851,
       "docs": 100000,
       "commission": 50000
@@ -2548,15 +2595,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1262672,
+    "price": 1516649,
     "photos": [
       "images/cars/Nissan-Serena/Nissan-Serena-1.jpg",
       "images/cars/Nissan-Serena/Nissan-Serena-2.jpg",
       "images/cars/Nissan-Serena/Nissan-Serena-3.jpg"
     ],
     "breakdown": {
-      "auction": 845383,
-      "delivery": 86440,
+      "auction": 1075800,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 180849,
       "docs": 100000,
       "commission": 50000
@@ -2589,15 +2637,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 763180,
+    "price": 881687,
     "photos": [
       "images/cars/Nissan-Note/Nissan-Note-1.jpg",
       "images/cars/Nissan-Note/Nissan-Note-2.jpg",
       "images/cars/Nissan-Note/Nissan-Note-3.jpg"
     ],
     "breakdown": {
-      "auction": 348353,
-      "delivery": 86440,
+      "auction": 443300,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 178387,
       "docs": 100000,
       "commission": 50000
@@ -2630,15 +2679,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1645972,
+    "price": 1998194,
     "photos": [
       "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-1.jpg",
       "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-2.jpg",
       "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-3.jpg"
     ],
     "breakdown": {
-      "auction": 1205838,
-      "delivery": 86440,
+      "auction": 1534500,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 203694,
       "docs": 100000,
       "commission": 50000
@@ -2671,15 +2721,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1917262,
+    "price": 2270662,
     "photos": [
       "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-1.jpg",
       "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-2.jpg",
       "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-3.jpg"
     ],
     "breakdown": {
-      "auction": 1210160,
-      "delivery": 86440,
+      "auction": 1540000,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 470662,
       "docs": 100000,
       "commission": 50000
@@ -2712,15 +2763,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1428072,
+    "price": 1713148,
     "photos": [
       "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-1.jpg",
       "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-2.jpg",
       "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 959484,
-      "delivery": 86440,
+      "auction": 1221000,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 232148,
       "docs": 100000,
       "commission": 50000
@@ -2753,15 +2805,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1324909,
+    "price": 1595849,
     "photos": [
       "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-1.jpg",
       "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-2.jpg",
       "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 907620,
-      "delivery": 86440,
+      "auction": 1155000,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 180849,
       "docs": 100000,
       "commission": 50000
@@ -2794,15 +2847,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1476179,
+    "price": 1788349,
     "photos": [
       "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-1.jpg",
       "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-2.jpg",
       "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 1058890,
-      "delivery": 86440,
+      "auction": 1347500,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 180849,
       "docs": 100000,
       "commission": 50000
@@ -2835,7 +2889,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1450099,
+    "price": 1560099,
     "photos": [
       "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-1.jpg",
       "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-2.jpg",
@@ -2843,6 +2897,7 @@
     ],
     "breakdown": {
       "auction": 1119250,
+      "domestic": 110000,
       "delivery": 0,
       "customs": 180849,
       "docs": 100000,
@@ -2876,15 +2931,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1099960,
+    "price": 1264880,
     "photos": [
       "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-1.jpg",
       "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-2.jpg",
       "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 518640,
-      "delivery": 86440,
+      "auction": 660000,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 344880,
       "docs": 100000,
       "commission": 50000
@@ -2917,15 +2973,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1471319,
+    "price": 1770531,
     "photos": [
       "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-1.jpg",
       "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-2.jpg",
       "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 1011348,
-      "delivery": 86440,
+      "auction": 1287000,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 223531,
       "docs": 100000,
       "commission": 50000
@@ -2951,22 +3008,23 @@
     "published": true,
     "addedAt": "2026-05-29",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 2111594,
     "calc": {
       "marketLocal": 2100000,
       "customs": 209303,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1353363,
+    "price": 1624303,
     "photos": [
       "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-1.jpg",
       "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-2.jpg",
       "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 907620,
-      "delivery": 86440,
+      "auction": 1155000,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 209303,
       "docs": 100000,
       "commission": 50000
@@ -2999,7 +3057,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 890651,
+    "price": 1000651,
     "photos": [
       "images/cars/Audi-A1-Japan/Audi-A1-Japan-1.jpg",
       "images/cars/Audi-A1-Japan/Audi-A1-Japan-2.jpg",
@@ -3007,6 +3065,7 @@
     ],
     "breakdown": {
       "auction": 605000,
+      "domestic": 110000,
       "delivery": 0,
       "customs": 135651,
       "docs": 100000,
@@ -3040,7 +3099,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2051031,
+    "price": 2161031,
     "photos": [
       "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-1.jpg",
       "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-2.jpg",
@@ -3048,6 +3107,7 @@
     ],
     "breakdown": {
       "auction": 1677500,
+      "domestic": 110000,
       "delivery": 0,
       "customs": 223531,
       "docs": 100000,
@@ -3081,7 +3141,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 875475,
+    "price": 985475,
     "photos": [
       "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-1.jpg",
       "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-2.jpg",
@@ -3089,6 +3149,7 @@
     ],
     "breakdown": {
       "auction": 632499,
+      "domestic": 110000,
       "delivery": 0,
       "customs": 92976,
       "docs": 100000,
@@ -3122,7 +3183,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 5390685,
+    "price": 5837835,
     "photos": [
       "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-1.jpg",
       "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-2.jpg",
@@ -3134,8 +3195,9 @@
       "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-8.jpg"
     ],
     "breakdown": {
-      "auction": 2788450,
-      "delivery": 151900,
+      "auction": 3212500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 2300335,
       "docs": 100000,
       "commission": 50000
@@ -3168,11 +3230,12 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 7202754,
+    "price": 7816554,
     "photos": [],
     "breakdown": {
-      "auction": 3884300,
-      "delivery": 151900,
+      "auction": 4475000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 3016554,
       "docs": 100000,
       "commission": 50000
@@ -3198,14 +3261,14 @@
     "published": true,
     "addedAt": "2026-05-29",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 81797841,
     "calc": {
       "marketLocal": 3300000,
       "customs": 21276416,
       "commission": 120000,
       "docs": 100000
     },
-    "price": 57453316,
+    "price": 62921416,
     "photos": [
       "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-1.jpg",
       "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-2.jpg",
@@ -3219,8 +3282,9 @@
       "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-10.jpg"
     ],
     "breakdown": {
-      "auction": 35805000,
-      "delivery": 151900,
+      "auction": 41250000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 21276416,
       "docs": 100000,
       "commission": 120000
@@ -3253,7 +3317,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 5429461,
+    "price": 5877931,
     "photos": [
       "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-1.jpg",
       "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-2.jpg",
@@ -3267,8 +3331,9 @@
       "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-10.jpg"
     ],
     "breakdown": {
-      "auction": 2797130,
-      "delivery": 151900,
+      "auction": 3222500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 2330431,
       "docs": 100000,
       "commission": 50000
@@ -3301,7 +3366,7 @@
       "commission": 80000,
       "docs": 100000
     },
-    "price": 6588073,
+    "price": 7154023,
     "photos": [
       "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-1.jpg",
       "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-2.jpg",
@@ -3315,8 +3380,9 @@
       "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-10.jpg"
     ],
     "breakdown": {
-      "auction": 3569650,
-      "delivery": 151900,
+      "auction": 4112500,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 2686523,
       "docs": 100000,
       "commission": 80000
@@ -3349,7 +3415,7 @@
       "commission": 80000,
       "docs": 100000
     },
-    "price": 5182508,
+    "price": 5700443,
     "photos": [
       "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-1.jpg",
       "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-2.jpg",
@@ -3366,8 +3432,9 @@
       "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-13.jpg"
     ],
     "breakdown": {
-      "auction": 3253915,
-      "delivery": 151900,
+      "auction": 3748750,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 1596693,
       "docs": 100000,
       "commission": 80000
@@ -3400,15 +3467,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 740091,
+    "price": 789685,
     "photos": [
       "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-1.jpg",
       "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-2.jpg",
       "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 95516,
-      "delivery": 86440,
+      "auction": 121550,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 408135,
       "docs": 100000,
       "commission": 50000
@@ -3441,15 +3509,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 991512,
+    "price": 1091053,
     "photos": [
       "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-1.jpg",
       "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-2.jpg",
       "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 278769,
-      "delivery": 86440,
+      "auction": 354750,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 476303,
       "docs": 100000,
       "commission": 50000
@@ -3482,15 +3551,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 800589,
+    "price": 918389,
     "photos": [
       "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-1.jpg",
       "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-2.jpg",
       "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 345760,
-      "delivery": 86440,
+      "auction": 440000,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 218389,
       "docs": 100000,
       "commission": 50000
@@ -3523,15 +3593,16 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 728116,
+    "price": 833900,
     "photos": [
       "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-1.jpg",
       "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-2.jpg",
       "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-3.jpg"
     ],
     "breakdown": {
-      "auction": 301676,
-      "delivery": 86440,
+      "auction": 383900,
+      "domestic": 110000,
+      "delivery": 0,
       "customs": 190000,
       "docs": 100000,
       "commission": 50000
@@ -3557,22 +3628,23 @@
     "published": true,
     "addedAt": "2026-05-29",
     "type": "auto",
-    "priceMarket": null,
+    "priceMarket": 1067130,
     "calc": {
       "marketLocal": 6300000,
       "customs": 131369,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 674447,
+    "price": 820869,
     "photos": [
       "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-1.jpg",
       "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-2.jpg",
       "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-3.jpg"
     ],
     "breakdown": {
-      "auction": 298360,
-      "delivery": 94718,
+      "auction": 409500,
+      "domestic": 130000,
+      "delivery": 0,
       "customs": 131369,
       "docs": 100000,
       "commission": 50000
@@ -3605,7 +3677,7 @@
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1086900,
+    "price": 1209000,
     "photos": [
       "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-1.jpg",
       "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-2.jpg",
@@ -3619,8 +3691,9 @@
       "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-10.jpg"
     ],
     "breakdown": {
-      "auction": 651000,
-      "delivery": 151900,
+      "auction": 750000,
+      "domestic": 175000,
+      "delivery": 0,
       "customs": 134000,
       "docs": 100000,
       "commission": 50000

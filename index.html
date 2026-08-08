@@ -5688,11 +5688,12 @@ function openCarModal(car) {
 
   // Price breakdown — manual values from car data (no auto-calculation)
   const bd = car.breakdown || {};
-  const hasBreakdown = bd.auction || bd.delivery || bd.customs || bd.docs || bd.commission;
+  const hasBreakdown = bd.auction || bd.domestic || bd.delivery || bd.customs || bd.docs || bd.commission;
   let breakdownHtml = '';
   if (hasBreakdown) {
     const rows = [
       { label: 'Цена авто на аукционе', value: bd.auction },
+      { label: 'Логистика внутри страны', value: bd.domestic },
       { label: 'Доставка морем + автовоз', value: bd.delivery },
       { label: 'Утильсбор и таможня', value: bd.customs },
       { label: 'СБКТС, оформление', value: bd.docs },
