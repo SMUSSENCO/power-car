@@ -533,6 +533,11 @@ section { position: relative; padding: 72px 0; }
   transition: all 0.3s var(--ease-out);
 }
 .nav a:hover { color: var(--text); background: var(--surface-2); }
+.nav-catalog {
+  border: 1px solid var(--accent);
+  color: var(--text) !important;
+}
+.nav-catalog:hover { background: rgba(16, 185, 129, 0.1) !important; }
 
 /* ============ MOBILE: Подбор-иконка в хедере + бургер ============ */
 
@@ -3922,7 +3927,7 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
 
     <nav class="nav" aria-label="Главное меню">
       <a href="#top5">Топ-10</a>
-      <a href="#selector">Подбор</a>
+      <a href="#selector" class="nav-catalog">Каталог</a>
       <a href="/quiz.html">Квиз</a>
       <a href="#cases">Отзывы</a>
       <a href="#offices">Офисы</a>
@@ -3955,7 +3960,7 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <a href="#top5" class="mobile-menu-link">Топ-10</a>
-    <a href="#selector" class="mobile-menu-link">Подбор</a>
+    <a href="#selector" class="mobile-menu-link nav-catalog">Каталог</a>
     <a href="/quiz.html" class="mobile-menu-link">Квиз</a>
     <a href="#cases" class="mobile-menu-link">Отзывы<span class="menu-counter" id="menuCasesCount" aria-label="количество кейсов"></span></a>
     <a href="#offices" class="mobile-menu-link">Офисы</a>
