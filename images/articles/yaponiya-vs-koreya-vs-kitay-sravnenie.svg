@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%" style="background-color: #0A0B0D;">
+  <rect width="1200" height="630" fill="#0A0B0D" />
+
+  <path d="M 0,150 L 1200,150 M 0,300 L 1200,300 M 0,450 L 1200,450 M 0,600 L 1200,600" stroke="#16181C" stroke-width="1.5" />
+  <path d="M 150,0 L 150,630 M 300,0 L 300,630 M 450,0 L 450,630 M 600,0 L 600,630 M 750,0 L 750,630 M 900,0 L 900,630 M 1050,0 L 1050,630" stroke="#16181C" stroke-width="1.5" />
+
+  <defs>
+    <filter id="glow-cmp" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <text x="600" y="130" text-anchor="middle" fill="#00FF88" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" letter-spacing="4">СРАВНЕНИЕ РЫНКОВ ИМПОРТА 2026</text>
+
+  <g font-family="system-ui, -apple-system, sans-serif" filter="url(#glow-cmp)">
+    <circle cx="280" cy="260" r="72" fill="none" stroke="#00FF88" stroke-width="2.5" />
+    <text x="280" y="248" text-anchor="middle" font-size="40">🇯🇵</text>
+    <text x="280" y="300" text-anchor="middle" fill="#00FF88" font-size="15" font-weight="800" letter-spacing="1">ЯПОНИЯ</text>
+
+    <circle cx="600" cy="260" r="72" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="6 6" />
+    <text x="600" y="248" text-anchor="middle" font-size="40">🇰🇷</text>
+    <text x="600" y="300" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="800" letter-spacing="1">КОРЕЯ</text>
+
+    <circle cx="920" cy="260" r="72" fill="none" stroke="#FF5E00" stroke-width="2.5" />
+    <text x="920" y="248" text-anchor="middle" font-size="40">🇨🇳</text>
+    <text x="920" y="300" text-anchor="middle" fill="#FF5E00" font-size="15" font-weight="800" letter-spacing="1">КИТАЙ</text>
+  </g>
+
+  <text x="440" y="266" text-anchor="middle" fill="#55645C" font-family="system-ui, sans-serif" font-size="22" font-weight="900">VS</text>
+  <text x="760" y="266" text-anchor="middle" fill="#55645C" font-family="system-ui, sans-serif" font-size="22" font-weight="900">VS</text>
+
+  <text x="600" y="400" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="900" letter-spacing="-1">ОТКУДА ВЫГОДНЕЕ ВЕЗТИ АВТО</text>
+  <text x="600" y="452" text-anchor="middle" fill="#00FF88" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="900" letter-spacing="-1">В 2026 ГОДУ</text>
+
+  <line x1="450" y1="485" x2="750" y2="485" stroke="#22252A" stroke-width="3" />
+
+  <text x="600" y="530" text-anchor="middle" fill="#8A968E" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600">Цены · возраст · безопасность · растаможка</text>
+  <text x="600" y="575" text-anchor="middle" fill="#55645C" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" letter-spacing="2">POWER CAR</text>
+</svg>
