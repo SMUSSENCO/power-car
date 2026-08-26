@@ -160,7 +160,16 @@ COUNTRY = {"Japan":"Япония","Korea":"Корея","China":"Китай"}
 BODY = {"crossover":"кроссовер","sedan":"седан","hatchback":"хэтчбек","suv":"внедорожник","minivan":"минивэн","wagon":"универсал"}
 WHEEL = {"left":"левый","right":"правый"}
 
-def car_page(c):
+def related_articles_for_car(c, articles):
+    """Подбирает до 3 статей: сперва по упоминанию страны авто в заголовке/описании, затем — самые свежие."""
+    country_kw = CMAP.get(c.get("country"), "").lower()
+    def score(a):
+        text = (a.get("title", "") + " " + a.get("description", "")).lower()
+        return 1 if country_kw and country_kw in text else 0
+    ranked = sorted(articles, key=lambda a: (score(a), a.get("publishedAt", "")), reverse=True)
+    return ranked[:3]
+
+def car_page(c, articles):
     cid = slugify(c["id"]); brand=c["brand"]; model=c["model"]; year=c["year"]
     name = f"{brand} {model} {year}"; country = CMAP.get(c.get("country"),"")
     url = f"{BASE}auto/{cid}.html"
@@ -185,6 +194,16 @@ def car_page(c):
                  f'<p class="sec-sub">Прозрачно, без скрытых платежей. Все суммы фиксируются в договоре.</p>'
                  f'<div class="card"><table class="bd">{bd}<tr class="total"><td>Итого под ключ</td><td>{fmt_price(c["price"])}</td></tr></table>'
                  f'<p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа.</p></div></section>') if bd else ""
+
+    related = related_articles_for_car(c, articles)
+    rel_cards = ""
+    for a in related:
+        cat_span = f'<span class="rel-cat">{html.escape(a["category"])}</span>' if a.get("category") else ""
+        rt_span = f'<span class="rel-meta">⏱ {a["readTime"]} мин</span>' if a.get("readTime") else ""
+        rel_cards += (f'<a class="rel-card" href="/articles/{html.escape(a["slug"])}.html">'
+                      f'{cat_span}<h4>{html.escape(a["title"])}</h4>{rt_span}</a>')
+    related_block = (f'<section><h2 class="sec-h">Читайте также</h2>'
+                     f'<div class="rel-grid">{rel_cards}</div></section>') if rel_cards else ""
 
     img0 = ("/"+photos[0]) if photos else (BASE+"og-cover.jpg")
     ld_car = {"@context":"https://schema.org","@type":"Car","name":name,"url":url,
@@ -246,6 +265,7 @@ def car_page(c):
     </div>
   </div>
   {breakdown}
+  {related_block}
   <section><div class="cta" id="cta">
     <h2>Обсудить {html.escape(brand)} {html.escape(model)} с менеджером</h2>
     <p>Бесплатный расчёт и сопровождение до выдачи. Без предоплаты за подбор. Доставка в Томск, Новосибирск, Москву и другие регионы.</p>
@@ -281,7 +301,7 @@ articles = [a for a in json.load(open("data/articles.json", encoding="utf-8")) i
 cars = [c for c in json.load(open("data/cars.json", encoding="utf-8")) if c.get("published")]
 
 art_files = {a["slug"] + ".html": article_page(a, articles) for a in articles}
-car_files = {slugify(c["id"]) + ".html": car_page(c) for c in cars}
+car_files = {slugify(c["id"]) + ".html": car_page(c, articles) for c in cars}
 na, ra = sync_dir("articles", art_files)
 nc, rc = sync_dir("auto", car_files)
 
