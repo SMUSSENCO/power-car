@@ -3707,5 +3707,47 @@
       "docs": 100000,
       "commission": 50000
     }
+  },
+  {
+    "id": "volkswagen-tayron-1-4-150hp",
+    "brand": "Volkswagen",
+    "model": "Tayron",
+    "year": 2022,
+    "mileage": 40000,
+    "engine": "1.4T",
+    "power": 150,
+    "transmission": "АКПП",
+    "body": "suv",
+    "country": "China",
+    "flag": "🇨🇳",
+    "wheel": "left",
+    "deliveryMin": 21,
+    "deliveryMax": 28,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-09-02",
+    "type": "auto",
+    "priceMarket": 3185001,
+    "calc": {
+      "marketLocal": 152641,
+      "customs": 216989,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 2450001,
+    "photos": [
+      "images/cars/volkswagen-tayron/Volkswagen-Tayron-1.webp",
+      "images/cars/volkswagen-tayron/Volkswagen-Tayron-2.webp",
+      "images/cars/volkswagen-tayron/Volkswagen-Tayron-3.webp"
+    ],
+    "breakdown": {
+      "auction": 1908012,
+      "domestic": 175000,
+      "delivery": 0,
+      "customs": 216989,
+      "docs": 100000,
+      "commission": 50000
+    }
   }
 ]
