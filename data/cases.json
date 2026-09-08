@@ -1,5 +1,53 @@
 [
   {
+    "id": "Skoda-Karoq-2022-Tomsk",
+    "carTitle": "Skoda Karoq 2022",
+    "clientName": "Клиент",
+    "clientCity": "Томск",
+    "country": "Китай",
+    "flag": "🇨🇳",
+    "year": 2022,
+    "deliveryDays": 24,
+    "finalPrice": 2150000,
+    "showPrice": true,
+    "hasClientPhoto": true,
+    "photoCount": 4,
+    "quote": "",
+    "story": "Skoda Karoq (2022) — премиальный компактный кроссовер для тех, кто ценит динамику без переплаты за расход.\n\n🏳 Под капотом — турбированный двигатель 1.4 литра на 150 лошадиных сил, который обеспечивает отличную динамику и при этом остаётся экономичным, а пробег всего 25 тысяч километров — для этого возраста это практически новый автомобиль.\n\n🏳 Комплектация поражает: адаптивный круиз-контроль, система контроля слепых зон, подогрев руля и всех сидений, двухзонный климат-контроль и панорамная крыша, которая наполняет салон светом.\n\n🏳 Мультимедиа с большим экраном поддерживает Apple CarPlay и Android Auto, а качественные материалы отделки создают ощущение премиальности.\n\nХарактеристики:\n• Модель: Skoda Karoq\n• Год: 2022\n• Пробег: 25 000 км\n• Двигатель: 1.4 л / 150 л.с.\n• Цена до Владивостока: 2 150 000 ₽",
+    "published": true,
+    "photos": [
+      "images/cases/Skoda-Karoq-2022/Skoda-Karoq-2022-1.webp",
+      "images/cases/Skoda-Karoq-2022/Skoda-Karoq-2022-2.webp",
+      "images/cases/Skoda-Karoq-2022/Skoda-Karoq-2022-3.webp",
+      "images/cases/Skoda-Karoq-2022/Skoda-Karoq-2022-4.webp"
+    ]
+  },
+  {
+    "id": "Mercedes-Benz-GLC300-2022-Marina-Krasnoyarsk",
+    "carTitle": "Mercedes-Benz GLC300 4WD 2022",
+    "clientName": "Марина",
+    "clientCity": "Красноярск",
+    "country": "Китай",
+    "flag": "🇨🇳",
+    "year": 2022,
+    "deliveryDays": 24,
+    "finalPrice": 5200000,
+    "showPrice": true,
+    "hasClientPhoto": true,
+    "photoCount": 6,
+    "quote": "",
+    "story": "Премиальный кроссовер с мощным двигателем и полным приводом — для Марины мы нашли Mercedes-Benz GLC 300 2022 года.\n\nОснащение впечатляет: кожаный салон, панорамная крыша, подогрев и вентиляция передних сидений, адаптивный круиз-контроль, система кругового обзора, премиальная аудиосистема и проекционный дисплей. Автомобиль в идеальном состоянии — без перекрасов и с минимальным пробегом.\n\nХарактеристики:\n• Модель: Mercedes-Benz GLC-Class GLC300 4WD\n• Год: 2022\n• Пробег: 24 650 км\n• Двигатель: 2.0 л, 272 л.с.\n• Цена до Владивостока: 5 200 000 ₽",
+    "published": true,
+    "photos": [
+      "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-1.webp",
+      "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-2.webp",
+      "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-3.webp",
+      "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-4.webp",
+      "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-5.webp",
+      "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-6.webp"
+    ]
+  },
+  {
     "id": "Toyota-Raize-2020-Tomsk-Ivan",
     "carTitle": "Toyota Raize G 2020",
     "clientName": "Иван",
