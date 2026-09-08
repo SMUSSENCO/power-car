@@ -1,5 +1,38 @@
 [
   {
+    "id": "Toyota-Raize-2020-Tomsk-Ivan",
+    "carTitle": "Toyota Raize G 2020",
+    "clientName": "Иван",
+    "clientCity": "Томск",
+    "country": "Япония",
+    "flag": "🇯🇵",
+    "year": 2020,
+    "deliveryDays": 24,
+    "finalPrice": 1150000,
+    "showPrice": true,
+    "hasClientPhoto": true,
+    "photoCount": 14,
+    "quote": "",
+    "story": "Toyota Raize (Комплектация G) — идеальный пример того, как компактные размеры сочетаются с продуманным оснащением.\n\nПод капотом установлен 1.0-литровый турбодвигатель мощностью 99 лошадиных сил, который отлично чувствует себя в городском трафике и радует экономичным расходом топлива.\n\n💚 Комплектация G — это полноценный набор опций: светодиодная оптика, которая отлично освещает дорогу в тёмное время суток, 16-дюймовые легкосплавные диски, придающие автомобилю спортивный вид, и мультимедийная система с сенсорным экраном и поддержкой смартфонов.\n💚 В салоне вас встретят комфортные тканевые сиденья с хорошей боковой поддержкой, кондиционер, который быстро создаёт нужную температуру, а также подушка безопасности водителя и переднего пассажира.\n\nХарактеристики:\n• Модель: Toyota Raize\n• Комплектация: G\n• Год: 2020\n• Двигатель: 1.0 л / 99 л.с.\n• Пробег: 92 000 км\n• Цена до Владивостока: 1 150 000 ₽",
+    "published": true,
+    "photos": [
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-1.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-2.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-3.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-4.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-5.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-6.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-7.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-8.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-9.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-10.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-11.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-12.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-13.webp",
+      "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-14.webp"
+    ]
+  },
+  {
     "id": "Mazda-Axela-2014-Tomsk-Irina",
     "carTitle": "Mazda Axela S 2014",
     "clientName": "Ирина",
