@@ -82,11 +82,15 @@ def article_page(a, all_articles):
 
     cat_pill = f'<span class="art-category-pill">{html.escape(a["category"])}</span>' if a.get("category") else ""
     meta_row = f'<span>{fmt_date(a.get("publishedAt",""))}</span>'
+    updated_at = a.get("updatedAt")
+    if updated_at and updated_at != a.get("publishedAt"):
+        meta_row += f'<span>Обновлено: {fmt_date(updated_at)}</span>'
     if a.get("readTime"): meta_row += f'<span>⏱ {a["readTime"]} мин чтения</span>'
     if a.get("author"): meta_row += f'<span>✍️ {html.escape(a["author"])}</span>'
 
     ld_article = {"@context":"https://schema.org","@type":"Article","headline":a["title"],
         "description":a.get("description",""),"datePublished":a.get("publishedAt",""),
+        "dateModified":a.get("updatedAt") or a.get("publishedAt",""),
         "image":cover_abs,"mainEntityOfPage":url,
         "author":{"@type":"Organization","name":a.get("author") or "POWER Car"},
         "publisher":{"@type":"Organization","name":"POWER Car","logo":{"@type":"ImageObject","url":BASE+"android-chrome-512x512.png"}}}
