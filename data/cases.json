@@ -20,7 +20,8 @@
       "images/cases/Skoda-Karoq-2022/Skoda-Karoq-2022-2.webp",
       "images/cases/Skoda-Karoq-2022/Skoda-Karoq-2022-3.webp",
       "images/cases/Skoda-Karoq-2022/Skoda-Karoq-2022-4.webp"
-    ]
+    ],
+    "priority": 210
   },
   {
     "id": "Mercedes-Benz-GLC300-2022-Marina-Krasnoyarsk",
@@ -45,7 +46,8 @@
       "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-4.webp",
       "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-5.webp",
       "images/cases/Mercedes-Benz-GLC300-2022-Marina/Mercedes-Benz-GLC300-2022-6.webp"
-    ]
+    ],
+    "priority": 205
   },
   {
     "id": "Toyota-Raize-2020-Tomsk-Ivan",
@@ -78,7 +80,8 @@
       "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-12.webp",
       "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-13.webp",
       "images/cases/Toyota-Raize-2020-Tomsk-Ivan/Toyota-Raize-2020-14.webp"
-    ]
+    ],
+    "priority": 201
   },
   {
     "id": "Mazda-Axela-2014-Tomsk-Irina",
