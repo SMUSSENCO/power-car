@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+<meta name="theme-color" content="#10B981" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>Калькулятор растаможки авто из Японии, Кореи и Китая 2026 | POWER Car</title>
+<meta name="description" content="Бесплатный калькулятор стоимости авто под ключ из Азии: курс валюты, логистика, таможня и утильсбор. Оценка за 30 секунд по реальным сделкам POWER Car." />
+
+<link rel="canonical" href="https://power-car.ru/kalkulyator-rastamozhki.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Калькулятор растаможки авто из Азии 2026 | POWER Car" />
+<meta property="og:description" content="Курс, логистика, таможня и утильсбор — расчёт под ключ за 30 секунд." />
+<meta property="og:image" content="https://power-car.ru/og-cover.jpg" />
+<meta property="og:url" content="https://power-car.ru/kalkulyator-rastamozhki.html" />
+<meta property="og:site_name" content="POWER Car" />
+<meta property="og:locale" content="ru_RU" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Калькулятор растаможки авто из Азии 2026 | POWER Car" />
+<meta name="twitter:description" content="Курс, логистика, таможня и утильсбор — расчёт под ключ за 30 секунд." />
+<meta name="twitter:image" content="https://power-car.ru/og-cover.jpg" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet"></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Главная","item":"https://power-car.ru/"},
+    {"@type":"ListItem","position":2,"name":"Калькулятор растаможки","item":"https://power-car.ru/kalkulyator-rastamozhki.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Калькулятор растаможки даёт точную сумму?",
+     "acceptedAnswer":{"@type":"Answer","text":"Курс, логистика внутри страны, доставка, СБКТС и комиссия считаются точно по действующим ставкам. Таможня и утильсбор показаны диапазоном — точная сумма зависит от объёма двигателя, мощности и возраста конкретного автомобиля и уточняется менеджером перед сделкой."}},
+    {"@type":"Question","name":"Почему утильсбор резко растёт при мощности свыше 160 л.с.?",
+     "acceptedAnswer":{"@type":"Answer","text":"С декабря 2025 года при расчёте утильсбора помимо объёма двигателя и возраста учитывается мощность. Для автомобилей мощнее 160 л.с. льготный коэффициент не действует, и сумма может вырасти в несколько раз."}},
+    {"@type":"Question","name":"От чего зависит стоимость доставки до Владивостока?",
+     "acceptedAnswer":{"@type":"Answer","text":"От страны отправления: Япония и Корея — 14–21 день, Китай — 21–28 дней. Тариф фиксируется на момент сделки."}}
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #0A0A0A;
+  --bg-alt: #0E0E10;
+  --surface: rgba(255,255,255,0.035);
+  --surface-2: rgba(255,255,255,0.06);
+  --surface-3: rgba(255,255,255,0.10);
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --text: #FAFAFA;
+  --text-muted: rgba(255,255,255,0.62);
+  --text-dim: rgba(255,255,255,0.42);
+  --accent: #10B981;
+  --accent-2: #34D399;
+  --accent-soft: rgba(16,185,129,0.12);
+  --warning: #F59E0B;
+  --warning-soft: rgba(245,158,11,0.12);
+  --r-xs: 8px; --r-sm: 14px; --r-md: 22px; --r-lg: 32px;
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em; }
+
+.ambient {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 50% at 50% -10%, rgba(16,185,129,0.14), transparent 60%);
+}
+
+.page-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10,10,10,0.82); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.page-header-inner {
+  max-width: 900px; margin: 0 auto; padding: 14px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.page-logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 700; }
+.page-back { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
+.page-back:hover { color: var(--text); }
+.page-back svg { width: 18px; height: 18px; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+.hero { padding: 48px 0 28px; text-align: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-2); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 14px; }
+.eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--accent-2); }
+h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.1; margin-bottom: 14px; }
+.hero p { color: var(--text-muted); font-size: 1.02rem; max-width: 54ch; margin: 0 auto; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 26px; margin-bottom: 20px; }
+
+.field { margin-bottom: 18px; }
+.field label { display: block; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 7px; font-weight: 500; }
+.field .hint { display: block; font-size: 0.78rem; color: var(--text-dim); margin-top: 5px; }
+.field input, .field select {
+  width: 100%; background: var(--bg-alt); border: 1px solid var(--border-2); border-radius: var(--r-xs);
+  padding: 12px 14px; color: var(--text); font-family: var(--font-body); font-size: 1rem;
+}
+.field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
+
+.country-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+.country-toggle button {
+  background: var(--bg-alt); border: 1px solid var(--border-2); border-radius: var(--r-xs);
+  padding: 12px 8px; color: var(--text-muted); font-family: var(--font-body); font-weight: 600; font-size: 0.92rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.country-toggle button.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-2); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+  border-radius: 999px; padding: 15px 24px; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; transition: 0.2s; }
+.btn-primary { background: var(--accent); color: #04130d; }
+.btn-primary:hover { background: var(--accent-2); }
+
+.result { display: none; }
+.result.show { display: block; }
+.result-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+.result-row .l { color: var(--text-muted); }
+.result-row .v { font-weight: 600; white-space: nowrap; }
+.result-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; margin-top: 6px; }
+.result-total .l { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
+.result-total .v { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; color: var(--accent-2); }
+
+.warn-box { background: var(--warning-soft); border: 1px solid rgba(245,158,11,0.3); border-radius: var(--r-sm); padding: 14px 16px; margin-top: 16px; font-size: 0.86rem; color: #FCD34D; display: none; }
+.warn-box.show { display: block; }
+
+.note-box { background: var(--surface-2); border-radius: var(--r-sm); padding: 14px 16px; margin-top: 16px; font-size: 0.84rem; color: var(--text-dim); line-height: 1.6; }
+
+.cta-block { text-align: center; margin: 32px 0; }
+.cta-block p { color: var(--text-muted); margin-bottom: 16px; }
+
+.faq { padding: 12px 0 60px; }
+.faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 16px 0; }
+.faq-item summary { cursor: pointer; font-weight: 600; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item p { color: var(--text-muted); margin-top: 10px; font-size: 0.92rem; }
+
+.page-footer { border-top: 1px solid var(--border); padding: 24px 0 40px; text-align: center; color: var(--text-dim); font-size: 0.84rem; }
+.page-footer a { color: var(--text-muted); }
+.page-footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true"></div>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <a href="/" class="page-logo" aria-label="POWER Car — на главную">
+      <img src="images/logo/logo-50.svg" alt="POWER Car" width="50" height="23" />
+    </a>
+    <a href="/" class="page-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      На главную
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <span class="eyebrow">Калькулятор</span>
+      <h1>Сколько будет стоить авто под ключ</h1>
+      <p>Курс, логистика и доставка считаются точно по текущим ставкам. Таможню и утильсбор показываем диапазоном — точную сумму под конкретный автомобиль называет менеджер.</p>
+    </div>
+
+    <div class="card">
+      <div class="country-toggle" id="countryToggle" role="radiogroup">
+        <button type="button" data-country="Japan" class="active">🇯🇵 Япония</button>
+        <button type="button" data-country="Korea">🇰🇷 Корея</button>
+        <button type="button" data-country="China">🇨🇳 Китай</button>
+      </div>
+
+      <div class="field">
+        <label for="marketLocal">Стоимость авто на аукционе / у дилера</label>
+        <input type="number" id="marketLocal" placeholder="Например, 800000" min="0" />
+        <span class="hint" id="currencyHint">В йенах — как указано в аукционном листе</span>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="engineVolume">Объём двигателя, л</label>
+          <input type="number" id="engineVolume" placeholder="1.5" step="0.1" min="0" />
+        </div>
+        <div class="field">
+          <label for="enginePower">Мощность, л.с.</label>
+          <input type="number" id="enginePower" placeholder="115" min="0" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="carYear">Год выпуска</label>
+        <input type="number" id="carYear" placeholder="2022" min="2000" max="2026" />
+      </div>
+
+      <button class="btn btn-primary" id="calcBtn" type="button">Рассчитать стоимость под ключ</button>
+
+      <div class="result" id="result">
+        <div style="margin-top:22px;">
+          <div class="result-row"><span class="l">Авто в рублях</span><span class="v" id="rCar">—</span></div>
+          <div class="result-row"><span class="l">Логистика внутри страны</span><span class="v" id="rDomestic">—</span></div>
+          <div class="result-row"><span class="l">Доставка до Владивостока</span><span class="v" id="rFreight">—</span></div>
+          <div class="result-row"><span class="l">Таможня + утильсбор (оценка)</span><span class="v" id="rCustoms">—</span></div>
+          <div class="result-row"><span class="l">СБКТС, оформление</span><span class="v" id="rDocs">—</span></div>
+          <div class="result-row"><span class="l">Комиссия POWER Car</span><span class="v" id="rCommission">—</span></div>
+          <div class="result-total"><span class="l">Итого под ключ</span><span class="v" id="rTotal">—</span></div>
+        </div>
+        <div class="warn-box" id="warnBox"></div>
+        <div class="note-box">Расчёт ориентировочный и основан на актуальных сделках POWER Car. Таможенная пошлина и утильсбор зависят от точного объёма двигателя, мощности и возраста автомобиля — окончательную сумму фиксируем в договоре до старта сделки.</div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <p>Хотите точную сумму под конкретный автомобиль?</p>
+      <a href="/#cta" class="btn btn-primary" style="display:inline-flex;width:auto;padding-left:32px;padding-right:32px;">Получить точный расчёт у менеджера</a>
+    </div>
+
+    <div class="faq">
+      <h2>Частые вопросы</h2>
+      <details class="faq-item">
+        <summary>Калькулятор даёт точную сумму?</summary>
+        <p>Курс, логистика внутри страны, доставка, СБКТС и комиссия считаются точно по действующим ставкам. Таможня и утильсбор показаны диапазоном — точная сумма зависит от объёма двигателя, мощности и возраста конкретного автомобиля и уточняется менеджером перед сделкой.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Почему утильсбор резко растёт при мощности свыше 160 л.с.?</summary>
+        <p>С декабря 2025 года при расчёте утильсбора помимо объёма двигателя и возраста учитывается мощность. Для автомобилей мощнее 160 л.с. льготный коэффициент не действует, и сумма может вырасти в несколько раз.</p>
+      </details>
+      <details class="faq-item">
+        <summary>От чего зависит срок и стоимость доставки до Владивостока?</summary>
+        <p>От страны отправления: Япония и Корея — 14–21 день, Китай — 21–28 дней. Тариф фиксируется на момент сделки.</p>
+      </details>
+    </div>
+  </div>
+</main>
+
+<footer class="page-footer">
+  © 2026 POWER Car · <a href="/">Главная</a> · <a href="/#selector">Каталог</a> · <a href="docs/privacy.html">Конфиденциальность</a>
+</footer>
+
+<script>
+'use strict';
+
+const COUNTRY_CURRENCY = {
+  Japan: { rateKey: 'rateJPY', freightKey: 'freightJapan', domesticKey: 'domesticJapan', label: 'йенах', delivery: '14–21 день' },
+  Korea: { rateKey: 'rateKRW', freightKey: 'freightKorea', domesticKey: 'domesticKorea', label: 'вонах', delivery: '14–21 день' },
+  China: { rateKey: 'rateCNY', freightKey: 'freightChina', domesticKey: 'domesticChina', label: 'юанях', delivery: '21–28 дней' }
+};
+
+// Оценка "таможня + утильсбор" по объёму двигателя (базовая ставка, возраст 3-5 лет, мощность <=160 л.с.)
+// Построено по медианным значениям реальных сделок POWER Car (data/cars.json), не по официальной формуле ФТС.
+const CUSTOMS_BY_DISPLACEMENT = [
+  { max: 0.75, value: 92000 },
+  { max: 1.15, value: 135000 },
+  { max: 1.35, value: 186000 },
+  { max: 1.45, value: 216000 },
+  { max: 1.55, value: 220000 },
+  { max: 1.85, value: 345000 },
+  { max: 2.35, value: 465000 }
+];
+
+function estimateCustoms(displacement, power, age) {
+  if (!displacement || displacement <= 0) return null;
+
+  // Мощные и большеобъёмные авто — вне модели, слишком мало данных для честной оценки
+  if (displacement > 2.35) {
+    return { unreliable: true, reason: 'Для двигателей свыше 2,3 л расчёт индивидуальный — свяжитесь с менеджером.' };
+  }
+  if (power && power > 160 && displacement <= 1.85) {
+    return { unreliable: true, reason: 'Сочетание небольшого объёма и мощности свыше 160 л.с. встречается редко — точную сумму посчитает менеджер.' };
+  }
+
+  let base = null;
+  for (const b of CUSTOMS_BY_DISPLACEMENT) {
+    if (displacement <= b.max) { base = b.value; break; }
+  }
+  if (base === null) base = CUSTOMS_BY_DISPLACEMENT[CUSTOMS_BY_DISPLACEMENT.length - 1].value;
+
+  let warn = null;
+  if (power && power > 160) {
+    // За порогом 160 л.с. льготный коэффициент утильсбора не действует — рост в разы
+    base = Math.round(base * 5.2);
+    warn = 'Мощность выше 160 л.с. — льготный утильсбор не действует, сумма в разы больше обычной. Точный расчёт — у менеджера.';
+  }
+
+  if (age >= 10) {
+    base = Math.round(base * 1.7);
+    warn = warn || 'Автомобиль старше 10 лет — повышенный коэффициент по возрасту.';
+  } else if (age >= 6) {
+    base = Math.round(base * 1.35);
+  }
+
+  const low = Math.round(base * 0.9 / 1000) * 1000;
+  const high = Math.round(base * 1.15 / 1000) * 1000;
+  return { low, high, warn };
+}
+
+function fmtRub(n) {
+  return Math.round(n).toLocaleString('ru-RU') + ' ₽';
+}
+
+let settings = null;
+async function loadSettings() {
+  try {
+    const res = await fetch('data/settings.json', { cache: 'no-cache' });
+    settings = await res.json();
+  } catch (e) {
+    settings = { rateCNY: 12.5, rateJPY: 0.55, rateKRW: 0.065, freightChina: 0, freightJapan: 0, freightKorea: 0, domesticChina: 14000, domesticJapan: 200000, domesticKorea: 2000000 };
+  }
+}
+loadSettings();
+
+let currentCountry = 'Japan';
+document.querySelectorAll('#countryToggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#countryToggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCountry = btn.dataset.country;
+    document.getElementById('currencyHint').textContent =
+      'В ' + COUNTRY_CURRENCY[currentCountry].label + ' — как указано в аукционном листе / у дилера';
+  });
+});
+
+document.getElementById('calcBtn').addEventListener('click', () => {
+  if (!settings) return;
+  const cc = COUNTRY_CURRENCY[currentCountry];
+  const marketLocal = Number(document.getElementById('marketLocal').value) || 0;
+  const displacement = Number(document.getElementById('engineVolume').value) || 0;
+  const power = Number(document.getElementById('enginePower').value) || 0;
+  const year = Number(document.getElementById('carYear').value) || new Date().getFullYear();
+  const age = Math.max(0, new Date().getFullYear() - year);
+
+  const rate = Number(settings[cc.rateKey]) || 0;
+  const freightLocal = Number(settings[cc.freightKey]) || 0;
+  const domesticLocal = Number(settings[cc.domesticKey]) || 0;
+
+  const carRub = Math.round(marketLocal * rate);
+  const freightRub = Math.round(freightLocal * rate);
+  const domesticRub = Math.round(domesticLocal * rate);
+  const docs = 100000;
+  const commission = 50000;
+
+  const customsEst = estimateCustoms(displacement, power, age);
+
+  document.getElementById('rCar').textContent = fmtRub(carRub);
+  document.getElementById('rDomestic').textContent = fmtRub(domesticRub);
+  document.getElementById('rFreight').textContent = fmtRub(freightRub) + ' (' + cc.delivery + ')';
+  document.getElementById('rDocs').textContent = fmtRub(docs);
+  document.getElementById('rCommission').textContent = fmtRub(commission);
+
+  const warnBox = document.getElementById('warnBox');
+  const fixed = carRub + freightRub + domesticRub + docs + commission;
+
+  if (!customsEst) {
+    document.getElementById('rCustoms').textContent = 'укажите объём двигателя';
+    document.getElementById('rTotal').textContent = '—';
+    warnBox.classList.remove('show');
+  } else if (customsEst.unreliable) {
+    document.getElementById('rCustoms').textContent = 'требует расчёта';
+    document.getElementById('rTotal').textContent = fmtRub(fixed) + ' + таможня';
+    warnBox.textContent = '⚠ ' + customsEst.reason;
+    warnBox.classList.add('show');
+  } else {
+    document.getElementById('rCustoms').textContent = fmtRub(customsEst.low) + '–' + fmtRub(customsEst.high);
+    document.getElementById('rTotal').textContent = fmtRub(fixed + customsEst.low) + '–' + fmtRub(fixed + customsEst.high);
+    if (customsEst.warn) {
+      warnBox.textContent = '⚠ ' + customsEst.warn;
+      warnBox.classList.add('show');
+    } else {
+      warnBox.classList.remove('show');
+    }
+  }
+
+  document.getElementById('result').classList.add('show');
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+</script>
+</body>
+</html>
