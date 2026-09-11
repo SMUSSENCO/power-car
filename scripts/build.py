@@ -315,6 +315,7 @@ def u(loc, pri, freq):
 urls = [u(BASE, "1.0", "daily")]
 urls.append(u(BASE+"quiz.html", "0.9", "weekly"))
 urls.append(u(BASE+"kalkulyator-rastamozhki.html", "0.9", "weekly"))
+urls.append(u(BASE+"dostavka-po-rossii.html", "0.85", "weekly"))
 # Страновые SEO-лендинги (scripts/gen_countries.py)
 for s in ["avto-iz-yaponii","avto-iz-korei","avto-iz-kitaya","moto-iz-yaponii"]:
     urls.append(u(BASE+s+".html", "0.85", "weekly"))
