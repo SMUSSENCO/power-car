@@ -28,9 +28,9 @@
     },
     "price": 524011,
     "photos": [
-      "images/cars/Honda-N-BOX/Honda-N-BOX-1.jpeg",
-      "images/cars/Honda-N-BOX/Honda-N-BOX-2.jpeg",
-      "images/cars/Honda-N-BOX/Honda-N-BOX-3.jpeg"
+      "images/cars/Honda-N-BOX/Honda-N-BOX-1.webp",
+      "images/cars/Honda-N-BOX/Honda-N-BOX-2.webp",
+      "images/cars/Honda-N-BOX/Honda-N-BOX-3.webp"
     ],
     "breakdown": {
       "auction": 173250,
@@ -70,9 +70,9 @@
     },
     "price": 631850,
     "photos": [
-      "images/cars/Suzuki-Alto/Suzuki-Alto-1.jpeg",
-      "images/cars/Suzuki-Alto/Suzuki-Alto-2.jpeg",
-      "images/cars/Suzuki-Alto/Suzuki-Alto-3.jpeg"
+      "images/cars/Suzuki-Alto/Suzuki-Alto-1.webp",
+      "images/cars/Suzuki-Alto/Suzuki-Alto-2.webp",
+      "images/cars/Suzuki-Alto/Suzuki-Alto-3.webp"
     ],
     "breakdown": {
       "auction": 279950,
@@ -112,9 +112,9 @@
     },
     "price": 1257000,
     "photos": [
-      "images/cars/Suzuki-Jimny/Suzuki-Jimny-1.jpeg",
-      "images/cars/Suzuki-Jimny/Suzuki-Jimny-2.jpeg",
-      "images/cars/Suzuki-Jimny/Suzuki-Jimny-3.jpeg"
+      "images/cars/Suzuki-Jimny/Suzuki-Jimny-1.webp",
+      "images/cars/Suzuki-Jimny/Suzuki-Jimny-2.webp",
+      "images/cars/Suzuki-Jimny/Suzuki-Jimny-3.webp"
     ],
     "breakdown": {
       "auction": 902000,
@@ -154,16 +154,15 @@
       "commission": 50000
     },
     "photos": [
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-1.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-2.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-3.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-4.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-5.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-6.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-7.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-8.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-9.jpg",
-      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-10.jpg"
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-1.webp",
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-2.webp",
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-3.webp",
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-4.webp",
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-6.webp",
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-7.webp",
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-8.webp",
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-9.webp",
+      "images/cars/Honda-Vezel-2023/Honda-Vezel-2023-10.webp"
     ]
   },
   {
@@ -195,18 +194,18 @@
       "commission": 50000
     },
     "photos": [
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-1.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-2.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-3.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-4.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-5.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-6.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-7.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-8.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-9.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-10.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-11.jpg",
-      "images/cars/Geely-binyue-2021/Geely-binyue-2021-12.jpg"
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-1.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-2.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-3.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-4.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-5.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-6.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-7.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-8.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-9.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-10.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-11.webp",
+      "images/cars/Geely-binyue-2021/Geely-binyue-2021-12.webp"
     ]
   },
   {
@@ -238,22 +237,22 @@
       "commission": 49999
     },
     "photos": [
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-1.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-2.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-3.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-4.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-5.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-6.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-7.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-8.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-9.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-10.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-11.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-12.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-13.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-14.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-15.jpg",
-      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-16.jpg"
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-1.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-2.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-3.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-4.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-5.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-6.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-7.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-8.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-9.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-10.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-11.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-12.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-13.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-14.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-15.webp",
+      "images/cars/Geely-Emgrand-L-2022-6000/Geely-Emgrand-L-2022-6000-16.webp"
     ]
   },
   {
@@ -285,19 +284,17 @@
     },
     "price": 1498500,
     "photos": [
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-1.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-2.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-3.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-4.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-5.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-6.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-7.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-8.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-9.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-10.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-11.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-12.jpg",
-      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-13.jpg"
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-1.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-2.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-3.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-4.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-5.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-6.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-7.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-10.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-11.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-12.webp",
+      "images/cars/Changan-Eado-Plus-2022/Changan-Eado-Plus-2022-13.webp"
     ],
     "breakdown": {
       "auction": 1037500,
@@ -336,20 +333,18 @@
     },
     "price": 2671191,
     "photos": [
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-1.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-2.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-3.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-4.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-5.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-6.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-7.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-8.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-9.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-10.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-11.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-12.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-13.jpg",
-      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-14.jpg"
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-1.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-2.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-3.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-4.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-5.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-6.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-7.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-9.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-10.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-12.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-13.webp",
+      "images/cars/Audi-A3-2023-Sportback-35-TFSI-Fashion-Sporty-Model/Audi-A3-Sportback-2023-14.webp"
     ],
     "breakdown": {
       "auction": 1600000,
@@ -389,21 +384,20 @@
       "commission": 50000
     },
     "photos": [
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-1.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-2.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-3.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-4.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-5.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-6.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-7.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-8.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-9.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-10.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-11.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-12.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-13.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-14.jpg",
-      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-15.jpg"
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-1.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-2.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-3.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-4.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-5.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-6.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-7.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-8.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-9.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-10.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-11.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-12.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-14.webp",
+      "images/cars/BMW-1-Series-120i-M-Sport/BMW-1-Series-120i-M-Sport-15.webp"
     ]
   },
   {
@@ -435,18 +429,18 @@
     },
     "price": 2642500,
     "photos": [
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-1.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-2.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-3.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-4.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-5.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-6.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-7.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-8.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-9.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-10.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-11.jpg",
-      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-12.jpg"
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-1.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-2.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-3.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-4.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-5.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-6.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-7.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-8.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-9.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-10.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-11.webp",
+      "images/cars/Mercedes-Benz-A-Class-A180/Mercedes-Benz-A-Class-A180-12.webp"
     ],
     "breakdown": {
       "auction": 2187500,
@@ -486,17 +480,16 @@
     },
     "price": 2906047,
     "photos": [
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-1.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-2.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-3.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-4.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-5.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-6.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-7.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-8.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-9.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-10.jpg",
-      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-11.jpg"
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-1.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-2.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-3.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-4.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-5.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-6.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-8.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-9.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-10.webp",
+      "images/cars/BMW-3-Series-320Li-M-Sport-2021/BMW-3-Series-320Li-M-Sport-2021-11.webp"
     ],
     "breakdown": {
       "auction": 2112500,
@@ -536,16 +529,16 @@
     },
     "price": 1783000,
     "photos": [
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-1.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-2.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-3.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-4.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-5.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-6.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-7.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-8.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-9.jpg",
-      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-10.jpg"
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-1.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-2.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-3.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-4.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-5.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-6.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-7.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-8.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-9.webp",
+      "images/cars/Hyundai-Sonata-2020/Hyundai-Sonata-2020-10.webp"
     ],
     "breakdown": {
       "auction": 1365000,
@@ -583,16 +576,16 @@
     },
     "price": 1502500,
     "photos": [
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-1.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-2.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-3.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-4.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-5.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-6.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-7.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-8.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-9.jpg",
-      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-10.jpg"
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-1.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-2.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-3.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-4.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-5.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-6.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-7.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-8.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-9.webp",
+      "images/cars/Hyundai-Elantra-2021/Hyundai-Elantra-2021-10.webp"
     ],
     "breakdown": {
       "auction": 0,
@@ -632,17 +625,17 @@
       "commission": 50000
     },
     "photos": [
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-1.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-2.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-3.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-4.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-5.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-6.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-7.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-8.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-9.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-10.jpg",
-      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-11.jpg"
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-1.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-2.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-3.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-4.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-5.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-6.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-7.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-8.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-9.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-10.webp",
+      "images/cars/Mercedes-Benz-GLC-2022/Mercedes-Benz-GLC-2022-11.webp"
     ]
   },
   {
@@ -674,15 +667,15 @@
     },
     "price": 4564619,
     "photos": [
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-1.jpg",
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-2.jpg",
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-3.jpg",
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-4.jpg",
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-5.jpg",
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-6.jpg",
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-7.jpg",
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-8.jpg",
-      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-9.jpg"
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-1.webp",
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-2.webp",
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-3.webp",
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-4.webp",
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-5.webp",
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-6.webp",
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-7.webp",
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-8.webp",
+      "images/cars/BMW-X3-M-Sport-2022/BMW-X3-M-Sport-2022-9.webp"
     ],
     "breakdown": {
       "auction": 2287538,
@@ -722,19 +715,19 @@
       "commission": 50000
     },
     "photos": [
-      "images/cars/BMW-X5-2023/BMW-X5-2023-1.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-2.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-3.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-4.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-5.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-6.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-7.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-8.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-9.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-10.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-11.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-12.jpg",
-      "images/cars/BMW-X5-2023/BMW-X5-2023-13.jpg"
+      "images/cars/BMW-X5-2023/BMW-X5-2023-1.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-2.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-3.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-4.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-5.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-6.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-7.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-8.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-9.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-10.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-11.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-12.webp",
+      "images/cars/BMW-X5-2023/BMW-X5-2023-13.webp"
     ]
   },
   {
@@ -766,8 +759,8 @@
       "commission": 50000
     },
     "photos": [
-      "images/cars/BMW-x-1-2024/BMW-x-1-2024-1.jpg",
-      "images/cars/BMW-x-1-2024/BMW-x-1-2024-2.jpg"
+      "images/cars/BMW-x-1-2024/BMW-x-1-2024-1.webp",
+      "images/cars/BMW-x-1-2024/BMW-x-1-2024-2.webp"
     ]
   },
   {
@@ -799,22 +792,22 @@
       "commission": 50000
     },
     "photos": [
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-1.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-2.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-3.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-4.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-5.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-6.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-7.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-8.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-9.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-10.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-11.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-12.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-13.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-14.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-15.jpg",
-      "images/cars/mazda-cx5-2022/mazda-cx5-2022-16.jpg"
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-1.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-2.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-3.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-4.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-5.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-6.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-7.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-8.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-9.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-10.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-11.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-12.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-13.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-14.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-15.webp",
+      "images/cars/mazda-cx5-2022/mazda-cx5-2022-16.webp"
     ]
   },
   {
@@ -845,15 +838,15 @@
     },
     "price": 3354489,
     "photos": [
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-1.jpg",
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-2.jpg",
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-3.jpg",
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-4.jpg",
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-5.jpg",
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-6.jpg",
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-7.jpg",
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-8.jpg",
-      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-9.jpg"
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-1.webp",
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-2.webp",
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-3.webp",
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-4.webp",
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-5.webp",
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-6.webp",
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-7.webp",
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-8.webp",
+      "images/cars/Audi-Q3-Sportback-2022/Audi-Q3-Sportback-2022-9.webp"
     ],
     "breakdown": {
       "auction": 2812500,
@@ -892,14 +885,14 @@
     },
     "price": 2904547,
     "photos": [
-      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-1.jpg",
-      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-2.jpg",
-      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-3.jpg",
-      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-4.jpg",
-      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-5.jpg",
-      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-6.jpg",
-      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-7.jpg",
-      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-8.jpg"
+      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-1.webp",
+      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-2.webp",
+      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-3.webp",
+      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-4.webp",
+      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-5.webp",
+      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-6.webp",
+      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-7.webp",
+      "images/cars/BMW-3-Series-Facelift-320i-Sport-2021/BMW-3-Series-Facelift-320i-Sport-2021-8.webp"
     ],
     "breakdown": {
       "auction": 2110000,
@@ -939,14 +932,14 @@
     },
     "price": 1795032,
     "photos": [
-      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-1.jpg",
-      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-2.jpg",
-      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-3.jpg",
-      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-4.jpg",
-      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-5.jpg",
-      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-6.jpg",
-      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-7.jpg",
-      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-8.jpg"
+      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-1.webp",
+      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-2.webp",
+      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-3.webp",
+      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-4.webp",
+      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-5.webp",
+      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-6.webp",
+      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-7.webp",
+      "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-8.webp"
     ],
     "breakdown": {
       "auction": 1247500,
@@ -985,13 +978,13 @@
     },
     "price": 2779489,
     "photos": [
-      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-1.jpg",
-      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-2.jpg",
-      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-3.jpg",
-      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-4.jpg",
-      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-5.jpg",
-      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-6.jpg",
-      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-7.jpg"
+      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-1.webp",
+      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-2.webp",
+      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-3.webp",
+      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-4.webp",
+      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-5.webp",
+      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-6.webp",
+      "images/cars/Audi-A3-Sportback-Luxury-Sport-2023/Audi-A3-Sportback-Luxury-Sport-2023-7.webp"
     ],
     "breakdown": {
       "auction": 2237500,
@@ -1030,12 +1023,12 @@
     },
     "price": 2939489,
     "photos": [
-      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-1.jpg",
-      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-2.jpg",
-      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-3.jpg",
-      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-4.jpg",
-      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-5.jpg",
-      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-6.jpg"
+      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-1.webp",
+      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-2.webp",
+      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-3.webp",
+      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-4.webp",
+      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-5.webp",
+      "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-6.webp"
     ],
     "breakdown": {
       "auction": 2397500,
@@ -1074,14 +1067,13 @@
     },
     "price": 3553645,
     "photos": [
-      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-1.jpg",
-      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-2.jpg",
-      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-3.jpg",
-      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-4.jpg",
-      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-5.jpg",
-      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-6.jpg",
-      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-7.jpg",
-      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-8.jpg"
+      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-1.webp",
+      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-2.webp",
+      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-3.webp",
+      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-4.webp",
+      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-5.webp",
+      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-6.webp",
+      "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-7.webp"
     ],
     "breakdown": {
       "auction": 2997500,
@@ -1120,13 +1112,13 @@
     },
     "price": 2716149,
     "photos": [
-      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-1.jpg",
-      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-2.jpg",
-      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-3.jpg",
-      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-4.jpg",
-      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-5.jpg",
-      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-6.jpg",
-      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-7.jpg"
+      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-1.webp",
+      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-2.webp",
+      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-3.webp",
+      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-4.webp",
+      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-5.webp",
+      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-6.webp",
+      "images/cars/BMW-X1-sDrive20Li-Premium-2022/BMW-X1-sDrive20Li-Premium-2022-7.webp"
     ],
     "breakdown": {
       "auction": 2160000,
@@ -1165,13 +1157,13 @@
     },
     "price": 2164451,
     "photos": [
-      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-1.jpg",
-      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-2.jpg",
-      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-3.jpg",
-      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-4.jpg",
-      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-5.jpg",
-      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-6.jpg",
-      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-7.jpg"
+      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-1.webp",
+      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-2.webp",
+      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-3.webp",
+      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-4.webp",
+      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-5.webp",
+      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-6.webp",
+      "images/cars/Golf-280TSI-DSG-Pro-2023/Golf-280TSI-DSG-Pro-2023-7.webp"
     ],
     "breakdown": {
       "auction": 1622462,
@@ -1210,12 +1202,12 @@
     },
     "price": 1457532,
     "photos": [
-      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-1.jpg",
-      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-2.jpg",
-      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-3.jpg",
-      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-4.jpg",
-      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-5.jpg",
-      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-6.jpg"
+      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-1.webp",
+      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-2.webp",
+      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-3.webp",
+      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-4.webp",
+      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-5.webp",
+      "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-6.webp"
     ],
     "breakdown": {
       "auction": 910000,
@@ -1255,15 +1247,15 @@
     },
     "price": 1833566,
     "photos": [
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-1.jpg",
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-2.jpg",
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-3.jpg",
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-4.jpg",
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-5.jpg",
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-6.jpg",
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-7.jpg",
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-8.jpg",
-      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-9.jpg"
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-1.webp",
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-2.webp",
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-3.webp",
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-4.webp",
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-5.webp",
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-6.webp",
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-7.webp",
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-8.webp",
+      "images/cars/Toyota-Corolla-Pioneer-2021/Toyota-Corolla-Pioneer-2021-9.webp"
     ],
     "breakdown": {
       "auction": 1287500,
@@ -1302,13 +1294,13 @@
     },
     "price": 1401013,
     "photos": [
-      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-1.jpg",
-      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-2.jpg",
-      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-3.jpg",
-      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-4.jpg",
-      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-5.jpg",
-      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-6.jpg",
-      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-7.jpg"
+      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-1.webp",
+      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-2.webp",
+      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-3.webp",
+      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-4.webp",
+      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-5.webp",
+      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-6.webp",
+      "images/cars/Nissan-Sylphy-Classic-Luxury-2022/Nissan-Sylphy-Classic-Luxury-2022-7.webp"
     ],
     "breakdown": {
       "auction": 735000,
@@ -1347,14 +1339,14 @@
     },
     "price": 2612941,
     "photos": [
-      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-1.jpg",
-      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-2.jpg",
-      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-3.jpg",
-      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-4.jpg",
-      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-5.jpg",
-      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-6.jpg",
-      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-7.jpg",
-      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-8.jpg"
+      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-1.webp",
+      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-2.webp",
+      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-3.webp",
+      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-4.webp",
+      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-5.webp",
+      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-6.webp",
+      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-7.webp",
+      "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-8.webp"
     ],
     "breakdown": {
       "auction": 1822500,
@@ -1394,15 +1386,15 @@
     },
     "price": 2275622,
     "photos": [
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-1.jpg",
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-2.jpg",
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-3.jpg",
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-4.jpg",
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-5.jpg",
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-6.jpg",
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-7.jpg",
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-8.jpg",
-      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-9.jpg"
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-1.webp",
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-2.webp",
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-3.webp",
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-4.webp",
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-5.webp",
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-6.webp",
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-7.webp",
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-8.webp",
+      "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-9.webp"
     ],
     "breakdown": {
       "auction": 1735000,
@@ -1441,13 +1433,13 @@
     },
     "price": 1643564,
     "photos": [
-      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-1.jpg",
-      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-2.jpg",
-      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-3.jpg",
-      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-4.jpg",
-      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-5.jpg",
-      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-6.jpg",
-      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-7.jpg"
+      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-1.webp",
+      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-2.webp",
+      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-3.webp",
+      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-4.webp",
+      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-5.webp",
+      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-6.webp",
+      "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-7.webp"
     ],
     "breakdown": {
       "auction": 1097500,
@@ -1486,13 +1478,13 @@
     },
     "price": 2163120,
     "photos": [
-      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-1.jpg",
-      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-2.jpg",
-      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-3.jpg",
-      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-4.jpg",
-      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-5.jpg",
-      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-6.jpg",
-      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-7.jpg"
+      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-1.webp",
+      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-2.webp",
+      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-3.webp",
+      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-4.webp",
+      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-5.webp",
+      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-6.webp",
+      "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-7.webp"
     ],
     "breakdown": {
       "auction": 1622500,
@@ -1531,13 +1523,13 @@
     },
     "price": 2046000,
     "photos": [
-      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-1.jpg",
-      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-2.jpg",
-      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-3.jpg",
-      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-4.jpg",
-      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-5.jpg",
-      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-6.jpg",
-      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-7.jpg"
+      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-1.webp",
+      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-2.webp",
+      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-3.webp",
+      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-4.webp",
+      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-5.webp",
+      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-6.webp",
+      "images/cars/Honda-XR-V-Passion-2024/Honda-XR-V-Passion-2024-7.webp"
     ],
     "breakdown": {
       "auction": 1500000,
@@ -1576,13 +1568,13 @@
     },
     "price": 1669750,
     "photos": [
-      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-1.jpg",
-      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-2.jpg",
-      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-3.jpg",
-      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-4.jpg",
-      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-5.jpg",
-      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-6.jpg",
-      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-7.jpg"
+      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-1.webp",
+      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-2.webp",
+      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-3.webp",
+      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-4.webp",
+      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-5.webp",
+      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-6.webp",
+      "images/cars/Honda-Crider-Elite-Luxury-2022/Honda-Crider-Elite-Luxury-2022-7.webp"
     ],
     "breakdown": {
       "auction": 1123750,
@@ -1622,11 +1614,11 @@
     },
     "price": 827500,
     "photos": [
-      "images/cars/Chevrolet-Spark/Chevrolet-Spark-1.jpg",
-      "images/cars/Chevrolet-Spark/Chevrolet-Spark-2.jpg",
-      "images/cars/Chevrolet-Spark/Chevrolet-Spark-3.jpg",
-      "images/cars/Chevrolet-Spark/Chevrolet-Spark-4.jpg",
-      "images/cars/Chevrolet-Spark/Chevrolet-Spark-5.jpg"
+      "images/cars/Chevrolet-Spark/Chevrolet-Spark-1.webp",
+      "images/cars/Chevrolet-Spark/Chevrolet-Spark-2.webp",
+      "images/cars/Chevrolet-Spark/Chevrolet-Spark-3.webp",
+      "images/cars/Chevrolet-Spark/Chevrolet-Spark-4.webp",
+      "images/cars/Chevrolet-Spark/Chevrolet-Spark-5.webp"
     ],
     "breakdown": {
       "auction": 292500,
@@ -1666,12 +1658,12 @@
     },
     "price": 2305441,
     "photos": [
-      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-1.jpg",
-      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-2.jpg",
-      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-3.jpg",
-      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-4.jpg",
-      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-5.jpg",
-      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-6.jpg"
+      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-1.webp",
+      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-2.webp",
+      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-3.webp",
+      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-4.webp",
+      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-5.webp",
+      "images/cars/Mercedes-Benz-A-Class-W177-2021/Mercedes-Benz-A-Class-W177-2021-6.webp"
     ],
     "breakdown": {
       "auction": 1560000,
@@ -1711,15 +1703,15 @@
     },
     "price": 3208941,
     "photos": [
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-1.jpg",
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-2.jpg",
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-3.jpg",
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-4.jpg",
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-5.jpg",
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-6.jpg",
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-7.jpg",
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-8.jpg",
-      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-9.jpg"
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-1.webp",
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-2.webp",
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-3.webp",
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-4.webp",
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-5.webp",
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-6.webp",
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-7.webp",
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-8.webp",
+      "images/cars/Mercedes-Benz-GLB-X247-2021/Mercedes-Benz-GLB-X247-2021-9.webp"
     ],
     "breakdown": {
       "auction": 2463500,
@@ -1759,15 +1751,15 @@
     },
     "price": 2189994,
     "photos": [
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-1.jpg",
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-2.jpg",
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-3.jpg",
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-4.jpg",
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-5.jpg",
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-6.jpg",
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-7.jpg",
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-8.jpg",
-      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-9.jpg"
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-1.webp",
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-2.webp",
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-3.webp",
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-4.webp",
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-5.webp",
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-6.webp",
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-7.webp",
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-8.webp",
+      "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-9.webp"
     ],
     "breakdown": {
       "auction": 1722500,
@@ -1807,15 +1799,15 @@
     },
     "price": 2090500,
     "photos": [
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-1.jpg",
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-2.jpg",
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-3.jpg",
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-4.jpg",
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-5.jpg",
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-6.jpg",
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-7.jpg",
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-8.jpg",
-      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-9.jpg"
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-1.webp",
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-2.webp",
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-3.webp",
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-4.webp",
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-5.webp",
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-6.webp",
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-7.webp",
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-8.webp",
+      "images/cars/Volkswagen-T-Roc-2021/Volkswagen-T-Roc-2021-9.webp"
     ],
     "breakdown": {
       "auction": 1345500,
@@ -1855,13 +1847,13 @@
     },
     "price": 1689101,
     "photos": [
-      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-1.jpg",
-      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-2.jpg",
-      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-3.jpg",
-      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-4.jpg",
-      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-5.jpg",
-      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-6.jpg",
-      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-7.jpg"
+      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-1.webp",
+      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-2.webp",
+      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-3.webp",
+      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-4.webp",
+      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-5.webp",
+      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-6.webp",
+      "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-7.webp"
     ],
     "breakdown": {
       "auction": 1059500,
@@ -1901,16 +1893,16 @@
     },
     "price": 1790870,
     "photos": [
-      "images/cars/Peugeot-2008/Peugeot-2008-1.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-2.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-3.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-4.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-5.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-6.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-7.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-8.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-9.jpg",
-      "images/cars/Peugeot-2008/Peugeot-2008-10.jpg"
+      "images/cars/Peugeot-2008/Peugeot-2008-1.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-2.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-3.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-4.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-5.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-6.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-7.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-8.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-9.webp",
+      "images/cars/Peugeot-2008/Peugeot-2008-10.webp"
     ],
     "breakdown": {
       "auction": 1293500,
@@ -1950,14 +1942,14 @@
     },
     "price": 2176500,
     "photos": [
-      "images/cars/Peugeot-308-2022/Peugeot-308-2022-1.jpg",
-      "images/cars/Peugeot-308-2022/Peugeot-308-2022-2.jpg",
-      "images/cars/Peugeot-308-2022/Peugeot-308-2022-3.jpg",
-      "images/cars/Peugeot-308-2022/Peugeot-308-2022-4.jpg",
-      "images/cars/Peugeot-308-2022/Peugeot-308-2022-5.jpg",
-      "images/cars/Peugeot-308-2022/Peugeot-308-2022-6.jpg",
-      "images/cars/Peugeot-308-2022/Peugeot-308-2022-7.jpg",
-      "images/cars/Peugeot-308-2022/Peugeot-308-2022-8.jpg"
+      "images/cars/Peugeot-308-2022/Peugeot-308-2022-1.webp",
+      "images/cars/Peugeot-308-2022/Peugeot-308-2022-2.webp",
+      "images/cars/Peugeot-308-2022/Peugeot-308-2022-3.webp",
+      "images/cars/Peugeot-308-2022/Peugeot-308-2022-4.webp",
+      "images/cars/Peugeot-308-2022/Peugeot-308-2022-5.webp",
+      "images/cars/Peugeot-308-2022/Peugeot-308-2022-6.webp",
+      "images/cars/Peugeot-308-2022/Peugeot-308-2022-7.webp",
+      "images/cars/Peugeot-308-2022/Peugeot-308-2022-8.webp"
     ],
     "breakdown": {
       "auction": 1683500,
@@ -1997,16 +1989,16 @@
     },
     "price": 1795247,
     "photos": [
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-1.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-2.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-3.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-4.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-5.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-6.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-7.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-8.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-9.jpg",
-      "images/cars/Renault-XM3-2021/Renault-XM3-2021-10.jpg"
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-1.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-2.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-3.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-4.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-5.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-6.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-7.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-8.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-9.webp",
+      "images/cars/Renault-XM3-2021/Renault-XM3-2021-10.webp"
     ],
     "breakdown": {
       "auction": 1326000,
@@ -2046,16 +2038,16 @@
     },
     "price": 3816662,
     "photos": [
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-1.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-2.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-3.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-4.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-5.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-6.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-7.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-8.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-9.jpg",
-      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-10.jpg"
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-1.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-2.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-3.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-4.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-5.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-6.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-7.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-8.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-9.webp",
+      "images/cars/Audi-Q3-F3-2022/Audi-Q3-F3-2022-10.webp"
     ],
     "breakdown": {
       "auction": 3087500,
@@ -2095,13 +2087,13 @@
     },
     "price": 1986000,
     "photos": [
-      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-1.jpg",
-      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-2.jpg",
-      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-3.jpg",
-      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-4.jpg",
-      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-5.jpg",
-      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-6.jpg",
-      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-7.jpg"
+      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-1.webp",
+      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-2.webp",
+      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-3.webp",
+      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-4.webp",
+      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-5.webp",
+      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-6.webp",
+      "images/cars/Hyundai-Avante-CN7-2021/Hyundai-Avante-CN7-2021-7.webp"
     ],
     "breakdown": {
       "auction": 1365000,
@@ -2141,14 +2133,14 @@
     },
     "price": 1831440,
     "photos": [
-      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-1.jpg",
-      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-2.jpg",
-      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-3.jpg",
-      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-4.jpg",
-      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-5.jpg",
-      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-6.jpg",
-      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-7.jpg",
-      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-8.jpg"
+      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-1.webp",
+      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-2.webp",
+      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-3.webp",
+      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-4.webp",
+      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-5.webp",
+      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-6.webp",
+      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-7.webp",
+      "images/cars/Chevrolet-Trailblazer-2023/Chevrolet-Trailblazer-2023-8.webp"
     ],
     "breakdown": {
       "auction": 1358500,
@@ -2188,14 +2180,14 @@
     },
     "price": 1862376,
     "photos": [
-      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-1.jpg",
-      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-2.jpg",
-      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-3.jpg",
-      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-4.jpg",
-      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-5.jpg",
-      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-6.jpg",
-      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-7.jpg",
-      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-8.jpg"
+      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-1.webp",
+      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-2.webp",
+      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-3.webp",
+      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-4.webp",
+      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-5.webp",
+      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-6.webp",
+      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-7.webp",
+      "images/cars/Mini-Cooper-Clubman-2021/Mini-Cooper-Clubman-2021-8.webp"
     ],
     "breakdown": {
       "auction": 1365000,
@@ -2235,16 +2227,16 @@
     },
     "price": 3338938,
     "photos": [
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-1.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-2.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-3.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-4.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-5.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-6.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-7.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-8.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-9.jpg",
-      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-10.jpg"
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-1.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-2.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-3.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-4.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-5.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-6.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-7.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-8.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-9.webp",
+      "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-10.webp"
     ],
     "breakdown": {
       "auction": 2593500,
@@ -2284,20 +2276,20 @@
     },
     "price": 1202824,
     "photos": [
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-1.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-2.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-3.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-4.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-5.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-6.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-7.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-8.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-9.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-10.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-11.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-12.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-13.jpg",
-      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-14.jpg"
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-1.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-2.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-3.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-4.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-5.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-6.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-7.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-8.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-9.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-10.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-11.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-12.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-13.webp",
+      "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-14.webp"
     ],
     "breakdown": {
       "auction": 780000,
@@ -2337,14 +2329,14 @@
     },
     "price": 2012941,
     "photos": [
-      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-1.jpg",
-      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-2.jpg",
-      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-3.jpg",
-      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-4.jpg",
-      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-5.jpg",
-      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-6.jpg",
-      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-7.jpg",
-      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-8.jpg"
+      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-1.webp",
+      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-2.webp",
+      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-3.webp",
+      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-4.webp",
+      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-5.webp",
+      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-6.webp",
+      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-7.webp",
+      "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-8.webp"
     ],
     "breakdown": {
       "auction": 1267500,
@@ -2384,15 +2376,15 @@
     },
     "price": 1630669,
     "photos": [
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-1.jpg",
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-2.jpg",
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-3.jpg",
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-4.jpg",
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-5.jpg",
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-6.jpg",
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-7.jpg",
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-8.jpg",
-      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-9.jpg"
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-1.webp",
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-2.webp",
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-3.webp",
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-4.webp",
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-5.webp",
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-6.webp",
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-7.webp",
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-8.webp",
+      "images/cars/Mercedes-Benz-C-Class/Mercedes-Benz-C-Class-9.webp"
     ],
     "breakdown": {
       "auction": 877500,
@@ -2432,15 +2424,15 @@
     },
     "price": 1727519,
     "photos": [
-      "images/cars/Jeep-Renegade/Jeep-Renegade-1.jpg",
-      "images/cars/Jeep-Renegade/Jeep-Renegade-2.jpg",
-      "images/cars/Jeep-Renegade/Jeep-Renegade-3.jpg",
-      "images/cars/Jeep-Renegade/Jeep-Renegade-4.jpg",
-      "images/cars/Jeep-Renegade/Jeep-Renegade-5.jpg",
-      "images/cars/Jeep-Renegade/Jeep-Renegade-6.jpg",
-      "images/cars/Jeep-Renegade/Jeep-Renegade-7.jpg",
-      "images/cars/Jeep-Renegade/Jeep-Renegade-8.jpg",
-      "images/cars/Jeep-Renegade/Jeep-Renegade-9.jpg"
+      "images/cars/Jeep-Renegade/Jeep-Renegade-1.webp",
+      "images/cars/Jeep-Renegade/Jeep-Renegade-2.webp",
+      "images/cars/Jeep-Renegade/Jeep-Renegade-3.webp",
+      "images/cars/Jeep-Renegade/Jeep-Renegade-4.webp",
+      "images/cars/Jeep-Renegade/Jeep-Renegade-5.webp",
+      "images/cars/Jeep-Renegade/Jeep-Renegade-6.webp",
+      "images/cars/Jeep-Renegade/Jeep-Renegade-7.webp",
+      "images/cars/Jeep-Renegade/Jeep-Renegade-8.webp",
+      "images/cars/Jeep-Renegade/Jeep-Renegade-9.webp"
     ],
     "breakdown": {
       "auction": 974350,
@@ -2480,9 +2472,9 @@
     },
     "price": 1324057,
     "photos": [
-      "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-1.jpg",
-      "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-2.jpg",
-      "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-3.jpg"
+      "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-1.webp",
+      "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-2.webp",
+      "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-3.webp"
     ],
     "breakdown": {
       "auction": 928400,
@@ -2522,9 +2514,9 @@
     },
     "price": 1008927,
     "photos": [
-      "images/cars/Renault-Lutecia/Renault-Lutecia-1.jpg",
-      "images/cars/Renault-Lutecia/Renault-Lutecia-2.jpg",
-      "images/cars/Renault-Lutecia/Renault-Lutecia-3.jpg"
+      "images/cars/Renault-Lutecia/Renault-Lutecia-1.webp",
+      "images/cars/Renault-Lutecia/Renault-Lutecia-2.webp",
+      "images/cars/Renault-Lutecia/Renault-Lutecia-3.webp"
     ],
     "breakdown": {
       "auction": 553850,
@@ -2564,9 +2556,9 @@
     },
     "price": 1126701,
     "photos": [
-      "images/cars/Nissan-Kix/Nissan-Kix-1.jpg",
-      "images/cars/Nissan-Kix/Nissan-Kix-2.jpg",
-      "images/cars/Nissan-Kix/Nissan-Kix-3.jpg"
+      "images/cars/Nissan-Kix/Nissan-Kix-1.webp",
+      "images/cars/Nissan-Kix/Nissan-Kix-2.webp",
+      "images/cars/Nissan-Kix/Nissan-Kix-3.webp"
     ],
     "breakdown": {
       "auction": 685850,
@@ -2606,9 +2598,9 @@
     },
     "price": 1516649,
     "photos": [
-      "images/cars/Nissan-Serena/Nissan-Serena-1.jpg",
-      "images/cars/Nissan-Serena/Nissan-Serena-2.jpg",
-      "images/cars/Nissan-Serena/Nissan-Serena-3.jpg"
+      "images/cars/Nissan-Serena/Nissan-Serena-1.webp",
+      "images/cars/Nissan-Serena/Nissan-Serena-2.webp",
+      "images/cars/Nissan-Serena/Nissan-Serena-3.webp"
     ],
     "breakdown": {
       "auction": 1075800,
@@ -2648,9 +2640,9 @@
     },
     "price": 881687,
     "photos": [
-      "images/cars/Nissan-Note/Nissan-Note-1.jpg",
-      "images/cars/Nissan-Note/Nissan-Note-2.jpg",
-      "images/cars/Nissan-Note/Nissan-Note-3.jpg"
+      "images/cars/Nissan-Note/Nissan-Note-1.webp",
+      "images/cars/Nissan-Note/Nissan-Note-2.webp",
+      "images/cars/Nissan-Note/Nissan-Note-3.webp"
     ],
     "breakdown": {
       "auction": 443300,
@@ -2690,9 +2682,9 @@
     },
     "price": 1998194,
     "photos": [
-      "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-1.jpg",
-      "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-2.jpg",
-      "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-3.jpg"
+      "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-1.webp",
+      "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-2.webp",
+      "images/cars/Mercedes-Benz-A-Class/Mercedes-Benz-A-Class-3.webp"
     ],
     "breakdown": {
       "auction": 1534500,
@@ -2732,9 +2724,9 @@
     },
     "price": 2270662,
     "photos": [
-      "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-1.jpg",
-      "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-2.jpg",
-      "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-3.jpg"
+      "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-1.webp",
+      "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-2.webp",
+      "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-3.webp"
     ],
     "breakdown": {
       "auction": 1540000,
@@ -2774,9 +2766,9 @@
     },
     "price": 1713148,
     "photos": [
-      "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-1.jpg",
-      "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-2.jpg",
-      "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-3.jpg"
+      "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-1.webp",
+      "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-2.webp",
+      "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 1221000,
@@ -2816,9 +2808,9 @@
     },
     "price": 1595849,
     "photos": [
-      "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-1.jpg",
-      "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-2.jpg",
-      "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-3.jpg"
+      "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-1.webp",
+      "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-2.webp",
+      "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 1155000,
@@ -2858,9 +2850,9 @@
     },
     "price": 1788349,
     "photos": [
-      "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-1.jpg",
-      "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-2.jpg",
-      "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-3.jpg"
+      "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-1.webp",
+      "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-2.webp",
+      "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 1347500,
@@ -2900,9 +2892,9 @@
     },
     "price": 1560099,
     "photos": [
-      "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-1.jpg",
-      "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-2.jpg",
-      "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-3.jpg"
+      "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-1.webp",
+      "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-2.webp",
+      "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 1119250,
@@ -2942,9 +2934,9 @@
     },
     "price": 1264880,
     "photos": [
-      "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-1.jpg",
-      "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-2.jpg",
-      "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-3.jpg"
+      "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-1.webp",
+      "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-2.webp",
+      "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 660000,
@@ -2984,9 +2976,9 @@
     },
     "price": 1770531,
     "photos": [
-      "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-1.jpg",
-      "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-2.jpg",
-      "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-3.jpg"
+      "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-1.webp",
+      "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-2.webp",
+      "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 1287000,
@@ -3026,9 +3018,9 @@
     },
     "price": 1624303,
     "photos": [
-      "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-1.jpg",
-      "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-2.jpg",
-      "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-3.jpg"
+      "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-1.webp",
+      "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-2.webp",
+      "images/cars/BMW-2-Series-Japan/BMW-2-Series-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 1155000,
@@ -3068,9 +3060,9 @@
     },
     "price": 1000651,
     "photos": [
-      "images/cars/Audi-A1-Japan/Audi-A1-Japan-1.jpg",
-      "images/cars/Audi-A1-Japan/Audi-A1-Japan-2.jpg",
-      "images/cars/Audi-A1-Japan/Audi-A1-Japan-3.jpg"
+      "images/cars/Audi-A1-Japan/Audi-A1-Japan-1.webp",
+      "images/cars/Audi-A1-Japan/Audi-A1-Japan-2.webp",
+      "images/cars/Audi-A1-Japan/Audi-A1-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 605000,
@@ -3110,9 +3102,9 @@
     },
     "price": 2161031,
     "photos": [
-      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-1.jpg",
-      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-2.jpg",
-      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-3.jpg"
+      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-1.webp",
+      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-2.webp",
+      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 1677500,
@@ -3152,9 +3144,9 @@
     },
     "price": 985475,
     "photos": [
-      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-1.jpg",
-      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-2.jpg",
-      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-3.jpg"
+      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-1.webp",
+      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-2.webp",
+      "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 632499,
@@ -3194,14 +3186,14 @@
     },
     "price": 5837835,
     "photos": [
-      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-1.jpg",
-      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-2.jpg",
-      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-3.jpg",
-      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-4.jpg",
-      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-5.jpg",
-      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-6.jpg",
-      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-7.jpg",
-      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-8.jpg"
+      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-1.webp",
+      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-2.webp",
+      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-3.webp",
+      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-4.webp",
+      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-5.webp",
+      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-6.webp",
+      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-7.webp",
+      "images/cars/Audi-A5L-2026-2.0T-Sport-Plus/Audi-A5L-2026-2.0T-Sport-Plus-8.webp"
     ],
     "breakdown": {
       "auction": 3212500,
@@ -3279,16 +3271,16 @@
     },
     "price": 62921416,
     "photos": [
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-1.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-2.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-3.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-4.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-5.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-6.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-7.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-8.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-9.jpg",
-      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-10.jpg"
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-1.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-2.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-3.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-4.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-5.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-6.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-7.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-8.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-9.webp",
+      "images/cars/Mercedes-AMG-GT-63-S-E-Performance/Mercedes-AMG-GT-63-S-E-Performance-10.webp"
     ],
     "breakdown": {
       "auction": 41250000,
@@ -3383,16 +3375,14 @@
     },
     "price": 7154023,
     "photos": [
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-1.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-2.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-3.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-4.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-5.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-6.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-7.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-8.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-9.jpg",
-      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-10.jpg"
+      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-1.webp",
+      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-2.webp",
+      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-3.webp",
+      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-4.webp",
+      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-5.webp",
+      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-6.webp",
+      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-7.webp",
+      "images/cars/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users/Audi-Q5L-2026-2.0T-Exclusive-Edition-for-Million-Users-8.webp"
     ],
     "breakdown": {
       "auction": 4112500,
@@ -3432,19 +3422,19 @@
     },
     "price": 5700443,
     "photos": [
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-1.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-2.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-3.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-4.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-5.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-6.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-7.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-8.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-9.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-10.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-11.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-12.jpg",
-      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-13.jpg"
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-1.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-2.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-3.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-4.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-5.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-6.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-7.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-8.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-9.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-10.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-11.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-12.webp",
+      "images/cars/Lexus-ES-2026-300h/Lexus-ES-2026-300h-13.webp"
     ],
     "breakdown": {
       "auction": 3748750,
@@ -3484,9 +3474,9 @@
     },
     "price": 789685,
     "photos": [
-      "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-1.jpg",
-      "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-2.jpg",
-      "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-3.jpg"
+      "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-1.webp",
+      "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-2.webp",
+      "images/cars/Honda-Freed-Japan/Honda-Freed-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 121550,
@@ -3526,9 +3516,9 @@
     },
     "price": 1091053,
     "photos": [
-      "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-1.jpg",
-      "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-2.jpg",
-      "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-3.jpg"
+      "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-1.webp",
+      "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-2.webp",
+      "images/cars/Mercedes-Benz-A-Class-2016-1.6-Japan/Mercedes-Benz-A-Class-2016-1.6-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 354750,
@@ -3568,9 +3558,9 @@
     },
     "price": 918389,
     "photos": [
-      "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-1.jpg",
-      "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-2.jpg",
-      "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-3.jpg"
+      "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-1.webp",
+      "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-2.webp",
+      "images/cars/Toyota-Sienta-Japan/Toyota-Sienta-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 440000,
@@ -3610,9 +3600,9 @@
     },
     "price": 833900,
     "photos": [
-      "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-1.jpg",
-      "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-2.jpg",
-      "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-3.jpg"
+      "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-1.webp",
+      "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-2.webp",
+      "images/cars/Fiat-500X-Japan/Fiat-500X-Japan-3.webp"
     ],
     "breakdown": {
       "auction": 383900,
@@ -3652,9 +3642,9 @@
     },
     "price": 820869,
     "photos": [
-      "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-1.jpg",
-      "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-2.jpg",
-      "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-3.jpg"
+      "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-1.webp",
+      "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-2.webp",
+      "images/cars/Kia-The-New-Ray-2022/Kia-The-New-Ray-2022-3.webp"
     ],
     "breakdown": {
       "auction": 409500,
@@ -3694,16 +3684,16 @@
     },
     "price": 1209000,
     "photos": [
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-1.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-2.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-3.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-4.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-5.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-6.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-7.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-8.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-9.jpg",
-      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-10.jpg"
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-1.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-2.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-3.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-4.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-5.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-6.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-7.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-8.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-9.webp",
+      "images/cars/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition/Honda-Crider-2022-180Turbo-CVT-Luxury-Edition-10.webp"
     ],
     "breakdown": {
       "auction": 750000,

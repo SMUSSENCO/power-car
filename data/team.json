@@ -15,7 +15,7 @@
     "role": "Управляющий партнер • Москва",
     "experience": "",
     "telegram": "https://t.me/",
-    "photo": "images/team/Yurij.jpg",
+    "photo": "images/team/Yurij.webp",
     "order": 2,
     "published": true
   },
@@ -25,7 +25,7 @@
     "role": "Управляющий партнер • Новосибирск",
     "experience": "",
     "telegram": "https://t.me/",
-    "photo": "images/team/Serega.jpg",
+    "photo": "images/team/Serega.webp",
     "order": 3,
     "published": true
   },
@@ -35,7 +35,7 @@
     "role": "Логистика и Брокерские услуги",
     "experience": "",
     "telegram": "https://t.me/",
-    "photo": "images/team/fenix.jpeg",
+    "photo": "images/team/fenix.webp",
     "order": 4,
     "published": true
   }
