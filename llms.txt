@@ -15,16 +15,30 @@
 
 Итоговая цена под ключ = стоимость авто на аукционе/у дилера (в валюте страны) + логистика внутри страны + доставка до РФ + таможенная пошлина и утильсбор + СБКТС/оформление + комиссия POWER Car. Формула и разбивка по составляющим показаны на каждой карточке авто.
 
+## Инструменты
+
+- [Калькулятор растаможки](https://power-car.ru/kalkulyator-rastamozhki.html) — точный расчёт таможенной пошлины и утильсбора по объёму двигателя, возрасту и мощности; живые данные из /data/settings.json.
+- [Карта доставки по России](https://power-car.ru/dostavka-po-rossii.html) — интерактивная карта с ценой и сроком доставки от Владивостока в любой регион РФ.
+
 ## Блог
 
-Статьи по актуальным правилам импорта, растаможки и утильсбора на 2026 год: [Все статьи](https://power-car.ru/#articles). Данные: /data/articles.json.
+Статьи по актуальным правилам импорта, растаможки и утильсбора на 2026 год: [Все статьи](https://power-car.ru/#articles). Данные: /data/articles.json (22 статьи).
 
 Ключевые материалы:
 - [Япония vs Корея vs Китай: откуда выгоднее везти авто в 2026 году](https://power-car.ru/articles/yaponiya-vs-koreya-vs-kitay-sravnenie.html)
 - [Льготный утильсбор в 2026: как рассчитать и сколько платить](https://power-car.ru/articles/raschet-utilsbora-2026.html)
+- [Топ-9 авто до 1,5 млн ₽ из Азии](https://power-car.ru/articles/top-avto-do-1-5-mln-iz-azii.html)
+- [Расшифровка аукционного листа: что значат U1, A1, W1](https://power-car.ru/articles/reading-japanese-auction-sheet.html)
+- [Мягкий гибрид (MHEV): что это и как считается утильсбор](https://power-car.ru/articles/mhev-myagkhkij-gibryd-raschet-2026.html)
+- [Импорт мотоциклов из Японии: без утильсбора](https://power-car.ru/articles/moto-import-japan-2026.html)
+- [Оплата SWIFT-инвойса за авто из Азии: рабочие банки](https://power-car.ru/articles/swift-oplata-invoice-2026.html)
+- [Гарантия на электромобиль из Китая: что реально действует](https://power-car.ru/articles/garantiya-elektromobil-iz-kitaya.html)
+- [Проверка VIN корейского авто через Encar](https://power-car.ru/articles/korean-car-vin-code-proverka-encar.html)
 - [Самый выгодный возраст автомобиля для импорта в РФ](https://power-car.ru/articles/vygodny-vozrast-auto-import.html)
 - [ОСАГО, техосмотр и гарантия на праворульный автомобиль в 2026 году](https://power-car.ru/articles/osago-garantiya-pravorulnoe-avto.html)
 - [Кредит и трейд-ин при покупке автомобиля из Азии](https://power-car.ru/articles/kredit-trade-in-avto-iz-azii.html)
+- [Временная прописка в ДВФО при растаможке во Владивостоке](https://power-car.ru/articles/vremennaya-propiska-dvfo-2026.html)
+- [Автовоз Владивосток — Москва: цены и сроки](https://power-car.ru/articles/autovoz-vladivostok-moscow.html)
 
 ## Отзывы клиентов
 
