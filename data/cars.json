@@ -4372,5 +4372,212 @@
       "images/cars/subaru-forester-hybrid-2021/Subaru-Forester-Hybrid-2.webp",
       "images/cars/subaru-forester-hybrid-2021/Subaru-Forester-Hybrid-3.webp"
     ]
+  },
+  {
+    "id": "Audi-A3-2022",
+    "brand": "Audi",
+    "model": "A3 35 TFSI",
+    "year": 2022,
+    "mileage": 22000,
+    "engine": "1.4",
+    "power": 150,
+    "transmission": "АКПП",
+    "body": "hatchback",
+    "country": "China",
+    "flag": "🇨🇳",
+    "wheel": "left",
+    "deliveryMin": 21,
+    "deliveryMax": 28,
+    "hit": false,
+    "weight": 4,
+    "published": true,
+    "addedAt": "2026-09-23",
+    "type": "auto",
+    "priceMarket": 2990001,
+    "calc": {
+      "marketLocal": 140641,
+      "customs": 216989,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 2300001,
+    "photos": [
+      "images/cars/Audi-A3-2022/Audi-A3-2022-1.webp",
+      "images/cars/Audi-A3-2022/Audi-A3-2022-2.webp",
+      "images/cars/Audi-A3-2022/Audi-A3-2022-3.webp"
+    ],
+    "breakdown": {
+      "auction": 1758012,
+      "domestic": 175000,
+      "delivery": 0,
+      "customs": 216989,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "BMW-1-Series-M-Sport-2022",
+    "brand": "BMW",
+    "model": "1-Series M Sport",
+    "year": 2022,
+    "mileage": 40000,
+    "engine": "1.5",
+    "power": 140,
+    "transmission": "АКПП",
+    "body": "sedan",
+    "country": "China",
+    "flag": "🇨🇳",
+    "wheel": "left",
+    "deliveryMin": 21,
+    "deliveryMax": 28,
+    "hit": false,
+    "weight": 4,
+    "published": true,
+    "addedAt": "2026-09-23",
+    "type": "auto",
+    "priceMarket": 2769008,
+    "calc": {
+      "marketLocal": 126518,
+      "customs": 223531,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 2130006,
+    "photos": [
+      "images/cars/BMW-1-Series-M-Sport-2022/BMW-1-Series-M-Sport-2022-1.webp",
+      "images/cars/BMW-1-Series-M-Sport-2022/BMW-1-Series-M-Sport-2022-2.webp"
+    ],
+    "breakdown": {
+      "auction": 1581475,
+      "domestic": 175000,
+      "delivery": 0,
+      "customs": 223531,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "Mazda-Axela-2017",
+    "brand": "Mazda",
+    "model": "Axela",
+    "year": 2017,
+    "mileage": 23000,
+    "engine": "1.5",
+    "power": 111,
+    "transmission": "АКПП",
+    "body": "hatchback",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "wheel": "right",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": 4,
+    "published": true,
+    "addedAt": "2026-09-23",
+    "type": "auto",
+    "priceMarket": 1820000,
+    "calc": {
+      "marketLocal": 1636364,
+      "customs": 240000,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 1400000,
+    "photos": [
+      "images/cars/Mazda-Axela-2017/Mazda-Axela-2017-1.webp",
+      "images/cars/Mazda-Axela-2017/Mazda-Axela-2017-2.webp"
+    ],
+    "breakdown": {
+      "auction": 900000,
+      "domestic": 110000,
+      "delivery": 0,
+      "customs": 240000,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "Mercedes-Benz-C-Class-2021-AMG-Line",
+    "brand": "Mercedes-Benz",
+    "model": "C-Class AMG Line",
+    "year": 2021,
+    "mileage": 43000,
+    "engine": "1.5",
+    "power": 156,
+    "transmission": "АКПП",
+    "body": "sedan",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "wheel": "right",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": 4,
+    "published": true,
+    "addedAt": "2026-09-23",
+    "type": "auto",
+    "priceMarket": 2990000,
+    "calc": {
+      "marketLocal": 3288827,
+      "customs": 231145,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 2300000,
+    "photos": [
+      "images/cars/Mercedes-Benz-C-Class-2021-AMG-Line/Mercedes-Benz-C-Class-2021-AMG-Line-1.webp",
+      "images/cars/Mercedes-Benz-C-Class-2021-AMG-Line/Mercedes-Benz-C-Class-2021-AMG-Line-2.webp"
+    ],
+    "breakdown": {
+      "auction": 1808855,
+      "domestic": 110000,
+      "delivery": 0,
+      "customs": 231145,
+      "docs": 100000,
+      "commission": 50000
+    }
+  },
+  {
+    "id": "Suzuki-Swift-2024",
+    "brand": "Suzuki",
+    "model": "Swift",
+    "year": 2024,
+    "mileage": 15000,
+    "engine": "1.2",
+    "power": 82,
+    "transmission": "АКПП",
+    "body": "hatchback",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "wheel": "right",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": 4,
+    "published": true,
+    "addedAt": "2026-09-23",
+    "type": "auto",
+    "priceMarket": 1625000,
+    "calc": {
+      "marketLocal": 1402929,
+      "customs": 218389,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 1250000,
+    "photos": [
+      "images/cars/Suzuki-Swift-2024/Suzuki-Swift-2024-1.webp",
+      "images/cars/Suzuki-Swift-2024/Suzuki-Swift-2024-2.webp",
+      "images/cars/Suzuki-Swift-2024/Suzuki-Swift-2024-3.webp"
+    ],
+    "breakdown": {
+      "auction": 771611,
+      "domestic": 110000,
+      "delivery": 0,
+      "customs": 218389,
+      "docs": 100000,
+      "commission": 50000
+    }
   }
 ]
