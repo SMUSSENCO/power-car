@@ -552,7 +552,19 @@ h1 { font-size: clamp(1.5rem, 4vw, 2.3rem); line-height: 1.15; margin-bottom: 14
       <div class="result-row"><span class="l">Расстояние от Владивостока</span><span class="v" id="resultKm">—</span></div>
       <div class="result-row"><span class="l">Срок в пути</span><span class="v" id="resultDays">—</span></div>
       <div class="result-total"><span class="l">Стоимость автовоза</span><span class="v" id="resultPrice">—</span></div>
-      <div class="result-note" id="resultNote">Расчёт ориентировочный, по среднему тарифу ₽/км на основе реальных перевозок POWER Car (Москва, Санкт-Петербург, Новосибирск, Томск). Точная стоимость зависит от типа автовоза, сезона и загруженности маршрута — фиксируется в договоре.</div>
+      <div class="result-note" id="resultNote">Расчёт по реальному прайс-листу нашего партнёра-перевозчика на популярные направления; для остальных городов — по регрессии на этих же тарифах. Точная стоимость зависит от типа автовоза, сезона и загруженности маршрута — фиксируется в договоре.</div>
+    </div>
+
+    <div class="result-card show" style="margin-top:16px;">
+      <h3 style="margin-bottom:14px;">Реальные тарифы автовоза от Владивостока (2026)</h3>
+      <div class="result-row"><span class="l">Иркутск / Чита / Улан-Удэ</span><span class="v">95 000 – 110 000 ₽, 7–13 дней</span></div>
+      <div class="result-row"><span class="l">Новосибирск / Кемерово / Томск / Красноярск</span><span class="v">125 000 – 145 000 ₽, 9–13 дней</span></div>
+      <div class="result-row"><span class="l">Омск</span><span class="v">155 000 – 175 000 ₽</span></div>
+      <div class="result-row"><span class="l">Тюмень / Екатеринбург</span><span class="v">175 000 – 195 000 ₽</span></div>
+      <div class="result-row"><span class="l">Челябинск / Уфа / Казань / Н. Новгород / Москва</span><span class="v">195 000 – 215 000 ₽, 14–17 дней до Москвы</span></div>
+      <div class="result-row"><span class="l">Краснодар</span><span class="v">205 000 – 225 000 ₽</span></div>
+      <div class="result-row"><span class="l">Санкт-Петербург</span><span class="v">225 000 ₽</span></div>
+      <div class="result-note">Малый класс автовоза (до 4,1 м) — большой класс (от 4,7 до 5,1 м); для авто длиннее 5,2 м — расчёт индивидуально. По прайсу партнёра-перевозчика на 2026 год. Для острова, эксклава или другого города — используйте карту и поиск выше или уточните у менеджера.</div>
     </div>
 
     <div class="cta-block">
@@ -578,19 +590,47 @@ const FEDERAL_DISTRICTS = new Set(["Central", "FarEastern", "Northwestern", "Sib
 const EXTRA_FRAGMENTS = { path84: 'Yakutia', path107: 'TaymyrAutDistrict', path78: 'Chukotka' };
 Object.keys(EXTRA_FRAGMENTS).forEach(pid => { REGIONS[pid] = REGIONS[EXTRA_FRAGMENTS[pid]]; });
 
-// Тариф автовоза: база + ₽/км, откалибровано по 4 реальным маршрутам POWER Car
-// (Томск 5600км~100тыс, Новосибирск 4200км~100тыс, Москва 9000км~160тыс, СПб 9800км~170тыс)
-const BASE_FEE = 34000;
-const RATE_PER_KM = 13.8;
+// Реальный прайс-лист автовоза "Ozuma Logistic" (2026): малый класс (до 4.1м) / большой класс (до 5.1м),
+// по конкретным направлениям. Для регионов без точной строки в прайсе — оценка по регрессии на этих
+// же 16 реальных точек (км -> ₽), это честная замена старой калибровке всего по 4 маршрутам.
+const REAL_QUOTES = {
+  IrkutskOblast: [95000, 110000], UstOrdaBuryatia: [95000, 110000],
+  Buryatia: [95000, 110000], ChitaOblast: [95000, 110000], AgaBuryatia: [95000, 110000],
+  TaymyrAutDistrict: [125000, 145000], KemerovoOblast: [125000, 145000],
+  TomskOblast: [125000, 145000], NovosibirskOblast: [125000, 145000],
+  OmskOblast: [155000, 175000],
+  TyumenOblast: [175000, 195000], SverdlovskOblast: [175000, 195000],
+  ChelyabinskOblast: [195000, 215000], Bashkortostan: [195000, 215000],
+  SamaraOblast: [195000, 215000], Tatarstan: [195000, 215000],
+  NizhnyNovgorodOblast: [195000, 215000], Moscow: [195000, 215000], MoscowOblast: [195000, 215000],
+  SaintPetersburg: [225000, 225000], LeningradOblast: [225000, 225000],
+  KrasnodarKrai: [205000, 225000],
+};
+// Реальные сроки (рейс + ожидание отправки) по трём известным направлениям: Иркутск, Новосибирск, Москва
+const REAL_DAYS = {
+  IrkutskOblast: [7, 13], UstOrdaBuryatia: [7, 13], Buryatia: [7, 13], ChitaOblast: [7, 13], AgaBuryatia: [7, 13],
+  NovosibirskOblast: [9, 13],
+  Moscow: [14, 17], MoscowOblast: [14, 17],
+};
+const PRICE_BASE = 64126;
+const PRICE_RATE = 17.6;
 
-function estimatePrice(km) {
-  const mid = BASE_FEE + RATE_PER_KM * km;
-  return { low: Math.round(mid * 0.9 / 1000) * 1000, high: Math.round(mid * 1.15 / 1000) * 1000 };
+function estimatePrice(km, id) {
+  if (id && REAL_QUOTES[id]) {
+    const [low, high] = REAL_QUOTES[id];
+    return { low, high, real: true };
+  }
+  const mid = PRICE_BASE + PRICE_RATE * km;
+  return { low: Math.round(mid * 0.94 / 1000) * 1000, high: Math.round(mid * 1.06 / 1000) * 1000, real: false };
 }
-function estimateDays(km) {
-  const d1 = Math.max(3, Math.round(km / 700));
-  const d2 = Math.round(km / 500);
-  return d1 + '–' + Math.max(d1 + 2, d2) + ' дней';
+function estimateDays(km, id) {
+  if (id && REAL_DAYS[id]) {
+    const [low, high] = REAL_DAYS[id];
+    return low + '–' + high + ' дней';
+  }
+  const low = Math.max(5, Math.round(4.6 + 0.00104 * km));
+  const high = Math.max(low + 3, Math.round(9.8 + 0.0008 * km));
+  return low + '–' + high + ' дней';
 }
 function fmtRub(n) { return n.toLocaleString('ru-RU') + ' ₽'; }
 
@@ -630,7 +670,7 @@ function showRegion(id, evt) {
   if (data.special) {
     tooltip.innerHTML = '<div class="r-name">' + data.name + '</div><div class="r-note">Море/авиа или удалённый регион — расчёт индивидуальный</div>';
   } else {
-    const p = estimatePrice(data.km);
+    const p = estimatePrice(data.km, id);
     tooltip.innerHTML = '<div class="r-name">' + data.name + '</div><div class="r-price">' + fmtRub(p.low) + '–' + fmtRub(p.high) + '</div>';
   }
   if (evt) tooltip.classList.add('show');
@@ -642,15 +682,21 @@ function renderResult(id) {
   const data = REGIONS[id];
   if (!data) return;
   document.getElementById('resultTitle').textContent = data.name + (data.city !== data.name ? ' (' + data.city + ')' : '');
+  const note = document.getElementById('resultNote');
   if (data.special) {
     document.getElementById('resultKm').textContent = 'нет прямой автодороги';
     document.getElementById('resultDays').textContent = 'по согласованию';
     document.getElementById('resultPrice').textContent = 'расчёт индивидуально';
   } else {
-    const p = estimatePrice(data.km);
+    const p = estimatePrice(data.km, id);
     document.getElementById('resultKm').textContent = data.km.toLocaleString('ru-RU') + ' км';
-    document.getElementById('resultDays').textContent = estimateDays(data.km);
+    document.getElementById('resultDays').textContent = estimateDays(data.km, id);
     document.getElementById('resultPrice').textContent = fmtRub(p.low) + '–' + fmtRub(p.high);
+    if (note) {
+      note.textContent = p.real
+        ? 'Реальный тариф по направлению (малый / большой класс автовоза), по прайсу нашего партнёра-перевозчика на 2026 год.'
+        : 'Расчёт ориентировочный — по регрессии на реальных тарифах ближайших направлений. Точная стоимость зависит от типа автовоза, сезона и загруженности маршрута — фиксируется в договоре.';
+    }
   }
   resultCard.classList.add('show');
 }
