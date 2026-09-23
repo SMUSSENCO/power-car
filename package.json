@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@ai-sdk/gateway": "^4.0.89",
+    "ai": "^7.0.111",
     "jsdom": "^29.1.1"
   }
 }
