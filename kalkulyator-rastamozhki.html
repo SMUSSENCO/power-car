@@ -227,8 +227,7 @@ h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.1; margin-bottom: 1
       <div class="result" id="result">
         <div style="margin-top:22px;">
           <div class="result-row"><span class="l">Авто в рублях</span><span class="v" id="rCar">—</span></div>
-          <div class="result-row"><span class="l">Логистика внутри страны</span><span class="v" id="rDomestic">—</span></div>
-          <div class="result-row"><span class="l">Доставка до Владивостока</span><span class="v" id="rFreight">—</span></div>
+          <div class="result-row"><span class="l">Логистика внутри страны + доставка до Владивостока</span><span class="v" id="rDomestic">—</span></div>
           <div class="result-row"><span class="l">Таможня + утильсбор (оценка)</span><span class="v" id="rCustoms">—</span></div>
           <div class="result-row"><span class="l">СБКТС, оформление</span><span class="v" id="rDocs">—</span></div>
           <div class="result-row"><span class="l">Комиссия POWER Car</span><span class="v" id="rCommission">—</span></div>
@@ -238,6 +237,20 @@ h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.1; margin-bottom: 1
         <div class="note-box">Пошлина посчитана по официальному тексту Решения Совета ЕЭК №107 (приложение 2, таблица 2). Утильсбор — по коэффициентам ПП РФ №1291 и №81, сверенным вручную с официальным калькулятором ФТС-партнёра. Курс евро — на сегодня; на день сделки может немного отличаться, окончательную сумму фиксируем в договоре.</div>
       </div>
     </div>
+
+    <div class="card" style="padding:20px 4px 4px;">
+      <h2 style="font-size:1.15rem;margin-bottom:4px;padding:0 22px;">Сколько будет стоить доставка до вашего города</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:4px;padding:0 22px;">Наведите на регион на карте или найдите город в поиске — это цена от Владивостока, уже без учёта в расчёте выше.</p>
+      <iframe id="deliveryMapFrame" src="/dostavka-po-rossii.html?embed=1" title="Карта доставки по России" style="width:100%;border:none;display:block;overflow:hidden;" height="760" loading="lazy"></iframe>
+    </div>
+    <script>
+      window.addEventListener('message', (e) => {
+        if (e.data && e.data.type === 'dostavka-height') {
+          const f = document.getElementById('deliveryMapFrame');
+          if (f) f.style.height = Math.max(600, e.data.height) + 'px';
+        }
+      });
+    </script>
 
     <div class="card" style="margin-top:24px;">
       <h2 style="font-size:1.15rem;margin-bottom:16px;">Готовые примеры расчёта</h2>
@@ -417,8 +430,7 @@ document.getElementById('calcBtn').addEventListener('click', () => {
   const customsEst = estimateCustoms(displacement, power, age, carRub, eurRate);
 
   document.getElementById('rCar').textContent = fmtRub(carRub);
-  document.getElementById('rDomestic').textContent = fmtRub(domesticRub);
-  document.getElementById('rFreight').textContent = fmtRub(freightRub) + ' (' + cc.delivery + ')';
+  document.getElementById('rDomestic').textContent = fmtRub(domesticRub + freightRub) + ' (' + cc.delivery + ')';
   document.getElementById('rDocs').textContent = fmtRub(docs);
   document.getElementById('rCommission').textContent = fmtRub(commission);
 

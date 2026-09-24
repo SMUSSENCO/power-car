@@ -141,9 +141,21 @@ h1 { font-size: clamp(1.5rem, 4vw, 2.3rem); line-height: 1.15; margin-bottom: 14
 .page-footer { border-top: 1px solid var(--border); padding: 24px 0 40px; text-align: center; color: var(--text-dim); font-size: 0.84rem; }
 .page-footer a { color: var(--text-muted); }
 .page-footer a:hover { color: var(--text); }
+
+/* Встроенный режим (?embed=1) — карту вставляют внутрь другой страницы (например, калькулятора) через iframe */
+body.is-embed { background: transparent; }
+body.is-embed .ambient,
+body.is-embed .page-header,
+body.is-embed .page-footer,
+body.is-embed .hero,
+body.is-embed .cta-block { display: none; }
+body.is-embed .wrap, body.is-embed .wrap-narrow { padding: 0 4px; }
+body.is-embed main { padding-top: 4px; }
 </style>
+<script>if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('is-embed-html');</script>
 </head>
-<body>
+<body class="">
+<script>if (document.documentElement.classList.contains('is-embed-html')) document.body.classList.add('is-embed');</script>
 
 <div class="ambient" aria-hidden="true"></div>
 
@@ -745,6 +757,14 @@ dropdown.addEventListener('click', (e) => {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
   resultCard.scrollIntoView({behavior:'smooth', block:'center'});
 });
+
+// Встроенный режим: сообщаем родительской странице высоту содержимого, чтобы iframe не резал карту/результат
+if (document.body.classList.contains('is-embed') && window.parent !== window) {
+  const reportHeight = () => window.parent.postMessage({ type: 'dostavka-height', height: document.documentElement.scrollHeight }, '*');
+  new ResizeObserver(reportHeight).observe(document.body);
+  window.addEventListener('load', reportHeight);
+  reportHeight();
+}
 </script>
 </body>
 </html>
