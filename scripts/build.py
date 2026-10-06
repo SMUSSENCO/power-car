@@ -55,6 +55,7 @@ ym(109736434,'init',{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:tr
 <noscript><div><img src="https://mc.yandex.ru/watch/109736434" style="position:absolute;left:-9999px;" alt=""/></div></noscript>"""
 
 ART_STYLE = extract_style(read("article.html"))
+DRIVE = {"fwd":"передний","rwd":"задний","awd":"полный"}
 CAR_STYLE = extract_style(read("car.html"))
 
 # ---------------------------------------------------------------- ARTICLES
@@ -179,6 +180,9 @@ def car_page(c, articles):
     url = f"{BASE}auto/{cid}.html"
     title = f"{name} из {country} под ключ — {fmt_price(c['price'])} | POWER Car"
     desc = f"{name}, {c.get('engine','')}, {c.get('transmission','')}. Импорт из {country} под ключ за 25–40 дней. Цена под ключ {fmt_price(c['price'])}, прозрачный расчёт. POWER Car."
+    if (c.get("description") or "").strip():
+        d0 = " ".join(c["description"].split())
+        desc = (d0[:150].rsplit(" ",1)[0] + "…" if len(d0)>150 else d0) + f" Под ключ {fmt_price(c['price'])}. POWER Car."
     photos = c.get("photos") or []
     main_img = f'<img id="cm" src="/{html.escape(photos[0])}" alt="{html.escape(name)} — импорт из {country} под ключ">' if photos else '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--dim);font-weight:700">POWER Car</div>'
     thumbs = "".join(f'<img src="/{html.escape(p)}" alt="{html.escape(name)} фото {i+2}" loading="lazy" onclick="document.getElementById(\'cm\').src=this.src">' for i,p in enumerate(photos[1:6]))
@@ -189,7 +193,15 @@ def car_page(c, articles):
              ("Двигатель",c.get("engine","—")),("Коробка",c.get("transmission","—")),
              ("Кузов",BODY.get(c.get("body"),c.get("body","—"))),("Руль",WHEEL.get(c.get("wheel"),c.get("wheel","—"))),
              ("Страна вывоза",COUNTRY.get(c.get("country"),"—"))]
+    if c.get("trim"): specs.insert(2, ("Комплектация", c["trim"]))
+    if c.get("drive") in DRIVE: specs.append(("Привод", DRIVE[c["drive"]]))
+    if c.get("color"): specs.append(("Цвет", c["color"]))
     specs_html = "".join(f"<tr><td>{html.escape(str(k))}</td><td>{html.escape(str(v))}</td></tr>" for k,v in specs)
+    eq = [x for x in (c.get("equipment") or []) if x]
+    desc_text = (c.get("description") or "").strip()
+    desc_paras = "".join(f"<p>{html.escape(p)}</p>" for p in desc_text.split("\n") if p.strip())
+    eq_html = ('<ul class="eq">' + "".join(f"<li>{html.escape(x)}</li>" for x in eq) + '</ul>') if eq else ""
+    desc_block = (f'<section><h2 class="sec-h">Описание и комплектация</h2><div class="card desc">{desc_paras}{eq_html}</div></section>') if (desc_paras or eq_html) else ""
     b = c.get("breakdown") or {}
     rows = [("Стоимость на аукционе",b.get("auction")),("Логистика внутри страны",b.get("domestic")),("Доставка до РФ",b.get("delivery")),
             ("Таможенная пошлина",b.get("customs")),("Оформление документов / СБКТС",b.get("docs")),("Комиссия POWER Car",b.get("commission"))]
@@ -217,6 +229,9 @@ def car_page(c, articles):
         "image":(BASE+photos[0]) if photos else BASE+"og-cover.jpg",
         "offers":{"@type":"Offer","price":c["price"],"priceCurrency":"RUB","availability":"https://schema.org/InStock",
                   "url":url,"seller":{"@type":"AutoDealer","name":"POWER Car","url":BASE}}}
+    if desc_text: ld_car["description"]=desc_text
+    if c.get("color"): ld_car["color"]=c["color"]
+    if c.get("trim"): ld_car["vehicleConfiguration"]=c["trim"]
     if c.get("mileage") is not None:
         ld_car["mileageFromOdometer"]={"@type":"QuantitativeValue","value":c["mileage"],"unitCode":"KMT"}
     ld_bc = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -268,6 +283,7 @@ def car_page(c, articles):
       </div>
     </div>
   </div>
+  {desc_block}
   {breakdown}
   {related_block}
   <section><div class="cta" id="cta">

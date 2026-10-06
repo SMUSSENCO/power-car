@@ -41,6 +41,7 @@ h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:6px 0 4px}
 .price{font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:700}
 .price .market{color:var(--dim);font-size:1.05rem;text-decoration:line-through;font-weight:400;margin-left:10px}
 .save{display:inline-block;margin:8px 0 0;background:var(--accsoft);color:var(--acc2);font-weight:600;font-size:.85rem;padding:6px 12px;border-radius:999px}
+.desc p{color:var(--mut);line-height:1.7;margin:0 0 12px;max-width:72ch}.eq{list-style:none;padding:0;margin:0;columns:2;column-gap:28px}.eq li{padding:7px 0 7px 22px;position:relative;break-inside:avoid;font-size:.95rem}.eq li:before{content:'✓';position:absolute;left:0;color:var(--ac,#10B981);font-weight:700}@media(max-width:640px){.eq{columns:1}}
 .specs{width:100%;border-collapse:collapse;margin-top:18px}
 .specs td{padding:11px 0;border-bottom:1px solid var(--bd);font-size:.95rem}.specs td:first-child{color:var(--mut)}.specs td:last-child{text-align:right;font-weight:600}
 .cta-box{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
@@ -82,6 +83,7 @@ const CMAP={Japan:"Японии",Korea:"Кореи",China:"Китая"};
 const COUNTRY={Japan:"Япония",Korea:"Корея",China:"Китай"};
 const BODY={crossover:"кроссовер",sedan:"седан",hatchback:"хэтчбек",suv:"внедорожник",minivan:"минивэн",wagon:"универсал"};
 const WHEEL={left:"левый",right:"правый"};
+const DRIVE={fwd:"передний",rwd:"задний",awd:"полный"};
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=n=>(Math.round(n)).toLocaleString("ru-RU").replace(/,/g," ")+" ₽";
 const num=n=>(n==null?"":Number(n).toLocaleString("ru-RU").replace(/,/g," "));
@@ -125,6 +127,9 @@ function renderCar(c){
     ["Двигатель",c.engine||"—"],["Коробка",c.transmission||"—"],
     ["Кузов",BODY[c.body]||c.body||"—"],["Руль",WHEEL[c.wheel]||c.wheel||"—"],
     ["Страна вывоза",COUNTRY[c.country]||"—"]];
+  if(c.trim)specs.splice(2,0,["Комплектация",c.trim]);
+  if(c.drive&&DRIVE[c.drive])specs.push(["Привод",DRIVE[c.drive]]);
+  if(c.color)specs.push(["Цвет",c.color]);
   const specsHtml=specs.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join("");
 
   const b=c.breakdown||{};
@@ -135,6 +140,11 @@ function renderCar(c){
     <p class="sec-sub">Прозрачно, без скрытых платежей. Все суммы фиксируются в договоре.</p>
     <div class="card"><table class="bd">${bdHtml}<tr class="total"><td>Итого под ключ</td><td>${fmt(c.price)}</td></tr></table>
     <p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа.</p></div></section>`:"";
+
+  const eqList=Array.isArray(c.equipment)?c.equipment.filter(Boolean):[];
+  const descBlock=(c.description||eqList.length)?`<section><h2 class="sec-h">Описание и комплектация</h2><div class="card desc">
+    ${c.description?String(c.description).split(/\n+/).map(p=>`<p>${esc(p)}</p>`).join(""):""}
+    ${eqList.length?`<ul class="eq">${eqList.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div></section>`:"";
 
   document.getElementById("app").innerHTML=`
     <nav class="bc"><a href="/">Главная</a> → <a href="/#selector">Каталог</a> → ${esc(name)}</nav>
@@ -152,6 +162,7 @@ function renderCar(c){
         </div>
       </div>
     </div>
+    ${descBlock}
     ${breakdownBlock}
     <section><div class="cta" id="cta">
       <h2>Заказать ${esc(c.brand)} ${esc(c.model)} под ключ</h2>
@@ -163,6 +174,7 @@ function renderCar(c){
     "brand":{"@type":"Brand","name":c.brand},"model":c.model,"vehicleModelDate":String(c.year),
     "bodyType":BODY[c.body]||c.body||"",
     "steeringPosition":c.wheel==="right"?"RightHandDriving":"LeftHandDriving",
+    ...(c.description?{"description":c.description}:{}),...(c.color?{"color":c.color}:{}),...(c.trim?{"vehicleConfiguration":c.trim}:{}),
     "image":photos[0]?(photos[0].startsWith("http")?photos[0]:"https://power-car.ru/"+photos[0]):"https://power-car.ru/og-cover.jpg",
     "offers":{"@type":"Offer","price":c.price,"priceCurrency":"RUB","availability":"https://schema.org/InStock","url":url,
       "seller":{"@type":"AutoDealer","name":"POWER Car","url":"https://power-car.ru/"}}});
