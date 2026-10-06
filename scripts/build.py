@@ -115,7 +115,7 @@ def article_page(a, all_articles):
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{html.escape(cover_abs)}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="icon" type="image/png" sizes="120x120" href="/favicon-120x120.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,500,600&display=swap" rel="stylesheet">
@@ -240,7 +240,7 @@ def car_page(c, articles):
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{html.escape(img0 if img0.startswith('http') else BASE+img0.lstrip('/'))}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="icon" type="image/png" sizes="120x120" href="/favicon-120x120.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet">
