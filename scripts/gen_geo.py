@@ -453,6 +453,9 @@ def build_page(cfg, office):
         "address": {"@type": "PostalAddress", "streetAddress": office["address"], "addressLocality": office["city"], "addressCountry": "RU"},
         "openingHours": "Mo-Sa 09:00-18:00"
     }
+    if office.get("comingSoon"):
+        # физического офиса ещё нет: не публикуем выдуманный адрес в разметке
+        autodealer_ld.pop("address", None)
     if office.get("lat") and office.get("lng"):
         autodealer_ld["geo"] = {"@type": "GeoCoordinates", "latitude": office["lat"], "longitude": office["lng"]}
 
@@ -462,6 +465,60 @@ def build_page(cfg, office):
         map_src = f"https://yandex.ru/map-widget/v1/?text={quote_plus(office['city'])}"
 
     yandex_map_url = office.get("yandexMapUrl") or f"https://yandex.ru/maps/?text={quote_plus(office['city'] + ' ' + office['address'])}"
+
+    if office.get("comingSoon"):
+        max_btn = (f'<a href="{html.escape(office["maxUrl"])}" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px">Написать в MAX</a>' if office.get("maxUrl") else "")
+        office_section = f'''<section id="office">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Заявки</span>
+      <h2>Работаем с <span class="glow-text">{html.escape(office["city"])}</span> уже сейчас</h2>
+      <p>Физический офис откроется позже. Заявки принимаем по телефону и в MAX, автомобиль доставляем до вашего адреса.</p>
+    </div>
+    <div class="office-card" style="grid-template-columns:1fr">
+      <div class="office-info">
+        <div class="office-row">
+          <div><div class="office-row-label">Телефон</div><div class="office-row-value"><a href="tel:{office['phoneRaw']}">{html.escape(office['phone'])}</a></div></div>
+        </div>
+        <div class="office-row">
+          <div><div class="office-row-label">Часы работы</div><div class="office-row-value">{html.escape(office.get("hours") or "Пн–Сб 9:00–18:00")}</div></div>
+        </div>
+        {max_btn}
+      </div>
+    </div>
+  </div>
+</section>'''
+    else:
+        office_section = f'''<section id="office">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Офис</span>
+      <h2>Приёмка в <span class="glow-text">{html.escape(office["city"])}</span></h2>
+      <p>Приходите обсудить лот вживую или заберите машину лично после доставки.</p>
+    </div>
+    <div class="office-card">
+      <div class="office-info">
+        <div class="office-city">POWER Car {cfg["eyebrow_prep"]}</div>
+        <div class="office-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><div class="office-row-label">Адрес</div><div class="office-row-value">{html.escape(office["address"])}</div></div>
+        </div>
+        <div class="office-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><div class="office-row-label">Телефон</div><div class="office-row-value"><a href="tel:{office['phoneRaw']}">{html.escape(office['phone'])}</a></div></div>
+        </div>
+        <div class="office-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><div class="office-row-label">Часы работы</div><div class="office-row-value">{html.escape(office.get("hours") or "Пн–Сб 9:00–18:00")}</div></div>
+        </div>
+        <a href="{yandex_map_url}" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top:8px">Проложить маршрут →</a>
+      </div>
+      <div class="office-map">
+        <iframe src="{map_src}" loading="lazy" title="Карта офиса POWER Car в {html.escape(office['city'])}"></iframe>
+      </div>
+    </div>
+  </div>
+</section>'''
 
     header = HEADER_TPL.replace('{phone_raw}', office['phoneRaw'])
 
@@ -550,36 +607,7 @@ def build_page(cfg, office):
   </div>
 </section>
 
-<section id="office">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Офис</span>
-      <h2>Приёмка в <span class="glow-text">{html.escape(office["city"])}</span></h2>
-      <p>Приходите обсудить лот вживую или заберите машину лично после доставки.</p>
-    </div>
-    <div class="office-card">
-      <div class="office-info">
-        <div class="office-city">POWER Car {cfg["eyebrow_prep"]}</div>
-        <div class="office-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div><div class="office-row-label">Адрес</div><div class="office-row-value">{html.escape(office["address"])}</div></div>
-        </div>
-        <div class="office-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <div><div class="office-row-label">Телефон</div><div class="office-row-value"><a href="tel:{office['phoneRaw']}">{html.escape(office['phone'])}</a></div></div>
-        </div>
-        <div class="office-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div><div class="office-row-label">Часы работы</div><div class="office-row-value">{html.escape(office.get("hours") or "Пн–Сб 9:00–18:00")}</div></div>
-        </div>
-        <a href="{yandex_map_url}" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top:8px">Проложить маршрут →</a>
-      </div>
-      <div class="office-map">
-        <iframe src="{map_src}" loading="lazy" title="Карта офиса POWER Car в {html.escape(office['city'])}"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
+{office_section}
 
 <section id="cases-section">
   <div class="container">
@@ -761,7 +789,7 @@ def main():
             ("Сколько идёт автовоз из Владивостока до Москвы?",
              "12–15 дней автовозом или 18–24 дня железной дорогой. Стоимость — 50–60 тыс ₽ автовозом, 35–45 тыс ₽ ж/д. Точная цена зависит от габаритов машины."),
             ("Где приёмка машины в Москве?",
-             "Офис в центре Москвы, телефон +7 499 390-07-06. Адрес уточняем при подготовке к выдаче. Либо организуем доставку до вашего адреса в пределах МКАД (входит в стоимость автовоза)."),
+             "Физического офиса в Москве пока нет — он откроется позже. Заявки принимаем уже сейчас по телефону +7 499 390-07-06 и в MAX, а автомобиль доставляем до вашего адреса в пределах МКАД (входит в стоимость автовоза)."),
             ("Что с ЭПТС и растаможкой?",
              "ЭПТС оформляется во Владивостоке на ваше имя как первого собственника в РФ. Растаможка через лицензированного брокера — все платежи официальные и по официальным ставкам ФТС. Пакет документов передаём вам вместе с машиной.")
         ]

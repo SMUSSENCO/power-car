@@ -2266,12 +2266,9 @@ a.car-title:hover { color: var(--accent-2); }
 
 /* "Coming soon" office card variant */
 .office-coming-soon {
-  opacity: 0.85;
   border-style: dashed;
 }
-.office-coming-soon h3 {
-  opacity: 0.7;
-}
+
 
 /* ============ FAQ ============ */
 .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 880px; }

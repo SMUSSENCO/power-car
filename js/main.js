@@ -1133,11 +1133,11 @@ function renderOffices() {
     }
 
     // Phone link only if real number
-    const phoneHtml = o.comingSoon ? '' : `<a href="tel:${o.phoneRaw || o.phone}" class="office-phone">${phoneIconSvg()} ${o.phone}</a>`;
+    const phoneHtml = !o.phone ? '' : `<a href="tel:${o.phoneRaw || o.phone}" class="office-phone">${phoneIconSvg()} ${o.phone}</a>`;
     // Hours
     const hoursHtml = `<div class="office-hours">${clockIconSvg()} ${o.hours || ''}</div>`;
     // MAX button
-    const maxHtml = o.maxUrl && !o.comingSoon ? `<a href="${o.maxUrl}" class="office-max" target="_blank" rel="noopener">${maxIconSvg()} Написать в MAX</a>` : '';
+    const maxHtml = o.maxUrl ? `<a href="${o.maxUrl}" class="office-max" target="_blank" rel="noopener">${maxIconSvg()} Написать в MAX</a>` : '';
     // Ссылка на гео-страницу города (доставка/маршрут/популярные авто)
     const geoHtml = o.geoUrl ? `<a href="${o.geoUrl}" class="office-geo-link">Доставка авто в ${o.city} — подробнее →</a>` : '';
 
@@ -1424,9 +1424,12 @@ function openCaseModal(c) {
 
 // ============ FORM ============
 
-// Приём заявок: функция в Яндекс Облаке (relay/README.md) пересылает заявку в Telegram и MAX.
-// Секретов в коде сайта нет. Пока ссылка не задана, форма показывает прямые способы связи.
-const LEAD_ENDPOINT = '';
+// Приём заявок. Сейчас — напрямую в Telegram из браузера (вариант «как раньше»).
+// ВНИМАНИЕ: токен в публичном JS виден всем. Это осознанный компромисс на старте; при росте потока заявок
+// переключаемся на relay (relay/README.md): достаточно вписать ссылку функции в LEAD_ENDPOINT и стереть токен.
+const TG_BOT_TOKEN = '';                 // вставьте новый токен из @BotFather между кавычками
+const TG_CHAT_ID   = '-1003891049696';   // чат/группа для заявок
+const LEAD_ENDPOINT = '';                // если задан — заявки идут через relay (Telegram + MAX), токен выше не нужен
 
 // Наши контакты для клиента (показываются в подсказке под полем формы)
 const OUR_CONTACT_WA_MAX = '+7 913 853 33 05';   // для WhatsApp, MAX, звонка
@@ -1715,9 +1718,13 @@ function showLeadFallback(form, payload) {
   box.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-// Отправка заявки на relay (Яндекс Облако). true — хотя бы один канал (Telegram/MAX) принял заявку.
+// Отправка заявки. true — заявка принята хотя бы одним каналом.
 async function sendLead(payload) {
-  if (!LEAD_ENDPOINT) return false;
+  if (LEAD_ENDPOINT) return sendViaRelay(payload);
+  return sendDirectTelegram(payload);
+}
+
+async function sendViaRelay(payload) {
   const ctl = new AbortController();
   const timer = setTimeout(() => ctl.abort(), 12000);
   try {
@@ -1732,6 +1739,48 @@ async function sendLead(payload) {
     return !!data.ok;
   } catch (e) {
     console.error('Lead relay failed:', e);
+    return false;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function escapeTg(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+async function sendDirectTelegram(payload) {
+  if (!TG_BOT_TOKEN) {
+    console.warn('TG_BOT_TOKEN не задан — заявка не может быть отправлена');
+    return false;
+  }
+  const meta = CHANNEL_META[payload.channel] || CHANNEL_META.call;
+  const ts = new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tomsk' });
+  const text = [
+    '🚗 <b>НОВАЯ ЗАЯВКА — POWER Car</b>',
+    '',
+    `👤 <b>Имя:</b> ${escapeTg(payload.name || 'не указано')}`,
+    `📞 <b>${escapeTg(meta.label)}:</b> ${escapeTg(payload.contact)}`,
+    `💬 <b>Способ связи:</b> ${escapeTg(meta.name)}`,
+    '✅ Согласие на обработку данных: да',
+    '',
+    `🕒 ${escapeTg(ts)} (Томск)`,
+    `🔗 ${escapeTg(payload.page)}`
+  ].join('\n');
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 12000);
+  try {
+    const r = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TG_CHAT_ID, text, parse_mode: 'HTML', disable_web_page_preview: true }),
+      signal: ctl.signal
+    });
+    if (!r.ok) { console.error('Telegram API error:', r.status); return false; }
+    const data = await r.json();
+    return !!data.ok;
+  } catch (e) {
+    console.error('Telegram fetch failed:', e);
     return false;
   } finally {
     clearTimeout(timer);
