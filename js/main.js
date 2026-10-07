@@ -1117,6 +1117,7 @@ function renderOffices() {
   OFFICES.forEach(o => {
     const el = document.createElement('div');
     el.className = 'office' + (o.comingSoon ? ' office-coming-soon' : '');
+    el.dataset.city = o.city;
 
     // Map embed via Yandex Maps iframe (only if coordinates present)
     let mapHtml = '';
@@ -1145,14 +1146,40 @@ function renderOffices() {
       <h3>${o.city}</h3>
       <div class="office-address">${o.address}${o.addressNote ? '<br/><span class="office-address-note">' + o.addressNote + '</span>' : ''}</div>
       ${mapHtml}
-      ${phoneHtml}
-      ${hoursHtml}
-      ${maxHtml}
-      ${geoHtml}
+      <div class="office-bottom">
+        ${phoneHtml}
+        ${hoursHtml}
+        ${maxHtml}
+        ${geoHtml}
+      </div>
     `;
     grid.appendChild(el);
   });
 }
+
+// Клик по городу на схеме маршрутов (шапка) → плавно к карточке офиса и подсветка
+function goToOffice(city) {
+  const card = Array.from(document.querySelectorAll('#offices .office')).find(el => el.dataset.city === city);
+  const target = card || document.getElementById('offices');
+  if (!target) return;
+  track('office_map_click', { city });
+  target.scrollIntoView({ behavior: 'smooth', block: card ? 'center' : 'start' });
+  if (card) {
+    card.classList.remove('office-highlight');
+    void card.offsetWidth;
+    card.classList.add('office-highlight');
+    setTimeout(() => card.classList.remove('office-highlight'), 2600);
+  }
+}
+document.addEventListener('click', (e) => {
+  const g = e.target.closest && e.target.closest('.route-link');
+  if (g) goToOffice(g.dataset.office);
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const g = e.target.closest && e.target.closest('.route-link');
+  if (g) { e.preventDefault(); goToOffice(g.dataset.office); }
+});
 
 // ============ ARTICLES ============
 function renderArticles() {
@@ -1397,9 +1424,9 @@ function openCaseModal(c) {
 
 // ============ FORM ============
 
-// Telegram bot settings — REPLACE TOKEN with your fresh one from @BotFather
-const TG_BOT_TOKEN = '8770272916:AAG9yb0n27jMWezctjyPTvOLYekunoor8Wc';
-const TG_CHAT_ID   = '-1003891049696';
+// Приём заявок: функция в Яндекс Облаке (relay/README.md) пересылает заявку в Telegram и MAX.
+// Секретов в коде сайта нет. Пока ссылка не задана, форма показывает прямые способы связи.
+const LEAD_ENDPOINT = '';
 
 // Наши контакты для клиента (показываются в подсказке под полем формы)
 const OUR_CONTACT_WA_MAX = '+7 913 853 33 05';   // для WhatsApp, MAX, звонка
@@ -1615,22 +1642,15 @@ function initForm() {
       submitBtn.innerHTML = 'Отправляем...';
     }
 
-    // Build Telegram message
-    const ts = new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tomsk' });
-    const url = (typeof window !== 'undefined' && window.location) ? window.location.href : '';
-    const text = [
-      '🚗 <b>НОВАЯ ЗАЯВКА — POWER Car</b>',
-      '',
-      `👤 <b>Имя:</b> ${escapeTg(nameForMsg)}`,
-      `📞 <b>${escapeTg(channelMeta.label)}:</b> ${escapeTg(contact)}`,
-      `💬 <b>Способ связи:</b> ${escapeTg(channelMeta.name)}`,
-      '',
-      `🕒 ${escapeTg(ts)} (Томск)`,
-      `🔗 ${escapeTg(url)}`
-    ].join('\n');
+    const payload = {
+      name, contact, channel,
+      page: (typeof window !== 'undefined' && window.location) ? window.location.href : '',
+      consent: true,
+      hp: ($('#lf-honeypot') && $('#lf-honeypot').value) || ''
+    };
 
     try {
-      const sent = await sendToTelegram(text);
+      const sent = await sendLead(payload);
       if (sent) {
         // Цель Метрики: заявка успешно отправлена
         track('lead_submitted', { channel: channelMeta.name });
@@ -1658,7 +1678,7 @@ function initForm() {
           }
         }, 2500);
         track('lead_failed', { channel: channelMeta.name });
-        showLeadFallback(form);
+        showLeadFallback(form, payload);
       }
     } catch (err) {
       console.error('Form submit error:', err);
@@ -1667,60 +1687,54 @@ function initForm() {
         submitBtn.innerHTML = originalBtnHtml || 'Отправить';
       }
       track('lead_failed', { channel: channelMeta.name, reason: 'exception' });
-      showLeadFallback(form);
+      showLeadFallback(form, payload);
     }
   });
 }
 
 // Если автоматическая отправка не прошла — не теряем клиента: даём прямые способы связи
-function showLeadFallback(form) {
+function showLeadFallback(form, payload) {
   let box = document.getElementById('leadFallback');
   if (!box) {
     box = document.createElement('div');
     box.id = 'leadFallback';
     box.setAttribute('role', 'alert');
     box.style.cssText = 'margin-top:14px;padding:14px;border-radius:14px;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.4);font-size:.92rem;line-height:1.5';
-    box.innerHTML = '<b>Заявка не отправилась автоматически.</b><br>Напишите нам напрямую — ответим в течение рабочего дня:' +
+    box.innerHTML = '<b>Заявка не отправилась автоматически.</b><br>Нажмите кнопку — сообщение откроется уже заполненным, останется отправить. Или напишите нам напрямую — ответим в течение рабочего дня:' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">' +
       '<a class="btn btn-primary btn-sm" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener">MAX</a>' +
-      '<a class="btn btn-ghost btn-sm" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener">Telegram</a>' +
+      '<a class="btn btn-ghost btn-sm" id="leadFbTg" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener">Telegram</a>' +
       '<a class="btn btn-ghost btn-sm" href="tel:+79138533305">+7 913 853-33-05</a></div>';
     form.appendChild(box);
+  }
+  const tg = box.querySelector('#leadFbTg');
+  if (tg && payload) {
+    const txt = 'Здравствуйте! Заявка с сайта POWER Car. Имя: ' + (payload.name || 'не указано') + '. Контакт: ' + payload.contact + '.';
+    tg.href = 'https://t.me/PowerCar_msk?text=' + encodeURIComponent(txt);
   }
   box.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-// Escape Telegram HTML special chars
-function escapeTg(s) {
-  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-// Send message to Telegram bot
-async function sendToTelegram(text) {
-  if (!TG_BOT_TOKEN || TG_BOT_TOKEN.indexOf('PASTE_YOUR') === 0) {
-    console.warn('TG_BOT_TOKEN is not set yet — submission would normally go to Telegram');
-    return false;
-  }
+// Отправка заявки на relay (Яндекс Облако). true — хотя бы один канал (Telegram/MAX) принял заявку.
+async function sendLead(payload) {
+  if (!LEAD_ENDPOINT) return false;
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 12000);
   try {
-    const r = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+    const r = await fetch(LEAD_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: TG_CHAT_ID,
-        text: text,
-        parse_mode: 'HTML',
-        disable_web_page_preview: true
-      })
+      body: JSON.stringify(payload),
+      signal: ctl.signal
     });
-    if (!r.ok) {
-      console.error('Telegram API error:', r.status, await r.text());
-      return false;
-    }
-    const data = await r.json();
+    if (!r.ok) return false;
+    const data = await r.json().catch(() => ({}));
     return !!data.ok;
   } catch (e) {
-    console.error('Telegram fetch failed:', e);
+    console.error('Lead relay failed:', e);
     return false;
+  } finally {
+    clearTimeout(timer);
   }
 }
 

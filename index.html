@@ -313,8 +313,8 @@
       </div>
 
       <!-- ROUTES MAP -->
-      <div class="routes-map" aria-hidden="true">
-        <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
+      <div class="routes-map">
+        <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Маршруты доставки: из Кореи, Японии и Китая через Владивосток в Москву, Томск и Новосибирск">
           <defs>
             <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#10B981" stop-opacity="0.7"/>
@@ -403,15 +403,15 @@
           </g>
 
           <!-- Destination labels -->
-          <g>
+          <g class="route-link" data-office="Москва" role="link" tabindex="0" aria-label="Офис в городе Москва — перейти к контактам"><title>Офис: Москва — открыть контакты</title>
             <rect x="378" y="44" width="74" height="20" rx="10" class="route-label-bg"/>
             <text x="415" y="58" text-anchor="middle" class="route-label">🏛 Москва</text>
           </g>
-          <g>
+          <g class="route-link" data-office="Томск" role="link" tabindex="0" aria-label="Офис в городе Томск — перейти к контактам"><title>Офис: Томск — открыть контакты</title>
             <rect x="392" y="262" width="68" height="20" rx="10" class="route-label-bg"/>
             <text x="426" y="276" text-anchor="middle" class="route-label">🏔 Томск</text>
           </g>
-          <g>
+          <g class="route-link" data-office="Новосибирск" role="link" tabindex="0" aria-label="Офис в городе Новосибирск — перейти к контактам"><title>Офис: Новосибирск — открыть контакты</title>
             <rect x="354" y="404" width="106" height="20" rx="10" class="route-label-bg"/>
             <text x="407" y="418" text-anchor="middle" class="route-label">🌆 Новосибирск</text>
           </g>

@@ -2130,6 +2130,22 @@ a.car-title:hover { color: var(--accent-2); }
   font-weight: 500;
   line-height: 1.4;
 }
+@media (min-width: 768px) { .office-address { min-height: 5.2em; } }
+/* Низ карточки (телефон, часы, MAX) всегда прижат к нижнему краю — кнопки на одной линии у всех офисов */
+.office { scroll-margin-top: 96px; }
+.office-bottom { margin-top: auto; display: flex; flex-direction: column; gap: 14px; }
+.office-bottom .office-max { margin-top: 0; }
+.office-highlight { animation: officePulse 2.4s ease-out 1; border-color: var(--accent) !important; }
+@keyframes officePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.55); }
+  60%  { box-shadow: 0 0 0 18px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+@media (prefers-reduced-motion: reduce) { .office-highlight { animation: none; } }
+/* Кликабельные города на схеме маршрутов в шапке */
+.route-link { cursor: pointer; outline: none; }
+.route-link:hover .route-label-bg, .route-link:focus-visible .route-label-bg { fill: rgba(16,185,129,0.28); stroke: var(--accent); }
+.route-link:hover .route-label, .route-link:focus-visible .route-label { fill: var(--accent-2); }
 .office-phone {
   font-family: var(--font-display);
   font-size: 1.25rem;
