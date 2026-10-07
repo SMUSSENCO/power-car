@@ -165,6 +165,9 @@ body.is-embed main { padding-top: 4px; }
 <script>
 document.addEventListener('click',function(e){var r=e.target.closest&&e.target.closest('path.region');if(r&&window.ym&&!window.__dlvSent){window.__dlvSent=1;ym(109736434,'reachGoal','delivery_map_used');}});
 </script>
+<script>
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-goal]');if(!a||!window.ym)return;try{ym(109736434,'reachGoal',a.getAttribute('data-goal'),{place:a.getAttribute('data-place')})}catch(_){}});
+</script>
 </head>
 <body class="">
 <script>if (document.documentElement.classList.contains('is-embed-html')) document.body.classList.add('is-embed');</script>
@@ -593,7 +596,7 @@ document.addEventListener('click',function(e){var r=e.target.closest&&e.target.c
 
     <div class="cta-block">
       <p>Хотите точный тариф на дату отправки?</p>
-      <a href="/#cta" class="btn">Уточнить у менеджера</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px"><a href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" class="btn" data-goal="messenger_clicked" data-place="delivery_page" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;padding:13px 26px">💬 Написать в MAX</a><a href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" class="btn" data-goal="messenger_clicked" data-place="delivery_page" style="background:linear-gradient(135deg,#2AABEE,#229ED9);color:#fff;padding:13px 26px">✈️ Telegram</a><a href="tel:+79138533305" class="btn" data-goal="phone_clicked" data-place="delivery_page" style="padding:13px 26px">📞 Позвонить</a></div>
       <p style="margin-top:16px;"><a href="/kalkulyator-rastamozhki.html" style="color:var(--accent-2);text-decoration:underline;">Посчитать полную стоимость авто под ключ →</a></p>
     </div>
   </div>

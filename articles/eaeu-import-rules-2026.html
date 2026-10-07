@@ -349,6 +349,19 @@ body {
   border-color: rgba(52,211,153,0.4);
   background: rgba(52,211,153,0.08);
 }
+
+.art-mid{margin:30px 0;padding:18px 20px;border-radius:16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.28)}
+.art-mid b{display:block;font-size:1.02rem;margin-bottom:4px}.art-mid span{display:block;color:var(--text-muted);font-size:.92rem;margin-bottom:12px}
+.art-mid-row{display:flex;gap:10px;flex-wrap:wrap}
+.art-q{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+a.art-qb{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 10px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;color:#fff}
+a.art-qb.max{background:linear-gradient(135deg,#6366F1,#8B5CF6)}a.art-qb.tg{background:linear-gradient(135deg,#2AABEE,#229ED9)}
+a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#002417}
+.art-cta a.art-cta-btn-secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.14);box-shadow:none}
+.art-sticky{display:none}
+@media(max-width:700px){.art-q{grid-template-columns:1fr}
+.art-sticky{position:fixed;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:60;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:6px;border-radius:999px;background:rgba(10,10,10,.88);border:1px solid var(--border-2);backdrop-filter:blur(20px)}
+.art-sticky a.art-qb{padding:10px 4px;font-size:.78rem;white-space:nowrap;min-width:0}body{padding-bottom:76px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ликвидация «серого» импорта через ЕАЭС: доплата пошлин и утильсбора в 2026 году", "description": "Разбор новых правил ФТС по доначислению платежей для автомобилей, ввозимых из стран ЕАЭС. Как рассчитывается утильсбор по формуле с коэффициентом Ктп.", "datePublished": "2026-06-22", "dateModified": "2026-06-22", "image": "https://power-car.ru/images/articles/eaeu-import-rules-2026.svg", "mainEntityOfPage": "https://power-car.ru/articles/eaeu-import-rules-2026.html", "author": {"@type": "Organization", "name": "Игорь Степанов PWR Car"}, "publisher": {"@type": "Organization", "name": "POWER Car", "logo": {"@type": "ImageObject", "url": "https://power-car.ru/android-chrome-512x512.png"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://power-car.ru/"}, {"@type": "ListItem", "position": 2, "name": "Статьи", "item": "https://power-car.ru/#articles"}, {"@type": "ListItem", "position": 3, "name": "Ликвидация «серого» импорта через ЕАЭС: доплата пошлин и утильсбора в 2026 году", "item": "https://power-car.ru/articles/eaeu-import-rules-2026.html"}]}</script>
@@ -371,11 +384,11 @@ body {
 <h2>Единый механизм расчета: формула коэффициента Ктп</h2>
 <p>Для всех ввозимых автомобилей (как для физических лиц по ТПО, так и для юридических лиц по ГТД) расчет утилизационного сбора теперь производится по усложненной формуле, учитывающей разницу в налогах:</p>
 <p style="text-align: center; font-size: 1.2em; font-weight: bold; margin: 20px 0;">
-  $U=U_{\text{баз}}+K_{тп}+K_{ндс}+K_{акциз}$
+  U = U<sub>баз</sub> + K<sub>тп</sub> + K<sub>ндс</sub> + K<sub>акциз</sub>
 </p>
-<p>Где ключевым элементом является <strong>коэффициент Ктп</strong> — разница между таможенной пошлиной, рассчитанной по справочникам Минпромторга РФ (исходя из средней рыночной стоимости автомобиля), и фактически уплаченной пошлиной в стране ЕАЭС. Аналогично доначисляется разница по налогу на добавленную стоимость ($K_{ндс}$) и акцизам ($K_{акциз}$).</p>
+<p>Где ключевым элементом является <strong>коэффициент Ктп</strong> — разница между таможенной пошлиной, рассчитанной по справочникам Минпромторга РФ (исходя из средней рыночной стоимости автомобиля), и фактически уплаченной пошлиной в стране ЕАЭС. Аналогично доначисляется разница по налогу на добавленную стоимость (K<sub>ндс</sub>) и акцизам (K<sub>акциз</sub>).</p>
 
-<h2>Реальный пример доплат на таможне</h2>
+<aside class="art-mid"><b>Хотите узнать цену под ваш бюджет?</b><span>Посчитайте растаможку сами или напишите менеджеру — ответим в течение рабочего дня.</span><div class="art-mid-row"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_mid" data-slug="eaeu-import-rules-2026">💬 Написать в MAX</a><a class="art-qb call" href="/kalkulyator-rastamozhki.html" data-goal="" data-place="article_mid" data-slug="eaeu-import-rules-2026">🧮 Калькулятор растаможки</a></div></aside><h2>Реальный пример доплат на таможне</h2>
 <p>Рассмотрим импорт легкового автомобиля таможенной стоимостью 22 000 долларов США. При его таможенном оформлении в одной из стран ЕАЭС по заниженным ставкам совокупные платежи составляли около 13 025 долларов США. Однако при регистрации машины в России общая сумма обязательств, рассчитанная по прямым российским тарифам, достигает 26 368 долларов США (включая аналогичную пошлину 13 025 долларов, утилизационный сбор в размере 12 416 долларов и таможенный сбор 176 долларов).</p>
 <p>Согласно новым правилам, при постановке этой машины на учет в РФ таможенные органы автоматически доначислят разницу в размере <strong>12 604 долларов США</strong> (около 1.1 млн рублей). До тех пор, пока вся рассчитанная сумма разницы не будет компенсирована в виде доплаты к утильсбору, государственная система не выдаст электронный паспорт транспортного средства (ЭПТС), что делает невозможной регистрацию машины в ГИБДД.</p>
 
@@ -389,10 +402,11 @@ body {
   <section class="art-related-block" aria-label="Связанные статьи"><h2 class="art-related-heading">Читайте также</h2><div class="art-related-grid"><a class="art-related-card" href="/articles/kredit-trade-in-avto-iz-azii.html"><div class="art-related-cover"><img src="/images/articles/kredit-trade-in-avto-iz-azii.svg" alt="Кредит и трейд-ин при покупке автомобиля из Азии: как это работает в 2026 году" loading="lazy" decoding="async"></div><span class="art-related-cat">Расчёты</span><h4 class="art-related-title">Кредит и трейд-ин при покупке автомобиля из Азии: как это работает в 2026 году</h4><span class="art-related-meta">⏱ 6 мин</span></a><a class="art-related-card" href="/articles/kupit-keykar-iz-yaponii-2026.html"><div class="art-related-cover"><img src="/images/articles/cover-keicar.svg" alt="Купить кей-кар от 570 тыс рублей, реально?" loading="lazy" decoding="async"></div><span class="art-related-cat">Расчёты</span><h4 class="art-related-title">Купить кей-кар от 570 тыс рублей, реально?</h4><span class="art-related-meta">⏱ 6 мин</span></a><a class="art-related-card" href="/articles/raschet-utilsbora-2026.html"><div class="art-related-cover"><img src="/images/articles/Utilsbor_statya.svg" alt="Льготный утильсбор в 2026: как рассчитать и сколько платить." loading="lazy" decoding="async"></div><span class="art-related-cat">Расчёты</span><h4 class="art-related-title">Льготный утильсбор в 2026: как рассчитать и сколько платить.</h4><span class="art-related-meta">⏱ 6 мин</span></a></div></section>
   <div class="art-cta">
     <h3>Готовы заказать авто из Азии?</h3>
-    <p>Получите 3 варианта под ваш бюджет — бесплатно. Менеджер свяжется в течение рабочего дня.</p>
+    <p>Напишите нам — подберём 3 варианта под ваш бюджет бесплатно и ответим в течение рабочего дня.</p>
+    <div class="art-q"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_end" data-slug="eaeu-import-rules-2026">💬 MAX</a><a class="art-qb tg" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_end" data-slug="eaeu-import-rules-2026">✈️ Telegram</a><a class="art-qb call" href="tel:+79138533305" data-goal="phone_clicked" data-place="article_end" data-slug="eaeu-import-rules-2026">📞 Позвонить</a></div>
     <div class="art-cta-buttons">
-      <a href="/#selector" class="art-cta-btn art-cta-btn-secondary">🔍 Подобрать авто</a>
-      <a href="/#cta" class="art-cta-btn art-cta-btn-primary">Связаться с менеджером →</a>
+      <a href="/#selector" class="art-cta-btn art-cta-btn-secondary" data-goal="car_opened" data-place="article_end">🔍 Посмотреть каталог</a>
+      <a href="/kalkulyator-rastamozhki.html" class="art-cta-btn art-cta-btn-secondary" data-place="article_end">🧮 Калькулятор растаможки</a>
     </div>
   </div>
 </main>
@@ -406,6 +420,8 @@ body {
     <div class="art-footer-meta">© 2026 POWER Car · ИП Степанов Александр Васильевич · ИНН 702205795181</div>
   </div>
 </footer>
+<nav class="art-sticky" aria-label="Быстрые контакты"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_sticky" data-slug="eaeu-import-rules-2026">MAX</a><a class="art-qb tg" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_sticky" data-slug="eaeu-import-rules-2026">Telegram</a><a class="art-qb call" href="tel:+79138533305" data-goal="phone_clicked" data-place="article_sticky" data-slug="eaeu-import-rules-2026">Позвонить</a></nav>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-goal],a[data-place]');if(!a||!window.ym)return;var g=a.getAttribute('data-goal');var p={place:a.getAttribute('data-place')||'',slug:a.getAttribute('data-slug')||location.pathname};try{if(g)ym(109736434,'reachGoal',g,p);ym(109736434,'params',{cta:p.place})}catch(_){}});</script>
 <script type="text/javascript">
 (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
 for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}

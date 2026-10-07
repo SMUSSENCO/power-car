@@ -55,12 +55,61 @@ ym(109736434,'init',{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:tr
 <noscript><div><img src="https://mc.yandex.ru/watch/109736434" style="position:absolute;left:-9999px;" alt=""/></div></noscript>"""
 
 ART_STYLE = extract_style(read("article.html"))
+MAX_URL = "https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM"
+TG_URL = "https://t.me/PowerCar_msk"
+PHONE_TEL = "tel:+79138533305"
+ART_STYLE += """
+.art-mid{margin:30px 0;padding:18px 20px;border-radius:16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.28)}
+.art-mid b{display:block;font-size:1.02rem;margin-bottom:4px}.art-mid span{display:block;color:var(--text-muted);font-size:.92rem;margin-bottom:12px}
+.art-mid-row{display:flex;gap:10px;flex-wrap:wrap}
+.art-q{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+a.art-qb{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 10px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;color:#fff}
+a.art-qb.max{background:linear-gradient(135deg,#6366F1,#8B5CF6)}a.art-qb.tg{background:linear-gradient(135deg,#2AABEE,#229ED9)}
+a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#002417}
+.art-cta a.art-cta-btn-secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.14);box-shadow:none}
+.art-sticky{display:none}
+@media(max-width:700px){.art-q{grid-template-columns:1fr}
+.art-sticky{position:fixed;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:60;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:6px;border-radius:999px;background:rgba(10,10,10,.88);border:1px solid var(--border-2);backdrop-filter:blur(20px)}
+.art-sticky a.art-qb{padding:10px 4px;font-size:.78rem;white-space:nowrap;min-width:0}body{padding-bottom:76px}}
+"""
 DRIVE = {"fwd":"передний","rwd":"задний","awd":"полный"}
 CAR_STYLE = extract_style(read("car.html"))
 
 # ---------------------------------------------------------------- ARTICLES
+def _qb(cls, href, label, goal, place, slug, blank=True):
+    t = ' target="_blank" rel="noopener"' if blank else ''
+    return f'<a class="art-qb {cls}" href="{href}"{t} data-goal="{goal}" data-place="{place}" data-slug="{slug}">{label}</a>'
+
+def QUICK(place, slug):
+    return ('<div class="art-q">'
+            + _qb("max", MAX_URL, "💬 MAX", "messenger_clicked", place, slug)
+            + _qb("tg", TG_URL, "✈️ Telegram", "messenger_clicked", place, slug)
+            + _qb("call", PHONE_TEL, "📞 Позвонить", "phone_clicked", place, slug, blank=False)
+            + '</div>')
+
+def STICKY(slug):
+    return (_qb("max", MAX_URL, "MAX", "messenger_clicked", "article_sticky", slug)
+            + _qb("tg", TG_URL, "Telegram", "messenger_clicked", "article_sticky", slug)
+            + _qb("call", PHONE_TEL, "Позвонить", "phone_clicked", "article_sticky", slug, blank=False))
+
+ART_TRACK_JS = """document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-goal],a[data-place]');if(!a||!window.ym)return;var g=a.getAttribute('data-goal');var p={place:a.getAttribute('data-place')||'',slug:a.getAttribute('data-slug')||location.pathname};try{if(g)ym(109736434,'reachGoal',g,p);ym(109736434,'params',{cta:p.place})}catch(_){}});"""
+
+def insert_mid_cta(body, slug):
+    """Компактный CTA перед третьим подзаголовком (≈ 40% статьи); если подзаголовков меньше трёх — не вставляем."""
+    heads = [m.start() for m in re.finditer(r'<h2[ >]', body)]
+    if len(heads) < 3: return body
+    blk = ('<aside class="art-mid"><b>Хотите узнать цену под ваш бюджет?</b>'
+           '<span>Посчитайте растаможку сами или напишите менеджеру — ответим в течение рабочего дня.</span>'
+           '<div class="art-mid-row">'
+           + _qb("max", MAX_URL, "💬 Написать в MAX", "messenger_clicked", "article_mid", slug)
+           + _qb("call", "/kalkulyator-rastamozhki.html", "🧮 Калькулятор растаможки", "", "article_mid", slug, blank=False)
+           + '</div></aside>')
+    i = heads[2]
+    return body[:i] + blk + body[i:]
+
 def article_page(a, all_articles):
     slug = a["slug"]
+    body_with_mid = insert_mid_cta(a.get("body", ""), slug)
     url = f"{BASE}articles/{slug}.html"
     base_title = a.get("seoTitle") or a.get("title")
     title = base_title if "POWER Car" in base_title else base_title + " — POWER Car"
@@ -134,14 +183,15 @@ def article_page(a, all_articles):
   <h1 class="art-title">{html.escape(a["title"])}</h1>
   <div class="art-meta">{meta_row}</div>
   {cover_html}
-  <div class="art-body">{a.get("body","")}</div>
+  <div class="art-body">{body_with_mid}</div>
   {related_html}
   <div class="art-cta">
     <h3>Готовы заказать авто из Азии?</h3>
-    <p>Получите 3 варианта под ваш бюджет — бесплатно. Менеджер свяжется в течение рабочего дня.</p>
+    <p>Напишите нам — подберём 3 варианта под ваш бюджет бесплатно и ответим в течение рабочего дня.</p>
+    {QUICK("article_end", slug)}
     <div class="art-cta-buttons">
-      <a href="/#selector" class="art-cta-btn art-cta-btn-secondary">🔍 Подобрать авто</a>
-      <a href="/#cta" class="art-cta-btn art-cta-btn-primary">Связаться с менеджером →</a>
+      <a href="/#selector" class="art-cta-btn art-cta-btn-secondary" data-goal="car_opened" data-place="article_end">🔍 Посмотреть каталог</a>
+      <a href="/kalkulyator-rastamozhki.html" class="art-cta-btn art-cta-btn-secondary" data-place="article_end">🧮 Калькулятор растаможки</a>
     </div>
   </div>
 </main>
@@ -155,6 +205,8 @@ def article_page(a, all_articles):
     <div class="art-footer-meta">© 2026 POWER Car · ИП Степанов Александр Васильевич · ИНН 702205795181</div>
   </div>
 </footer>
+<nav class="art-sticky" aria-label="Быстрые контакты">{STICKY(slug)}</nav>
+<script>{ART_TRACK_JS}</script>
 {METRIKA}
 </body>
 </html>'''

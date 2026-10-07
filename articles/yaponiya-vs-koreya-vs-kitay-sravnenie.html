@@ -349,6 +349,19 @@ body {
   border-color: rgba(52,211,153,0.4);
   background: rgba(52,211,153,0.08);
 }
+
+.art-mid{margin:30px 0;padding:18px 20px;border-radius:16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.28)}
+.art-mid b{display:block;font-size:1.02rem;margin-bottom:4px}.art-mid span{display:block;color:var(--text-muted);font-size:.92rem;margin-bottom:12px}
+.art-mid-row{display:flex;gap:10px;flex-wrap:wrap}
+.art-q{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+a.art-qb{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 10px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;color:#fff}
+a.art-qb.max{background:linear-gradient(135deg,#6366F1,#8B5CF6)}a.art-qb.tg{background:linear-gradient(135deg,#2AABEE,#229ED9)}
+a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#002417}
+.art-cta a.art-cta-btn-secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.14);box-shadow:none}
+.art-sticky{display:none}
+@media(max-width:700px){.art-q{grid-template-columns:1fr}
+.art-sticky{position:fixed;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:60;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:6px;border-radius:999px;background:rgba(10,10,10,.88);border:1px solid var(--border-2);backdrop-filter:blur(20px)}
+.art-sticky a.art-qb{padding:10px 4px;font-size:.78rem;white-space:nowrap;min-width:0}body{padding-bottom:76px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Япония vs Корея vs Китай: откуда выгоднее везти авто в 2026 году", "description": "Сравнение цен, возраста, безопасности и сроков доставки авто из Японии, Кореи и Китая — на данных 82 актуальных лотов POWER Car и краш-тестов Euro NCAP 2025.", "datePublished": "2026-08-27", "dateModified": "2026-08-27", "image": "https://power-car.ru/images/articles/yaponiya-vs-koreya-vs-kitay-sravnenie.svg", "mainEntityOfPage": "https://power-car.ru/articles/yaponiya-vs-koreya-vs-kitay-sravnenie.html", "author": {"@type": "Organization", "name": "POWER Car"}, "publisher": {"@type": "Organization", "name": "POWER Car", "logo": {"@type": "ImageObject", "url": "https://power-car.ru/android-chrome-512x512.png"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://power-car.ru/"}, {"@type": "ListItem", "position": 2, "name": "Статьи", "item": "https://power-car.ru/#articles"}, {"@type": "ListItem", "position": 3, "name": "Япония vs Корея vs Китай: откуда выгоднее везти авто в 2026 году", "item": "https://power-car.ru/articles/yaponiya-vs-koreya-vs-kitay-sravnenie.html"}]}</script>
@@ -385,7 +398,7 @@ body {
 </table>
 <p>Медиана в Японии почти вдвое ниже китайской — это не совпадение, а прямое следствие возраста лотов (см. ниже) и того, что японский рынок продаёт машины «как есть», без наценки за нулевой пробег.</p>
 
-<h2>Возраст и пробег — здесь страны различаются сильнее всего</h2>
+<aside class="art-mid"><b>Хотите узнать цену под ваш бюджет?</b><span>Посчитайте растаможку сами или напишите менеджеру — ответим в течение рабочего дня.</span><div class="art-mid-row"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_mid" data-slug="yaponiya-vs-koreya-vs-kitay-sravnenie">💬 Написать в MAX</a><a class="art-qb call" href="/kalkulyator-rastamozhki.html" data-goal="" data-place="article_mid" data-slug="yaponiya-vs-koreya-vs-kitay-sravnenie">🧮 Калькулятор растаможки</a></div></aside><h2>Возраст и пробег — здесь страны различаются сильнее всего</h2>
 <p>Именно возраст, а не страна сама по себе, определяет и цену, и размер утильсбора. По текущей базе POWER Car:</p>
 <ul>
   <li><strong>Китай</strong> — медиана 3 года, есть лоты нулевого пробега прямо с завода. Это осознанная политика: китайские автопроизводители в основном продают на экспорт то, что недавно сошло с конвейера.</li>
@@ -440,10 +453,11 @@ body {
   <section class="art-related-block" aria-label="Связанные статьи"><h2 class="art-related-heading">Читайте также</h2><div class="art-related-grid"><a class="art-related-card" href="/articles/toplivnyy-krizis-2026.html"><div class="art-related-cover"><img src="/images/articles/cover-fuel-crisis.svg" alt="Топливный кризис в России 2026: экономичные авто из Азии" loading="lazy" decoding="async"></div><span class="art-related-cat">Аналитика</span><h4 class="art-related-title">Топливный кризис в России 2026: экономичные авто из Азии</h4><span class="art-related-meta">⏱ 8 мин</span></a><a class="art-related-card" href="/articles/garantiya-elektromobil-iz-kitaya.html"><div class="art-related-cover"><img src="/images/articles/garantiya-elektromobil-iz-kitaya.svg" alt="Гарантия на электромобиль из Китая: что покрывает завод, а что — нет" loading="lazy" decoding="async"></div><span class="art-related-cat">Гайды</span><h4 class="art-related-title">Гарантия на электромобиль из Китая: что покрывает завод, а что — нет</h4><span class="art-related-meta">⏱ 6 мин</span></a><a class="art-related-card" href="/articles/kredit-trade-in-avto-iz-azii.html"><div class="art-related-cover"><img src="/images/articles/kredit-trade-in-avto-iz-azii.svg" alt="Кредит и трейд-ин при покупке автомобиля из Азии: как это работает в 2026 году" loading="lazy" decoding="async"></div><span class="art-related-cat">Расчёты</span><h4 class="art-related-title">Кредит и трейд-ин при покупке автомобиля из Азии: как это работает в 2026 году</h4><span class="art-related-meta">⏱ 6 мин</span></a></div></section>
   <div class="art-cta">
     <h3>Готовы заказать авто из Азии?</h3>
-    <p>Получите 3 варианта под ваш бюджет — бесплатно. Менеджер свяжется в течение рабочего дня.</p>
+    <p>Напишите нам — подберём 3 варианта под ваш бюджет бесплатно и ответим в течение рабочего дня.</p>
+    <div class="art-q"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_end" data-slug="yaponiya-vs-koreya-vs-kitay-sravnenie">💬 MAX</a><a class="art-qb tg" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_end" data-slug="yaponiya-vs-koreya-vs-kitay-sravnenie">✈️ Telegram</a><a class="art-qb call" href="tel:+79138533305" data-goal="phone_clicked" data-place="article_end" data-slug="yaponiya-vs-koreya-vs-kitay-sravnenie">📞 Позвонить</a></div>
     <div class="art-cta-buttons">
-      <a href="/#selector" class="art-cta-btn art-cta-btn-secondary">🔍 Подобрать авто</a>
-      <a href="/#cta" class="art-cta-btn art-cta-btn-primary">Связаться с менеджером →</a>
+      <a href="/#selector" class="art-cta-btn art-cta-btn-secondary" data-goal="car_opened" data-place="article_end">🔍 Посмотреть каталог</a>
+      <a href="/kalkulyator-rastamozhki.html" class="art-cta-btn art-cta-btn-secondary" data-place="article_end">🧮 Калькулятор растаможки</a>
     </div>
   </div>
 </main>
@@ -457,6 +471,8 @@ body {
     <div class="art-footer-meta">© 2026 POWER Car · ИП Степанов Александр Васильевич · ИНН 702205795181</div>
   </div>
 </footer>
+<nav class="art-sticky" aria-label="Быстрые контакты"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_sticky" data-slug="yaponiya-vs-koreya-vs-kitay-sravnenie">MAX</a><a class="art-qb tg" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_sticky" data-slug="yaponiya-vs-koreya-vs-kitay-sravnenie">Telegram</a><a class="art-qb call" href="tel:+79138533305" data-goal="phone_clicked" data-place="article_sticky" data-slug="yaponiya-vs-koreya-vs-kitay-sravnenie">Позвонить</a></nav>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-goal],a[data-place]');if(!a||!window.ym)return;var g=a.getAttribute('data-goal');var p={place:a.getAttribute('data-place')||'',slug:a.getAttribute('data-slug')||location.pathname};try{if(g)ym(109736434,'reachGoal',g,p);ym(109736434,'params',{cta:p.place})}catch(_){}});</script>
 <script type="text/javascript">
 (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
 for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}

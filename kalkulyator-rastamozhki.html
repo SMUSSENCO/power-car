@@ -180,6 +180,9 @@ h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.1; margin-bottom: 1
 <script>
 document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#calcBtn');if(b&&window.ym){ym(109736434,'reachGoal','customs_calc_used');}});
 </script>
+<script>
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-goal]');if(!a||!window.ym)return;try{ym(109736434,'reachGoal',a.getAttribute('data-goal'),{place:a.getAttribute('data-place')})}catch(_){}});
+</script>
 </head>
 <body>
 
@@ -285,7 +288,8 @@ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.c
 
     <div class="cta-block">
       <p>Хотите точную сумму под конкретный автомобиль?</p>
-      <a href="/#cta" class="btn btn-primary" style="display:inline-flex;width:auto;padding-left:32px;padding-right:32px;">Получить точный расчёт у менеджера</a>
+      <p style="color:var(--text);font-weight:600;margin-bottom:12px">Напишите нам — посчитаем точно под ваше авто и ответим в течение рабочего дня</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px"><a href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" class="btn" data-goal="messenger_clicked" data-place="calc_page" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;padding:13px 26px">💬 Написать в MAX</a><a href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" class="btn" data-goal="messenger_clicked" data-place="calc_page" style="background:linear-gradient(135deg,#2AABEE,#229ED9);color:#fff;padding:13px 26px">✈️ Telegram</a><a href="tel:+79138533305" class="btn" data-goal="phone_clicked" data-place="calc_page" style="padding:13px 26px">📞 Позвонить</a></div>
       <p style="margin-top:16px;"><a href="/dostavka-po-rossii.html" style="color:var(--accent-2);text-decoration:underline;">Узнать стоимость доставки до вашего города →</a></p>
     </div>
 

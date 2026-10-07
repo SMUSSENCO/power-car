@@ -1564,6 +1564,7 @@ function initForm() {
         toggle.style.outlineOffset = '3px';
         setTimeout(() => { toggle.style.outline = ''; toggle.style.outlineOffset = ''; }, 2400);
       }
+      track('form_error', { reason: 'no_consent' });
       showConsentError();
       // Прокрутить к чекбоксу
       if (consent.scrollIntoView) consent.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1577,22 +1578,16 @@ function initForm() {
     const channel = state.channel || 'call';
     const channelMeta = CHANNEL_META[channel] || CHANNEL_META.call;
 
-    // Validate name
-    if (!name || name.length < 2) {
-      const nameInp = $('#lf-name');
-      if (nameInp) {
-        nameInp.style.borderColor = '#F87171';
-        nameInp.focus();
-        setTimeout(() => { nameInp.style.borderColor = ''; }, 2500);
-      }
-      return;
-    }
+    // Имя необязательно: каждое лишнее поле снижает долю заполненных форм
+    const nameForMsg = name || 'не указано';
+    track('form_attempt', { channel: channelMeta.name });
 
     // Validate contact based on channel
     if (channelMeta.mask === 'phone') {
       // Подсчитать только цифры — должно быть ровно 11 (русский номер)
       const digits = contact.replace(/\D/g, '');
       if (digits.length !== 11) {
+        track('form_error', { reason: 'phone_invalid' });
         showFieldError('Введите полный номер из 11 цифр (например, +7 999 123 45 67)');
         const inp = $('#lf-phone');
         if (inp) inp.focus();
@@ -1626,7 +1621,7 @@ function initForm() {
     const text = [
       '🚗 <b>НОВАЯ ЗАЯВКА — POWER Car</b>',
       '',
-      `👤 <b>Имя:</b> ${escapeTg(name)}`,
+      `👤 <b>Имя:</b> ${escapeTg(nameForMsg)}`,
       `📞 <b>${escapeTg(channelMeta.label)}:</b> ${escapeTg(contact)}`,
       `💬 <b>Способ связи:</b> ${escapeTg(channelMeta.name)}`,
       '',
@@ -1662,7 +1657,8 @@ function initForm() {
             submitBtn.innerHTML = originalBtnHtml || 'Отправить';
           }
         }, 2500);
-        alert('Не удалось отправить заявку. Позвоните нам напрямую или попробуйте позже.');
+        track('lead_failed', { channel: channelMeta.name });
+        showLeadFallback(form);
       }
     } catch (err) {
       console.error('Form submit error:', err);
@@ -1670,9 +1666,28 @@ function initForm() {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml || 'Отправить';
       }
-      alert('Не удалось отправить заявку. Позвоните нам напрямую или попробуйте позже.');
+      track('lead_failed', { channel: channelMeta.name, reason: 'exception' });
+      showLeadFallback(form);
     }
   });
+}
+
+// Если автоматическая отправка не прошла — не теряем клиента: даём прямые способы связи
+function showLeadFallback(form) {
+  let box = document.getElementById('leadFallback');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'leadFallback';
+    box.setAttribute('role', 'alert');
+    box.style.cssText = 'margin-top:14px;padding:14px;border-radius:14px;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.4);font-size:.92rem;line-height:1.5';
+    box.innerHTML = '<b>Заявка не отправилась автоматически.</b><br>Напишите нам напрямую — ответим в течение рабочего дня:' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">' +
+      '<a class="btn btn-primary btn-sm" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener">MAX</a>' +
+      '<a class="btn btn-ghost btn-sm" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener">Telegram</a>' +
+      '<a class="btn btn-ghost btn-sm" href="tel:+79138533305">+7 913 853-33-05</a></div>';
+    form.appendChild(box);
+  }
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 // Escape Telegram HTML special chars
@@ -2342,20 +2357,36 @@ function initVideoModal() {
 }
 
 // ============ GLOBAL CLICK TRACKING (Метрика) ============
+// Откуда кликнули: плавающая панель, шапка, герой, форма, подвал и т.д. — чтобы видеть, какие кнопки работают
+function clickPlace(el) {
+  if (el.closest('.fab')) return 'fab';
+  if (el.closest('.hero')) return 'hero';
+  if (el.closest('#cta')) return 'form';
+  if (el.closest('#offices')) return 'offices';
+  if (el.closest('footer')) return 'footer';
+  if (el.closest('header')) return 'header';
+  if (el.closest('.modal')) return 'car_modal';
+  const sec = el.closest('section[id]');
+  return sec ? sec.id : 'other';
+}
+// Контактные Telegram-ссылки (менеджер), а не канал новостей @powercar_70
+const TG_CONTACT_RE = /t\.me\/PowerCar_msk/i;
 document.addEventListener('click', (e) => {
   const a = e.target.closest('a');
   if (!a) return;
   const href = a.getAttribute('href') || '';
+  const place = clickPlace(a);
 
   // Звонок — tel:
   if (href.startsWith('tel:')) {
-    track('phone_clicked', { number: href.replace('tel:', '') });
+    track('phone_clicked', { number: href.replace('tel:', ''), place });
     return;
   }
 
-  // WhatsApp / MAX мессенджеры (по содержимому ссылки)
-  if (/wa\.me|whatsapp/i.test(href) || /max\.ru/i.test(href)) {
-    track('messenger_clicked', { service: /wa\.me|whatsapp/i.test(href) ? 'whatsapp' : 'max' });
+  // WhatsApp / MAX / Telegram менеджера
+  if (/wa\.me|whatsapp/i.test(href) || /max\.ru/i.test(href) || TG_CONTACT_RE.test(href)) {
+    const service = /wa\.me|whatsapp/i.test(href) ? 'whatsapp' : (TG_CONTACT_RE.test(href) ? 'telegram' : 'max');
+    track('messenger_clicked', { service, place });
     return;
   }
 

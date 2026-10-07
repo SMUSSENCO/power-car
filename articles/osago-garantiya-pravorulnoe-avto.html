@@ -349,6 +349,19 @@ body {
   border-color: rgba(52,211,153,0.4);
   background: rgba(52,211,153,0.08);
 }
+
+.art-mid{margin:30px 0;padding:18px 20px;border-radius:16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.28)}
+.art-mid b{display:block;font-size:1.02rem;margin-bottom:4px}.art-mid span{display:block;color:var(--text-muted);font-size:.92rem;margin-bottom:12px}
+.art-mid-row{display:flex;gap:10px;flex-wrap:wrap}
+.art-q{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+a.art-qb{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 10px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;color:#fff}
+a.art-qb.max{background:linear-gradient(135deg,#6366F1,#8B5CF6)}a.art-qb.tg{background:linear-gradient(135deg,#2AABEE,#229ED9)}
+a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#002417}
+.art-cta a.art-cta-btn-secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.14);box-shadow:none}
+.art-sticky{display:none}
+@media(max-width:700px){.art-q{grid-template-columns:1fr}
+.art-sticky{position:fixed;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:60;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:6px;border-radius:999px;background:rgba(10,10,10,.88);border:1px solid var(--border-2);backdrop-filter:blur(20px)}
+.art-sticky a.art-qb{padding:10px 4px;font-size:.78rem;white-space:nowrap;min-width:0}body{padding-bottom:76px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ОСАГО, техосмотр и гарантия на праворульный автомобиль в 2026 году", "description": "Что по фактам с ОСАГО, техосмотром и гарантией на праворульные авто из Японии в 2026 году — без слухов, со ссылками на актуальные данные.", "datePublished": "2026-09-05", "dateModified": "2026-09-14", "image": "https://power-car.ru/images/articles/osago-garantiya-pravorulnoe-avto.svg", "mainEntityOfPage": "https://power-car.ru/articles/osago-garantiya-pravorulnoe-avto.html", "author": {"@type": "Organization", "name": "POWER Car"}, "publisher": {"@type": "Organization", "name": "POWER Car", "logo": {"@type": "ImageObject", "url": "https://power-car.ru/android-chrome-512x512.png"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://power-car.ru/"}, {"@type": "ListItem", "position": 2, "name": "Статьи", "item": "https://power-car.ru/#articles"}, {"@type": "ListItem", "position": 3, "name": "ОСАГО, техосмотр и гарантия на праворульный автомобиль в 2026 году", "item": "https://power-car.ru/articles/osago-garantiya-pravorulnoe-avto.html"}]}</script>
@@ -373,7 +386,7 @@ body {
 <h2>Техосмотр: тот же регламент, без исключений</h2>
 <p>На техосмотре автомобиль проверяют по единому перечню — около 55 пунктов: тормозная система, рулевое управление, световые приборы, шины, состояние кузова и стёкол. Отдельного, более строгого регламента для праворульных машин в действующих правилах нет — праворульный автомобиль проходит ту же процедуру, что и любой другой, без дополнительных пунктов проверки именно из-за расположения руля.</p>
 
-<h2>Гарантия: как это работает на самом деле</h2>
+<aside class="art-mid"><b>Хотите узнать цену под ваш бюджет?</b><span>Посчитайте растаможку сами или напишите менеджеру — ответим в течение рабочего дня.</span><div class="art-mid-row"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_mid" data-slug="osago-garantiya-pravorulnoe-avto">💬 Написать в MAX</a><a class="art-qb call" href="/kalkulyator-rastamozhki.html" data-goal="" data-place="article_mid" data-slug="osago-garantiya-pravorulnoe-avto">🧮 Калькулятор растаможки</a></div></aside><h2>Гарантия: как это работает на самом деле</h2>
 <p>Здесь важно не путать ожидания с реальностью. Мы — ваш агент по импорту, а не дилер и не продавец автомобиля, поэтому техническую гарантию на подержанный автомобиль от своего имени предоставить не можем — так же, как и любой другой импортёр параллельного ввоза. Заводская гарантия производителя на автомобили, ввезённые вне официальной дилерской сети, как правило, не действует.</p>
 <p>Что реально защищает покупателя:</p>
 <ul>
@@ -395,10 +408,11 @@ body {
   <section class="art-related-block" aria-label="Связанные статьи"><h2 class="art-related-heading">Читайте также</h2><div class="art-related-grid"><a class="art-related-card" href="/articles/vremennaya-propiska-dvfo-2026.html"><div class="art-related-cover"><img src="/images/articles/cover-3.svg" alt="Временная прописка в ДВФО при растаможке во Владивостоке: зачем она нужна и как оформить в 2026 году" loading="lazy" decoding="async"></div><span class="art-related-cat">Оформление</span><h4 class="art-related-title">Временная прописка в ДВФО при растаможке во Владивостоке: зачем она нужна и как оформить в 2026 году</h4><span class="art-related-meta">⏱ 8 мин</span></a><a class="art-related-card" href="/articles/era-glonass-moratoriy-2026.html"><div class="art-related-cover"><img src="/images/articles/era-glonass-moratoriy-2026.svg" alt="Мораторий на ЭРА-ГЛОНАСС в 2026 году: нужно ли устанавливать кнопку SOS?" loading="lazy" decoding="async"></div><span class="art-related-cat">Оформление</span><h4 class="art-related-title">Мораторий на ЭРА-ГЛОНАСС в 2026 году: нужно ли устанавливать кнопку SOS?</h4><span class="art-related-meta">⏱ 5 мин</span></a><a class="art-related-card" href="/articles/garantiya-elektromobil-iz-kitaya.html"><div class="art-related-cover"><img src="/images/articles/garantiya-elektromobil-iz-kitaya.svg" alt="Гарантия на электромобиль из Китая: что покрывает завод, а что — нет" loading="lazy" decoding="async"></div><span class="art-related-cat">Гайды</span><h4 class="art-related-title">Гарантия на электромобиль из Китая: что покрывает завод, а что — нет</h4><span class="art-related-meta">⏱ 6 мин</span></a></div></section>
   <div class="art-cta">
     <h3>Готовы заказать авто из Азии?</h3>
-    <p>Получите 3 варианта под ваш бюджет — бесплатно. Менеджер свяжется в течение рабочего дня.</p>
+    <p>Напишите нам — подберём 3 варианта под ваш бюджет бесплатно и ответим в течение рабочего дня.</p>
+    <div class="art-q"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_end" data-slug="osago-garantiya-pravorulnoe-avto">💬 MAX</a><a class="art-qb tg" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_end" data-slug="osago-garantiya-pravorulnoe-avto">✈️ Telegram</a><a class="art-qb call" href="tel:+79138533305" data-goal="phone_clicked" data-place="article_end" data-slug="osago-garantiya-pravorulnoe-avto">📞 Позвонить</a></div>
     <div class="art-cta-buttons">
-      <a href="/#selector" class="art-cta-btn art-cta-btn-secondary">🔍 Подобрать авто</a>
-      <a href="/#cta" class="art-cta-btn art-cta-btn-primary">Связаться с менеджером →</a>
+      <a href="/#selector" class="art-cta-btn art-cta-btn-secondary" data-goal="car_opened" data-place="article_end">🔍 Посмотреть каталог</a>
+      <a href="/kalkulyator-rastamozhki.html" class="art-cta-btn art-cta-btn-secondary" data-place="article_end">🧮 Калькулятор растаможки</a>
     </div>
   </div>
 </main>
@@ -412,6 +426,8 @@ body {
     <div class="art-footer-meta">© 2026 POWER Car · ИП Степанов Александр Васильевич · ИНН 702205795181</div>
   </div>
 </footer>
+<nav class="art-sticky" aria-label="Быстрые контакты"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_sticky" data-slug="osago-garantiya-pravorulnoe-avto">MAX</a><a class="art-qb tg" href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_sticky" data-slug="osago-garantiya-pravorulnoe-avto">Telegram</a><a class="art-qb call" href="tel:+79138533305" data-goal="phone_clicked" data-place="article_sticky" data-slug="osago-garantiya-pravorulnoe-avto">Позвонить</a></nav>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-goal],a[data-place]');if(!a||!window.ym)return;var g=a.getAttribute('data-goal');var p={place:a.getAttribute('data-place')||'',slug:a.getAttribute('data-slug')||location.pathname};try{if(g)ym(109736434,'reachGoal',g,p);ym(109736434,'params',{cta:p.place})}catch(_){}});</script>
 <script type="text/javascript">
 (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
 for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
