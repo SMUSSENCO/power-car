@@ -160,7 +160,7 @@
       else remaining += d;
     });
     var byManager = order.eta ? parseDate(order.eta) : null;
-    return { cur: cur, curTitle: finished ? '' : stages[cur].title, finished: finished, frac: frac, daysFor: daysFor, done: done, country: country,
+    return { cur: cur, curTitle: finished ? '' : (stages[cur].now || stages[cur].title), finished: finished, frac: frac, daysFor: daysFor, done: done, country: country,
       pct: finished ? 100 : Math.round(100 * passed / (total || 1)),
       eta: byManager || new Date(now.getTime() + Math.ceil(remaining) * DAY), etaByManager: !!byManager, now: now };
   }
@@ -246,7 +246,7 @@
       var d = done[st.k], cls = d ? 'done' : (idx === cur ? 'now' : 'future');
       var li = el('li', { 'class': cls });
       li.appendChild(el('span', { 'class': 'dot', text: d ? '✓' : String(idx + 1) }));
-      li.appendChild(el('h3', { text: st.title }));
+      li.appendChild(el('h3', { text: (idx === cur && st.now) ? st.now : st.title }));
       var descr = st.desc;
       if (st.k === 'selection' && d && chosen) descr = 'Выбран автомобиль: ' + chosen.snap.title;
       li.appendChild(el('div', { 'class': 'd', text: descr }));
