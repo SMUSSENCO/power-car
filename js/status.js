@@ -133,7 +133,7 @@
     hero.appendChild(el('div', {}, [
       el('div', { 'class': 'eyebrow', text: 'Ваш заказ' }),
       el('h1', { text: s.title }),
-      el('div', { 'class': 'meta', text: (og ? og.flag + ' ' + og.name + ' → ' : '') + order.city.name })
+      el('div', { 'class': 'meta', text: (og ? og.flag + ' ' + (order.originCity ? order.originCity.name + ', ' : '') + og.name + ' → ' : '') + order.city.name })
     ]));
     return hero;
   }
@@ -186,7 +186,7 @@
     for (var lon = 40; lon <= 140; lon += 20) { var x = proj(lon, 40)[0]; s.appendChild(svg('line', { x1: x, y1: 20, x2: x, y2: 285, 'class': 'grat' })); }
     for (var lat = 35; lat <= 60; lat += 5) { var y = proj(100, lat)[1]; s.appendChild(svg('line', { x1: 30, y1: y, x2: 770, y2: y, 'class': 'grat' })); }
     var og = cfg.origins[country];
-    var P0 = proj(og.lon, og.lat), P1 = proj(cfg.hub.lon, cfg.hub.lat), P2 = proj(order.city.lon, order.city.lat);
+    var oc = order.originCity, P0 = proj(oc ? oc.lon : og.lon, oc ? oc.lat : og.lat), P1 = proj(cfg.hub.lon, cfg.hub.lat), P2 = proj(order.city.lon, order.city.lat);
     var sameHub = Math.hypot(P2[0] - P1[0], P2[1] - P1[1]) < 12;
     function arc(a, b, lift) { var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2 - lift; return 'M' + a[0] + ' ' + a[1] + ' Q' + mx + ' ' + my + ' ' + b[0] + ' ' + b[1]; }
     var pts = sameHub ? [P0, P1] : [P0, P1, P2];
@@ -212,7 +212,7 @@
       s.appendChild(svg('circle', { cx: p[0], cy: p[1], r: 7, fill: '#0A0A0A', stroke: strong ? '#10B981' : 'rgba(255,255,255,.5)', 'stroke-width': 3 }));
       s.appendChild(svg('text', { x: p[0], y: above ? p[1] - 16 : p[1] + 34, 'text-anchor': 'middle', 'class': strong ? 'city' : '' }, label));
     }
-    node(P0, og.flag + ' ' + og.port, true, false);
+    node(P0, og.flag + ' ' + (oc ? oc.name : og.port), true, false);
     node(P1, cfg.hub.name, false, true);
     if (!sameHub) node(P2, order.city.name, true, false);
     var mk = svg('g', {});

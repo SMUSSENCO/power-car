@@ -30,7 +30,7 @@
   }
 
   function emptyOrder(city, daysToCity) {
-    return { oid: randomOid(), created: today(), country: null, city: city, daysToCity: daysToCity, eta: null, chosen: null, offers: [], stages: [] };
+    return { oid: randomOid(), created: today(), country: null, originCity: null, city: city, daysToCity: daysToCity, eta: null, chosen: null, offers: [], stages: [] };
   }
 
   // Этапы идут строго по порядку: если отмечен более поздний, более ранние считаются пройденными той же датой.
@@ -51,6 +51,7 @@
     if (o.chosen != null && !o.offers[o.chosen]) o.chosen = null;
     if (o.eta === undefined) o.eta = null;
     if (o.country === undefined) o.country = null;
+    if (o.originCity === undefined) o.originCity = null;
     fixStages(o.stages);
     return o;
   }
@@ -60,7 +61,7 @@
     if (rec && rec.v === 2) { (rec.orders || []).forEach(fixOrder); return rec; }
     var car = rec.car || {};
     var order = {
-      oid: 'o1', created: rec.created, country: car.country || null, city: rec.city, daysToCity: rec.daysToCity, eta: null, chosen: 0,
+      oid: 'o1', created: rec.created, country: car.country || null, originCity: null, city: rec.city, daysToCity: rec.daysToCity, eta: null, chosen: 0,
       offers: [{ snap: { title: car.title || 'Автомобиль', flag: car.flag || '', country: car.country || null, photos: car.photo ? [car.photo] : [] }, note: '', addedAt: rec.created }],
       stages: (rec.stages || []).map(function (s) { return { k: s.k, at: s.at || null, note: s.note || '' }; })
     };
