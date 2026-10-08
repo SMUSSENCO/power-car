@@ -130,6 +130,14 @@ h1 { font-size: clamp(1.5rem, 4vw, 2.3rem); line-height: 1.15; margin-bottom: 14
 .result-total .v { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--accent-2); }
 .result-note { color: var(--text-dim); font-size: 0.8rem; margin-top: 12px; line-height: 1.5; }
 
+.cta-contact { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
+.cta-contact .cc { display: inline-flex; align-items: center; justify-content: center; min-width: 130px; padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 0.95rem; color: #fff; transition: transform .15s; }
+.cta-contact .cc:hover { transform: translateY(-1px); }
+.cta-contact .cc-max { background: linear-gradient(135deg,#6366F1,#8B5CF6); }
+.cta-contact .cc-tg { background: linear-gradient(135deg,#2AABEE,#229ED9); }
+.cta-contact .cc-call { background: transparent; color: var(--accent-2); border: 1.5px solid var(--accent); }
+.cta-contact .cc-call:hover { background: var(--accent-soft); }
+@media (max-width: 480px) { .cta-contact .cc { flex: 1 1 100%; } }
 .cta-block { text-align: center; margin: 32px 0 48px; }
 .cta-block p { color: var(--text-muted); margin-bottom: 16px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; padding: 15px 32px; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; background: var(--accent); color: #04130d; transition: 0.2s; }
@@ -595,15 +603,19 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
     </div>
 
     <div class="cta-block">
-      <p>Хотите точный тариф на дату отправки?</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px"><a href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" class="btn" data-goal="messenger_clicked" data-place="delivery_page" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;padding:13px 26px">💬 Написать в MAX</a><a href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" class="btn" data-goal="messenger_clicked" data-place="delivery_page" style="background:linear-gradient(135deg,#2AABEE,#229ED9);color:#fff;padding:13px 26px">✈️ Telegram</a><a href="tel:+79138533305" class="btn" data-goal="phone_clicked" data-place="delivery_page" style="padding:13px 26px">📞 Позвонить</a></div>
+      <p>Хотите точный тариф на дату отправки? Напишите нам — ответим в течение рабочего дня.</p>
+      <div class="cta-contact">
+        <a href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" class="cc cc-max" data-goal="messenger_clicked" data-place="delivery_page">MAX</a>
+        <a href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" class="cc cc-tg" data-goal="messenger_clicked" data-place="delivery_page">Telegram</a>
+        <a href="tel:+79138533305" class="cc cc-call" data-goal="phone_clicked" data-place="delivery_page">Позвонить</a>
+      </div>
       <p style="margin-top:16px;"><a href="/kalkulyator-rastamozhki.html" style="color:var(--accent-2);text-decoration:underline;">Посчитать полную стоимость авто под ключ →</a></p>
     </div>
   </div>
 </main>
 
 <footer class="page-footer">
-  © 2026 POWER Car · <a href="/">Главная</a> · <a href="/kalkulyator-rastamozhki.html">Калькулятор растаможки</a> · <a href="docs/privacy.html">Конфиденциальность</a>
+  © 2026 POWER Car · <a href="/">Главная</a> · <a href="/kalkulyator-rastamozhki.html">Калькулятор под ключ</a> · <a href="docs/privacy.html">Конфиденциальность</a>
   <div style="margin-top:10px;font-size:0.74rem;opacity:0.7;">Контур карты: <a href="https://commons.wikimedia.org/wiki/File:Blank_map_of_Russia-gray.svg" target="_blank" rel="noopener">Blank map of Russia-gray.svg</a>, автор carol, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.ru" target="_blank" rel="noopener">CC BY-SA 3.0</a>, изменено (добавлена интерактивность и данные о доставке)</div>
 </footer>
 

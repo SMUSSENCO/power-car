@@ -102,7 +102,7 @@ def insert_mid_cta(body, slug):
            '<span>Посчитайте растаможку сами или напишите менеджеру — ответим в течение рабочего дня.</span>'
            '<div class="art-mid-row">'
            + _qb("max", MAX_URL, "💬 Написать в MAX", "messenger_clicked", "article_mid", slug)
-           + _qb("call", "/kalkulyator-rastamozhki.html", "🧮 Калькулятор растаможки", "", "article_mid", slug, blank=False)
+           + _qb("call", "/kalkulyator-rastamozhki.html", "🧮 Калькулятор под ключ", "", "article_mid", slug, blank=False)
            + '</div></aside>')
     i = heads[2]
     return body[:i] + blk + body[i:]
@@ -191,7 +191,7 @@ def article_page(a, all_articles):
     {QUICK("article_end", slug)}
     <div class="art-cta-buttons">
       <a href="/#selector" class="art-cta-btn art-cta-btn-secondary" data-goal="car_opened" data-place="article_end">🔍 Посмотреть каталог</a>
-      <a href="/kalkulyator-rastamozhki.html" class="art-cta-btn art-cta-btn-secondary" data-place="article_end">🧮 Калькулятор растаможки</a>
+      <a href="/kalkulyator-rastamozhki.html" class="art-cta-btn art-cta-btn-secondary" data-place="article_end">🧮 Калькулятор под ключ</a>
     </div>
   </div>
 </main>

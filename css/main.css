@@ -334,6 +334,9 @@ section { position: relative; padding: 72px 0; }
   border-radius: 999px;
   transition: all 0.3s var(--ease-out);
 }
+.nav a { white-space: nowrap; }
+/* Пункты меню стали длиннее («Калькулятор под ключ») — на средних экранах слегка уплотняем */
+@media (min-width: 1024px) and (max-width: 1199px) { .nav { gap: 0; } .nav a { padding: 8px 6px; font-size: 0.8rem; } }
 .nav a:hover { color: var(--text); background: var(--surface-2); }
 .nav-catalog {
   border: 1px solid var(--accent);
