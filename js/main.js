@@ -87,8 +87,10 @@ const DataSource = (() => {
     } else if (name === 'cases') {
       filtered.sort((a, b) => (b.priority || 0) - (a.priority || 0));
     } else if (name === 'articles') {
-      // Сортировка по дате добавления (publishedAt) — новые сверху
+      // Сначала закреплённые статьи (pin, больше — выше), затем по дате публикации — новые сверху
       filtered.sort((a, b) => {
+        const pa = a.pin || 0, pb = b.pin || 0;
+        if (pa !== pb) return pb - pa;
         const da = Date.parse(a.publishedAt || a.date || '') || 0;
         const db = Date.parse(b.publishedAt || b.date || '') || 0;
         return db - da;
