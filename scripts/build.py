@@ -203,11 +203,81 @@ def expand_car_markers(body):
     body = body.replace("{{china_min}}", fmt_price(cm) if cm else "")
     return body, shown
 
-def article_page(a, all_articles):
+
+# ---------- Страница «Отзывы и кейсы»: статический HTML из data/cases.json (чтобы тексты видели и поисковики, и ИИ-краулеры) ----------
+REVIEWS_CSS = """
+.rv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0 28px}
+@media(max-width:700px){.rv-grid{grid-template-columns:1fr}}
+.rv{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.rv-img{aspect-ratio:4/3;background:rgba(255,255,255,.05)}.rv-img img{width:100%;height:100%;object-fit:cover;display:block}
+.rv-body{padding:14px 16px 14px;display:flex;flex-direction:column;gap:6px}
+.rv-body h3{font-size:1.02rem;line-height:1.3;margin:0}
+.rv-who{color:var(--text-muted);font-size:.88rem}
+.rv-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}.rv-chips span{background:rgba(255,255,255,.07);border-radius:999px;padding:3px 10px;font-size:.78rem;color:var(--text-muted)}
+.rv-price{font-weight:800;color:var(--accent-2)}
+.art-body blockquote.rv-q{margin:8px 0 0;padding:10px 14px;border-left:3px solid var(--accent);background:rgba(16,185,129,.07);border-radius:0 10px 10px 0;color:var(--text);font-size:.93rem;line-height:1.55}
+.rv details{margin-top:6px}.rv details summary{cursor:pointer;color:var(--accent-2);font-weight:600;font-size:.9rem;padding:6px 0}
+.rv details p{color:var(--text-muted);font-size:.9rem;line-height:1.6;margin:6px 0}
+.rv-thumbs{display:flex;gap:8px;overflow-x:auto;margin:6px 0}.rv-thumbs img{height:80px;border-radius:10px;flex:none}
+.art-body a.rv-video{display:inline-flex;margin-top:6px;color:var(--accent-2);font-weight:600;font-size:.88rem}
+"""
+ART_STYLE += REVIEWS_CSS
+
+def _plural(n, one, few, many):
+    n = abs(n) % 100
+    if 10 < n < 20: return many
+    return {1: one, 2: few, 3: few, 4: few}.get(n % 10, many)
+
+def _case_card(c):
+    title = c.get("carTitle", "")
+    photos = c.get("photos") or []
+    img = (f'<div class="rv-img"><img src="/{html.escape(photos[0])}" alt="{html.escape(title)} — {c.get("clientCity","")}" loading="lazy"></div>' if photos else "")
+    _n = (c.get("clientName") or "").strip(); _city = c.get("clientCity") or ""
+    who = (f'{html.escape(_n)}, {html.escape(_city)}' if _n and _n != "Клиент" else (f'клиент из города {html.escape(_city)}' if _city and not str(_city).isdigit() else "клиент"))
+    chips = [f'{c.get("flag","")} {html.escape(c.get("country",""))}'.strip()]
+    if c.get("year"): chips.append(f'{c["year"]} г.')
+    if c.get("deliveryDays"): chips.append(f'{c["deliveryDays"]} дн. доставка')
+    chips_html = "".join(f"<span>{x}</span>" for x in chips if x)
+    price = f'<div class="rv-price">{fmt_price(c["finalPrice"])} под ключ</div>' if c.get("showPrice") and c.get("finalPrice") else ""
+    quote = f'<blockquote class="rv-q">«{html.escape(c["quote"].strip())}» — {who}</blockquote>' if (c.get("quote") or "").strip() else ""
+    story = (c.get("story") or "").replace("🏳", "•").strip()
+    more = ""
+    thumbs = "".join(f'<img src="/{html.escape(p)}" alt="{html.escape(title)}" loading="lazy">' for p in photos[1:5])
+    if thumbs: more += f'<div class="rv-thumbs">{thumbs}</div>'
+    for para in [p.strip() for p in story.split("\n") if p.strip()]: more += f"<p>{html.escape(para)}</p>"
+    video = c.get("videoUrl") or ""
+    if video.startswith("https://"): more += f'<a class="rv-video" href="{html.escape(video)}" target="_blank" rel="noopener nofollow">Видео выдачи автомобиля →</a>'
+    details = f'<details><summary>Подробнее о заказе</summary>{more}</details>' if more else ""
+    return f'<article class="rv" id="case-{slugify(c["id"])}">{img}<div class="rv-body"><h3>{html.escape(title)}</h3><div class="rv-who">{who[0].upper() + who[1:]}</div><div class="rv-chips">{chips_html}</div>{price}{quote}{details}</div></article>'
+
+def reviews_article():
+    cs = [c for c in json.load(open("data/cases.json", encoding="utf-8")) if c.get("published") is not False]
+    cs.sort(key=lambda c: -(c.get("priority") or 0))
+    days = [c["deliveryDays"] for c in cs if c.get("deliveryDays")]
+    cnt = {}
+    for c in cs: cnt[c.get("country", "")] = cnt.get(c.get("country", ""), 0) + 1
+    by_country = ", ".join(f"{k} — {v}" for k, v in sorted(cnt.items(), key=lambda x: -x[1]) if k)
+    cities = sorted({c.get("clientCity") for c in cs if c.get("clientCity") and not str(c.get("clientCity")).isdigit()})
+    intro = (f'<p><strong>Коротко:</strong> здесь собрано {len(cs)} {_plural(len(cs), 'реальный заказ', 'реальных заказа', 'реальных заказов')} клиентов POWER Car: автомобили из Японии, Кореи и Китая, которые мы подобрали, выкупили, доставили и растаможили. '
+             f'Страны: {by_country}. Города клиентов: {", ".join(cities)}. Срок доставки в этих заказах — от {min(days)} до {max(days)} дней.</p>'
+             '<p>Показываю не только красивые итоги, но и цену под ключ там, где клиент разрешил её публиковать: так видно, из чего складывается стоимость. '
+             'Если захотите разобраться в своей ситуации, посчитайте автомобиль в <a href="/kalkulyator-rastamozhki.html">калькуляторе «под ключ»</a> или посмотрите актуальные <a href="/#selector">автомобили в каталоге</a>. '
+             'Как мы работаем с оплатой, разобрано в статье <a href="/articles/swift-oplata-invoice-2026.html">про оплату инвойса</a>, а на что смотреть в листе — в <a href="/articles/reading-japanese-auction-sheet.html">разборе аукционных листов</a>.</p>')
+    body = intro + '<h2>Заказы клиентов</h2><div class="rv-grid">' + "".join(_case_card(c) for c in cs) + "</div>" + \
+           '<h2>Хотите так же?</h2><p>Напишите менеджеру в MAX или Telegram, расскажите бюджет и задачи, и мы подберём варианты. Подбор бесплатный, предоплаты за подбор нет.</p>'
+    ld_list = {"@context": "https://schema.org", "@type": "ItemList", "name": "Отзывы и кейсы клиентов POWER Car",
+               "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": c.get("carTitle", ""), "url": BASE + "otzyvy.html#case-" + slugify(c["id"])} for i, c in enumerate(cs)]}
+    art = {"slug": "otzyvy", "title": "Отзывы и кейсы клиентов POWER Car: автомобили из Японии, Кореи и Китая",
+           "seoTitle": "Отзывы клиентов и кейсы POWER Car: авто из Азии под ключ", "description": f"{len(cs)} реальных заказов клиентов POWER Car: автомобили из Японии, Кореи и Китая с фото, сроками и ценой под ключ.",
+           "seoDescription": f"{len(cs)} реальных заказов клиентов POWER Car: автомобили из Японии, Кореи и Китая с фото, сроками доставки и ценой под ключ. Томск, Новосибирск, Москва.",
+           "publishedAt": "2026-10-12", "updatedAt": "2026-10-12", "author": "POWER Car", "readTime": max(3, len(cs) // 4), "body": body}
+    return art, [ld_list]
+
+def article_page(a, all_articles, path=None, crumb=("Статьи", "/#articles"), back=("← К статьям", "/#articles"), extra_ld=None):
     slug = a["slug"]
     body_raw, listed_cars = expand_car_markers(a.get("body", ""))
     body_with_mid = insert_mid_cta(body_raw, slug)
-    url = f"{BASE}articles/{slug}.html"
+    url = BASE + (path or f"articles/{slug}.html")
     base_title = a.get("seoTitle") or a.get("title")
     title = base_title if "POWER Car" in base_title else base_title + " — POWER Car"
     desc = a.get("seoDescription") or a.get("description") or ""
@@ -243,9 +313,9 @@ def article_page(a, all_articles):
         "publisher":{"@type":"Organization","name":"POWER Car","logo":{"@type":"ImageObject","url":BASE+"android-chrome-512x512.png"}}}
     ld_bc = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":1,"name":"Главная","item":BASE},
-        {"@type":"ListItem","position":2,"name":"Статьи","item":BASE+"#articles"},
+        {"@type":"ListItem","position":2,"name":crumb[0],"item":BASE+crumb[1].lstrip("/")},
         {"@type":"ListItem","position":3,"name":a["title"],"item":url}]}
-    ld_items = [ld_article, ld_bc]
+    ld_items = [ld_article, ld_bc] + list(extra_ld or [])
     if listed_cars:
         ld_items.append({"@context": "https://schema.org", "@type": "ItemList", "name": a["title"],
             "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": BASE + "auto/" + slugify(c["id"]) + ".html",
@@ -277,10 +347,10 @@ def article_page(a, all_articles):
 <body>
 <header class="art-header">
   <a href="/" class="art-logo"><img src="/images/logo/logo-50.svg" alt="POWER Car" width="50" height="23" style="height:36px;width:auto;display:block;"></a>
-  <a href="/#articles" class="art-back">← К статьям</a>
+  <a href="{back[1]}" class="art-back">{back[0]}</a>
 </header>
 <main class="art-content" id="articleContent">
-  <nav class="art-breadcrumbs"><a href="/">Главная</a> › <a href="/#articles">Статьи</a> › <span>{html.escape(a["title"])}</span></nav>
+  <nav class="art-breadcrumbs"><a href="/">Главная</a> › <a href="{crumb[1]}">{crumb[0]}</a> › <span>{html.escape(a["title"])}</span></nav>
   {cat_pill}
   <h1 class="art-title">{html.escape(a["title"])}</h1>
   <div class="art-meta">{meta_row}</div>
@@ -476,6 +546,9 @@ cars = [c for c in json.load(open("data/cars.json", encoding="utf-8")) if c.get(
 
 art_files = {a["slug"] + ".html": article_page(a, articles) for a in articles}
 car_files = {slugify(c["id"]) + ".html": car_page(c, articles) for c in cars}
+rv_art, rv_ld = reviews_article()
+with open("otzyvy.html", "w", encoding="utf-8") as _f:
+    _f.write(article_page(rv_art, articles, path="otzyvy.html", crumb=("Отзывы", "/otzyvy.html"), back=("← На главную", "/"), extra_ld=rv_ld))
 na, ra = sync_dir("articles", art_files)
 nc, rc = sync_dir("auto", car_files)
 
@@ -486,6 +559,7 @@ urls = [u(BASE, "1.0", "daily")]
 urls.append(u(BASE+"quiz.html", "0.9", "weekly"))
 urls.append(u(BASE+"kalkulyator-rastamozhki.html", "0.9", "weekly"))
 urls.append(u(BASE+"dostavka-po-rossii.html", "0.85", "weekly"))
+urls.append(u(BASE+"otzyvy.html", "0.8", "weekly"))
 # Страновые SEO-лендинги (scripts/gen_countries.py)
 for s in ["avto-iz-yaponii","avto-iz-korei","avto-iz-kitaya","moto-iz-yaponii"]:
     urls.append(u(BASE+s+".html", "0.85", "weekly"))

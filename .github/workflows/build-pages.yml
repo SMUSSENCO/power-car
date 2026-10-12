@@ -7,6 +7,7 @@ on:
     paths:
       - "data/cars.json"
       - "data/articles.json"
+      - "data/cases.json"
       - "scripts/build.py"
       - "article.html"
       - "car.html"
