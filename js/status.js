@@ -86,7 +86,7 @@
       el('a', { 'class': 'btn', href: TG_URL + '?text=' + encodeURIComponent('Здравствуйте! Хочу оформить ещё один заказ (я клиент POWER Car, у меня есть кабинет).'), target: '_blank', rel: 'noopener', text: 'Написать менеджеру' })
     ]);
     var foot = el('div', { 'class': 'foot', text: 'Обновлено ' + (cab.upd ? fmtFull(new Date(cab.upd)) : '') + '. Сроки ориентировочные и могут меняться из-за погоды, очередей на таможне и логистики. Вопросы — +7 913 853-33-05.' });
-    app.replaceChildren(head, orders.length > 1 ? tabs : null, body, more, foot);
+    app.replaceChildren.apply(app, [head, orders.length > 1 ? tabs : null, body, more, foot].filter(Boolean));
     show(Math.max(0, def));
     window.addEventListener('hashchange', function () { location.reload(); });
   }
@@ -107,6 +107,7 @@
           ? 'Откройте карточку, чтобы увидеть полное описание. Понравился вариант — нажмите «Выбрать этот вариант» и отправьте нам сообщение: мы согласуем условия.'
           : 'Менеджер скоро добавит сюда варианты с описанием и стоимостью под ключ. Все они останутся в этом кабинете.' })
       ]));
+      var dcA = deliveryCard(order); if (dcA) wrap.appendChild(dcA);
       if (order.offers.length) wrap.appendChild(offersList(order, true));
       wrap.appendChild(stagesCard(cfg, order, null));
       return wrap;
@@ -116,6 +117,7 @@
     wrap.appendChild(summaryOf(est));
     var country = order.country || chosen.snap.country;
     if (country && cfg.origins[country]) wrap.appendChild(mapOf(cfg, order, est, country));
+    var dcB = deliveryCard(order); if (dcB) wrap.appendChild(dcB);
     wrap.appendChild(stagesCard(cfg, order, est));
     if (order.offers.length > 1) {
       var det = el('details', { 'class': 'card offers-fold' }, [el('summary', { text: 'Все варианты подбора (' + order.offers.length + ')' })]);
@@ -123,6 +125,63 @@
       wrap.appendChild(det);
     }
     return wrap;
+  }
+
+  // ---------- доставка автовозом: мини-карта региона и ориентир по цене ----------
+  var mapSvgPromise = null;
+  function loadMapSvg() {
+    if (!mapSvgPromise) {
+      mapSvgPromise = fetch('/dostavka-po-rossii.html').then(function (r) { return r.text(); }).then(function (t) {
+        var s = new DOMParser().parseFromString(t, 'text/html').getElementById('russiaMap');
+        return s ? document.importNode(s, true) : null;
+      }).catch(function () { return null; });
+    }
+    return mapSvgPromise;
+  }
+  function deliveryCard(order) {
+    var D = window.DELIVERY;
+    if (!D || !order.city) return null;
+    var ids = D.regionsOfCity(order.city.name), rid = ids[0];
+    var reg = rid ? D.REGIONS[rid] : null;
+    var info = el('div', { 'class': 'deliv-info' }, [
+      el('div', { 'class': 'eyebrow', text: 'Доставка в ваш город' }),
+      el('h3', { text: order.city.name })
+    ]);
+    if (reg && !reg.special) {
+      var p = D.estimatePrice(reg.km, rid);
+      info.appendChild(el('div', { 'class': 'deliv-price', text: '≈ ' + rub(p.low) + (p.high !== p.low ? ' – ' + rub(p.high) : '') }));
+      info.appendChild(el('div', { 'class': 'meta', text: 'Автовоз от Владивостока' + (typeof order.daysToCity === 'number' && order.daysToCity > 0 ? ' · около ' + order.daysToCity + ' дн.' : '') }));
+      info.appendChild(el('p', { 'class': 'hint', text: (p.real ? 'Тариф по прайсу перевозчика: от малого до большого класса автомобиля. ' : 'Ориентир по тарифам ближайших направлений. ') +
+        'Автовоз оплачивается отдельно от стоимости «под ключ до Владивостока»; точную сумму подтвердит менеджер.' }));
+    } else {
+      info.appendChild(el('p', { 'class': 'hint', text: 'Стоимость доставки в этот город менеджер рассчитает индивидуально.' }));
+    }
+    var box = el('div', { 'class': 'deliv-map', 'aria-hidden': 'true' });
+    var card = el('div', { 'class': 'card deliv' }, [box, info]);
+    if (ids.length) loadMapSvg().then(function (src) {
+      if (!src) { card.classList.add('no-map'); return; }
+      var m = src.cloneNode(true);
+      m.removeAttribute('id'); m.removeAttribute('width'); m.removeAttribute('height'); m.setAttribute('class', 'dmap');
+      Object.keys(D.EXTRA_FRAGMENTS).forEach(function (pid) { D.REGIONS[pid] = D.REGIONS[D.EXTRA_FRAGMENTS[pid]]; });
+      D.FEDERAL_DISTRICTS.forEach(function (id) { var e = m.querySelector('#' + id); if (e) e.setAttribute('class', 'dbg'); });
+      var bd = m.querySelector('#borders'); if (bd) bd.removeAttribute('style'); // в исходной карте у слоя границ зашит белый фон
+      var dest = ids.slice();
+      Object.keys(D.EXTRA_FRAGMENTS).forEach(function (pid) { if (dest.indexOf(D.EXTRA_FRAGMENTS[pid]) >= 0) dest.push(pid); });
+      dest.forEach(function (id) { var e = m.querySelector('#' + id); if (e) e.setAttribute('class', 'dest'); });
+      var o = m.querySelector('#PrimorskyKrai'); if (o) o.setAttribute('class', 'orig');
+      box.appendChild(m);
+      requestAnimationFrame(function () {
+        try {
+          var a = m.querySelector('#PrimorskyKrai').getBBox(), b = m.querySelector('#' + ids[0]).getBBox();
+          var ax = a.x + a.width / 2, ay = a.y + a.height / 2, bx = b.x + b.width / 2, by = b.y + b.height / 2;
+          var vb = m.viewBox.baseVal, r = vb.width / 70;
+          m.appendChild(svg('path', { d: 'M' + ax + ' ' + ay + ' Q' + (ax + bx) / 2 + ' ' + (Math.min(ay, by) - vb.height * 0.12) + ' ' + bx + ' ' + by, 'class': 'dline' }));
+          m.appendChild(svg('circle', { cx: ax, cy: ay, r: r, 'class': 'dorig' }));
+          m.appendChild(svg('circle', { cx: bx, cy: by, r: r, 'class': 'ddest' }));
+        } catch (e) { /* карта останется без линии */ }
+      });
+    });
+    return card;
   }
 
   function heroOf(chosen, order, cfg) {

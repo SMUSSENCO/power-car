@@ -90,6 +90,20 @@ h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.4rem,4.5vw,2re
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @media(max-width:560px){.offer{grid-template-columns:1fr}.offer-img{width:100%;height:190px}.eq{columns:1}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.deliv{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:center}
+.deliv-map .dmap{width:100%;height:auto;display:block}
+.dmap path{fill:rgba(255,255,255,.13);stroke:#0A0A0A;stroke-width:.6}
+.dmap path.dbg{fill:none;stroke:none}
+.dmap path#borders{fill:none;stroke:rgba(255,255,255,.3);stroke-width:.6}
+.dmap path.orig{fill:rgba(52,211,153,.5)}
+.dmap path.dest{fill:var(--acc)}
+.dmap .dline{fill:none;stroke:var(--acc2);stroke-width:2.2;stroke-dasharray:7 6;stroke-linecap:round}
+.dmap .dorig{fill:var(--acc2);stroke:#0A0A0A;stroke-width:1.6}
+.dmap .ddest{fill:#fff;stroke:var(--acc);stroke-width:2.6}
+.deliv h3{font-size:1.25rem;margin:2px 0 6px}
+.deliv-price{font-size:1.5rem;font-weight:800;color:var(--acc2);margin:4px 0 2px}
+.deliv.no-map{grid-template-columns:1fr}.deliv.no-map .deliv-map{display:none}
+@media(max-width:620px){.deliv{grid-template-columns:1fr}}
 @media(max-width:520px){.hero img{width:92px;height:70px}.card{padding:14px}}
 </style>
 </head>
@@ -101,6 +115,7 @@ h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.4rem,4.5vw,2re
 <main class="wrap" id="app"><div class="msg"><p>Загружаем статус…</p></div></main>
 <script src="/js/status-crypto.js"></script>
 <script src="/js/status-model.js"></script>
+<script src="/js/delivery-data.js"></script>
 <script src="/js/status.js"></script>
 </body>
 </html>
