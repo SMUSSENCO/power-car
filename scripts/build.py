@@ -153,6 +153,18 @@ def _group_of(c):
         return "japan-europe" if c.get("brand") in EURO_BRANDS else "japan-asia"
     return {"China": "china", "Korea": "korea"}.get(c.get("country"), "other")
 
+def auto_description(c):
+    """Запасное описание из характеристик, если в cars.json нет своего текста (ничего не выдумываем сверх данных)."""
+    parts = [f'{c["brand"]} {c["model"]}, {c["year"]} год' + (f', пробег {int(c["mileage"]):,}'.replace(",", " ") + " км." if c.get("mileage") else ".")]
+    eng = str(c.get("engine") or "").replace(",", ".").strip()
+    tech = [f"двигатель {eng}" if eng else "", f'{c["power"]} л.с.' if c.get("power") else "", c.get("transmission") or "",
+            DRIVE[c["drive"]] + " привод" if c.get("drive") in DRIVE else "", {"left": "левый руль", "right": "правый руль"}.get(c.get("wheel"), "")]
+    tech = [t for t in tech if t]
+    if tech:
+        s = ", ".join(tech); parts.append(s[0].upper() + s[1:] + ".")
+    parts.append("Подробную комплектацию, состояние и дополнительные фото пришлём по запросу — напишите менеджеру.")
+    return " ".join(parts)
+
 def car_card(c):
     slug = slugify(c["id"]); url = f"/auto/{slug}.html"
     name = f'{c["brand"]} {c["model"]} {c["year"]}'
@@ -172,7 +184,7 @@ def car_card(c):
     thumbs = "".join(f'<img src="/{html.escape(p)}" alt="{html.escape(name)}" loading="lazy">' for p in photos[1:5])
     more = ""
     if thumbs: more += f'<div class="cc-thumbs">{thumbs}</div>'
-    desc = (c.get("description") or "").strip()
+    desc = (c.get("description") or "").strip() or auto_description(c)
     for para in [p for p in desc.split("\n") if p.strip()]: more += f"<p>{html.escape(para)}</p>"
     eq = [x for x in (c.get("equipment") or []) if x]
     if eq: more += '<ul class="cc-eq">' + "".join(f"<li>{html.escape(x)}</li>" for x in eq) + "</ul>"
@@ -422,7 +434,7 @@ def car_page(c, articles):
     if c.get("color"): specs.append(("Цвет", c["color"]))
     specs_html = "".join(f"<tr><td>{html.escape(str(k))}</td><td>{html.escape(str(v))}</td></tr>" for k,v in specs)
     eq = [x for x in (c.get("equipment") or []) if x]
-    desc_text = (c.get("description") or "").strip()
+    desc_text = (c.get("description") or "").strip() or auto_description(c)
     desc_paras = "".join(f"<p>{html.escape(p)}</p>" for p in desc_text.split("\n") if p.strip())
     eq_html = ('<ul class="eq">' + "".join(f"<li>{html.escape(x)}</li>" for x in eq) + '</ul>') if eq else ""
     desc_block = (f'<section><h2 class="sec-h">Описание и комплектация</h2><div class="card desc">{desc_paras}{eq_html}</div></section>') if (desc_paras or eq_html) else ""

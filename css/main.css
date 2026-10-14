@@ -2812,6 +2812,30 @@ a.car-title:hover { color: var(--accent-2); }
   font-weight: 500;
 }
 
+.modal-details {
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: var(--r-md);
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+}
+.modal-details h4 {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.modal-details p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin: 0 0 8px; }
+.modal-details .modal-details-extra { color: var(--text); font-weight: 600; }
+.modal-eq { list-style: none; padding: 0; margin: 10px 0 0; columns: 2; column-gap: 20px; font-size: 0.88rem; }
+.modal-eq li { padding: 3px 0 3px 18px; position: relative; break-inside: avoid; color: var(--text); }
+.modal-eq li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); }
+.modal-fullpage { display: inline-block; margin-top: 12px; color: var(--accent-2); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+@media (max-width: 600px) { .modal-eq { columns: 1; } }
+
 .modal-breakdown {
   margin: 20px 0;
   padding: 18px;

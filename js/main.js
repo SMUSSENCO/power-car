@@ -726,6 +726,31 @@ function initSelector() {
 }
 
 // ============ MODAL: CAR DETAILS ============
+// Описание и комплектация для модального окна: свои данные, а если их нет — краткое описание из характеристик
+function carDetailsHtml(car) {
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const slug = car.id.replace(/[^A-Za-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
+  const eq = Array.isArray(car.equipment) ? car.equipment.filter(Boolean) : [];
+  let paras = (car.description || '').split(/\n+/).map(s => s.trim()).filter(Boolean);
+  if (!paras.length) {
+    const drive = { fwd: 'передний', rwd: 'задний', awd: 'полный' }[car.drive];
+    const parts = [`${car.brand} ${car.model}, ${car.year} год, пробег ${fmt(car.mileage)} км.`];
+    const tech = [car.engine && `двигатель ${car.engine}`, car.power && `${car.power} л.с.`, car.transmission, drive && `${drive} привод`, car.wheel && `${car.wheel === 'right' ? 'правый' : 'левый'} руль`].filter(Boolean);
+    if (tech.length) parts.push(tech.join(', ').replace(/^./, m => m.toUpperCase()) + '.');
+    parts.push('Подробную комплектацию, состояние и дополнительные фото пришлём по запросу — напишите менеджеру.');
+    paras = [parts.join(' ')];
+  }
+  const extra = [car.trim && `Комплектация: ${car.trim}`, car.color && `Цвет: ${car.color}`].filter(Boolean);
+  return `
+      <div class="modal-details">
+        <h4>Описание и комплектация</h4>
+        ${extra.length ? `<p class="modal-details-extra">${extra.map(esc).join(' · ')}</p>` : ''}
+        ${paras.map(p => `<p>${esc(p)}</p>`).join('')}
+        ${eq.length ? `<ul class="modal-eq">${eq.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+        <a class="modal-fullpage" href="/auto/${slug}.html">Открыть полную страницу →</a>
+      </div>`;
+}
+
 function openCarModal(car) {
   const content = $('#modalContent');
   const backdrop = $('#modalBackdrop');
@@ -820,6 +845,8 @@ function openCarModal(car) {
         <div class="modal-spec-item"><span class="modal-spec-label">Страна</span><span class="modal-spec-value">${car.flag} ${car.country === 'Japan' ? 'Япония' : car.country === 'China' ? 'Китай' : 'Корея'}</span></div>
         <div class="modal-spec-item"><span class="modal-spec-label">Доставка</span><span class="modal-spec-value">${car.deliveryMin}–${car.deliveryMax} дней</span></div>
       </div>
+
+      ${carDetailsHtml(car)}
 
       ${breakdownHtml}
 
