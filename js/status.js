@@ -105,7 +105,7 @@
         el('div', { 'class': 'meta', text: 'Доставка в ' + order.city.name + (order.offers.length ? ' · вариантов: ' + order.offers.length : '') }),
         el('p', { 'class': 'hint', text: order.offers.length
           ? 'Откройте карточку, чтобы увидеть полное описание. Понравился вариант — нажмите «Выбрать этот вариант» и отправьте нам сообщение: мы согласуем условия.'
-          : 'Менеджер скоро добавит сюда варианты с описанием и стоимостью под ключ. Все они останутся в этом кабинете.' })
+          : 'Менеджер скоро добавит сюда варианты с описанием и стоимостью. Все они останутся в этом кабинете.' })
       ]));
       var dcA = deliveryCard(order); if (dcA) wrap.appendChild(dcA);
       if (order.offers.length) wrap.appendChild(offersList(order, true));
@@ -152,7 +152,7 @@
       info.appendChild(el('div', { 'class': 'deliv-price', text: '≈ ' + rub(p.low) + (p.high !== p.low ? ' – ' + rub(p.high) : '') }));
       info.appendChild(el('div', { 'class': 'meta', text: 'Автовоз от Владивостока' + (typeof order.daysToCity === 'number' && order.daysToCity > 0 ? ' · около ' + order.daysToCity + ' дн.' : '') }));
       info.appendChild(el('p', { 'class': 'hint', text: (p.real ? 'Тариф по прайсу перевозчика: от малого до большого класса автомобиля. ' : 'Ориентир по тарифам ближайших направлений. ') +
-        'Автовоз оплачивается отдельно от стоимости «под ключ до Владивостока»; точную сумму подтвердит менеджер.' }));
+        'Автовоз оплачивается отдельно от стоимости автомобиля; точную сумму подтвердит менеджер.' }));
     } else {
       info.appendChild(el('p', { 'class': 'hint', text: 'Стоимость доставки в этот город менеджер рассчитает индивидуально.' }));
     }
@@ -337,7 +337,7 @@
     var info = el('div', { 'class': 'offer-info' });
     info.appendChild(el('h3', { text: (s.flag ? s.flag + ' ' : '') + s.title }));
     if (isChosen) info.appendChild(el('span', { 'class': 'badge', text: 'Выбран вами' }));
-    if (s.price) info.appendChild(el('div', { 'class': 'price', text: rub(s.price) + ' под ключ' }));
+    if (s.price) info.appendChild(el('div', { 'class': 'price', text: rub(s.price) }));
     var chips = [];
     if (s.trim) chips.push(s.trim);
     if (s.mileage != null && s.mileage !== '') chips.push(Number(s.mileage).toLocaleString('ru-RU') + ' км');
@@ -364,7 +364,7 @@
     card.appendChild(det);
 
     if (selectable) {
-      var txt = 'Здравствуйте! Выбираю вариант: ' + s.title + (s.price ? ' (' + rub(s.price) + ' под ключ)' : '') + '. Город доставки: ' + order.city.name + '.';
+      var txt = 'Здравствуйте! Выбираю вариант: ' + s.title + (s.price ? ' (' + rub(s.price) + ')' : '') + '. Город доставки: ' + order.city.name + '.';
       var act = el('div', { 'class': 'offer-act' });
       var max = el('a', { 'class': 'btn btn-max', href: MAX_URL, target: '_blank', rel: 'noopener', text: 'Выбрать этот вариант — MAX' });
       max.addEventListener('click', function () { try { navigator.clipboard.writeText(txt); toast('Текст скопирован — вставьте его в чат MAX'); } catch (e) { /* нет доступа к буферу */ } });
