@@ -5373,17 +5373,17 @@
     "deliveryMax": 28,
     "hit": false,
     "weight": 4,
-    "published": false,
+    "published": true,
     "addedAt": "2026-10-14",
     "type": "auto",
-    "priceMarket": 1885000,
+    "priceMarket": 1950000,
     "calc": {
-      "marketLocal": 71840,
+      "marketLocal": 75840,
       "customs": 227000,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1450000,
+    "price": 1500000,
     "photos": [
       "images/cars/Jetour-X70-PLUS-Mountain-2022/Jetour-X70-PLUS-Mountain-2022-1.webp",
       "images/cars/Jetour-X70-PLUS-Mountain-2022/Jetour-X70-PLUS-Mountain-2022-2.webp",
@@ -5397,7 +5397,7 @@
       "images/cars/Jetour-X70-PLUS-Mountain-2022/Jetour-X70-PLUS-Mountain-2022-10.webp"
     ],
     "breakdown": {
-      "auction": 898000,
+      "auction": 948000,
       "domestic": 175000,
       "delivery": 0,
       "customs": 227000,
