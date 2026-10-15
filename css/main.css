@@ -715,6 +715,27 @@ body.menu-open { overflow: hidden; }
   line-height: 1.3;
 }
 
+/* ============ HERO ASIDE + RATES ============ */
+.hero-aside { display: flex; flex-direction: column; gap: 18px; width: 100%; max-width: 520px; margin: 0 auto; }
+.hero-aside .routes-map { margin: 0 auto; max-width: 420px; }
+.rates-card {
+  display: block; padding: 18px 20px 16px; text-decoration: none; color: inherit;
+  border-radius: var(--r-md, 20px);
+  background: linear-gradient(135deg, rgba(16,185,129,0.10), rgba(255,255,255,0.035) 60%);
+  border-color: var(--border-2);
+}
+.rates-card:hover { border-color: rgba(52,211,153,0.5); transform: translateY(-2px); }
+.rates-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.rates-title { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.rates-date { font-size: 0.78rem; color: var(--text-muted); }
+.rates-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.rate { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 14px; background: rgba(0,0,0,0.25); border: 1px solid var(--border); }
+.rate-flag { font-size: 1.05rem; line-height: 1; }
+.rate-name { font-size: 0.74rem; color: var(--text-muted); }
+.rate-val { font-family: var(--font-display); font-size: 1.12rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+.rates-foot { display: block; margin-top: 12px; font-size: 0.84rem; font-weight: 600; color: var(--accent-2); }
+@media (max-width: 767px) { .hero-aside { max-width: none; } }
+
 /* ============ ROUTES MAP (Hero visual) ============ */
 .routes-map {
   position: relative;

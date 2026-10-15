@@ -220,6 +220,22 @@ function initHeader() {
 }
 
 // ============ COUNTRY ROTATOR ============
+// Курс валют в шапке главной: значения берём из data/settings.json (те же, что в калькуляторе)
+function initRatesCard() {
+  const card = document.getElementById('ratesCard');
+  if (!card) return;
+  fetch('data/settings.json', { cache: 'no-cache' }).then(r => r.json()).then(s => {
+    card.querySelectorAll('[data-rate]').forEach(el => {
+      const v = Number(s[el.dataset.rate]);
+      if (v > 0) el.textContent = String(+v.toFixed(3)).replace('.', ',') + ' ₽';
+    });
+    if (s.ratesUpdatedAt) {
+      const d = new Date(s.ratesUpdatedAt + 'T00:00:00');
+      if (!isNaN(d)) document.getElementById('ratesDate').textContent = d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+    }
+  }).catch(() => {});
+}
+
 function initRotator() {
   const el = $('#rotator');
   if (!el) return;
@@ -1822,6 +1838,7 @@ async function initApp() {
   initAnnounce();
   initHeader();
   initRotator();
+  initRatesCard();
   initStats();
   initReveal();
   initModal();

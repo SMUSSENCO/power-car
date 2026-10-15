@@ -1,6 +1,6 @@
 {
-  "rateCNY": 12.5,
-  "rateJPY": 0.55,
+  "rateCNY": 12.59,
+  "rateJPY": 0.57,
   "rateKRW": 0.065,
   "rateEUR": 100.57,
   "freightChina": 0,
@@ -9,5 +9,5 @@
   "domesticChina": 14000,
   "domesticJapan": 200000,
   "domesticKorea": 2000000,
-  "ratesUpdatedAt": "2026-10-07"
+  "ratesUpdatedAt": "2026-10-15"
 }

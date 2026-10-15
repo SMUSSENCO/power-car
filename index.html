@@ -286,7 +286,7 @@
           <span class="word">мото от 250 тыс из <span class="country-rotator" id="rotator">Кореи</span></span>
         </h1>
         <p class="hero-sub">
-          POWER Car — агент по импорту авто и мотоциклов из Японии, Кореи и Китая под ключ: подбор, выкуп на аукционе, доставка, растаможка и оформление за 25–40 дней. Кей-кары от 450 000 ₽, мотоциклы от 250 000 ₽, без скрытых платежей и предоплаты за подбор.
+          Авто и мотоциклы из Японии, Кореи и Китая под ключ: подбор, выкуп, доставка и растаможка за 25–40 дней. Без скрытых платежей и предоплаты за подбор.
         </p>
         <div class="hero-cta-row">
           <a href="#selector" class="btn btn-primary btn-shine">
@@ -312,6 +312,7 @@
         </div>
       </div>
 
+      <div class="hero-aside">
       <!-- ROUTES MAP -->
       <div class="routes-map">
         <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Маршруты доставки: из Кореи, Японии и Китая через Владивосток в Москву, Томск и Новосибирск">
@@ -417,6 +418,18 @@
           </g>
         </svg>
       </div>
+      <!-- КУРС ВАЛЮТ: значения из data/settings.json подставляет js/main.js, в HTML — запасные -->
+      <a class="rates-card glass" id="ratesCard" href="/kalkulyator-rastamozhki.html" aria-label="Курсы валют для расчёта цены. Открыть калькулятор">
+        <div class="rates-head"><span class="rates-title">Курс для расчёта</span><span class="rates-date" id="ratesDate">15 октября</span></div>
+        <div class="rates-row">
+          <div class="rate"><span class="rate-flag">🇨🇳</span><span class="rate-name">Юань</span><b class="rate-val" data-rate="rateCNY">12,59 ₽</b></div>
+          <div class="rate"><span class="rate-flag">🇯🇵</span><span class="rate-name">Иена</span><b class="rate-val" data-rate="rateJPY">0,57 ₽</b></div>
+          <div class="rate"><span class="rate-flag">🇰🇷</span><span class="rate-name">Вона</span><b class="rate-val" data-rate="rateKRW">0,065 ₽</b></div>
+        </div>
+        <span class="rates-foot">Рассчитать свою машину →</span>
+      </a>
+      </div>
+
     </div>
   </div>
 </section>
