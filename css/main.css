@@ -727,7 +727,6 @@ body.menu-open { overflow: hidden; }
 .rates-card:hover { border-color: rgba(52,211,153,0.5); transform: translateY(-2px); }
 .rates-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
 .rates-title { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
-.rates-date { font-size: 0.78rem; color: var(--text-muted); }
 .rates-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .rate { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 14px; background: rgba(0,0,0,0.25); border: 1px solid var(--border); }
 .rate-flag { font-size: 1.05rem; line-height: 1; }

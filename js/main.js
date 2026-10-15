@@ -229,10 +229,6 @@ function initRatesCard() {
       const v = Number(s[el.dataset.rate]);
       if (v > 0) el.textContent = String(+v.toFixed(3)).replace('.', ',') + ' ₽';
     });
-    if (s.ratesUpdatedAt) {
-      const d = new Date(s.ratesUpdatedAt + 'T00:00:00');
-      if (!isNaN(d)) document.getElementById('ratesDate').textContent = d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
-    }
   }).catch(() => {});
 }
 
