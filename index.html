@@ -296,23 +296,8 @@
           <a href="#cta" class="btn btn-ghost">Подбор бесплатно</a>
         </div>
 
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-value" data-target="153" data-suffix="+">0</div>
-            <div class="stat-label">кейсов<br/>с 2024 </div>
-          </div>
-          <div class="stat">
-            <div class="stat-value" data-target="40" data-prefix="до ">до 0</div>
-            <div class="stat-label">дней под ключ</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">0₽</div>
-            <div class="stat-label">предоплата<br/>за подбор</div>
-          </div>
-        </div>
       </div>
 
-      <div class="hero-aside">
       <!-- ROUTES MAP -->
       <div class="routes-map">
         <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Маршруты доставки: из Кореи, Японии и Китая через Владивосток в Москву, Томск и Новосибирск">
@@ -418,17 +403,30 @@
           </g>
         </svg>
       </div>
+      <!-- ПЛАШКА С ЦИФРАМИ (слева) и КУРС ВАЛЮТ (справа) — одна строка сетки, одинаковая высота -->
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" data-target="153" data-suffix="+">0</div>
+          <div class="stat-label">кейсов<br/>с 2024 </div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" data-target="40" data-prefix="до ">до 0</div>
+          <div class="stat-label">дней под ключ</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0₽</div>
+          <div class="stat-label">предоплата<br/>за подбор</div>
+        </div>
+      </div>
       <!-- КУРС ВАЛЮТ: значения из data/settings.json подставляет js/main.js, в HTML — запасные -->
       <a class="rates-card glass" id="ratesCard" href="/kalkulyator-rastamozhki.html" aria-label="Курсы валют для расчёта цены. Открыть калькулятор">
-        <div class="rates-head"><span class="rates-title">Курс для расчёта</span></div>
+        <div class="rates-head"><span class="rates-title">Курс для расчёта</span><span class="rates-foot">Калькулятор →</span></div>
         <div class="rates-row">
           <div class="rate"><span class="rate-flag">🇨🇳</span><span class="rate-name">Юань</span><b class="rate-val" data-rate="rateCNY">12,59 ₽</b></div>
           <div class="rate"><span class="rate-flag">🇯🇵</span><span class="rate-name">Иена</span><b class="rate-val" data-rate="rateJPY">0,57 ₽</b></div>
           <div class="rate"><span class="rate-flag">🇰🇷</span><span class="rate-name">Вона</span><b class="rate-val" data-rate="rateKRW">0,065 ₽</b></div>
         </div>
-        <span class="rates-foot">Рассчитать свою машину →</span>
       </a>
-      </div>
 
     </div>
   </div>
