@@ -437,14 +437,14 @@ function renderCarCard(car, opts = {}) {
 function renderTop5() {
   const track = $('#top5Track');
   if (!track) return;
-  // All cars marked as hit, sorted by weight (smaller = higher). No limit.
+  // Топ-10: автомобили с hit=true, по весу (меньше = выше), максимум 10.
   const hits = CARS.filter(c => c.hit).sort((a, b) => {
     const wa = (a.weight === undefined || a.weight === null || a.weight === '') ? 9999 : Number(a.weight);
     const wb = (b.weight === undefined || b.weight === null || b.weight === '') ? 9999 : Number(b.weight);
     return wa - wb;
   });
   // If no hits at all, fall back to showing first few cars so the section isn't empty
-  const all = hits.length > 0 ? hits : CARS.slice(0, 5);
+  const all = (hits.length > 0 ? hits : CARS).slice(0, 10);
   track.innerHTML = '';
   all.forEach((car, i) => {
     track.appendChild(renderCarCard(car, { topRank: i + 1 }));
