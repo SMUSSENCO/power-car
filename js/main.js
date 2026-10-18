@@ -220,7 +220,42 @@ function initHeader() {
 }
 
 // ============ COUNTRY ROTATOR ============
-// Курс валют в шапке главной: значения берём из data/settings.json (те же, что в калькуляторе)
+// Бюджет и возраст — выпадающие списки (на всех устройствах). Чипы остаются в DOM, поэтому вся логика фильтров не меняется.
+function initFilterDropdowns() {
+  ['budgetChips', 'ageChips'].forEach(id => {
+    const chips = document.getElementById(id);
+    if (!chips || chips.parentNode.classList.contains('dd')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'dd';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'dd-btn';
+    btn.setAttribute('aria-haspopup', 'listbox');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.innerHTML = '<span class="dd-val"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+    chips.parentNode.insertBefore(wrap, chips);
+    wrap.append(btn, chips);
+    const val = btn.querySelector('.dd-val');
+    const sync = () => {
+      const a = chips.querySelector('.chip.active') || chips.querySelector('.chip');
+      val.textContent = a ? (a.childNodes[0] ? a.childNodes[0].textContent.trim() : a.textContent.trim()) : '';
+    };
+    const close = () => { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); };
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.querySelectorAll('.dd.open').forEach(o => { if (o !== wrap) o.classList.remove('open'); });
+      const open = wrap.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    chips.addEventListener('click', (e) => { if (e.target.closest('.chip')) setTimeout(() => { sync(); close(); }, 0); });
+    new MutationObserver(sync).observe(chips, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    sync();
+  });
+}
+
+// Курс валют в каталоге: значения берём из data/settings.json (те же, что в калькуляторе)
 function initRatesCard() {
   const card = document.getElementById('ratesCard');
   if (!card) return;
@@ -382,6 +417,13 @@ function renderCarCard(car, opts = {}) {
     </div>
   `;
   card.querySelector('[data-action="details"]').addEventListener('click', () => openCarModal(car));
+  // На телефоне миниатюра целиком кликабельна: по тапу раскрывается карточка авто
+  card.addEventListener('click', (e) => {
+    if (!window.matchMedia('(max-width: 767px)').matches) return;
+    if (e.target.closest('[data-action="order"]')) return;
+    e.preventDefault();
+    openCarModal(car);
+  });
   // Click on photo also opens the modal (with details)
   const imgArea = card.querySelector('.car-img');
   if (imgArea) {
@@ -1835,6 +1877,7 @@ async function initApp() {
   initHeader();
   initRotator();
   initRatesCard();
+  initFilterDropdowns();
   initStats();
   initReveal();
   initModal();

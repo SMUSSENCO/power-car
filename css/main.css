@@ -628,7 +628,8 @@ body.menu-open { overflow: hidden; }
 }
 @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
 
-.hero h1 { margin-top: 18px; }
+.hero h1 { margin-top: 18px; font-size: clamp(1.9rem, 4.6vw, 3.7rem); }
+.hero h1 .word { white-space: nowrap; }
 /* LCP fix: hero h1 виден сразу (без opacity:0). Yandex Metrika показывала задержку LCP 3590мс
    из-за того что текст ждал animation:rise завершения. Анимацию keyframes оставляем —
    она используется hero-sub / hero-cta / stats ниже (они below-fold, не влияют на LCP). */
@@ -715,31 +716,33 @@ body.menu-open { overflow: hidden; }
   line-height: 1.3;
 }
 
-/* ============ HERO: ряд «цифры + курс» (одинаковая высота, одна линия) ============ */
+/* ============ HERO: цифры под текстом, карта справа на две строки ============ */
 .hero-grid > .stats { margin-top: 28px; }
+@media (min-width: 1024px) {
+  .hero-grid { row-gap: 0; }
+  .hero-grid > .stats { margin-top: 36px; align-self: start; }
+  .hero-grid > .routes-map { max-width: 440px; grid-column: 2; grid-row: 1 / span 2; }
+}
+@media (max-width: 1023px) { .hero-grid { gap: 0; } .hero-grid > .stats { margin-top: 32px; } }
+
+/* ============ КУРС ВАЛЮТ (в каталоге) ============ */
 .rates-card {
-  display: flex; flex-direction: column; gap: 12px; padding: 20px;
+  display: flex; flex-direction: column; gap: 10px; padding: 16px 18px;
   text-decoration: none; color: inherit;
   border-radius: var(--r-md, 20px);
   background: linear-gradient(135deg, rgba(16,185,129,0.10), rgba(255,255,255,0.035) 60%);
   border-color: var(--border-2);
+  margin-bottom: 22px;
 }
 .rates-card:hover { border-color: rgba(52,211,153,0.5); }
 .rates-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .rates-title { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
 .rates-foot { font-size: 0.84rem; font-weight: 600; color: var(--accent-2); white-space: nowrap; }
-.rates-row { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.rate { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 10px 14px; border-radius: 14px; background: rgba(0,0,0,0.25); border: 1px solid var(--border); }
+.rates-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.rate { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 9px 12px; border-radius: 14px; background: rgba(0,0,0,0.25); border: 1px solid var(--border); }
 .rate-flag { font-size: 1.05rem; line-height: 1; }
 .rate-name { font-size: 0.74rem; color: var(--text-muted); }
-.rate-val { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text); white-space: nowrap; }
-@media (min-width: 1024px) {
-  .hero-grid { row-gap: 36px; }
-  .hero-grid > .stats { margin-top: 0; }
-  .hero-grid > .stats, .hero-grid > .rates-card { align-self: stretch; }
-  .hero-grid > .routes-map { max-width: 440px; }
-}
-@media (max-width: 1023px) { .hero-grid { gap: 20px; } }
+.rate-val { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--text); white-space: nowrap; }
 
 /* ============ ROUTES MAP (Hero visual) ============ */
 .routes-map {
@@ -3756,3 +3759,63 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
   padding: 8px 12px;
 }
 .quiz-restart button:hover { color: var(--text); }
+
+
+/* ============ ШАПКА: мобильные кнопки «Каталог» и «Сообщение» ============ */
+.header-msg, .header-cta-catalog { display: none !important; }
+@media (max-width: 1023px) {
+  .header-cta-apply { display: none !important; }
+  .header-msg { display: inline-flex !important; }
+  .header-cta-catalog { display: inline-flex !important; }
+}
+
+/* ============ Ссылка «Все отзывы и кейсы» — белая ============ */
+#cases p > a[href="/otzyvy.html"], section p > a[href="/otzyvy.html"] { color: #fff; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); text-underline-offset: 4px; font-weight: 500; }
+section p > a[href="/otzyvy.html"]:hover { text-decoration-color: #fff; }
+
+/* ============ ВЫПАДАЮЩИЕ ФИЛЬТРЫ (бюджет, возраст) ============ */
+.dd { position: relative; max-width: 420px; margin-bottom: 4px; }
+.dd-btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 12px 16px; border-radius: 14px; cursor: pointer; text-align: left;
+  background: var(--surface-2); border: 1px solid var(--border-2); color: var(--text);
+  font: inherit; font-size: 0.95rem; font-weight: 600; min-height: 46px;
+  -webkit-tap-highlight-color: transparent;
+}
+.dd-btn:hover, .dd.open .dd-btn { border-color: rgba(52,211,153,0.5); }
+.dd-btn svg { flex: none; transition: transform .2s; color: var(--text-muted); }
+.dd.open .dd-btn svg { transform: rotate(180deg); }
+.dd .chips {
+  display: none; position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 6px);
+  flex-direction: column; flex-wrap: nowrap; gap: 2px; padding: 6px; margin: 0;
+  max-height: 300px; overflow-y: auto;
+  background: #0f1a17; border: 1px solid var(--border-2); border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+}
+.dd.open .chips { display: flex; }
+.dd .chip { width: 100%; justify-content: flex-start; text-align: left; border-radius: 10px; border-color: transparent; background: transparent; padding: 10px 12px; }
+.dd .chip:hover { background: var(--surface-3); }
+.dd .chip.active { background: var(--accent-soft); color: var(--accent-2); }
+
+/* ============ КАТАЛОГ НА ТЕЛЕФОНЕ: компактные миниатюры, 3 в ряд, по тапу — карточка ============ */
+@media (max-width: 767px) {
+  .results-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .car-card { border-radius: 14px; }
+  .car-card:hover { transform: none; }
+  .car-img { aspect-ratio: 1 / 1; }
+  .car-card .car-flag-badge { top: 6px; left: 6px; padding: 2px 6px; font-size: 0.58rem; gap: 3px; }
+  .car-card .car-badges, .car-card .car-photo-count, .car-card .car-top-ribbon,
+  .car-card .car-delivery, .car-card .car-actions, .car-card .car-price-market { display: none; }
+  .car-card .car-body { padding: 8px 8px 10px; gap: 4px; }
+  .car-card .car-title { font-size: 0.76rem; line-height: 1.2; letter-spacing: -0.01em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .car-card .car-meta { font-size: 0.66rem; gap: 0; }
+  .car-card .car-meta-item:not(:first-child) { display: none; }
+  .car-card .car-meta-item::after { display: none; }
+  .car-card .car-price { font-size: 0.82rem; letter-spacing: -0.02em; }
+  .car-card { cursor: pointer; }
+  /* горячие предложения — уже и компактнее */
+  .top5-track { gap: 10px; }
+  .top5-track .car-card { width: 148px; }
+  .top5-track .car-img { aspect-ratio: 4 / 3; }
+  .top5-track .car-card .car-meta-item:not(:first-child) { display: none; }
+}

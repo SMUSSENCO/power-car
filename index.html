@@ -243,7 +243,11 @@
       <a href="tel:+79138533305" class="btn btn-call btn-sm btn-icon btn-pulse" aria-label="Позвонить">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </a>
-      <a href="#cta" class="btn btn-primary btn-sm btn-shine header-cta-apply">Получить расчёт</a>
+      <a href="#cta" class="btn btn-call btn-sm btn-icon header-msg" aria-label="Написать сообщение">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </a>
+      <a href="#cta" class="btn btn-primary btn-sm btn-shine header-cta-apply"><span class="cta-desk">Получить расчёт</span></a>
+      <a href="#selector" class="btn btn-primary btn-sm btn-shine header-cta-catalog">Каталог</a>
       <!-- Mobile-only: бургер для остальных ссылок -->
       <button class="btn btn-icon btn-sm header-burger" id="headerBurger" aria-label="Меню" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
@@ -282,8 +286,8 @@
       <div>
         <span class="eyebrow">Надёжность, рождённая в Сибири</span>
         <h1>
-          <span class="word">Привезём авто от 450 тыс,</span><br/>
-          <span class="word">мото от 250 тыс из <span class="country-rotator" id="rotator">Кореи</span></span>
+          <span class="word">Привезём авто и мото</span><br/>
+          <span class="word">от 250 тыс из <span class="country-rotator" id="rotator">Кореи</span></span>
         </h1>
         <p class="hero-sub">
           Авто и мотоциклы из Японии, Кореи и Китая под ключ: подбор, выкуп, доставка и растаможка за 25–40 дней. Без скрытых платежей и предоплаты за подбор.
@@ -403,7 +407,7 @@
           </g>
         </svg>
       </div>
-      <!-- ПЛАШКА С ЦИФРАМИ (слева) и КУРС ВАЛЮТ (справа) — одна строка сетки, одинаковая высота -->
+      <!-- ПЛАШКА С ЦИФРАМИ -->
       <div class="stats">
         <div class="stat">
           <div class="stat-value" data-target="153" data-suffix="+">0</div>
@@ -418,15 +422,6 @@
           <div class="stat-label">предоплата<br/>за подбор</div>
         </div>
       </div>
-      <!-- КУРС ВАЛЮТ: значения из data/settings.json подставляет js/main.js, в HTML — запасные -->
-      <a class="rates-card glass" id="ratesCard" href="/kalkulyator-rastamozhki.html" aria-label="Курсы валют для расчёта цены. Открыть калькулятор">
-        <div class="rates-head"><span class="rates-title">Курс для расчёта</span><span class="rates-foot">Калькулятор →</span></div>
-        <div class="rates-row">
-          <div class="rate"><span class="rate-flag">🇨🇳</span><span class="rate-name">Юань</span><b class="rate-val" data-rate="rateCNY">12,59 ₽</b></div>
-          <div class="rate"><span class="rate-flag">🇯🇵</span><span class="rate-name">Иена</span><b class="rate-val" data-rate="rateJPY">0,57 ₽</b></div>
-          <div class="rate"><span class="rate-flag">🇰🇷</span><span class="rate-name">Вона</span><b class="rate-val" data-rate="rateKRW">0,065 ₽</b></div>
-        </div>
-      </a>
 
     </div>
   </div>
@@ -459,10 +454,19 @@
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Подбор</span>
-      <h2>Найдите авто и мото <span class="glow-text">под ваш бюджет</span></h2>
+      <h2>Каталог <span class="glow-text">авто и мото</span></h2>
     </div>
 
     <div class="selector">
+      <!-- КУРС ВАЛЮТ: значения из data/settings.json подставляет js/main.js, в HTML — запасные -->
+      <a class="rates-card glass rates-card--catalog" id="ratesCard" href="/kalkulyator-rastamozhki.html" aria-label="Курсы валют для расчёта цены. Открыть калькулятор">
+        <div class="rates-head"><span class="rates-title">Курс для расчёта</span><span class="rates-foot">Калькулятор →</span></div>
+        <div class="rates-row">
+          <div class="rate"><span class="rate-flag">🇨🇳</span><span class="rate-name">Юань</span><b class="rate-val" data-rate="rateCNY">12,59 ₽</b></div>
+          <div class="rate"><span class="rate-flag">🇯🇵</span><span class="rate-name">Иена</span><b class="rate-val" data-rate="rateJPY">0,57 ₽</b></div>
+          <div class="rate"><span class="rate-flag">🇰🇷</span><span class="rate-name">Вона</span><b class="rate-val" data-rate="rateKRW">0,065 ₽</b></div>
+        </div>
+      </a>
       <!-- Auto/Moto toggle -->
       <div class="type-toggle" id="typeToggle" data-type="auto" role="tablist">
         <span class="type-toggle-thumb"></span>
