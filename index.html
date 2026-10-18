@@ -191,7 +191,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/css/main.css?v=20261019a">
+<link rel="stylesheet" href="/css/main.css?v=20261019f">
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -239,9 +239,9 @@
       <a href="#articles">Статьи <span class="nav-new-badge">NEW</span></a>
     </nav>
 
-    <div class="header-rates" id="headerRates" aria-label="Курсы валют для расчёта">
-      <span>🇨🇳 <b data-rate="rateCNY">12,59</b></span><span>🇯🇵 <b data-rate="rateJPY">0,57</b></span><span>🇰🇷 <b data-rate="rateKRW">0,065</b></span> <span class="hr-unit">₽</span>
-    </div>
+    <a class="header-rates" id="headerRates" href="/kalkulyator-rastamozhki.html" title="Курсы для расчёта цены. Открыть калькулятор" aria-label="Курсы валют для расчёта. Открыть калькулятор">
+      <span>🇨🇳 <b data-rate="rateCNY">12,59</b></span><span>🇯🇵 <b data-rate="rateJPY">0,57</b></span><span>🇰🇷 <b data-rate="rateKRW">0,065</b></span><span class="hr-unit">₽</span>
+    </a>
 
     <div class="header-cta">
       <a href="tel:+79138533305" class="btn btn-call btn-sm btn-icon btn-pulse" aria-label="Позвонить">
@@ -422,16 +422,19 @@
           <div class="stat-label">дней под ключ</div>
         </div>
         <div class="stat">
-          <div class="stat-value">0₽</div>
-          <div class="stat-label">предоплата<br/>за подбор</div>
+          <div class="stat-value stat-fee">50 000₽</div>
+          <div class="stat-label">фиксированная<br/>комиссия</div>
         </div>
       </div>
       <div class="hero-trust">
-        <span class="trust-fee">Фиксированная комиссия — <b>50 000 ₽</b></span>
         <span class="trust-rev">Отзывы клиентов:
-          <a href="https://2gis.ru/tomsk/firm/70000001091541736/tab/reviews" target="_blank" rel="noopener nofollow">2ГИС</a>
-          <a href="https://yandex.ru/maps/org/paver_kar/83208262095/reviews/" target="_blank" rel="noopener nofollow">Яндекс</a>
-          <a href="/otzyvy.html">Кейсы</a></span>
+          <a class="rev-logo" href="https://2gis.ru/tomsk/firm/70000001091541736/tab/reviews" target="_blank" rel="noopener nofollow" aria-label="Отзывы в 2ГИС" title="Отзывы в 2ГИС">
+            <svg viewBox="0 0 66 26" height="26" aria-hidden="true"><defs><linearGradient id="g2gis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1FB61E"/><stop offset="1" stop-color="#8CC900"/></linearGradient></defs><rect width="66" height="26" rx="13" fill="url(#g2gis)"/><text x="33" y="18.5" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="14.5" fill="#fff" letter-spacing="-.3">2ГИС</text></svg>
+          </a>
+          <a class="rev-logo" href="https://yandex.ru/maps/org/paver_kar/83208262095/reviews/" target="_blank" rel="noopener nofollow" aria-label="Отзывы в Яндекс Картах" title="Отзывы в Яндекс Картах">
+            <svg viewBox="0 0 92 26" height="26" aria-hidden="true"><rect x=".5" y=".5" width="91" height="25" rx="12.5" fill="#15110f" stroke="rgba(255,255,255,.2)"/><circle cx="13" cy="13" r="8.5" fill="#FC3F1D"/><text x="13" y="17.2" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="12" fill="#fff">Я</text><text x="27" y="17.3" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#fff">Карты</text></svg>
+          </a>
+          <a class="rev-case" href="/otzyvy.html">Кейсы</a></span>
       </div>
 
     </div>
@@ -443,7 +446,7 @@
     <div class="section-head-row reveal">
       <div class="section-head" style="margin-bottom:0;">
         <span class="eyebrow">🏆 Выбор клиентов</span>
-        <h2>Топ-10 <span class="glow-text">самых популярных авто</span></h2>
+        <h2>Топ-10 <span class="glow-text">популярных авто</span></h2>
       </div>
       <div class="carousel-controls">
         <button class="carousel-btn" id="top5Prev" aria-label="Предыдущие">
@@ -454,7 +457,7 @@
         </button>
       </div>
     </div>
-    <div class="top5-track" id="top5Track" role="region" aria-label="Топ-10 самых популярных автомобилей">
+    <div class="top5-track" id="top5Track" role="region" aria-label="Топ-10 популярных автомобилей">
       <!-- cards injected by JS -->
     </div>
   </div>
@@ -469,23 +472,8 @@
     </div>
 
     <div class="selector">
-      <!-- КУРС ВАЛЮТ: значения из data/settings.json подставляет js/main.js, в HTML — запасные -->
-      <a class="rates-card glass rates-card--catalog" id="ratesCard" href="/kalkulyator-rastamozhki.html" aria-label="Курсы валют для расчёта цены. Открыть калькулятор">
-        <div class="rates-head"><span class="rates-title">Курс для расчёта</span><span class="rates-foot">Калькулятор →</span></div>
-        <div class="rates-row">
-          <div class="rate"><span class="rate-flag">🇨🇳</span><span class="rate-name">Юань</span><b class="rate-val" data-rate="rateCNY">12,59 ₽</b></div>
-          <div class="rate"><span class="rate-flag">🇯🇵</span><span class="rate-name">Иена</span><b class="rate-val" data-rate="rateJPY">0,57 ₽</b></div>
-          <div class="rate"><span class="rate-flag">🇰🇷</span><span class="rate-name">Вона</span><b class="rate-val" data-rate="rateKRW">0,065 ₽</b></div>
-        </div>
-      </a>
-      <!-- Быстрый фильтр: льготный утильсбор -->
-      <button type="button" class="hp-promo" id="hpPromo" aria-pressed="false">
-        <span class="hp-promo-badge">✨ Выгодно</span>
-        <span class="hp-promo-main">До 160 л.с.</span>
-        <span class="hp-promo-sub">льготный утильсбор — экономия сотни тысяч ₽</span>
-      </button>
-
-      <!-- Auto/Moto toggle -->
+      <!-- Auto/Moto + быстрый фильтр «до 160 л.с.» в одну строку -->
+      <div class="sel-bar">
       <div class="type-toggle" id="typeToggle" data-type="auto" role="tablist">
         <span class="type-toggle-thumb"></span>
         <button class="active" data-type="auto" role="tab" aria-selected="true">
@@ -497,21 +485,32 @@
           Мото
         </button>
       </div>
-
-      <!-- Budget filter -->
-      <label class="selector-label" id="budgetLabel">Бюджет</label>
-      <div class="chips" id="budgetChips" role="radiogroup" aria-labelledby="budgetLabel">
-        <!-- injected by JS depending on type -->
+        <button type="button" class="hp-check" id="hpPromo" aria-pressed="false" title="Льготный утильсбор: мощность до 160 л.с.">
+          <span class="hp-box" aria-hidden="true"></span>
+          <span class="hp-text">До 160 л.с.</span>
+          <span class="hp-sub">выгодный утильсбор</span>
+        </button>
       </div>
 
-      <!-- Age filter -->
-      <label class="selector-label" id="ageLabel">Возраст автомобиля</label>
-      <div class="chips" id="ageChips" role="radiogroup" aria-labelledby="ageLabel">
-        <button class="chip active" data-age="all">Все</button>
-        <button class="chip" data-age="0-3">До 3 лет</button>
-        <button class="chip chip-promo" data-age="3-5">3–5 лет<span class="chip-promo-label">✨ Выгодно</span></button>
-        <button class="chip" data-age="5-10">5–10 лет</button>
-        <button class="chip" data-age="10-19">10–19 лет</button>
+      <div class="sel-row2">
+        <div class="sel-col">
+        <!-- Budget filter -->
+        <label class="selector-label" id="budgetLabel">Бюджет</label>
+        <div class="chips" id="budgetChips" role="radiogroup" aria-labelledby="budgetLabel">
+          <!-- injected by JS depending on type -->
+        </div>
+        </div>
+        <div class="sel-col">
+        <!-- Age filter -->
+        <label class="selector-label" id="ageLabel">Возраст авто</label>
+        <div class="chips" id="ageChips" role="radiogroup" aria-labelledby="ageLabel">
+          <button class="chip active" data-age="all">Все</button>
+          <button class="chip" data-age="0-3">До 3 лет</button>
+          <button class="chip chip-promo" data-age="3-5">3–5 лет<span class="chip-promo-label">✨ Выгодно</span></button>
+          <button class="chip" data-age="5-10">5–10 лет</button>
+          <button class="chip" data-age="10-19">10–19 лет</button>
+        </div>
+        </div>
       </div>
 
       <!-- More filters -->
@@ -1266,6 +1265,6 @@
   <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
   <div class="lightbox-dots" id="lightboxDots"></div>
 </div>
-<script src="/js/main.js?v=20261019a" defer></script>
+<script src="/js/main.js?v=20261019e" defer></script>
 </body>
 </html>

@@ -591,7 +591,7 @@ function getAgeRange() {
 
 // Pagination state
 const PAGE_INITIAL = 6;
-const PAGE_STEP = 3;
+const PAGE_STEP = 6;
 let visibleCount = PAGE_INITIAL;
 
 function filterCars() {
@@ -2137,17 +2137,15 @@ function quizRenderCars() {
     const slug = String(car.id || '').replace(/[^A-Za-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
     const href = slug ? `/auto/${slug}.html` : '#cta';
     return `
-    <article class="quiz-car" data-car-id="${escapeHtml(car.id || '')}">
+    <a class="quiz-car" href="${href}" data-car-id="${escapeHtml(car.id || '')}" data-quiz-car-cta="${escapeHtml(car.brand)} ${escapeHtml(car.model)}">
       <div class="quiz-car-img">${photo}</div>
       <div class="quiz-car-body">
         <div class="quiz-car-name">${title}</div>
         <div class="quiz-car-spec">${spec}</div>
         ${priceBlock}
-        <a class="quiz-car-btn" href="${href}" data-quiz-car-cta="${escapeHtml(car.brand)} ${escapeHtml(car.model)}">
-          Узнать подробности
-        </a>
+        <span class="quiz-car-btn">Подробнее</span>
       </div>
-    </article>`;
+    </a>`;
   }).join('');
 }
 
