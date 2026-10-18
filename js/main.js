@@ -257,12 +257,11 @@ function initFilterDropdowns() {
 
 // Курс валют в каталоге: значения берём из data/settings.json (те же, что в калькуляторе)
 function initRatesCard() {
-  const card = document.getElementById('ratesCard');
-  if (!card) return;
+  if (!document.querySelector('[data-rate]')) return;
   fetch('data/settings.json', { cache: 'no-cache' }).then(r => r.json()).then(s => {
-    card.querySelectorAll('[data-rate]').forEach(el => {
+    document.querySelectorAll('[data-rate]').forEach(el => {
       const v = Number(s[el.dataset.rate]);
-      if (v > 0) el.textContent = String(+v.toFixed(3)).replace('.', ',') + ' ₽';
+      if (v > 0) el.textContent = String(+v.toFixed(3)).replace('.', ',') + (el.closest('.header-rates') ? '' : ' ₽');
     });
   }).catch(() => {});
 }
@@ -485,6 +484,14 @@ function initCasesCarousel() {
   });
 }
 
+// Мощность авто, л.с.: поле power, а если пусто — число из строки двигателя («1.4T-150лс»)
+function carPower(car) {
+  const p = Number(car.power);
+  if (p > 0) return p;
+  const m = String(car.engine || '').match(/(\d{2,3})\s*(?:лс|л\.с)/i);
+  return m ? Number(m[1]) : 0;
+}
+
 // ============ SELECTOR (Подборщик) ============
 function renderBudgetChips() {
   const container = $('#budgetChips');
@@ -602,7 +609,7 @@ function filterCars() {
     if (state.brand !== 'all' && normalizeBrand(car.brand).toLowerCase() !== state.brand.toLowerCase()) { matches = false; }
     // Точная мощность (фильтр активен только если двинут со значения по умолчанию = 500)
     if (state.power < 500) {
-      const p = Number(car.power);
+      const p = carPower(car);
       if (!p || p > state.power) { matches = false; }
     }
     // Привод (фильтрует только лоты с заполненным car.drive)
@@ -730,15 +737,20 @@ function initSelector() {
   const powerValue  = $('#powerValue');
   const powerWarn   = $('#powerWarn');
   if (powerSlider) {
-    powerSlider.addEventListener('input', () => {
-      const v = Number(powerSlider.value);
+    const hpPromo = $('#hpPromo');
+    const applyPower = (v) => {
       state.power = v;
+      powerSlider.value = String(v);
       if (powerValue) powerValue.textContent = String(v);
       if (powerWarn)  powerWarn.classList.toggle('show', v > 160);
+      if (hpPromo) { hpPromo.classList.toggle('active', v === 160); hpPromo.setAttribute('aria-pressed', String(v === 160)); }
       trackOnce('calc_used');
       resetPagination();
       renderResults();
-    });
+    };
+    powerSlider.addEventListener('input', () => applyPower(Number(powerSlider.value)));
+    // Быстрый фильтр «До 160 л.с.»: льготный утильсбор. Повторное нажатие снимает фильтр
+    if (hpPromo) hpPromo.addEventListener('click', () => applyPower(state.power === 160 ? 500 : 160));
   }
 
   // Drive chips

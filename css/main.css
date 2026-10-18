@@ -3822,3 +3822,43 @@ section p > a[href="/otzyvy.html"]:hover { text-decoration-color: #fff; }
 
 /* Отступы между блоками: вдвое меньше прежних (секции 36/56 px, у hero — снизу 30 px) */
 section.hero { padding-top: 64px; padding-bottom: 30px; min-height: 0; }
+
+/* ============ Строка курса в шапке (только телефон, мелко; пропадает при прокрутке) ============ */
+.header-rates { display: none; }
+@media (max-width: 1023px) {
+  .header-rates {
+    display: flex; gap: 10px; justify-content: center; align-items: baseline;
+    position: absolute; top: calc(100% + 3px); left: 0; right: 0;
+    font-size: 0.62rem; line-height: 1; color: rgba(255,255,255,0.55);
+    pointer-events: none; transition: opacity .25s;
+  }
+  .header-rates b { font-weight: 600; color: rgba(255,255,255,0.8); }
+  .header-rates .hr-unit { margin-left: -4px; }
+  .header.scrolled .header-rates { opacity: 0; }
+  /* в каталоге на телефоне крупная плашка курса не нужна — курс уже в шапке */
+  .rates-card--catalog { display: none; }
+}
+
+/* ============ Под плашкой цифр: комиссия и ссылки на отзывы ============ */
+.hero-trust { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 0.86rem; color: var(--text-muted); }
+.hero-trust b { color: var(--text); font-weight: 700; }
+.trust-rev { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.trust-rev a { padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border-2); background: var(--surface-2); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.8rem; }
+.trust-rev a:hover { border-color: rgba(52,211,153,0.5); color: var(--accent-2); }
+@media (min-width: 1024px) { .hero-grid > .routes-map { grid-row: 1 / span 3; } .hero-grid > .hero-trust { align-self: start; } }
+
+/* ============ Плашка «До 160 л.с.» ============ */
+.hp-promo {
+  position: relative; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; width: 100%;
+  padding: 14px 18px; margin-bottom: 18px; border-radius: 16px; cursor: pointer; text-align: left;
+  background: linear-gradient(135deg, rgba(16,185,129,0.16), rgba(251,191,36,0.10));
+  border: 1px solid rgba(52,211,153,0.4); color: var(--text); font: inherit;
+  -webkit-tap-highlight-color: transparent; transition: border-color .2s, background .2s;
+}
+.hp-promo:hover { border-color: var(--accent-2); }
+.hp-promo.active { background: linear-gradient(135deg, rgba(16,185,129,0.4), rgba(16,185,129,0.18)); border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.hp-promo-badge { flex: none; padding: 3px 10px; border-radius: 999px; background: #FBBF24; color: #3b2a00; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.02em; align-self: center; }
+.hp-promo-main { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
+.hp-promo-sub { color: var(--text-muted); font-size: 0.84rem; flex-basis: 100%; }
+@media (min-width: 640px) { .hp-promo-sub { flex-basis: auto; } }
+.hp-promo.active .hp-promo-main::after { content: ' ✓'; color: var(--accent-2); }

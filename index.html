@@ -191,7 +191,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/css/main.css?v=20261018e">
+<link rel="stylesheet" href="/css/main.css?v=20261019a">
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -238,6 +238,10 @@
       <a href="#faq">Вопросы</a>
       <a href="#articles">Статьи <span class="nav-new-badge">NEW</span></a>
     </nav>
+
+    <div class="header-rates" id="headerRates" aria-label="Курсы валют для расчёта">
+      <span>🇨🇳 <b data-rate="rateCNY">12,59</b></span><span>🇯🇵 <b data-rate="rateJPY">0,57</b></span><span>🇰🇷 <b data-rate="rateKRW">0,065</b></span> <span class="hr-unit">₽</span>
+    </div>
 
     <div class="header-cta">
       <a href="tel:+79138533305" class="btn btn-call btn-sm btn-icon btn-pulse" aria-label="Позвонить">
@@ -422,6 +426,13 @@
           <div class="stat-label">предоплата<br/>за подбор</div>
         </div>
       </div>
+      <div class="hero-trust">
+        <span class="trust-fee">Фиксированная комиссия — <b>50 000 ₽</b></span>
+        <span class="trust-rev">Отзывы клиентов:
+          <a href="https://2gis.ru/tomsk/firm/70000001091541736/tab/reviews" target="_blank" rel="noopener nofollow">2ГИС</a>
+          <a href="https://yandex.ru/maps/org/paver_kar/83208262095/reviews/" target="_blank" rel="noopener nofollow">Яндекс</a>
+          <a href="/otzyvy.html">Кейсы</a></span>
+      </div>
 
     </div>
   </div>
@@ -467,6 +478,13 @@
           <div class="rate"><span class="rate-flag">🇰🇷</span><span class="rate-name">Вона</span><b class="rate-val" data-rate="rateKRW">0,065 ₽</b></div>
         </div>
       </a>
+      <!-- Быстрый фильтр: льготный утильсбор -->
+      <button type="button" class="hp-promo" id="hpPromo" aria-pressed="false">
+        <span class="hp-promo-badge">✨ Выгодно</span>
+        <span class="hp-promo-main">До 160 л.с.</span>
+        <span class="hp-promo-sub">льготный утильсбор — экономия сотни тысяч ₽</span>
+      </button>
+
       <!-- Auto/Moto toggle -->
       <div class="type-toggle" id="typeToggle" data-type="auto" role="tablist">
         <span class="type-toggle-thumb"></span>
@@ -1248,6 +1266,6 @@
   <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
   <div class="lightbox-dots" id="lightboxDots"></div>
 </div>
-<script src="/js/main.js?v=20261018e" defer></script>
+<script src="/js/main.js?v=20261019a" defer></script>
 </body>
 </html>
