@@ -171,8 +171,8 @@ h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
   .container { padding-left: max(40px, var(--sal)); padding-right: max(40px, var(--sar)); }
 }
 
-section { position: relative; padding: 72px 0; }
-@media (min-width: 768px) { section { padding: 112px 0; } }
+section { position: relative; padding: 36px 0; }
+@media (min-width: 768px) { section { padding: 56px 0; } }
 
 /* ============ GLASS ============ */
 .glass {
@@ -611,7 +611,7 @@ body.menu-open { overflow: hidden; }
   /* iOS-safe: avoid 100vh which includes hidden URL bar */
   padding-top: 140px;
   padding-top: calc(140px + var(--sat));
-  padding-bottom: 60px;
+  padding-bottom: 30px;
 }
 @media (min-width: 1024px) {
   .hero {
@@ -3819,3 +3819,6 @@ section p > a[href="/otzyvy.html"]:hover { text-decoration-color: #fff; }
   .top5-track .car-img { aspect-ratio: 4 / 3; }
   .top5-track .car-card .car-meta-item:not(:first-child) { display: none; }
 }
+
+/* Отступы между блоками: вдвое меньше прежних (секции 36/56 px, у hero — снизу 30 px) */
+section.hero { padding-top: 64px; padding-bottom: 30px; min-height: 0; }

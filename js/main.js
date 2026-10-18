@@ -1118,7 +1118,7 @@ function renderCases() {
     const hasPhotos = Array.isArray(c.photos) && c.photos.length > 0;
     const hasVideo = !!c.videoUrl;
     const imgContent = hasPhotos
-      ? `<img src="${c.photos[0]}" alt="${c.carTitle}" loading="lazy">`
+      ? `<img src="${c.photos[0].replace(/\.webp$/, '-card.webp')}" alt="${c.carTitle}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${c.photos[0]}'">`
       : caseImageSvg();
     const countBadge = hasPhotos
       ? `<div class="car-photo-count">
