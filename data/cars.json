@@ -6132,5 +6132,55 @@
     "drive": "fwd",
     "description": "Hyundai Sonata 2.0 (146 л.с.), комплектация Premium, 2022 год, пробег 40 000 км. Левый руль.",
     "trim": "Premium"
+  },
+  {
+    "id": "Hyundai-ix25-GLS-Intelligent-2021",
+    "brand": "Hyundai",
+    "model": "ix25 1.5 GLS Intelligent",
+    "year": 2021,
+    "mileage": 80000,
+    "engine": "1.5",
+    "power": 115,
+    "transmission": "CVT",
+    "body": "crossover",
+    "country": "China",
+    "flag": "🇨🇳",
+    "wheel": "left",
+    "deliveryMin": 21,
+    "deliveryMax": 28,
+    "hit": false,
+    "weight": 4,
+    "published": true,
+    "addedAt": "2026-10-19",
+    "type": "auto",
+    "priceMarket": 1950000,
+    "calc": {
+      "marketLocal": 75769,
+      "customs": 221064,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 1500000,
+    "photos": [
+      "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-1.webp",
+      "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-2.webp",
+      "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-3.webp",
+      "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-4.webp",
+      "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-5.webp",
+      "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-6.webp",
+      "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-7.webp",
+      "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-8.webp"
+    ],
+    "breakdown": {
+      "auction": 953936,
+      "domestic": 175000,
+      "delivery": 0,
+      "customs": 221064,
+      "docs": 100000,
+      "commission": 50000
+    },
+    "drive": "fwd",
+    "trim": "GLS Intelligent",
+    "description": "Hyundai ix25 1.5 CVT (2020 модельный год), комплектация GLS Intelligent. Выпуск июль 2021 года, пробег 80 000 км, левый руль."
   }
 ]
