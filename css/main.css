@@ -199,8 +199,6 @@ section { position: relative; padding: 36px 0; }
   outline-offset: 2px;
   border-radius: var(--r-xs);
 }
-</style>
-<style>
 /* ============ ANNOUNCEMENT BAR ============ */
 .announce {
   position: fixed;
@@ -603,8 +601,6 @@ body.menu-open { overflow: hidden; }
   background: linear-gradient(180deg, var(--accent-2), var(--accent));
   color: #002417;
 }
-</style>
-<style>
 /* ============ HERO ============ */
 .hero {
   position: relative;
@@ -1652,8 +1648,6 @@ a.car-title:hover { color: var(--accent-2); }
   font-size: 0.82rem;
   font-weight: 400;
 }
-</style>
-<style>
 /* ============ CREDIT (compact) ============ */
 .credit-strip {
   padding: 18px 20px;
@@ -3187,8 +3181,6 @@ a.car-title:hover { color: var(--accent-2); }
   .video-modal-prev { left: 6px; width: 40px; height: 40px; }
   .video-modal-next { right: 6px; width: 40px; height: 40px; }
 }
-</style>
-<style>
 /* ============ MENU COUNTER (green badge) ============ */
 .menu-counter {
   display: inline-flex;
@@ -3330,8 +3322,6 @@ a.cta-anchor-link:hover .cta-anchor-arrow { transform: translateX(4px); }
   filter: brightness(1.06);
   transform: translateY(-1px);
 }
-</style>
-<style>
 /* ============ QUIZ ============ */
 .quiz-shell {
   border-radius: var(--r-lg);
@@ -3927,3 +3917,25 @@ a.quiz-car { color: inherit; text-decoration: none; }
 a.quiz-car:hover { border-color: rgba(52,211,153,0.5); }
 @media (max-width: 639px) { .quiz-car-btn { display: none; } }
 @media (min-width: 1024px) { .quiz-cars { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+/* ============ ТЕЛЕФОН: шапка должна помещаться в экран (раньше min-content ≈ 424 px растягивал страницу вбок) ============ */
+@media (max-width: 1023px) {
+  .header { min-width: 0; max-width: calc(100% - 16px); margin-left: 8px; margin-right: 8px; padding: 6px 6px 6px 14px; gap: 6px; }
+  .header .logo { flex: 0 1 auto; min-width: 0; }
+  .header-cta { gap: 4px; flex: 0 0 auto; }
+  .header-cta .btn-sm.btn-icon { min-width: 38px; min-height: 38px; padding: 8px; }
+  .header-cta .header-cta-catalog { padding: 8px 14px; font-size: 0.82rem; min-height: 38px; }
+}
+@media (max-width: 380px) {
+  .header { padding-left: 10px; }
+  .header-cta .header-cta-catalog { padding: 8px 10px; }
+}
+
+/* Сортировка не должна вылезать за плашку подбора на узких экранах */
+.results-sort { max-width: 100%; min-width: 0; }
+.results-sort select { min-width: 0; max-width: 100%; }
+@media (max-width: 480px) { .results-sort { width: 100%; } .results-sort select { flex: 1 1 auto; width: 100%; } }
+
+/* Курс валют — язычок под шапкой слева, чуть заходит на её нижний край (все ширины) */
+.header-rates { top: calc(100% - 6px); bottom: auto; left: 52px; right: auto; transform: none; z-index: 2; gap: 8px; padding: 6px 12px 3px; border: 1px solid rgba(255,255,255,0.10); border-top: 0; border-radius: 0 0 12px 12px; background: rgba(12,18,15,0.94); }
+@media (min-width: 1024px) { .header-rates { left: 72px; } }
