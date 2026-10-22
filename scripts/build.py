@@ -214,6 +214,11 @@ def expand_car_markers(body):
     # объединённая группа «china» (все китайские по убыванию цены) для статей, которым нужен общий список
     groups["china"] = sorted(groups.get("china-local", []) + groups.get("china-global", []), key=lambda c: -c["price"])
     # «japan-1m»: все японские до 1 млн ₽ (правый руль и кей-кары), по убыванию цены
+    # «japan-german-plus»: праворукие немцы из Японии чуть выше потолка бюджета (1,5–2,5 млн ₽), по убыванию цены
+    _all = [c for c in json.load(open("data/cars.json", encoding="utf-8"))
+            if c.get("published") is not False and c.get("type", "auto") == "auto" and c["id"] not in CARS_EXCLUDE]
+    groups["japan-german-plus"] = sorted([c for c in _all if c.get("country") == "Japan" and c.get("brand") in {"Mercedes-Benz", "BMW", "Audi", "Volkswagen"}
+                                          and BUDGET_MAX < c["price"] <= 2500000], key=lambda c: -c["price"])
     groups["japan-1m"] = [c for c in cs if c.get("country") == "Japan" and c["price"] <= 1000000]
     def grid(m):
         g = groups.get(m.group(1), [])
