@@ -711,7 +711,7 @@ body.menu-open { overflow: hidden; }
 @media (min-width: 1024px) {
   .hero-grid { row-gap: 0; }
   .hero-grid > .stats { margin-top: 36px; align-self: start; }
-  .hero-grid > .routes-map { max-width: 450px; grid-column: 2; grid-row: 1 / span 2; align-self: start; margin: 8px 0 0 auto; }
+  .hero-grid > .routes-map { max-width: none; width: 100%; grid-column: 2; grid-row: 1 / span 3; align-self: center; margin: 0; }
 }
 @media (max-width: 1023px) { .hero-grid { gap: 0; } .hero-grid > .stats { margin-top: 32px; } }
 
@@ -739,7 +739,7 @@ body.menu-open { overflow: hidden; }
   position: relative;
   width: 100%;
   aspect-ratio: 580 / 460;
-  max-width: 450px;
+  max-width: 560px;
   margin: 0 auto;
 }
 .routes-map svg { width: 100%; height: 100%; display: block; overflow: visible; }
@@ -3979,3 +3979,12 @@ a.quiz-car:hover { border-color: rgba(52,211,153,0.5); }
 .header-rates::before { left: -10px; background: radial-gradient(circle at 0 100%, transparent 8.8px, var(--hb) 8.8px 9.8px, var(--hbg) 9.8px); }
 .header-rates::after { right: -10px; background: radial-gradient(circle at 100% 100%, transparent 8.8px, var(--hb) 8.8px 9.8px, var(--hbg) 9.8px); }
 @media (min-width: 1024px) { .header-rates { left: 72px; } }
+
+/* Владивосток: мягкое дыхание свечения, вращающееся кольцо, мерцающий луч маяка */
+.hub-glow { transform-box: fill-box; transform-origin: center; animation: hubBreathe 3.4s ease-in-out infinite; }
+@keyframes hubBreathe { 0%, 100% { transform: scale(0.85); opacity: 0.75; } 50% { transform: scale(1.15); opacity: 1; } }
+.hub-ring { transform-box: fill-box; transform-origin: center; animation: hubSpin 18s linear infinite; }
+@keyframes hubSpin { to { transform: rotate(360deg); } }
+.vvo-beam { animation: beamFlicker 2.2s ease-in-out infinite; }
+@keyframes beamFlicker { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.6; } }
+@media (prefers-reduced-motion: reduce) { .hub-glow, .hub-ring, .vvo-beam { animation: none; } }
