@@ -370,6 +370,12 @@ function badgesFor(car) {
   return [];
 }
 
+// Лёгкое превью (480 px) для карточек: images/cars/X/1.webp -> images/thumbs/cars/X/1.webp (создаёт scripts/make_thumbs.py)
+function thumbOf(p) {
+  if (!p || p.indexOf('images/') !== 0) return p;
+  return 'images/thumbs/' + p.slice(7).replace(/\.[a-z0-9]+$/i, '') + '.webp';
+}
+
 function renderCarCard(car, opts = {}) {
   const badges = badgesFor(car);
   const badgesHtml = badges.map(b => `<span class="car-badge ${b.cls}">${b.text}</span>`).join('');
@@ -380,7 +386,7 @@ function renderCarCard(car, opts = {}) {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
     ${car.photos.length} фото
   </div>` : '';
-  const imageContent = hasPhotos ? `<img src="${car.photos[0]}" alt="${car.brand} ${car.model}" loading="lazy">` : (car.type === 'moto' ? motoImageSvg() : carImageSvg(car.brand));
+  const imageContent = hasPhotos ? `<img src="${thumbOf(car.photos[0])}" alt="${car.brand} ${car.model}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${car.photos[0]}'">` : (car.type === 'moto' ? motoImageSvg() : carImageSvg(car.brand));
 
   const card = document.createElement('article');
   card.className = 'car-card';
@@ -2316,6 +2322,7 @@ function initMobileMenu() {
   const open = () => {
     menu.classList.add('open');
     menu.setAttribute('aria-hidden', 'false');
+    menu.removeAttribute('inert');
     burger.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
     track('menu_opened'); // Цель Метрики
@@ -2323,6 +2330,7 @@ function initMobileMenu() {
   const close = () => {
     menu.classList.remove('open');
     menu.setAttribute('aria-hidden', 'true');
+    menu.setAttribute('inert', '');
     burger.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
   };

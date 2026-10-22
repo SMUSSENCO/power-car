@@ -32,6 +32,12 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Install Pillow (для превью фото)
+        run: pip install pillow
+
+      - name: Make card thumbnails
+        run: python3 scripts/make_thumbs.py
+
       - name: Generate static pages
         run: python3 scripts/build.py
 
@@ -39,7 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add articles auto sitemap.xml
+          git add articles auto otzyvy.html sitemap.xml images/thumbs
           if git diff --staged --quiet; then
             echo "Изменений нет — коммит не нужен."
           else

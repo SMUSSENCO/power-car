@@ -36,10 +36,17 @@
 <link rel="manifest" href="/site.webmanifest" />
 <meta name="theme-color" content="#10B981" />
 
-<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-<link rel="preconnect" href="https://mc.yandex.ru">
-<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet"></noscript>
+<!-- Шрифты свои (без обращений к чужим серверам): Manrope — кириллица и латиница, Bricolage Grotesque — латиница и цифры -->
+<link rel="preload" href="/fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/bricolage-grotesque-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/bricolage-grotesque-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/manrope-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/manrope-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/manrope-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/manrope-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+</style>
+<link rel="dns-prefetch" href="https://mc.yandex.ru">
 
 <!-- JSON-LD LocalBusiness -->
 <script type="application/ld+json">
@@ -93,7 +100,7 @@
     {
       "@type": "AutoDealer",
       "name": "POWER Car — Новосибирск",
-      "telephone": "+7-983-238-79-57",
+      "telephone": "+7-499-390-07-06",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "проспект Карла Маркса, 57, офис 511",
@@ -191,13 +198,16 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/css/main.css?v=20261021d">
+<link rel="stylesheet" href="/css/main.css?v=20261022a">
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();
    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   // тег грузим не во время отрисовки, а после загрузки страницы (+1,2 с): события, отправленные раньше, встают в очередь
+   var load=function(){k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)};
+   if (document.readyState==='complete') setTimeout(load,1200); else window.addEventListener('load',function(){setTimeout(load,1200)});
+   })
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=109736434", "ym");
 
    ym(109736434, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
@@ -265,7 +275,7 @@
 </div>
 
 <!-- Mobile burger menu (slide-down panel) -->
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
   <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
   <nav class="mobile-menu-panel" aria-label="Меню">
     <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть">
@@ -1177,7 +1187,7 @@
         </a>
         <p class="footer-slogan">Надёжность, рождённая в Сибири</p>
         <p>Импорт автомобилей и мотоциклов из Китая, Японии и Кореи под ключ. Прозрачные расчёты, документы и сопровождение на каждом этапе.</p>
-        <h4>Соцсети</h4>
+        <h3>Соцсети</h3>
         <div class="social-grid">
           <a href="https://www.instagram.com/power.car70" target="_blank" rel="noopener nofollow" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           <a href="https://vk.com/powercar70" target="_blank" rel="noopener" class="social-icon" aria-label="ВКонтакте"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.435-.193c.135-.148.131-.425.131-.425s-.019-1.305.587-1.497c.597-.19 1.363 1.262 2.175 1.819.614.422 1.081.33 1.081.33l2.171-.031s1.135-.07.597-.964c-.044-.073-.314-.661-1.617-1.871-1.366-1.268-1.183-1.063.462-3.253 1.001-1.335 1.402-2.15 1.276-2.498-.119-.332-.855-.244-.855-.244l-2.442.015s-.181-.025-.315.056c-.131.079-.215.262-.215.262s-.387 1.035-.905 1.916c-1.091 1.857-1.528 1.955-1.707 1.84-.418-.272-.313-1.082-.313-1.657 0-1.797.272-2.547-.528-2.74-.265-.064-.461-.106-1.138-.113-.869-.009-1.605.003-2.022.208-.277.135-.491.439-.361.456.161.022.525.099.717.363.249.341.24 1.106.24 1.106s.143 2.103-.336 2.365c-.327.179-.776-.187-1.748-1.875-.498-.864-.874-1.819-.874-1.819s-.072-.176-.201-.27c-.156-.114-.374-.151-.374-.151l-2.322.015s-.348.01-.476.161c-.114.135-.009.413-.009.413s1.818 4.252 3.875 6.394c1.887 1.965 4.03 1.836 4.03 1.836z"/></svg></a>
@@ -1186,12 +1196,12 @@
       </div>
 
       <div class="footer-col">
-        <h4>Офисы</h4>
+        <h3>Офисы</h3>
         <div class="footer-office">
           <b>🏔 Томск</b><a href="tel:+79138533305">+7 913 853-33-05</a>
         </div>
         <div class="footer-office">
-          <b>🌆 Новосибирск</b><a href="tel:+79832387957">+7 983 238-79-57</a>
+          <b>🌆 Новосибирск</b><a href="tel:+74993900706">+7 499 390-07-06</a>
         </div>
         <div class="footer-office">
           <b>🏛 Москва</b><a href="tel:+74993900706">+7 499 390-07-06</a>
@@ -1199,13 +1209,13 @@
       </div>
 
       <div class="footer-col">
-        <h4>Документы</h4>
+        <h3>Документы</h3>
         <p class="footer-docs-inline">
           <a href="docs/privacy.html">Политика конфиденциальности</a> ·
           <a href="docs/terms.html">Пользовательское соглашение</a> ·
           <a href="docs/agreement.html">Макет договора</a>
         </p>
-        <h4 style="margin-top:14px">Клиентам</h4>
+        <h3 style="margin-top:14px">Клиентам</h3>
         <p class="footer-docs-inline">
           <a href="/otzyvy.html">Отзывы и кейсы</a> ·
           <a href="/kalkulyator-rastamozhki.html">Калькулятор под ключ</a> ·
@@ -1217,7 +1227,7 @@
     <div class="footer-legal">
       <span>© 2026 POWER Car · Все права защищены</span>
       <span>ИП Степанов Александр Васильевич · ИНН 702205795181 · ОГРНИП 325700000053969</span>
-      <span style="opacity:0.7;font-size:0.75rem;">Информация на сайте носит информационный характер и не является публичной офертой (ст. 437 ГК РФ). Финальная стоимость рассчитывается индивидуально под каждый запрос.</span>
+      <span style="font-size:0.75rem;">Информация на сайте носит информационный характер и не является публичной офертой (ст. 437 ГК РФ). Финальная стоимость рассчитывается индивидуально под каждый запрос.</span>
     </div>
   </div>
 </footer>
@@ -1265,6 +1275,6 @@
   <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
   <div class="lightbox-dots" id="lightboxDots"></div>
 </div>
-<script src="/js/main.js?v=20261021a" defer></script>
+<script src="/js/main.js?v=20261022a" defer></script>
 </body>
 </html>

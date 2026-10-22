@@ -659,8 +659,6 @@ body.menu-open { overflow: hidden; }
   color: var(--text-muted);
   max-width: 540px;
   line-height: 1.55;
-  opacity: 0;
-  animation: rise 0.9s var(--ease-out) 0.5s forwards;
 }
 
 .hero-cta-row {
@@ -668,8 +666,6 @@ body.menu-open { overflow: hidden; }
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  opacity: 0;
-  animation: rise 0.9s var(--ease-out) 0.7s forwards;
 }
 
 .stats {
@@ -683,8 +679,6 @@ body.menu-open { overflow: hidden; }
   border: 1px solid var(--border);
   -webkit-backdrop-filter: blur(24px) saturate(140%);
   backdrop-filter: blur(24px) saturate(140%);
-  opacity: 0;
-  animation: rise 0.9s var(--ease-out) 0.9s forwards;
 }
 .stat { text-align: left; padding: 0 12px; position: relative; }
 .stat + .stat::before {
@@ -2536,7 +2530,7 @@ a.car-title:hover { color: var(--accent-2); }
 .footer-brand .logo-svg { height: 36px; }
 .footer-brand p { margin-top: 12px; color: var(--text-muted); font-size: 0.82rem; max-width: 360px; line-height: 1.5; }
 .footer-slogan { margin-top: 10px; color: var(--accent); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; }
-.footer h4 {
+.footer h3, .footer h4 {
   font-family: var(--font-body);
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -3939,3 +3933,9 @@ a.quiz-car:hover { border-color: rgba(52,211,153,0.5); }
 /* Курс валют — язычок под шапкой слева, чуть заходит на её нижний край (все ширины) */
 .header-rates { top: calc(100% - 6px); bottom: auto; left: 52px; right: auto; transform: none; z-index: 2; gap: 8px; padding: 6px 12px 3px; border: 1px solid rgba(255,255,255,0.10); border-top: 0; border-radius: 0 0 12px 12px; background: rgba(12,18,15,0.94); }
 @media (min-width: 1024px) { .header-rates { left: 72px; } }
+
+/* ============ PageSpeed 2026-10-22 ============ */
+/* Анимация градиента текста гоняла перерисовку 11 элементов: на телефонах и при «меньше движения» отключена */
+@media (max-width: 767px), (prefers-reduced-motion: reduce) { .glow-text { animation: none; background-position: 50% center; } }
+/* Мелкий текст подвала: достаточный контраст */
+.footer-legal span { color: rgba(255,255,255,0.7); }
