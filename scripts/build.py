@@ -141,13 +141,13 @@ ART_STYLE += CARDS_CSS
 
 EURO_BRANDS = {"Volkswagen", "Mercedes-Benz", "Audi", "BMW", "Renault", "Fiat", "Peugeot", "Skoda", "Opel", "Mini", "Volvo"}
 CARS_EXCLUDE = {"toyota-sienta-1.5-109hp"}   # в каталоге год 2025 при пробеге 105 тыс. км — пока не публикуем в подборках, пока данные не уточнены
-BUDGET_MAX = 1500000
+BUDGET_MAX = 1600000   # «до 1,5 млн» с запасом +100 тыс. на курс и округления
 
 def _budget_cars():
     cs = [c for c in json.load(open("data/cars.json", encoding="utf-8"))
           if c.get("published") is not False and c.get("price") and c["price"] <= BUDGET_MAX
           and c.get("type", "auto") == "auto" and c["id"] not in CARS_EXCLUDE]
-    cs.sort(key=lambda c: -c["price"])
+    cs.sort(key=lambda c: (-(c.get("year") or 0), -c["price"]))   # сначала свежие и дорогие, самые возрастные в конце
     return cs
 
 CHINA_LOCAL_BRANDS = {"Haval", "Chery", "Geely", "Changan", "Jetour", "BYD", "Great Wall", "GAC", "Zeekr", "Lynk & Co", "Exeed", "Omoda",
@@ -213,13 +213,13 @@ def expand_car_markers(body):
     for c in cs: groups.setdefault(_group_of(c), []).append(c)
     # объединённая группа «china» (все китайские по убыванию цены) для статей, которым нужен общий список
     groups["china"] = sorted(groups.get("china-local", []) + groups.get("china-global", []), key=lambda c: -c["price"])
-    # «japan-1m»: все японские до 1 млн ₽ (правый руль и кей-кары), по убыванию цены
+    # «japan-all»: все японские в рамках бюджета (правый руль и кей-кары)
     # «japan-german-plus»: праворукие немцы из Японии чуть выше потолка бюджета (1,5–2,5 млн ₽), по убыванию цены
     _all = [c for c in json.load(open("data/cars.json", encoding="utf-8"))
             if c.get("published") is not False and c.get("type", "auto") == "auto" and c["id"] not in CARS_EXCLUDE]
     groups["japan-german-plus"] = sorted([c for c in _all if c.get("country") == "Japan" and c.get("brand") in {"Mercedes-Benz", "BMW", "Audi", "Volkswagen"}
                                           and BUDGET_MAX < c["price"] <= 2500000], key=lambda c: -c["price"])
-    groups["japan-1m"] = [c for c in cs if c.get("country") == "Japan" and c["price"] <= 1000000]
+    groups["japan-all"] = [c for c in cs if c.get("country") == "Japan"]
     def grid(m):
         g = groups.get(m.group(1), [])
         shown.extend(g)
@@ -596,6 +596,13 @@ articles = [a for a in json.load(open("data/articles.json", encoding="utf-8")) i
 cars = [c for c in json.load(open("data/cars.json", encoding="utf-8")) if c.get("published")]
 
 art_files = {a["slug"] + ".html": article_page(a, articles) for a in articles}
+# переименованные статьи: на старом адресе остаётся заглушка-редирект (адрес уже мог попасть в поиск)
+REDIRECTS = {"chto-privezti-iz-yaponii-do-1-mln": "chto-privezti-iz-yaponii-do-1-5-mln"}
+for _old, _new in REDIRECTS.items():
+    _u = BASE + "articles/" + _new + ".html"
+    art_files[_old + ".html"] = ('<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Статья переехала</title>'
+        f'<link rel="canonical" href="{_u}"><meta http-equiv="refresh" content="0; url={_u}"><meta name="robots" content="noindex,follow"></head>'
+        f'<body><p>Статья переехала: <a href="{_u}">{_u}</a></p></body></html>')
 car_files = {slugify(c["id"]) + ".html": car_page(c, articles) for c in cars}
 rv_art, rv_ld = reviews_article()
 with open("otzyvy.html", "w", encoding="utf-8") as _f:
