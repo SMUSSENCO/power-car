@@ -198,7 +198,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/css/main.css?v=20261022a">
+<link rel="stylesheet" href="/css/main.css?v=20261022b">
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -303,9 +303,12 @@
           <span class="word">Привезём авто и мото</span><br/>
           <span class="word">от 250 тыс из <span class="country-rotator" id="rotator">Кореи</span></span>
         </h1>
-        <p class="hero-sub">
-          Авто и мотоциклы из Японии, Кореи и Китая под ключ: подбор, выкуп, доставка и растаможка за 25–40 дней. Без скрытых платежей и предоплаты за подбор.
-        </p>
+        <div class="origin-flags" role="list" aria-label="Страны, откуда везём автомобили и мотоциклы">
+          <div class="origin-flag" role="listitem"><svg class="of-flag" viewBox="0 0 36 24" aria-hidden="true"><rect width="36" height="24" rx="3" fill="#f4f4f2"/><circle cx="18" cy="12" r="7" fill="#d4213d"/></svg><span><b>Япония</b><small>авто и мото</small></span></div>
+          <div class="origin-flag" role="listitem"><svg class="of-flag" viewBox="0 0 36 24" aria-hidden="true"><rect width="36" height="24" rx="3" fill="#f4f4f2"/><circle cx="18" cy="12" r="4.6" fill="#cd2e3a"/><path d="M13.4 12a4.6 4.6 0 0 0 9.2 0a2.3 2.3 0 0 0-4.6 0a2.3 2.3 0 0 1-4.6 0z" fill="#0047a0"/><g transform="translate(18 12) rotate(-33) translate(0 -8.4)"><rect x="-2.6" y="-1.9" width="5.2" height="0.9" fill="#222"/><rect x="-2.6" y="0.0" width="5.2" height="0.9" fill="#222"/><rect x="-2.6" y="1.9" width="5.2" height="0.9" fill="#222"/></g><g transform="translate(18 12) rotate(33) translate(0 -8.4)"><rect x="-2.6" y="-1.9" width="2.2" height="0.9" fill="#222"/><rect x="0.4" y="-1.9" width="2.2" height="0.9" fill="#222"/><rect x="-2.6" y="0.0" width="5.2" height="0.9" fill="#222"/><rect x="-2.6" y="1.9" width="2.2" height="0.9" fill="#222"/><rect x="0.4" y="1.9" width="2.2" height="0.9" fill="#222"/></g><g transform="translate(18 12) rotate(-147) translate(0 -8.4)"><rect x="-2.6" y="-1.9" width="5.2" height="0.9" fill="#222"/><rect x="-2.6" y="0.0" width="2.2" height="0.9" fill="#222"/><rect x="0.4" y="0.0" width="2.2" height="0.9" fill="#222"/><rect x="-2.6" y="1.9" width="5.2" height="0.9" fill="#222"/></g><g transform="translate(18 12) rotate(147) translate(0 -8.4)"><rect x="-2.6" y="-1.9" width="2.2" height="0.9" fill="#222"/><rect x="0.4" y="-1.9" width="2.2" height="0.9" fill="#222"/><rect x="-2.6" y="0.0" width="2.2" height="0.9" fill="#222"/><rect x="0.4" y="0.0" width="2.2" height="0.9" fill="#222"/><rect x="-2.6" y="1.9" width="2.2" height="0.9" fill="#222"/><rect x="0.4" y="1.9" width="2.2" height="0.9" fill="#222"/></g></svg><span><b>Корея</b><small>авто</small></span></div>
+          <div class="origin-flag" role="listitem"><svg class="of-flag" viewBox="0 0 36 24" aria-hidden="true"><rect width="36" height="24" rx="3" fill="#de2910"/><polygon points="7.00,2.80 7.94,5.70 10.99,5.70 8.53,7.50 9.47,10.40 7.00,8.60 4.53,10.40 5.47,7.50 3.01,5.70 6.06,5.70" fill="#ffde00"/><polygon points="14.46,1.93 14.43,2.91 15.35,3.25 14.41,3.52 14.37,4.50 13.82,3.68 12.88,3.95 13.48,3.18 12.94,2.37 13.86,2.70" fill="#ffde00"/><polygon points="17.35,4.65 16.91,5.52 17.60,6.21 16.63,6.06 16.19,6.93 16.04,5.96 15.07,5.81 15.94,5.37 15.79,4.40 16.48,5.09" fill="#ffde00"/><polygon points="17.67,8.54 16.90,9.14 17.23,10.06 16.42,9.52 15.65,10.12 15.92,9.18 15.10,8.63 16.08,8.59 16.35,7.65 16.69,8.57" fill="#ffde00"/><polygon points="15.33,11.63 14.36,11.77 14.19,12.74 13.76,11.86 12.79,11.99 13.49,11.31 13.06,10.43 13.93,10.89 14.63,10.21 14.46,11.17" fill="#ffde00"/></svg><span><b>Китай</b><small>авто</small></span></div>
+        </div>
+        <p class="sr-only">Авто и мотоциклы из Японии, Кореи и Китая под ключ: подбор, выкуп, доставка и растаможка за 25–40 дней.</p>
         <div class="hero-cta-row">
           <a href="#selector" class="btn btn-primary btn-shine">
             Каталог авто
@@ -317,8 +320,8 @@
       </div>
 
       <!-- ROUTES MAP -->
-      <div class="routes-map">
-        <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Маршруты доставки: из Кореи, Японии и Китая через Владивосток в Москву, Томск и Новосибирск">
+      <div class="routes-map" id="routesMap">
+        <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Маршруты доставки: из Кореи и Японии паромом, из Китая автовозом во Владивосток, затем автовозами в Москву, Томск и Новосибирск">
           <defs>
             <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#10B981" stop-opacity="0.7"/>
@@ -332,93 +335,107 @@
               <stop offset="0%" stop-color="#34D399" stop-opacity="0.6"/>
               <stop offset="100%" stop-color="#10B981" stop-opacity="0.8"/>
             </linearGradient>
+            <linearGradient id="cgL" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#8fe3b5"/><stop offset=".55" stop-color="#4fae80"/><stop offset="1" stop-color="#2c7a57"/></linearGradient>
+            <linearGradient id="cgM" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#6cc79a"/><stop offset=".55" stop-color="#3d9468"/><stop offset="1" stop-color="#25694a"/></linearGradient>
+            <linearGradient id="cgD" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4ea67c"/><stop offset=".55" stop-color="#2f7b58"/><stop offset="1" stop-color="#1d5239"/></linearGradient>
+            <linearGradient id="cgG" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#f3dca0"/><stop offset=".55" stop-color="#d9ad55"/><stop offset="1" stop-color="#a97a2c"/></linearGradient>
+            <!-- Иконки городов: мягкий «пластилиновый» стиль, как у 3D-значков на карте -->
+            <g id="ic-moscow">
+              <ellipse cx="24" cy="43" rx="17" ry="3" fill="#000" opacity=".28"/>
+              <rect x="7" y="30" width="34" height="12" rx="3" fill="url(#cgM)"/>
+              <rect x="11" y="33" width="3.4" height="6" rx="1.7" fill="#1d5239" opacity=".55"/><rect x="22.3" y="33" width="3.4" height="6" rx="1.7" fill="#1d5239" opacity=".55"/><rect x="33.6" y="33" width="3.4" height="6" rx="1.7" fill="#1d5239" opacity=".55"/>
+              <rect x="19.5" y="17" width="9" height="14" rx="2" fill="url(#cgL)"/>
+              <path d="M24 17C17.3 15.2 16.6 8.6 24 2.2C31.4 8.6 30.7 15.2 24 17Z" fill="url(#cgG)"/>
+              <path d="M24 15.5V4.5M20 12.2C21.5 9 22.5 7 24 5M28 12.2C26.5 9 25.5 7 24 5" stroke="#8a6220" stroke-width=".9" fill="none" opacity=".6"/>
+              <path d="M13 29.5C8.4 28.2 8 23.5 13 19.2C18 23.5 17.6 28.2 13 29.5Z" fill="url(#cgL)"/>
+              <path d="M35 29.5C30.4 28.2 30 23.5 35 19.2C40 23.5 39.6 28.2 35 29.5Z" fill="url(#cgL)"/>
+              <path d="M13 28V21M35 28V21" stroke="#1d5239" stroke-width=".9" opacity=".5"/>
+              <ellipse cx="21.2" cy="9" rx="1.7" ry="3.6" fill="#fff" opacity=".35" transform="rotate(14 21.2 9)"/>
+            </g>
+            <g id="ic-tomsk">
+              <ellipse cx="24" cy="43" rx="17" ry="3" fill="#000" opacity=".28"/>
+              <rect x="9" y="23" width="30" height="19" rx="3" fill="url(#cgM)"/>
+              <path d="M5 26L24 8L43 26Z" fill="url(#cgL)" stroke="#2c7a57" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M24 12.5L11.5 24.5" stroke="#fff" stroke-width="1.4" opacity=".25" stroke-linecap="round"/>
+              <g fill="#1d5239" opacity=".55"><circle cx="11.5" cy="27" r="1.4"/><circle cx="16.5" cy="27" r="1.4"/><circle cx="21.5" cy="27" r="1.4"/><circle cx="26.5" cy="27" r="1.4"/><circle cx="31.5" cy="27" r="1.4"/><circle cx="36.5" cy="27" r="1.4"/></g>
+              <path d="M14 41V34.5Q14 31 17.5 31Q21 31 21 34.5V41Z" fill="url(#cgG)"/>
+              <rect x="27" y="31" width="8" height="8" rx="1.6" fill="url(#cgG)"/>
+              <path d="M31 31V39M27 35H35" stroke="#8a6220" stroke-width=".9" opacity=".6"/>
+            </g>
+            <g id="ic-nsk">
+              <ellipse cx="24" cy="43" rx="19" ry="3" fill="#000" opacity=".28"/>
+              <rect x="5" y="30" width="38" height="12" rx="3" fill="url(#cgM)"/>
+              <g fill="#bff0d6" opacity=".55"><rect x="9" y="32.5" width="2.2" height="8" rx="1.1"/><rect x="14.5" y="32.5" width="2.2" height="8" rx="1.1"/><rect x="20.2" y="32.5" width="2.2" height="8" rx="1.1"/><rect x="25.8" y="32.5" width="2.2" height="8" rx="1.1"/><rect x="31.3" y="32.5" width="2.2" height="8" rx="1.1"/><rect x="36.8" y="32.5" width="2.2" height="8" rx="1.1"/></g>
+              <path d="M9 31C9 17 15 9.5 24 9.5C33 9.5 39 17 39 31Z" fill="url(#cgL)"/>
+              <path d="M24 9.5V31M17.2 12.2C14.6 16 14 23 14 31M30.8 12.2C33.4 16 34 23 34 31" stroke="#1d5239" stroke-width=".9" fill="none" opacity=".35"/>
+              <rect x="22.2" y="3.5" width="3.6" height="6" rx="1.8" fill="url(#cgG)"/>
+              <ellipse cx="17.8" cy="16" rx="2.2" ry="4.4" fill="#fff" opacity=".3" transform="rotate(24 17.8 16)"/>
+            </g>
+            <g id="ic-vvo">
+              <ellipse cx="24" cy="43" rx="14" ry="3" fill="#000" opacity=".3"/>
+              <path d="M13 12L5.5 9.5V16Z M35 12L42.5 9.5V16Z" fill="#fde9a8" opacity=".35"/>
+              <path d="M18.5 42L21.5 15H26.5L29.5 42Z" fill="url(#cgL)"/>
+              <path d="M19.7 32H28.3L28.9 37H19.1Z M20.8 21H27.2L27.7 26H20.3Z" fill="#1d5239" opacity=".55"/>
+              <rect x="17" y="12.6" width="14" height="3.4" rx="1.7" fill="url(#cgD)"/>
+              <rect x="20.2" y="5.6" width="7.6" height="7.2" rx="2" fill="url(#cgG)"/>
+              <path d="M19 6.4L24 1.6L29 6.4Z" fill="url(#cgD)"/>
+              <rect x="10" y="39" width="28" height="4" rx="2" fill="url(#cgD)"/>
+              <path d="M21.6 17V41" stroke="#fff" stroke-width="1.2" opacity=".22" stroke-linecap="round"/>
+            </g>
           </defs>
 
-          <!-- Sources: Seoul, Tokyo, Shanghai -->
-          <!-- Vladivostok hub: center-ish -->
-          <!-- Destinations: Moscow, Tomsk, Novosibirsk -->
-
-          <!-- Lines from sources to hub -->
+          <!-- Линии: источники → Владивосток -->
           <path id="r1" class="route-line" d="M 70 80 Q 200 100, 300 200" fill="none" stroke="url(#lineGrad)" stroke-width="1.5"/>
           <path id="r2" class="route-line" d="M 80 200 Q 180 220, 300 200" fill="none" stroke="url(#lineGrad)" stroke-width="1.5" style="animation-delay: -3s"/>
           <path id="r3" class="route-line" d="M 70 320 Q 200 280, 300 200" fill="none" stroke="url(#lineGrad)" stroke-width="1.5" style="animation-delay: -6s"/>
-
-          <!-- Lines from hub to destinations -->
+          <!-- Линии: Владивосток → города -->
           <path id="r4" class="route-line" d="M 300 200 Q 380 100, 430 60" fill="none" stroke="url(#lineGrad2)" stroke-width="1.5" style="animation-delay: -2s"/>
           <path id="r5" class="route-line" d="M 300 200 Q 380 230, 440 250" fill="none" stroke="url(#lineGrad2)" stroke-width="1.5" style="animation-delay: -5s"/>
           <path id="r6" class="route-line" d="M 300 200 Q 380 380, 420 420" fill="none" stroke="url(#lineGrad2)" stroke-width="1.5" style="animation-delay: -8s"/>
 
-          <!-- Source dots with glow -->
-          <g>
-            <circle cx="70" cy="80" r="20" fill="url(#dotGlow)"/>
-            <circle cx="70" cy="80" r="5" fill="#10B981" class="route-dot route-dot-pulse"/>
-          </g>
-          <g>
-            <circle cx="80" cy="200" r="20" fill="url(#dotGlow)"/>
-            <circle cx="80" cy="200" r="5" fill="#10B981" class="route-dot route-dot-pulse" style="animation-delay: -0.8s"/>
-          </g>
-          <g>
-            <circle cx="70" cy="320" r="20" fill="url(#dotGlow)"/>
-            <circle cx="70" cy="320" r="5" fill="#10B981" class="route-dot route-dot-pulse" style="animation-delay: -1.6s"/>
-          </g>
+          <!-- Источники -->
+          <g><circle cx="70" cy="80" r="20" fill="url(#dotGlow)"/><circle cx="70" cy="80" r="5" fill="#10B981" class="route-dot route-dot-pulse"/></g>
+          <g><circle cx="80" cy="200" r="20" fill="url(#dotGlow)"/><circle cx="80" cy="200" r="5" fill="#10B981" class="route-dot route-dot-pulse" style="animation-delay: -0.8s"/></g>
+          <g><circle cx="70" cy="320" r="20" fill="url(#dotGlow)"/><circle cx="70" cy="320" r="5" fill="#10B981" class="route-dot route-dot-pulse" style="animation-delay: -1.6s"/></g>
+          <g><rect x="20" y="56" width="60" height="20" rx="10" class="route-label-bg"/><text x="50" y="70" text-anchor="middle" class="route-label">🇰🇷 Сеул</text></g>
+          <g><rect x="30" y="176" width="62" height="20" rx="10" class="route-label-bg"/><text x="61" y="190" text-anchor="middle" class="route-label">🇯🇵 Токио</text></g>
+          <g><rect x="14" y="328" width="78" height="20" rx="10" class="route-label-bg"/><text x="53" y="342" text-anchor="middle" class="route-label">🇨🇳 Шанхай</text></g>
 
-          <!-- Hub: Vladivostok -->
+          <!-- Узел: Владивосток -->
           <g>
             <circle cx="300" cy="200" r="32" fill="url(#dotGlow)"/>
-            <circle cx="300" cy="200" r="9" fill="#34D399" stroke="#10B981" stroke-width="2"/>
-            <circle cx="300" cy="200" r="14" fill="none" stroke="#10B981" stroke-width="1" opacity="0.5">
-              <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" repeatCount="indefinite"/>
-            </circle>
+            <circle cx="300" cy="200" r="14" fill="none" stroke="#10B981" stroke-width="1" opacity="0.5" class="hub-pulse"/>
+            <use href="#ic-vvo" x="271" y="147" width="58" height="58" class="city-ic"/>
+            <circle cx="300" cy="200" r="4" fill="#34D399" stroke="#10B981" stroke-width="1.6"/>
+            <rect x="248" y="209" width="104" height="21" rx="10.5" fill="rgba(16,185,129,0.2)" stroke="#10B981"/>
+            <text x="300" y="223.5" text-anchor="middle" class="route-label" style="fill:#34D399;font-weight:700;">Владивосток</text>
           </g>
 
-          <!-- Destination dots -->
-          <g>
+          <!-- Города доставки -->
+          <g class="route-link route-city" data-office="Москва" role="link" tabindex="0" aria-label="Офис в городе Москва — перейти к контактам"><title>Офис: Москва — открыть контакты</title>
             <circle cx="430" cy="60" r="16" fill="url(#dotGlow)"/>
-            <circle cx="430" cy="60" r="4" fill="#10B981" class="route-dot"/>
+            <use href="#ic-moscow" x="399" y="4" width="62" height="62" class="city-ic"/>
+            <circle cx="430" cy="60" r="3.2" fill="#10B981" class="route-dot"/>
+            <rect x="397.0" y="68" width="66" height="19" rx="9.5" class="route-label-bg"/>
+            <text x="430" y="81.5" text-anchor="middle" class="route-label">Москва</text>
           </g>
-          <g>
+          <g class="route-link route-city" data-office="Томск" role="link" tabindex="0" aria-label="Офис в городе Томск — перейти к контактам"><title>Офис: Томск — открыть контакты</title>
             <circle cx="440" cy="250" r="16" fill="url(#dotGlow)"/>
-            <circle cx="440" cy="250" r="4" fill="#10B981" class="route-dot"/>
+            <use href="#ic-tomsk" x="409" y="194" width="62" height="62" class="city-ic"/>
+            <circle cx="440" cy="250" r="3.2" fill="#10B981" class="route-dot"/>
+            <rect x="410.0" y="258" width="60" height="19" rx="9.5" class="route-label-bg"/>
+            <text x="440" y="271.5" text-anchor="middle" class="route-label">Томск</text>
           </g>
-          <g>
+          <g class="route-link route-city" data-office="Новосибирск" role="link" tabindex="0" aria-label="Офис в городе Новосибирск — перейти к контактам"><title>Офис: Новосибирск — открыть контакты</title>
             <circle cx="420" cy="420" r="16" fill="url(#dotGlow)"/>
-            <circle cx="420" cy="420" r="4" fill="#10B981" class="route-dot"/>
+            <use href="#ic-nsk" x="389" y="364" width="62" height="62" class="city-ic"/>
+            <circle cx="420" cy="420" r="3.2" fill="#10B981" class="route-dot"/>
+            <rect x="371.0" y="428" width="98" height="19" rx="9.5" class="route-label-bg"/>
+            <text x="420" y="441.5" text-anchor="middle" class="route-label">Новосибирск</text>
           </g>
 
-          <!-- Source labels -->
-          <g>
-            <rect x="20" y="56" width="60" height="20" rx="10" class="route-label-bg"/>
-            <text x="50" y="70" text-anchor="middle" class="route-label">🇰🇷 Сеул</text>
-          </g>
-          <g>
-            <rect x="30" y="176" width="62" height="20" rx="10" class="route-label-bg"/>
-            <text x="61" y="190" text-anchor="middle" class="route-label">🇯🇵 Токио</text>
-          </g>
-          <g>
-            <rect x="14" y="328" width="78" height="20" rx="10" class="route-label-bg"/>
-            <text x="53" y="342" text-anchor="middle" class="route-label">🇨🇳 Шанхай</text>
-          </g>
-
-          <!-- Hub label -->
-          <g>
-            <rect x="240" y="218" width="120" height="22" rx="11" fill="rgba(16,185,129,0.2)" stroke="#10B981"/>
-            <text x="300" y="234" text-anchor="middle" class="route-label" style="fill:#34D399;font-weight:700;">⚓ Владивосток</text>
-          </g>
-
-          <!-- Destination labels -->
-          <g class="route-link" data-office="Москва" role="link" tabindex="0" aria-label="Офис в городе Москва — перейти к контактам"><title>Офис: Москва — открыть контакты</title>
-            <rect x="378" y="44" width="74" height="20" rx="10" class="route-label-bg"/>
-            <text x="415" y="58" text-anchor="middle" class="route-label">🏛 Москва</text>
-          </g>
-          <g class="route-link" data-office="Томск" role="link" tabindex="0" aria-label="Офис в городе Томск — перейти к контактам"><title>Офис: Томск — открыть контакты</title>
-            <rect x="392" y="262" width="68" height="20" rx="10" class="route-label-bg"/>
-            <text x="426" y="276" text-anchor="middle" class="route-label">🏔 Томск</text>
-          </g>
-          <g class="route-link" data-office="Новосибирск" role="link" tabindex="0" aria-label="Офис в городе Новосибирск — перейти к контактам"><title>Офис: Новосибирск — открыть контакты</title>
-            <rect x="354" y="404" width="106" height="20" rx="10" class="route-label-bg"/>
-            <text x="407" y="418" text-anchor="middle" class="route-label">🌆 Новосибирск</text>
-          </g>
+          <!-- Слой анимации (заполняется js/route-anim.js) -->
+          <g id="routeFx" aria-hidden="true"></g>
         </svg>
       </div>
       <!-- ПЛАШКА С ЦИФРАМИ -->
@@ -1275,6 +1292,7 @@
   <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
   <div class="lightbox-dots" id="lightboxDots"></div>
 </div>
-<script src="/js/main.js?v=20261022a" defer></script>
+<script src="/js/main.js?v=20261022b" defer></script>
+<script src="/js/route-anim.js?v=20261022b" defer></script>
 </body>
 </html>

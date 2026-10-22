@@ -3939,3 +3939,29 @@ a.quiz-car:hover { border-color: rgba(52,211,153,0.5); }
 @media (max-width: 767px), (prefers-reduced-motion: reduce) { .glow-text { animation: none; background-position: 50% center; } }
 /* Мелкий текст подвала: достаточный контраст */
 .footer-legal span { color: rgba(255,255,255,0.7); }
+
+/* ============ HERO: флаги стран вместо длинного подзаголовка ============ */
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.origin-flags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
+.origin-flag {
+  display: flex; align-items: center; gap: 11px; padding: 9px 16px 9px 11px;
+  border-radius: 16px; background: var(--surface); border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%);
+}
+.of-flag { width: 38px; height: 25px; border-radius: 4px; flex: none; box-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.12); }
+.origin-flag span { display: flex; flex-direction: column; line-height: 1.15; }
+.origin-flag b { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; color: var(--text); }
+.origin-flag small { margin-top: 3px; font-size: 0.72rem; color: var(--text-muted); }
+@media (max-width: 480px) {
+  .origin-flags { gap: 6px; }
+  .origin-flag { flex-direction: column; align-items: flex-start; gap: 7px; padding: 9px 12px; flex: 1 1 0; min-width: 0; }
+  .origin-flag b { font-size: 0.92rem; }
+}
+
+/* ============ КАРТА: иконки городов и анимация (js/route-anim.js) ============ */
+.hub-pulse { transform-box: fill-box; transform-origin: center; animation: hubPulse 2.5s ease-in-out infinite; }
+@keyframes hubPulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.6); opacity: 0; } }
+.route-city .city-ic { transition: transform 0.25s var(--ease-out, ease); transform-box: fill-box; transform-origin: 50% 100%; }
+.route-city:hover .city-ic, .route-city:focus-visible .city-ic { transform: scale(1.12); }
+#routeFx image { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .hub-pulse { animation: none; } }
