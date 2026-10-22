@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+<meta name="theme-color" content="#10B981" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>Калькулятор утильсбора и таможенной пошлины для физлиц 2026 | POWER Car</title>
+<meta name="description" content="Рассчитайте утильсбор и таможенную пошлину на авто для физлиц в 2026 году: объём двигателя, мощность до и свыше 160 л.с., возраст. Формулы по Решению ЕЭК №107 и ПП РФ №1291." />
+
+<link rel="canonical" href="https://power-car.ru/kalkulyator-utilsbora.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Калькулятор утильсбора и пошлины для физлиц 2026 | POWER Car" />
+<meta property="og:description" content="Утильсбор и таможенная пошлина на авто для физлиц: расчёт за 20 секунд." />
+<meta property="og:image" content="https://power-car.ru/og-cover.jpg" />
+<meta property="og:url" content="https://power-car.ru/kalkulyator-utilsbora.html" />
+<meta property="og:site_name" content="POWER Car" />
+<meta property="og:locale" content="ru_RU" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Калькулятор утильсбора и пошлины для физлиц 2026 | POWER Car" />
+<meta name="twitter:description" content="Утильсбор и таможенная пошлина на авто для физлиц: расчёт за 20 секунд." />
+<meta name="twitter:image" content="https://power-car.ru/og-cover.jpg" />
+
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="icon" type="image/png" sizes="120x120" href="/favicon-120x120.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet"></noscript>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Главная","item":"https://power-car.ru/"},
+ {"@type":"ListItem","position":2,"name":"Калькулятор утильсбора","item":"https://power-car.ru/kalkulyator-utilsbora.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Калькулятор утильсбора и таможенной пошлины для физлиц","url":"https://power-car.ru/kalkulyator-utilsbora.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ru","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"},"provider":{"@type":"Organization","name":"POWER Car","url":"https://power-car.ru/"},"description":"Оценка утильсбора и таможенной пошлины на легковой автомобиль для физического лица по объёму двигателя, мощности и возрасту."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Как считается утильсбор для физлиц в 2026 году?","acceptedAnswer":{"@type":"Answer","text":"Утильсбор считается как базовая ставка 20 000 ₽, умноженная на коэффициент. Коэффициент зависит от объёма двигателя, возраста автомобиля и его мощности: для автомобилей до 160 л.с. действует льготный коэффициент (0,17 для машин младше трёх лет и 0,26 для старше), для более мощных он на порядок выше."}},
+ {"@type":"Question","name":"Почему утильсбор резко растёт при мощности свыше 160 л.с.?","acceptedAnswer":{"@type":"Answer","text":"С декабря 2025 года при расчёте утильсбора учитывается мощность двигателя. Для автомобилей мощнее 160 л.с. льготный коэффициент не применяется, и сумма вырастает в десятки раз."}},
+ {"@type":"Question","name":"Как считается таможенная пошлина для физлиц?","acceptedAnswer":{"@type":"Answer","text":"Для машин старше трёх лет пошлина считается за каждый кубический сантиметр объёма двигателя по ставке в евро (зависит от объёма и возраста). Для машин младше трёх лет берётся процент от стоимости, но не меньше минимума за кубический сантиметр. К пошлине добавляется сбор за таможенное оформление."}}]}
+</script>
+
+<style>
+:root {
+  --bg: #0A0A0A;
+  --bg-alt: #0E0E10;
+  --surface: rgba(255,255,255,0.035);
+  --surface-2: rgba(255,255,255,0.06);
+  --surface-3: rgba(255,255,255,0.10);
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --text: #FAFAFA;
+  --text-muted: rgba(255,255,255,0.62);
+  --text-dim: rgba(255,255,255,0.42);
+  --accent: #10B981;
+  --accent-2: #34D399;
+  --accent-soft: rgba(16,185,129,0.12);
+  --warning: #F59E0B;
+  --warning-soft: rgba(245,158,11,0.12);
+  --r-xs: 8px; --r-sm: 14px; --r-md: 22px; --r-lg: 32px;
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em; }
+
+.ambient {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 50% at 50% -10%, rgba(16,185,129,0.14), transparent 60%);
+}
+
+.page-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10,10,10,0.82); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.page-header-inner {
+  max-width: 900px; margin: 0 auto; padding: 14px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.page-logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 700; }
+.page-back { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
+.page-back:hover { color: var(--text); }
+.page-back svg { width: 18px; height: 18px; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+.hero { padding: 48px 0 28px; text-align: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-2); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 14px; }
+.eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--accent-2); }
+h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.1; margin-bottom: 14px; }
+.hero p { color: var(--text-muted); font-size: 1.02rem; max-width: 54ch; margin: 0 auto; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 26px; margin-bottom: 20px; }
+
+.field { margin-bottom: 18px; }
+.field label { display: block; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 7px; font-weight: 500; }
+.field .hint { display: block; font-size: 0.78rem; color: var(--text-dim); margin-top: 5px; }
+.field input, .field select {
+  width: 100%; background: var(--bg-alt); border: 1px solid var(--border-2); border-radius: var(--r-xs);
+  padding: 12px 14px; color: var(--text); font-family: var(--font-body); font-size: 1rem;
+}
+.field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
+
+.country-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+.country-toggle button {
+  background: var(--bg-alt); border: 1px solid var(--border-2); border-radius: var(--r-xs);
+  padding: 12px 8px; color: var(--text-muted); font-family: var(--font-body); font-weight: 600; font-size: 0.92rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.country-toggle button.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-2); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+  border-radius: 999px; padding: 15px 24px; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; transition: 0.2s; }
+.btn-primary { background: var(--accent); color: #04130d; }
+.btn-primary:hover { background: var(--accent-2); }
+
+.result { display: none; }
+.result.show { display: block; }
+.result-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+.result-row .l { color: var(--text-muted); }
+.result-row .v { font-weight: 600; white-space: nowrap; }
+.result-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; margin-top: 6px; }
+.result-total .l { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
+.result-total .v { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; color: var(--accent-2); }
+
+.warn-box { background: var(--warning-soft); border: 1px solid rgba(245,158,11,0.3); border-radius: var(--r-sm); padding: 14px 16px; margin-top: 16px; font-size: 0.86rem; color: #FCD34D; display: none; }
+.warn-box.show { display: block; }
+
+.note-box { background: var(--surface-2); border-radius: var(--r-sm); padding: 14px 16px; margin-top: 16px; font-size: 0.84rem; color: var(--text-dim); line-height: 1.6; }
+
+
+.rates { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 14px 16px; margin-bottom: 18px; }
+.rates-title { font-size: 0.84rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.rates-title span { color: var(--text-dim); font-weight: 400; }
+.rates-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 14px; font-size: 0.9rem; }
+.rates-grid .r { display: flex; justify-content: space-between; gap: 8px; padding: 6px 10px; border-radius: 10px; color: var(--text-muted); border: 1px solid transparent; }
+.rates-grid .r b { color: var(--text); white-space: nowrap; }
+.rates-grid .r.on { background: var(--accent-soft); border-color: rgba(16,185,129,0.4); color: var(--accent-2); }
+.rates-grid .r.on b { color: var(--accent-2); }
+.rates-grid small { grid-column: 1 / -1; color: var(--text-dim); font-size: 0.76rem; }
+@media (max-width: 460px) { .rates-grid { grid-template-columns: 1fr; } }
+.cta-title { font-size: 1.2rem; margin-bottom: 6px; }
+.cta-contact { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
+.cta-contact .cc { display: inline-flex; align-items: center; justify-content: center; min-width: 130px; padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 0.95rem; color: #fff; transition: transform .15s, box-shadow .15s; }
+.cta-contact .cc:hover { transform: translateY(-1px); }
+.cta-contact .cc-max { background: linear-gradient(135deg,#6366F1,#8B5CF6); }
+.cta-contact .cc-tg { background: linear-gradient(135deg,#2AABEE,#229ED9); }
+.cta-contact .cc-call { background: transparent; color: var(--accent-2); border: 1.5px solid var(--accent); }
+.cta-contact .cc-call:hover { background: var(--accent-soft); }
+.cta-more { margin-top: 16px; font-size: 0.9rem; }
+.cta-more a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 480px) { .cta-contact .cc { flex: 1 1 100%; } }
+.cta-block { text-align: center; margin: 32px 0; }
+.cta-block p { color: var(--text-muted); margin-bottom: 16px; }
+
+.faq { padding: 12px 0 60px; }
+.faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 16px 0; }
+.faq-item summary { cursor: pointer; font-weight: 600; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item p { color: var(--text-muted); margin-top: 10px; font-size: 0.92rem; }
+
+.page-footer { border-top: 1px solid var(--border); padding: 24px 0 40px; text-align: center; color: var(--text-dim); font-size: 0.84rem; }
+.page-footer a { color: var(--text-muted); }
+.page-footer a:hover { color: var(--text); }
+</style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=109736434", "ym");
+
+   ym(109736434, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109736434" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script>
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#calcBtn');if(b&&window.ym){ym(109736434,'reachGoal','customs_calc_used');}});
+</script>
+<script>
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-goal]');if(!a||!window.ym)return;try{ym(109736434,'reachGoal',a.getAttribute('data-goal'),{place:a.getAttribute('data-place')})}catch(_){}});
+</script>
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true"></div>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <a href="/" class="page-logo" aria-label="POWER Car — на главную">
+      <img src="images/logo/logo-50.svg" alt="POWER Car" width="50" height="23" />
+    </a>
+    <a href="/" class="page-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      На главную
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <span class="eyebrow">Растаможка для физлиц</span>
+      <h1>Калькулятор утильсбора и пошлины</h1>
+      <p>Введите объём двигателя, мощность и год выпуска — покажем утильсбор и таможенную пошлину при ввозе легкового автомобиля физическим лицом. Это только платежи государству; полную стоимость авто под ключ считает <a href="/kalkulyator-rastamozhki.html" style="color:var(--accent-2);text-decoration:underline;">основной калькулятор</a>.</p>
+    </div>
+
+    <div class="card">
+      <div class="rates" id="ratesBox" aria-live="polite">
+        <div class="rates-title">Курс евро для пошлины <span id="ratesDate"></span></div>
+        <div class="rates-grid" id="ratesGrid"><span class="rates-loading">Загружаем курс…</span></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="engineVolume">Объём двигателя, л</label>
+          <input type="number" id="engineVolume" placeholder="1.5" step="0.1" min="0" />
+        </div>
+        <div class="field">
+          <label for="enginePower">Мощность, л.с.</label>
+          <input type="number" id="enginePower" placeholder="115" min="0" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="carYear">Год выпуска</label>
+          <input type="number" id="carYear" placeholder="2022" min="1990" max="2026" />
+        </div>
+        <div class="field">
+          <label for="carPrice">Стоимость авто, ₽</label>
+          <input type="number" id="carPrice" placeholder="1200000" min="0" />
+          <span class="hint">Нужна только для машин младше 3 лет (пошлина — процент от стоимости)</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="calcBtn" type="button">Рассчитать утильсбор и пошлину</button>
+
+      <div class="result" id="result">
+        <div style="margin-top:22px;">
+          <div class="result-row"><span class="l">Таможенная пошлина + сбор за оформление</span><span class="v" id="rDuty">—</span></div>
+          <div class="result-row"><span class="l">Утильсбор</span><span class="v" id="rUtil">—</span></div>
+          <div class="result-total"><span class="l">Итого государству</span><span class="v" id="rTotal">—</span></div>
+        </div>
+        <div class="warn-box" id="warnBox"></div>
+        <div class="note-box">Пошлина посчитана по официальному тексту Решения Совета ЕЭК №107 (приложение 2, таблица 2). Утильсбор — по коэффициентам ПП РФ №1291 и №81, сверенным вручную с официальным калькулятором. Это оценка для легкового автомобиля при ввозе физическим лицом для личного пользования; точную сумму фиксирует таможня на дату декларирования.</div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h2 class="cta-title">Хотите знать итоговую цену машины под ключ?</h2>
+      <p>Посчитаем конкретный автомобиль вместе с логистикой и доставкой до Владивостока.</p>
+      <div class="cta-contact">
+        <a href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" class="cc cc-max" data-goal="messenger_clicked" data-place="util_page">MAX</a>
+        <a href="https://t.me/PowerCar_msk" target="_blank" rel="noopener" class="cc cc-tg" data-goal="messenger_clicked" data-place="util_page">Telegram</a>
+        <a href="tel:+79138533305" class="cc cc-call" data-goal="phone_clicked" data-place="util_page">Позвонить</a>
+      </div>
+      <p class="cta-more"><a href="/kalkulyator-rastamozhki.html">Калькулятор «под ключ» →</a> · <a href="/articles/raschet-utilsbora-2026.html">Как считается утильсбор: разбор →</a></p>
+    </div>
+
+    <div class="faq">
+      <h2>Частые вопросы</h2>
+      <details class="faq-item">
+        <summary>Как считается утильсбор для физлиц в 2026 году?</summary>
+        <p>Базовая ставка 20 000 ₽ умножается на коэффициент. Он зависит от объёма двигателя, возраста машины и мощности: для автомобилей до 160 л.с. действует льготный коэффициент (0,17 для машин младше трёх лет, 0,26 для старше), для более мощных он на порядок выше.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Почему утильсбор резко растёт при мощности свыше 160 л.с.?</summary>
+        <p>С декабря 2025 года при расчёте утильсбора учитывается мощность двигателя. Для автомобилей мощнее 160 л.с. льготный коэффициент не применяется, и сумма вырастает в десятки раз.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Как считается таможенная пошлина для физлиц?</summary>
+        <p>Для машин старше трёх лет — за каждый кубический сантиметр объёма двигателя по ставке в евро (зависит от объёма и возраста). Для машин младше трёх лет — процент от стоимости, но не меньше минимума за кубический сантиметр. К пошлине добавляется сбор за таможенное оформление.</p>
+      </details>
+    </div>
+  </div>
+</main>
+
+<footer class="page-footer">
+  © 2026 POWER Car · <a href="/">Главная</a> · <a href="/#selector">Каталог</a> · <a href="docs/privacy.html">Конфиденциальность</a>
+</footer>
+
+<script>
+'use strict';
+// Формулы пошлины и утильсбора — те же, что в основном калькуляторе (kalkulyator-rastamozhki.html).
+const CLEARANCE_FEE = 13541; // "Таможенное оформление" — подтверждено флэтом в диапазоне ~1,2-1,8 млн ₽ таможенной стоимости
+
+// Пошлина, легковые авто (Решение №107, приложение 2, таблица 2, п.3) — ОФИЦИАЛЬНЫЙ ИСТОЧНИК.
+const DUTY_RATE_3_5Y = [ // объём двигателя, старше 3, не старше 5 лет
+  { max: 1000, rate: 1.5 }, { max: 1500, rate: 1.7 }, { max: 1800, rate: 2.5 },
+  { max: 2300, rate: 2.7 }, { max: 3000, rate: 3.0 }, { max: Infinity, rate: 3.6 }
+];
+const DUTY_RATE_OVER5Y = [ // старше 5 лет
+  { max: 1000, rate: 3.0 }, { max: 1500, rate: 3.2 }, { max: 1800, rate: 3.5 },
+  { max: 2300, rate: 4.8 }, { max: 3000, rate: 5.0 }, { max: Infinity, rate: 5.7 }
+];
+// Не старше 3 лет — % от таможенной стоимости (в EUR) с нижним порогом €/см³, применяется большее.
+const DUTY_UNDER3Y = [
+  { max: 8500, pct: 0.54, min: 2.5 }, { max: 16700, pct: 0.48, min: 3.5 },
+  { max: 42300, pct: 0.48, min: 5.5 }, { max: 84500, pct: 0.48, min: 7.5 },
+  { max: 169000, pct: 0.48, min: 15 }, { max: Infinity, pct: 0.48, min: 20 }
+];
+
+// Коэффициент утильсбора (база 20 000 ₽ × K) для физлиц, легковые, льготная ставка.
+const UTIL_K = {
+  low:  { under3: 0.17, from3to5: 0.26, over5: 0.26 }, // фиксирован для любого возраста старше 3 лет
+  high: { under3: 47.64, from3to5: 79.20, over5: 79.20 }
+};
+
+function ageBucket(age) {
+  return age < 3 ? 'under3' : (age <= 5 ? 'from3to5' : 'over5');
+}
+
+function dutyRate(table, displacementCc) {
+  for (const b of table) if (displacementCc <= b.max) return b.rate;
+  return table[table.length - 1].rate;
+}
+
+function estimateCustoms(displacementL, power, age, marketRub, eurRate) {
+  if (!displacementL || displacementL <= 0) return null;
+  const cc = Math.round(displacementL * 1000);
+  const bucket = ageBucket(age);
+  const highPower = power && power > 160;
+
+  // Утильсбор
+  const k = highPower ? UTIL_K.high[bucket] : UTIL_K.low[bucket];
+  const util = 20000 * k;
+
+  // Пошлина
+  let dutyMain;
+  if (bucket === 'under3') {
+    const valueEur = (marketRub || 0) / (eurRate || 1);
+    const b = DUTY_UNDER3Y.find(x => valueEur <= x.max) || DUTY_UNDER3Y[DUTY_UNDER3Y.length - 1];
+    dutyMain = Math.max(valueEur * b.pct, cc * b.min) * eurRate;
+  } else {
+    const table = bucket === 'from3to5' ? DUTY_RATE_3_5Y : DUTY_RATE_OVER5Y;
+    const rate = dutyRate(table, cc);
+    dutyMain = cc * rate * eurRate;
+  }
+  const duty = CLEARANCE_FEE + Math.round(dutyMain);
+  const total = duty + util;
+
+  let warn = null;
+  if (highPower) warn = 'Мощность выше 160 л.с. — льготный коэффициент утильсбора не действует, отсюда основной рост суммы.';
+
+  return { total: Math.round(total), duty: Math.round(duty), util: Math.round(util), warn };
+}
+
+function fmtRub(n) {
+  return Math.round(n).toLocaleString('ru-RU') + ' ₽';
+}
+
+
+let settings = { rateEUR: 100.57 };
+function fmtRate(n) { return n.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₽'; }
+function renderRates() {
+  document.getElementById('ratesGrid').innerHTML = '<div class="r"><span>🇪🇺 1 €</span><b>' + fmtRate(Number(settings.rateEUR) || 0) + '</b></div>';
+  const d = settings.ratesUpdatedAt ? new Date(settings.ratesUpdatedAt + 'T00:00:00') : null;
+  document.getElementById('ratesDate').textContent = d && !isNaN(d) ? '· обновлён ' + d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+}
+fetch('data/settings.json', { cache: 'no-cache' }).then(r => r.json()).then(s => { settings = s; }).catch(() => {}).then(renderRates);
+
+document.getElementById('calcBtn').addEventListener('click', () => {
+  const volume = Number(document.getElementById('engineVolume').value);
+  const power = Number(document.getElementById('enginePower').value) || 0;
+  const year = Number(document.getElementById('carYear').value) || new Date().getFullYear();
+  const price = Number(document.getElementById('carPrice').value) || 0;
+  const age = Math.max(0, new Date().getFullYear() - year);
+  const warn = document.getElementById('warnBox');
+  const res = document.getElementById('result');
+  const eur = Number(settings.rateEUR) || 100;
+  if (!volume || volume <= 0) { warn.textContent = 'Укажите объём двигателя.'; warn.style.display = 'block'; res.classList.add('show'); return; }
+  const e = estimateCustoms(volume, power, age, price, eur);
+  document.getElementById('rDuty').textContent = fmtRub(e.duty);
+  document.getElementById('rUtil').textContent = fmtRub(e.util);
+  document.getElementById('rTotal').textContent = fmtRub(e.total);
+  let w = e.warn || '';
+  if (age < 3 && !price) w = (w ? w + ' ' : '') + 'Для машины младше 3 лет укажите стоимость, иначе пошлина считается по минимальной ставке за кубический сантиметр.';
+  warn.textContent = w; warn.style.display = w ? 'block' : 'none';
+  res.classList.add('show');
+  if (window.ym) { try { ym(109736434, 'reachGoal', 'util_calc'); } catch (_) {} }
+  res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+</script>
+</body>
+</html>

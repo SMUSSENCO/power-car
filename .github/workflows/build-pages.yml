@@ -11,6 +11,8 @@ on:
       - "scripts/build.py"
       - "article.html"
       - "car.html"
+  schedule:
+    - cron: "0 3 * * 1"   # раз в неделю: обновляет дату цены и priceValidUntil на страницах авто
   workflow_dispatch: {}   # позволяет запустить вручную из вкладки Actions
 
 permissions:

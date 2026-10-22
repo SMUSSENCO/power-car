@@ -13,7 +13,7 @@ title / description / canonical / schema — чтобы поисковик не 
 Удаляет: устаревшие файлы в articles/ и auto/, которых больше нет в JSON.
 """
 import json, os, re, html, glob
-from datetime import date
+from datetime import date, timedelta
 from urllib.parse import quote
 from xml.sax.saxutils import escape
 
@@ -22,6 +22,8 @@ os.chdir(ROOT)
 BASE = "https://power-car.ru/"
 # Use today's date for <lastmod> in generated sitemap (was hardcoded to a stale value)
 TODAY = date.today().isoformat()
+PRICE_VALID_UNTIL = (date.today() + timedelta(days=45)).isoformat()   # цены фиксированы до продажи, но курс плавает: подтверждаем раз в неделю (cron в build-pages.yml)
+TODAY_RU = date.today().strftime("%d.%m.%Y")
 
 def read(p):
     with open(p, encoding="utf-8") as f: return f.read()
@@ -211,11 +213,25 @@ def expand_car_markers(body):
     for c in cs: groups.setdefault(_group_of(c), []).append(c)
     # объединённая группа «china» (все китайские по убыванию цены) для статей, которым нужен общий список
     groups["china"] = sorted(groups.get("china-local", []) + groups.get("china-global", []), key=lambda c: -c["price"])
+    # «japan-1m»: все японские до 1 млн ₽ (правый руль и кей-кары), по убыванию цены
+    groups["japan-1m"] = [c for c in cs if c.get("country") == "Japan" and c["price"] <= 1000000]
     def grid(m):
         g = groups.get(m.group(1), [])
         shown.extend(g)
         return '<div class="cc-grid">' + "".join(car_card(c) for c in g) + "</div>" if g else ""
-    body = re.sub(r"\{\{cars:([a-z-]+)\}\}", grid, body)
+    body = re.sub(r"\{\{cars:([a-z0-9-]+)\}\}", grid, body)
+    def table(m):
+        g = groups.get(m.group(1), [])
+        if not g: return ""
+        rows = ""
+        for c in sorted(g, key=lambda c: c["price"]):
+            eng = html.escape(str(c.get("engine") or "")) + (f' · {c["power"]} л.с.' if c.get("power") else "")
+            km = f'{c["mileage"]:,}'.replace(",", "\u00a0") + "\u00a0км" if c.get("mileage") is not None else "—"
+            rows += (f'<tr><td><a href="/auto/{slugify(c["id"])}.html">{html.escape(c["brand"])} {html.escape(c["model"])}</a></td>'
+                     f'<td>{c.get("year","")}</td><td>{eng}</td><td>{km}</td><td>{"правый" if c.get("wheel") == "right" else "левый"}</td><td class="num">{fmt_price(c["price"])}</td></tr>')
+        return ('<div class="cc-table-wrap"><table class="cc-table"><thead><tr><th>Модель</th><th>Год</th><th>Двигатель</th><th>Пробег</th><th>Руль</th><th>Под ключ</th></tr></thead><tbody>'
+                + rows + '</tbody></table></div>')
+    body = re.sub(r"\{\{table:([a-z0-9-]+)\}\}", table, body)
     body = body.replace("{{n_total}}", str(len(cs)))
     for g, lst in groups.items(): body = body.replace("{{n_" + g.replace("-", "_") + "}}", str(len(lst)))
     cm = min([c["price"] for c in groups.get("china", [])] or [0])
@@ -241,6 +257,15 @@ REVIEWS_CSS = """
 .art-body a.rv-video{display:inline-flex;margin-top:6px;color:var(--accent-2);font-weight:600;font-size:.88rem}
 """
 ART_STYLE += REVIEWS_CSS
+ART_STYLE += """
+.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.09);border-radius:14px}
+.cc-table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+.cc-table th{background:rgba(255,255,255,.05);text-align:left;font-weight:600;color:var(--text-muted);padding:10px 14px;white-space:nowrap}
+.cc-table td{padding:10px 14px;border-top:1px solid rgba(255,255,255,.07)}
+.cc-table td.num{font-weight:700;color:var(--accent-2);white-space:nowrap}
+.cc-table a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25)}
+.cc-table a:hover{color:var(--accent-2)}
+"""
 
 def _plural(n, one, few, many):
     n = abs(n) % 100
@@ -471,6 +496,7 @@ def car_page(c, articles):
         "steeringPosition":"RightHandDriving" if c.get("wheel")=="right" else "LeftHandDriving",
         "image":(BASE+photos[0]) if photos else BASE+"og-cover.jpg",
         "offers":{"@type":"Offer","price":c["price"],"priceCurrency":"RUB","availability":"https://schema.org/InStock",
+                  "itemCondition":"https://schema.org/UsedCondition","priceValidUntil":PRICE_VALID_UNTIL,
                   "url":url,"seller":{"@type":"AutoDealer","name":"POWER Car","url":BASE}}}
     if desc_text: ld_car["description"]=desc_text
     if c.get("color"): ld_car["color"]=c["color"]
@@ -519,6 +545,7 @@ def car_page(c, articles):
       <h1>{html.escape(name)}</h1>
       <div class="sub">Импорт из {country} под ключ · доставка 25–40 дней</div>
       <div class="price">{fmt_price(c['price'])}{market}</div>{save}
+      <div class="price-date">Цена под ключ на {TODAY_RU}, фиксируется в договоре</div>
       <table class="specs">{specs_html}</table>
       <div class="cta-box">
         <a href="/#cta" class="btn btn-primary">Обсудить авто</a>
@@ -577,6 +604,7 @@ def u(loc, pri, freq):
 urls = [u(BASE, "1.0", "daily")]
 urls.append(u(BASE+"quiz.html", "0.9", "weekly"))
 urls.append(u(BASE+"kalkulyator-rastamozhki.html", "0.9", "weekly"))
+urls.append(u(BASE+"kalkulyator-utilsbora.html", "0.8", "weekly"))
 urls.append(u(BASE+"dostavka-po-rossii.html", "0.85", "weekly"))
 urls.append(u(BASE+"otzyvy.html", "0.8", "weekly"))
 # Страновые SEO-лендинги (scripts/gen_countries.py)

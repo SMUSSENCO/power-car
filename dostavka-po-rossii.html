@@ -32,6 +32,12 @@
 <noscript><link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet"></noscript>
 
 <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Сколько стоит доставка автомобиля из Владивостока до Москвы?","acceptedAnswer":{"@type":"Answer","text":"Автовоз от Владивостока до Москвы и крупных городов Поволжья и Урала стоит ориентировочно 195 000 – 215 000 ₽, в пути 14–17 дней. Точный тариф зависит от класса автовоза и даты отправки."}},
+ {"@type":"Question","name":"Сколько стоит доставка автомобиля из Владивостока до Новосибирска и Томска?","acceptedAnswer":{"@type":"Answer","text":"До Новосибирска, Кемерова, Томска и Красноярска автовоз стоит ориентировочно 125 000 – 145 000 ₽, в пути 9–13 дней."}},
+ {"@type":"Question","name":"Можно ли забрать автомобиль прямо во Владивостоке?","acceptedAnswer":{"@type":"Answer","text":"Да. Все автомобили приходят во Владивосток, там проходит растаможка. После неё машину можно забрать самостоятельно, автовоз не нужен, доставка до другого города оплачивается отдельно."}}]}
+</script>
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -592,6 +598,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 
     <div class="result-card show" style="margin-top:16px;">
       <h3 style="margin-bottom:14px;">Реальные тарифы автовоза от Владивостока (2026)</h3>
+      <div class="result-row"><span class="l">Владивосток и Приморье (забрать в порту)</span><span class="v">0 ₽, сразу после растаможки</span></div>
       <div class="result-row"><span class="l">Иркутск / Чита / Улан-Удэ</span><span class="v">95 000 – 110 000 ₽, 7–13 дней</span></div>
       <div class="result-row"><span class="l">Новосибирск / Кемерово / Томск / Красноярск</span><span class="v">125 000 – 145 000 ₽, 9–13 дней</span></div>
       <div class="result-row"><span class="l">Омск</span><span class="v">155 000 – 175 000 ₽</span></div>
@@ -602,6 +609,10 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
       <div class="result-note">Малый класс автовоза (до 4,1 м) — большой класс (от 4,7 до 5,1 м); для авто длиннее 5,2 м — расчёт индивидуально. По прайсу партнёра-перевозчика на 2026 год. Для острова, эксклава или другого города — используйте карту и поиск выше или уточните у менеджера.</div>
     </div>
 
+    <div class="result-card show" style="margin-top:16px;">
+      <h3 style="margin-bottom:14px;">Владивосток: как забрать автомобиль в порту</h3>
+      <div class="result-note" style="margin-top:0;">Все машины из Японии, Кореи и Китая приходят во Владивосток: Япония и Корея морем, Китай автовозом по суше. Здесь, в порту или в Уссурийске, проходит таможенная очистка. После растаможки автомобиль можно забрать самостоятельно: автовоз в этом случае не нужен, а доставка до вашего города в стоимость не входит. Если вы живёте не в Приморье, выберите свой регион на карте выше и посмотрите ориентир по автовозу. Нужна временная регистрация в ДВФО для дистанционной растаможки? Мы помогаем оформить её через Госуслуги.</div>
+    </div>
     <div class="cta-block">
       <p>Хотите точный тариф на дату отправки? Напишите нам — ответим в течение рабочего дня.</p>
       <div class="cta-contact">
@@ -659,7 +670,9 @@ function showRegion(id, evt) {
     tooltip.style.top = ty + 'px';
   }
 
-  if (data.special) {
+  if (id === 'PrimorskyKrai') {
+    tooltip.innerHTML = '<div class="r-name">Владивосток</div><div class="r-price">0 ₽ — забираете в порту</div>';
+  } else if (data.special) {
     tooltip.innerHTML = '<div class="r-name">' + data.name + '</div><div class="r-note">Море/авиа или удалённый регион — расчёт индивидуальный</div>';
   } else {
     const p = estimatePrice(data.km, id);
@@ -675,7 +688,13 @@ function renderResult(id) {
   if (!data) return;
   document.getElementById('resultTitle').textContent = data.name + (data.city !== data.name ? ' (' + data.city + ')' : '');
   const note = document.getElementById('resultNote');
-  if (data.special) {
+  if (id === 'PrimorskyKrai') {
+    document.getElementById('resultTitle').textContent = 'Владивосток (Приморский край)';
+    document.getElementById('resultKm').textContent = '0 км — точка выдачи';
+    document.getElementById('resultDays').textContent = 'сразу после растаможки';
+    document.getElementById('resultPrice').textContent = '0 ₽ — забираете в порту';
+    if (note) note.textContent = 'Автомобиль приходит во Владивосток, здесь же проходит растаможка. Забрать его можно самостоятельно, автовоз в этом случае не нужен.';
+  } else if (data.special) {
     document.getElementById('resultKm').textContent = 'нет прямой автодороги';
     document.getElementById('resultDays').textContent = 'по согласованию';
     document.getElementById('resultPrice').textContent = 'расчёт индивидуально';

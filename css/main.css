@@ -711,7 +711,7 @@ body.menu-open { overflow: hidden; }
 @media (min-width: 1024px) {
   .hero-grid { row-gap: 0; }
   .hero-grid > .stats { margin-top: 36px; align-self: start; }
-  .hero-grid > .routes-map { max-width: 440px; grid-column: 2; grid-row: 1 / span 2; }
+  .hero-grid > .routes-map { max-width: 450px; grid-column: 2; grid-row: 1 / span 2; align-self: start; margin: 8px 0 0 auto; }
 }
 @media (max-width: 1023px) { .hero-grid { gap: 0; } .hero-grid > .stats { margin-top: 32px; } }
 
@@ -738,8 +738,8 @@ body.menu-open { overflow: hidden; }
 .routes-map {
   position: relative;
   width: 100%;
-  aspect-ratio: 1.1 / 1;
-  max-width: 520px;
+  aspect-ratio: 580 / 460;
+  max-width: 450px;
   margin: 0 auto;
 }
 .routes-map svg { width: 100%; height: 100%; display: block; overflow: visible; }
@@ -3965,3 +3965,17 @@ a.quiz-car:hover { border-color: rgba(52,211,153,0.5); }
 .route-city:hover .city-ic, .route-city:focus-visible .city-ic { transform: scale(1.12); }
 #routeFx image { pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .hub-pulse { animation: none; } }
+
+/* ============ Курс в шапке: язычок — часть шапки (тот же фон и рамка, плавные внутренние углы) ============ */
+.header { --hbg: rgba(10,10,10,0.55); --hb: rgba(255,255,255,0.06); }
+.header.scrolled { --hbg: rgba(10,10,10,0.78); --hb: var(--border-2); }
+.header-rates {
+  top: 100%; left: 52px; padding: 4px 12px 5px;
+  background: var(--hbg); border: 1px solid var(--hb); border-top: 0; border-radius: 0 0 12px 12px;
+  transition: border-color .2s, color .2s, background .4s var(--ease-out);
+}
+.header-rates:hover { border-color: rgba(52,211,153,0.6); }
+.header-rates::before, .header-rates::after { content: ''; position: absolute; top: 0; width: 10px; height: 10px; pointer-events: none; }
+.header-rates::before { left: -10px; background: radial-gradient(circle at 0 100%, transparent 8.8px, var(--hb) 8.8px 9.8px, var(--hbg) 9.8px); }
+.header-rates::after { right: -10px; background: radial-gradient(circle at 100% 100%, transparent 8.8px, var(--hb) 8.8px 9.8px, var(--hbg) 9.8px); }
+@media (min-width: 1024px) { .header-rates { left: 72px; } }

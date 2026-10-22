@@ -7,8 +7,10 @@
   if (!map || !fx) return;
   var NS = 'http://www.w3.org/2000/svg';
   var IMG = 'images/route/';
+  if (window.matchMedia && !window.matchMedia('(min-width: 768px)').matches) return;   // на телефонах карту и анимацию не показываем
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var HUB = { x: 300, y: 200 };
+  var HUB = { x: 270, y: 210 };
+  var BASE = 35;   // в исходных картинках нос смотрит под 35° вправо-вниз; при движении влево картинку зеркалим (нос тогда на 145°)
 
   function P(id) { var p = document.getElementById(id); return { el: p, len: p.getTotalLength() }; }
   // источник -> путь к хабу; тип транспорта: Китай автовозом, остальные паромом
@@ -18,11 +20,11 @@
     { path: P('r3'), kind: 'truck' }    // Шанхай
   ];
   var OUT = [
-    { path: P('r4'), x: 430, y: 60 },   // Москва
-    { path: P('r5'), x: 440, y: 250 },  // Томск
-    { path: P('r6'), x: 420, y: 420 }   // Новосибирск
+    { path: P('r4'), x: 70, y: 70 },   // Москва
+    { path: P('r5'), x: 100, y: 240 },  // Томск
+    { path: P('r6'), x: 70, y: 400 }   // Новосибирск
   ];
-  var SIZE = { ferry: [80, 0.833], truck: [76, 0.893] };  // ширина, отношение высоты к ширине
+  var SIZE = { ferry: [54, 0.833], truck: [50, 0.893] };  // ширина, отношение высоты к ширине
   var STEPS = ['icon-folder', 'icon-pts', 'icon-officer', 'icon-like'];
   var ICON_H = { 'icon-folder': 0.986, 'icon-pts': 1.436, 'icon-officer': 1.286, 'icon-like': 1.05 };
 
@@ -45,10 +47,15 @@
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
   var rnd = function (a, b) { return a + Math.random() * (b - a); };
 
-  // Статичная картинка для prefers-reduced-motion
+  // Статичная картинка для prefers-reduced-motion: по одному транспорту на каждой линии, носом по курсу
   if (reduce) {
-    IN.forEach(function (r) { var q = r.path.el.getPointAtLength(r.path.len * 0.5), s = SIZE[r.kind]; var im = img('' + r.kind, s[0], s[1]); place(im, q.x, q.y, s[0], s[1], 0.9, 0, 1); });
-    OUT.forEach(function (o) { var q = o.path.el.getPointAtLength(o.path.len * 0.5), s = SIZE.truck; var im = img('truck', s[0], s[1]); place(im, q.x, q.y, s[0], s[1], 0.9, 0, 1); });
+    var still = function (route, kind) {
+      var q = route.el.getPointAtLength(route.len * 0.5), q2 = route.el.getPointAtLength(route.len * 0.5 + 4), s = SIZE[kind];
+      var im = img(kind, s[0], s[1]), a = Math.atan2(q2.y - q.y, q2.x - q.x) * 180 / Math.PI;
+      place(im, q.x, q.y, s[0], s[1], -0.9, a - (180 - BASE), 1, 0.9);
+    };
+    IN.forEach(function (r) { still(r.path, r.kind); });
+    OUT.forEach(function (o) { still(o.path, 'truck'); });
     return;
   }
 
@@ -80,10 +87,12 @@
         var pos = j.route.el.getPointAtLength(j.route.len * e);
         var ahead = j.route.el.getPointAtLength(Math.min(j.route.len, j.route.len * e + 4));
         var ang = Math.atan2(ahead.y - pos.y, ahead.x - pos.x) * 180 / Math.PI;
-        var ph = j.ph, base = ang * 0.22, dy = 0, sx = 0.95, sy = 0.95;
+        var grow = 0.3 + 0.7 * Math.sin(Math.PI * tt);   // старт мелкий, к середине пути крупнее, к финишу снова мелкий
+        var left = ahead.x < pos.x;
+        var ph = j.ph, base = ang - (left ? 180 - BASE : BASE), dy = 0, sx = left ? -grow : grow, sy = grow;
         if (j.kind === 'ferry') {
           // паром: покачивается с борта на борт и мягко ныряет на волне
-          base += Math.sin(now / 520 + ph) * 3.4;
+          base += Math.sin(now / 520 + ph) * 3.4;   // качка вокруг курса
           dy = Math.sin(now / 340 + ph) * 1.7;
           sy *= 1 + Math.sin(now / 340 + ph + 1.2) * 0.012;
         } else {
@@ -93,8 +102,8 @@
           dy = -Math.abs(Math.sin(now / 135 + ph)) * 1.4;
           base += Math.sin(now / 410 + ph) * 0.9;
         }
-        var fade = Math.min(1, tt * 8, (1 - tt) * 8);
-        place(j.im, pos.x, pos.y - 14 + dy, j.size[0], j.size[1], sx, base, clamp(fade, 0, 1), sy);
+        var fade = Math.min(1, tt * 10, (1 - tt) * 10);
+        place(j.im, pos.x, pos.y + dy, j.size[0], j.size[1], sx, base, clamp(fade, 0, 1), sy);
         if (t >= 1) {
           fx.removeChild(j.im);
           if (j.phase === 'in') { j.phase = 'customs'; j.k = 0; stepIcon(j, 0, now); }

@@ -39,6 +39,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{font-family:'Bricolage Grotesque',
 h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:6px 0 4px}
 .sub{color:var(--mut);margin-bottom:18px}
 .price{font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:700}
+.price-date{color:var(--dim);font-size:.78rem;margin-top:6px}
 .price .market{color:var(--dim);font-size:1.05rem;text-decoration:line-through;font-weight:400;margin-left:10px}
 .save{display:inline-block;margin:8px 0 0;background:var(--accsoft);color:var(--acc2);font-weight:600;font-size:.85rem;padding:6px 12px;border-radius:999px}
 .desc p{color:var(--mut);line-height:1.7;margin:0 0 12px;max-width:72ch}.eq{list-style:none;padding:0;margin:0;columns:2;column-gap:28px}.eq li{padding:7px 0 7px 22px;position:relative;break-inside:avoid;font-size:.95rem}.eq li:before{content:'✓';position:absolute;left:0;color:var(--ac,#10B981);font-weight:700}@media(max-width:640px){.eq{columns:1}}
@@ -155,6 +156,7 @@ function renderCar(c){
         <h1>${esc(name)}</h1>
         <div class="sub">Импорт из ${country} под ключ · доставка 25–40 дней</div>
         <div class="price">${fmt(c.price)}${market}</div>${save}
+        <div class="price-date">Цена под ключ на ${new Date().toLocaleDateString("ru-RU")}, фиксируется в договоре</div>
         <table class="specs">${specsHtml}</table>
         <div class="cta-box">
           <a href="/#cta" class="btn btn-primary">Заказать под ключ</a>
@@ -176,7 +178,7 @@ function renderCar(c){
     "steeringPosition":c.wheel==="right"?"RightHandDriving":"LeftHandDriving",
     ...(c.description?{"description":c.description}:{}),...(c.color?{"color":c.color}:{}),...(c.trim?{"vehicleConfiguration":c.trim}:{}),
     "image":photos[0]?(photos[0].startsWith("http")?photos[0]:"https://power-car.ru/"+photos[0]):"https://power-car.ru/og-cover.jpg",
-    "offers":{"@type":"Offer","price":c.price,"priceCurrency":"RUB","availability":"https://schema.org/InStock","url":url,
+    "offers":{"@type":"Offer","price":c.price,"priceCurrency":"RUB","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/UsedCondition","priceValidUntil":new Date(Date.now()+45*864e5).toISOString().slice(0,10),"url":url,
       "seller":{"@type":"AutoDealer","name":"POWER Car","url":"https://power-car.ru/"}}});
   injectLD({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Главная","item":"https://power-car.ru/"},
