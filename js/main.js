@@ -738,6 +738,23 @@ function initSelector() {
     });
   });
 
+  // Флаги в hero: показать каталог с выбранной страной (мото есть только из Японии)
+  $$('.origin-flag[data-country]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const country = a.dataset.country;
+      trackOnce('calc_used');
+      if (state.type === 'moto' && country !== 'Japan') {
+        const autoBtn = document.querySelector('#typeToggle button[data-type="auto"]');
+        if (autoBtn) autoBtn.click();
+      }
+      const chip = document.querySelector('#countryChips .chip[data-country="' + country + '"]');
+      if (chip) chip.click();
+      const sel = document.getElementById('selector');
+      if (sel) sel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
   // Power slider (точная мощность)
   const powerSlider = $('#powerSlider');
   const powerValue  = $('#powerValue');

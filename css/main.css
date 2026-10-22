@@ -3988,3 +3988,13 @@ a.quiz-car:hover { border-color: rgba(52,211,153,0.5); }
 .vvo-beam { animation: beamFlicker 2.2s ease-in-out infinite; }
 @keyframes beamFlicker { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.6; } }
 @media (prefers-reduced-motion: reduce) { .hub-glow, .hub-ring, .vvo-beam { animation: none; } }
+
+/* Флаги в hero кликабельны (ведут в каталог), счётчик кейсов ведёт на отзывы, страна в каталоге на виду */
+a.origin-flag { color: inherit; text-decoration: none; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+a.origin-flag:hover, a.origin-flag:focus-visible { border-color: rgba(52,211,153,0.55); background: rgba(16,185,129,0.1); transform: translateY(-1px); }
+a.stat-link { color: inherit; text-decoration: none; border-radius: 12px; transition: background .2s; }
+a.stat-link:hover, a.stat-link:focus-visible { background: rgba(16,185,129,0.1); }
+a.stat-link .stat-label { text-decoration: underline; text-decoration-color: rgba(255,255,255,0.25); text-underline-offset: 3px; }
+.sel-country { margin-bottom: 14px; }
+.sel-country .selector-label { margin-bottom: 8px; display: block; }
+#selector { scroll-margin-top: 96px; }
