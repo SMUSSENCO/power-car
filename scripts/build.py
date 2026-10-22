@@ -148,10 +148,15 @@ def _budget_cars():
     cs.sort(key=lambda c: -c["price"])
     return cs
 
+CHINA_LOCAL_BRANDS = {"Haval", "Chery", "Geely", "Changan", "Jetour", "BYD", "Great Wall", "GAC", "Zeekr", "Lynk & Co", "Exeed", "Omoda",
+                      "Jaecoo", "Tank", "MG", "Hongqi", "Voyah", "Li Auto", "Xpeng", "Nio", "Kaiyi", "JAC", "FAW", "Dongfeng", "Wuling", "Baojun"}
+
 def _group_of(c):
     if c.get("country") == "Japan":
         return "japan-europe" if c.get("brand") in EURO_BRANDS else "japan-asia"
-    return {"China": "china", "Korea": "korea"}.get(c.get("country"), "other")
+    if c.get("country") == "China":
+        return "china-local" if c.get("brand") in CHINA_LOCAL_BRANDS else "china-global"
+    return {"Korea": "korea"}.get(c.get("country"), "other")
 
 def auto_description(c):
     """Запасное описание из характеристик, если в cars.json нет своего текста (ничего не выдумываем сверх данных)."""
@@ -204,6 +209,8 @@ def expand_car_markers(body):
     cs = _budget_cars(); shown = []
     groups = {}
     for c in cs: groups.setdefault(_group_of(c), []).append(c)
+    # объединённая группа «china» (все китайские по убыванию цены) для статей, которым нужен общий список
+    groups["china"] = sorted(groups.get("china-local", []) + groups.get("china-global", []), key=lambda c: -c["price"])
     def grid(m):
         g = groups.get(m.group(1), [])
         shown.extend(g)

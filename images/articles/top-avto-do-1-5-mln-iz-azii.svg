@@ -14,12 +14,12 @@
     </filter>
   </defs>
 
-  <text x="600" y="110" text-anchor="middle" fill="#00FF88" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" letter-spacing="4">БАЗА POWER CAR · АВГУСТ 2026</text>
+  <text x="600" y="110" text-anchor="middle" fill="#00FF88" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" letter-spacing="4">КАТАЛОГ POWER CAR · ОБНОВЛЯЕТСЯ</text>
 
   <g filter="url(#glow-top9)">
     <circle cx="600" cy="230" r="86" fill="none" stroke="#00FF88" stroke-width="3" />
-    <text x="600" y="216" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="56" font-weight="900">9</text>
-    <text x="600" y="256" text-anchor="middle" fill="#00FF88" font-family="system-ui, sans-serif" font-size="15" font-weight="800" letter-spacing="2">ЛОТОВ</text>
+    <text x="600" y="224" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="40" font-weight="900">ВСЕ</text>
+    <text x="600" y="256" text-anchor="middle" fill="#00FF88" font-family="system-ui, sans-serif" font-size="15" font-weight="800" letter-spacing="2">ВАРИАНТЫ</text>
   </g>
 
   <text x="600" y="370" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="46" font-weight="900" letter-spacing="-1">ТОП АВТО ДО 1,5 МЛН ₽</text>
@@ -32,6 +32,6 @@
     <text x="600" y="500" text-anchor="middle" fill="#8A968E">🇰🇷 Корея</text>
     <text x="820" y="500" text-anchor="middle" fill="#8A968E">🇨🇳 Китай</text>
   </g>
-  <text x="600" y="540" text-anchor="middle" fill="#55645C" font-family="system-ui, sans-serif" font-size="16" font-weight="600">по 3 модели на страну, с ценами и ссылками</text>
+  <text x="600" y="540" text-anchor="middle" fill="#55645C" font-family="system-ui, sans-serif" font-size="16" font-weight="600">Япония, Китай, Корея — с фото, ценами и раскладкой</text>
   <text x="600" y="585" text-anchor="middle" fill="#55645C" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" letter-spacing="2">POWER CAR</text>
 </svg>
