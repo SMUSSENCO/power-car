@@ -223,12 +223,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://power-car.ru/auto/chevrolet-trailblazer-premier-2022.html</loc>
-    <lastmod>2026-10-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://power-car.ru/auto/Honda-N-BOX-2021.html</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -1046,6 +1040,12 @@
   </url>
   <url>
     <loc>https://power-car.ru/auto/Hyundai-ix25-GLS-Intelligent-2021.html</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://power-car.ru/auto/chevrolet-trailblazer-premier-2022.html</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
