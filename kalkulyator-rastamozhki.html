@@ -265,6 +265,16 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
       <div class="field">
         <label for="carYear">Год выпуска</label>
         <input type="number" id="carYear" placeholder="2022" min="2000" max="2026" />
+        <span class="hint">Укажите и месяц выпуска: таможня считает возраст по дате, и граница в 3 и 5 лет меняет пошлину</span>
+      </div>
+      <div class="field">
+        <label for="carMonth">Месяц выпуска (необязательно)</label>
+        <select id="carMonth">
+          <option value="">Не знаю, считать по году</option>
+          <option value="1">Январь</option><option value="2">Февраль</option><option value="3">Март</option><option value="4">Апрель</option>
+          <option value="5">Май</option><option value="6">Июнь</option><option value="7">Июль</option><option value="8">Август</option>
+          <option value="9">Сентябрь</option><option value="10">Октябрь</option><option value="11">Ноябрь</option><option value="12">Декабрь</option>
+        </select>
       </div>
 
       <button class="btn btn-primary" id="calcBtn" type="button">Рассчитать стоимость под ключ</button>
@@ -508,7 +518,10 @@ document.getElementById('calcBtn').addEventListener('click', () => {
   const displacement = Number(document.getElementById('engineVolume').value) || 0;
   const power = Number(document.getElementById('enginePower').value) || 0;
   const year = Number(document.getElementById('carYear').value) || new Date().getFullYear();
-  const age = Math.max(0, new Date().getFullYear() - year);
+  const month = Number((document.getElementById('carMonth') || {}).value) || 0;
+  // Возраст по дате выпуска (как считает таможня); если месяц не указан, считаем по разнице годов
+  const nowD = new Date();
+  const age = month ? Math.max(0, ((nowD.getFullYear() * 12 + nowD.getMonth() + 1) - (year * 12 + month)) / 12) : Math.max(0, nowD.getFullYear() - year);
 
   const rate = Number(settings[cc.rateKey]) || 0;
   const freightLocal = Number(settings[cc.freightKey]) || 0;
