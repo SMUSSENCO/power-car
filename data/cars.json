@@ -6182,5 +6182,55 @@
     "drive": "fwd",
     "trim": "GLS Intelligent",
     "description": "Hyundai ix25 1.5 CVT (2020 модельный год), комплектация GLS Intelligent. Выпуск июль 2021 года, пробег 80 000 км, левый руль."
+  },
+  {
+    "id": "chevrolet-trailblazer-premier-2022",
+    "brand": "Chevrolet",
+    "model": "Trailblazer Premier",
+    "year": 2022,
+    "mileage": 61928,
+    "engine": "1.3T",
+    "power": 155,
+    "transmission": "АКПП",
+    "body": "crossover",
+    "country": "Korea",
+    "flag": "🇰🇷",
+    "wheel": "left",
+    "deliveryMin": 14,
+    "deliveryMax": 21,
+    "hit": false,
+    "weight": null,
+    "published": true,
+    "addedAt": "2026-10-23",
+    "type": "auto",
+    "priceMarket": null,
+    "trim": "1.3 Turbo 2WD Premier",
+    "drive": "fwd",
+    "color": "чёрный",
+    "description": "Chevrolet Trailblazer, комплектация 1.3 Turbo 2WD Premier, первая регистрация октябрь 2022 года, левый руль. Бензиновый турбомотор 1341 см³, 155 л.с., автоматическая коробка, передний привод, пять мест. Чёрный кузов, кожаный салон, мультимедиа с Apple CarPlay и Android Auto (по фото лота). Пробег 61 928 км.\nПо страховой истории Кореи: ДТП 22.04.2026 (сумма страховой выплаты не указана) и выплата другому участнику ДТП в 2023 году на 594 879 ₩. Диагностическая карта продавцом не приложена, поэтому состояние кузова проверяем на диагностике до выкупа.",
+    "calc": {
+      "marketLocal": 15490000,
+      "customs": 227789,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 1514639,
+    "photos": [
+      "images/cars/Chevrolet-Trailblazer-Premier-2022/Chevrolet-Trailblazer-Premier-2022-1.webp",
+      "images/cars/Chevrolet-Trailblazer-Premier-2022/Chevrolet-Trailblazer-Premier-2022-2.webp",
+      "images/cars/Chevrolet-Trailblazer-Premier-2022/Chevrolet-Trailblazer-Premier-2022-3.webp",
+      "images/cars/Chevrolet-Trailblazer-Premier-2022/Chevrolet-Trailblazer-Premier-2022-4.webp",
+      "images/cars/Chevrolet-Trailblazer-Premier-2022/Chevrolet-Trailblazer-Premier-2022-5.webp",
+      "images/cars/Chevrolet-Trailblazer-Premier-2022/Chevrolet-Trailblazer-Premier-2022-6.webp",
+      "images/cars/Chevrolet-Trailblazer-Premier-2022/Chevrolet-Trailblazer-Premier-2022-7.webp"
+    ],
+    "breakdown": {
+      "auction": 1006850,
+      "domestic": 130000,
+      "delivery": 0,
+      "customs": 227789,
+      "docs": 100000,
+      "commission": 50000
+    }
   }
 ]
