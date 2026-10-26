@@ -455,7 +455,11 @@ def build_page(cfg, office):
     }
     if office.get("comingSoon"):
         # физического офиса ещё нет: не публикуем выдуманный адрес в разметке
-        autodealer_ld.pop("address", None)
+        for k in ("address","openingHours","priceRange","telephone","parentOrganization"):
+            autodealer_ld.pop(k, None)
+        autodealer_ld["@type"] = "Service"
+        autodealer_ld["serviceType"] = "Подбор и доставка автомобилей из Азии"
+        autodealer_ld["provider"] = {"@type": "Organization", "name": "POWER Car", "url": BASE}
     if office.get("lat") and office.get("lng"):
         autodealer_ld["geo"] = {"@type": "GeoCoordinates", "latitude": office["lat"], "longitude": office["lng"]}
 

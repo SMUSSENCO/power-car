@@ -530,7 +530,7 @@ def car_page(c, articles):
         "image":(BASE+photos[0]) if photos else BASE+"og-cover.jpg",
         "offers":{"@type":"Offer","price":c["price"],"priceCurrency":"RUB","availability":"https://schema.org/InStock",
                   "itemCondition":"https://schema.org/UsedCondition","priceValidUntil":PRICE_VALID_UNTIL,
-                  "url":url,"seller":{"@type":"AutoDealer","name":"POWER Car","url":BASE}}}
+                  "url":url,"seller":{"@type":"Organization","name":"POWER Car","url":BASE}}}
     if desc_text: ld_car["description"]=desc_text
     if c.get("color"): ld_car["color"]=c["color"]
     if c.get("trim"): ld_car["vehicleConfiguration"]=c["trim"]

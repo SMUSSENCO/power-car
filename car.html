@@ -179,7 +179,7 @@ function renderCar(c){
     ...(c.description?{"description":c.description}:{}),...(c.color?{"color":c.color}:{}),...(c.trim?{"vehicleConfiguration":c.trim}:{}),
     "image":photos[0]?(photos[0].startsWith("http")?photos[0]:"https://power-car.ru/"+photos[0]):"https://power-car.ru/og-cover.jpg",
     "offers":{"@type":"Offer","price":c.price,"priceCurrency":"RUB","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/UsedCondition","priceValidUntil":new Date(Date.now()+45*864e5).toISOString().slice(0,10),"url":url,
-      "seller":{"@type":"AutoDealer","name":"POWER Car","url":"https://power-car.ru/"}}});
+      "seller":{"@type":"Organization","name":"POWER Car","url":"https://power-car.ru/"}}});
   injectLD({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Главная","item":"https://power-car.ru/"},
     {"@type":"ListItem","position":2,"name":"Каталог","item":"https://power-car.ru/#selector"},
