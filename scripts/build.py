@@ -428,6 +428,7 @@ def article_page(a, all_articles, path=None, crumb=("Статьи", "/#articles"
 </footer>
 <nav class="art-sticky" aria-label="Быстрые контакты">{STICKY(slug)}</nav>
 <script>{ART_TRACK_JS}</script>
+<script src="/js/lightbox.js?v=20261026a" defer></script>
 {METRIKA}
 </body>
 </html>'''
@@ -458,7 +459,7 @@ def car_page(c, articles):
         desc = (d0[:150].rsplit(" ",1)[0] + "…" if len(d0)>150 else d0) + f" Под ключ {fmt_price(c['price'])}. POWER Car."
     photos = c.get("photos") or []
     main_img = f'<img id="cm" src="/{html.escape(photos[0])}" alt="{html.escape(name)} — импорт из {country} под ключ">' if photos else '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--dim);font-weight:700">POWER Car</div>'
-    thumbs = "".join(f'<img src="/{html.escape(p)}" alt="{html.escape(name)} фото {i+2}" loading="lazy" onclick="document.getElementById(\'cm\').src=this.src">' for i,p in enumerate(photos[1:6]))
+    thumbs = "".join(f'<img src="/{html.escape(p)}" alt="{html.escape(name)} фото {i+2}" loading="lazy">' for i,p in enumerate(photos[1:]))
     pm = c.get("priceMarket") or 0
     market = f'<span class="market">{fmt_price(pm)}</span>' if pm>c["price"] else ""
     save = f'<div class="save">Выгода ≈ {fmt_price(pm-c["price"])} к рынку РФ</div>' if pm>c["price"] else ""
@@ -574,6 +575,7 @@ def car_page(c, articles):
     <a href="/import-avto-tomsk.html">Томск</a><a href="/import-avto-novosibirsk.html">Новосибирск</a><a href="/import-avto-moskva.html">Москва</a></div>
   <p style="margin-top:12px">ИП Степанов А.В., ИНН 702205795181.</p>
 </div></footer>
+<script src="/js/lightbox.js?v=20261026a" defer></script>
 {METRIKA}
 </body>
 </html>'''

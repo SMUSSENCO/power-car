@@ -120,7 +120,7 @@ function renderCar(c){
   if(photos[0])setMeta("og:image",photos[0].startsWith("http")?photos[0]:"https://power-car.ru/"+photos[0],true);
 
   const main=photos[0]?`<img id="cm" src="${esc(photos[0])}" alt="${esc(name)} — импорт из ${country} под ключ">`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--dim);font-weight:700">POWER Car</div>`;
-  const thumbs=photos.slice(1,6).map((p,i)=>`<img src="${esc(p)}" alt="${esc(name)} фото ${i+2}" loading="lazy" onclick="document.getElementById('cm').src=this.src">`).join("");
+  const thumbs=photos.slice(1).map((p,i)=>`<img src="${esc(p)}" alt="${esc(name)} фото ${i+2}" loading="lazy">`).join("");
   const market=(c.priceMarket||0)>c.price?`<span class="market">${fmt(c.priceMarket)}</span>`:"";
   const save=(c.priceMarket||0)>c.price?`<div class="save">Выгода ≈ ${fmt(c.priceMarket-c.price)} к рынку РФ</div>`:"";
 
@@ -213,5 +213,6 @@ k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNo
 ym(109736434,'init',{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:true,trackLinks:true});
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109736434" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+<script src="/js/lightbox.js?v=20261026a" defer></script>
 </body>
 </html>
