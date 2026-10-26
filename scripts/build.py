@@ -419,6 +419,8 @@ def article_page(a, all_articles, path=None, crumb=("Статьи", "/#articles"
 <footer class="art-footer" role="contentinfo">
   <div class="art-footer-inner">
     <nav class="art-footer-nav" aria-label="Документы">
+      <a href="/katalog/">Каталог авто</a><span class="art-footer-sep">·</span>
+      <a href="/otzyvy.html">Отзывы</a><span class="art-footer-sep">·</span>
       <a href="/docs/privacy.html">Политика конфиденциальности</a><span class="art-footer-sep">·</span>
       <a href="/docs/terms.html">Пользовательское соглашение</a><span class="art-footer-sep">·</span>
       <a href="/docs/agreement.html">Договор-оферта</a>
@@ -448,15 +450,40 @@ def related_articles_for_car(c, articles):
     ranked = sorted(articles, key=lambda a: (score(a), a.get("publishedAt", "")), reverse=True)
     return ranked[:3]
 
+def _car_title(name, country, price):
+    """Заголовок страницы авто до 60 знаков (Ahrefs: «Title too long»)"""
+    for t in (f"{name} из {country}: {fmt_price(price)} под ключ", f"{name} из {country} — {fmt_price(price)}", f"{name}: {fmt_price(price)} под ключ", f"{name} — {fmt_price(price)}"):
+        if len(t) <= 60: return t
+    return f"{name[:46].rstrip()}… {fmt_price(price)}"
+
+def _thumb(p):
+    return "/images/thumbs/" + p[len("images/"):].rsplit(".", 1)[0] + ".webp" if p.startswith("images/") else "/" + p
+
+def related_cars_html(c, limit=8):
+    """Блок «Похожие автомобили»: ссылки на соседей по стране и цене (внутренняя перелинковка, нет страниц-сирот)"""
+    pool = [x for x in cars if x["id"] != c["id"] and x.get("country") == c.get("country") and x.get("photos")]
+    pool.sort(key=lambda x: abs(x["price"] - c["price"]))
+    items = ""
+    for x in pool[:limit]:
+        n = f"{x['brand']} {x['model']} {x['year']}"
+        items += (f'<a class="rel-card" href="/auto/{slugify(x["id"])}.html"><img src="{_thumb(x["photos"][0])}" alt="{html.escape(n)}" loading="lazy" '
+                  f'onerror="this.onerror=null;this.src=\'/{html.escape(x["photos"][0])}\'" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;margin-bottom:8px">'
+                  f'<h4>{html.escape(n)}</h4><span class="rt">{fmt_price(x["price"])} под ключ</span></a>')
+    return (f'<section><h2 class="sec-h">Похожие автомобили</h2><div class="rel-grid">{items}</div>'
+            f'<p style="margin-top:14px"><a href="/katalog/">Все автомобили в каталоге →</a></p></section>') if items else ""
+
 def car_page(c, articles):
     cid = slugify(c["id"]); brand=c["brand"]; model=c["model"]; year=c["year"]
     name = f"{brand} {model} {year}"; country = CMAP.get(c.get("country"),"")
     url = f"{BASE}auto/{cid}.html"
-    title = f"{name} из {country} под ключ — {fmt_price(c['price'])} | POWER Car"
+    title = _car_title(name, country, c["price"])
     desc = f"{name}, {c.get('engine','')}, {c.get('transmission','')}. Импорт из {country} под ключ за 25–40 дней. Цена под ключ {fmt_price(c['price'])}, прозрачный расчёт. POWER Car."
     if (c.get("description") or "").strip():
         d0 = " ".join(c["description"].split())
-        desc = (d0[:150].rsplit(" ",1)[0] + "…" if len(d0)>150 else d0) + f" Под ключ {fmt_price(c['price'])}. POWER Car."
+        _suf = f" Под ключ {fmt_price(c['price'])}."
+        _room = 155 - len(_suf)
+        desc = (d0[:_room].rsplit(" ",1)[0].rstrip(",.;: ") + "…" if len(d0) > _room else d0) + _suf
+    if len(desc) > 160: desc = desc[:157].rsplit(" ", 1)[0].rstrip(",.;: ") + "…"
     photos = c.get("photos") or []
     main_img = f'<img id="cm" src="/{html.escape(photos[0])}" alt="{html.escape(name)} — импорт из {country} под ключ">' if photos else '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--dim);font-weight:700">POWER Car</div>'
     thumbs = "".join(f'<img src="/{html.escape(p)}" alt="{html.escape(name)} фото {i+2}" loading="lazy">' for i,p in enumerate(photos[1:]))
@@ -496,10 +523,10 @@ def car_page(c, articles):
                      f'<div class="rel-grid">{rel_cards}</div></section>') if rel_cards else ""
 
     img0 = ("/"+photos[0]) if photos else (BASE+"og-cover.jpg")
-    ld_car = {"@context":"https://schema.org","@type":"Car","name":name,"url":url,
+    ld_car = {"@context":"https://schema.org","@type":["Car","Product"],"name":name,"url":url,
         "brand":{"@type":"Brand","name":brand},"model":model,"vehicleModelDate":str(year),
         "bodyType":BODY.get(c.get("body"),c.get("body","")),
-        "steeringPosition":"RightHandDriving" if c.get("wheel")=="right" else "LeftHandDriving",
+        "steeringPosition":"https://schema.org/RightHandDriving" if c.get("wheel")=="right" else "https://schema.org/LeftHandDriving",
         "image":(BASE+photos[0]) if photos else BASE+"og-cover.jpg",
         "offers":{"@type":"Offer","price":c["price"],"priceCurrency":"RUB","availability":"https://schema.org/InStock",
                   "itemCondition":"https://schema.org/UsedCondition","priceValidUntil":PRICE_VALID_UNTIL,
@@ -511,7 +538,7 @@ def car_page(c, articles):
         ld_car["mileageFromOdometer"]={"@type":"QuantitativeValue","value":c["mileage"],"unitCode":"KMT"}
     ld_bc = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":1,"name":"Главная","item":BASE},
-        {"@type":"ListItem","position":2,"name":"Каталог","item":BASE+"#selector"},
+        {"@type":"ListItem","position":2,"name":"Каталог","item":BASE+"katalog/"},
         {"@type":"ListItem","position":3,"name":name,"item":url}]}
     ld = "\n".join(f'<script type="application/ld+json">{json.dumps(x,ensure_ascii=False)}</script>' for x in (ld_car, ld_bc))
 
@@ -543,7 +570,7 @@ def car_page(c, articles):
   <a href="/#selector" class="btn btn-primary">Подобрать авто</a>
 </header>
 <main class="wrap">
-  <nav class="bc"><a href="/">Главная</a> → <a href="/#selector">Каталог</a> → {html.escape(name)}</nav>
+  <nav class="bc"><a href="/">Главная</a> → <a href="/katalog/">Каталог</a> → {html.escape(name)}</nav>
   <div class="top">
     <div class="gallery"><div class="main">{main_img}</div><div class="thumbs">{thumbs}</div></div>
     <div>
@@ -562,6 +589,7 @@ def car_page(c, articles):
   {desc_block}
   {breakdown}
   {related_block}
+  {related_cars_html(c)}
   <section><div class="cta" id="cta">
     <h2>Обсудить {html.escape(brand)} {html.escape(model)} с менеджером</h2>
     <p>Бесплатный расчёт и сопровождение до выдачи. Без предоплаты за подбор. Доставка в Томск, Новосибирск, Москву и другие регионы.</p>
@@ -571,7 +599,7 @@ def car_page(c, articles):
 <footer class="gf"><div class="wrap">
   <a href="/" class="gh-logo">POWER <b>Car</b></a>
   <div class="slogan">Надёжность, рождённая в Сибири</div>
-  <div class="gf-links"><a href="/">Главная</a><a href="/#selector">Каталог</a>
+  <div class="gf-links"><a href="/">Главная</a><a href="/katalog/">Каталог</a><a href="/otzyvy.html">Отзывы</a>
     <a href="/import-avto-tomsk.html">Томск</a><a href="/import-avto-novosibirsk.html">Новосибирск</a><a href="/import-avto-moskva.html">Москва</a></div>
   <p style="margin-top:12px">ИП Степанов А.В., ИНН 702205795181.</p>
 </div></footer>
@@ -612,6 +640,108 @@ with open("otzyvy.html", "w", encoding="utf-8") as _f:
 na, ra = sync_dir("articles", art_files)
 nc, rc = sync_dir("auto", car_files)
 
+
+# ---------- Каталог: статичные страницы со ссылками на все авто (для поисковых роботов: каталог на главной строится скриптом) ----------
+KAT = [("yaponiya", "Japan", "Японии", "Япония", "🇯🇵", "правым рулём"), ("koreya", "Korea", "Кореи", "Корея", "🇰🇷", "левым рулём"), ("kitay", "China", "Китая", "Китай", "🇨🇳", "левым рулём")]
+KAT_CSS = """.kg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 34px}
+.kc{display:flex;flex-direction:column;border:1px solid var(--bd);border-radius:16px;overflow:hidden;background:var(--bg2);text-decoration:none;color:inherit}
+.kc:hover{border-color:var(--acc)}.kc img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.kc div{padding:10px 12px 12px}.kc b{display:block;font-size:.98rem;line-height:1.3}.kc span{display:block;color:var(--dim);font-size:.82rem;margin-top:3px}
+.kc em{display:block;font-style:normal;font-weight:800;color:var(--acc);margin-top:6px}
+.kn{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.kn a{padding:7px 14px;border:1px solid var(--bd);border-radius:999px;text-decoration:none;font-size:.9rem;color:inherit}.kn a.on,.kn a:hover{border-color:var(--acc);color:var(--acc)}"""
+
+def _kat_card(x):
+    n = f"{x['brand']} {x['model']} {x['year']}"
+    km = (f"{int(x['mileage']):,}".replace(",", " ") + " км") if x.get("mileage") is not None else ""
+    meta = " · ".join(t for t in (km, str(x.get("engine") or ""), (f"{x['power']} л.с." if x.get("power") else "")) if t)
+    ph = x["photos"][0] if x.get("photos") else ""
+    img = (f'<img src="{_thumb(ph)}" alt="{html.escape(n)}" loading="lazy" width="480" height="360" onerror="this.onerror=null;this.src=\'/{html.escape(ph)}\'">' if ph else "")
+    return f'<a class="kc" href="/auto/{slugify(x["id"])}.html">{img}<div><b>{html.escape(n)}</b><span>{html.escape(meta)}</span><em>{fmt_price(x["price"])} под ключ</em></div></a>'
+
+def _kat_page(slug, title, desc, h1, intro, body, crumbs, ld_extra=None):
+    url = f"{BASE}katalog/" + ("" if slug == "index" else slug + ".html")
+    ld = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + u} for i, (n, u) in enumerate(crumbs)]}]
+    if ld_extra: ld.append(ld_extra)
+    ldh = "\n".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
+    nav = "".join(f'<a href="/katalog/{"" if s == "index" else s + ".html"}"{" class=on" if s == slug else ""}>{lab}</a>' for s, lab in (("index", "Все"), ("yaponiya", "🇯🇵 Япония"), ("koreya", "🇰🇷 Корея"), ("kitay", "🇨🇳 Китай")))
+    return f"""<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{html.escape(title)}</title>
+<meta name="description" content="{html.escape(desc)}">
+<link rel="canonical" href="{url}">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:type" content="website"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}og-cover.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|manrope:400,600&display=swap" rel="stylesheet">
+<style>{CAR_STYLE}{KAT_CSS}</style>
+{ldh}
+</head>
+<body>
+<header class="gh">
+  <a href="/" class="gh-logo">POWER <b>Car</b></a>
+  <a href="/#selector" class="btn btn-primary">Подобрать авто</a>
+</header>
+<main class="wrap">
+  <nav class="bc"><a href="/">Главная</a> → {" → ".join(f'<a href="/{u}">{html.escape(n)}</a>' for n, u in crumbs[1:-1]) + (" → " if len(crumbs) > 2 else "")}{html.escape(crumbs[-1][0])}</nav>
+  <h1>{html.escape(h1)}</h1>
+  <p style="color:var(--dim);max-width:70ch">{intro}</p>
+  <div class="kn">{nav}</div>
+  {body}
+  <section><div class="cta" id="cta">
+    <h2>Не нашли нужную машину?</h2>
+    <p>Подберём под ваш бюджет бесплатно: напишите менеджеру, расчитаем под ключ с доставкой в ваш город. Без предоплаты за подбор.</p>
+    <a href="/#cta" class="btn btn-primary">Оставить заявку</a> <a href="/kalkulyator-rastamozhki.html" class="btn btn-ghost">Калькулятор</a>
+  </div></section>
+</main>
+<footer class="gf"><div class="wrap">
+  <a href="/" class="gh-logo">POWER <b>Car</b></a>
+  <div class="gf-links"><a href="/">Главная</a><a href="/katalog/">Каталог</a><a href="/otzyvy.html">Отзывы</a><a href="/kalkulyator-rastamozhki.html">Калькулятор</a><a href="/dostavka-po-rossii.html">Доставка</a>
+    <a href="/import-avto-tomsk.html">Томск</a><a href="/import-avto-novosibirsk.html">Новосибирск</a><a href="/import-avto-moskva.html">Москва</a></div>
+  <p style="margin-top:12px">ИП Степанов А.В., ИНН 702205795181.</p>
+</div></footer>
+{METRIKA}
+</body>
+</html>"""
+
+def build_katalog():
+    os.makedirs("katalog", exist_ok=True)
+    allc = sorted([c for c in cars if c.get("type", "auto") == "auto" and c.get("photos")], key=lambda c: c["price"])
+    def itemlist(lst, name):
+        return {"@context": "https://schema.org", "@type": "ItemList", "name": name, "numberOfItems": len(lst),
+                "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{BASE}auto/{slugify(x['id'])}.html", "name": f"{x['brand']} {x['model']} {x['year']}"} for i, x in enumerate(lst[:100])]}
+    cnt = {}
+    for slug, code, gen, nom, flag, wheel in KAT:
+        lst = [c for c in allc if c.get("country") == code]; cnt[slug] = (len(lst), lst)
+        if not lst: continue
+        lo, hi = lst[0]["price"], lst[-1]["price"]
+        brands = sorted({c["brand"] for c in lst})
+        intro = (f"Все автомобили из {gen} в наличии и под заказ: {len(lst)} машин от {fmt_price(lo)} до {fmt_price(hi)} под ключ до Владивостока. "
+                 f"Среди марок: {', '.join(brands[:12])}. У каждой машины фото, пробег, раскладка цены и страховая история. "
+                 f"Автомобили из {gen} идут с {wheel}, доставка 14–28 дней.")
+        body = f'<div class="kg">{"".join(_kat_card(c) for c in lst)}</div>'
+        title = f"Авто из {gen} под ключ: {len(lst)} {_plural(len(lst), 'машина', 'машины', 'машин')} в каталоге"
+        desc = f"{len(lst)} автомобилей из {gen} от {fmt_price(lo)} под ключ до Владивостока: фото, цены, пробег, раскладка. Подбор и доставка в Томск, Новосибирск, Москву."
+        open(f"katalog/{slug}.html", "w", encoding="utf-8").write(_kat_page(slug, title, desc, f"Автомобили из {gen} под ключ: {len(lst)} в каталоге", intro, body,
+            [("Главная", ""), ("Каталог", "katalog/"), (f"Из {gen}", f"katalog/{slug}.html")], itemlist(lst, f"Автомобили из {gen}")))
+    # хаб
+    parts = ""
+    for slug, code, gen, nom, flag, wheel in KAT:
+        n, lst = cnt[slug]
+        if not n: continue
+        parts += f'<h2>{flag} Из {gen}: {n} {_plural(n, "автомобиль", "автомобиля", "автомобилей")} <a href="/katalog/{slug}.html" style="font-size:.9rem;font-weight:600">Смотреть все →</a></h2><div class="kg">{"".join(_kat_card(c) for c in lst[:8])}</div>'
+    total = sum(v[0] for v in cnt.values())
+    intro = f"{total} автомобилей из Японии, Кореи и Китая под ключ до Владивостока. Выберите страну или откройте подборки: фото, пробег, цена и раскладка у каждой машины."
+    open("katalog/index.html", "w", encoding="utf-8").write(_kat_page("index", f"Каталог авто из Азии под ключ: {total} {_plural(total, 'машина', 'машины', 'машин')}", f"Каталог POWER Car: {total} автомобилей из Японии, Кореи и Китая под ключ. Фото, цены, пробег, раскладка расходов.",
+        f"Каталог автомобилей из Азии: {total} в наличии", intro, parts, [("Главная", ""), ("Каталог", "katalog/")], itemlist(allc, "Каталог автомобилей из Азии")))
+    return total
+
+KATALOG_TOTAL = build_katalog()
+
 # sitemap
 def u(loc, pri, freq):
     return f"  <url>\n    <loc>{escape(loc)}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n  </url>"
@@ -619,6 +749,9 @@ urls = [u(BASE, "1.0", "daily")]
 urls.append(u(BASE+"quiz.html", "0.9", "weekly"))
 urls.append(u(BASE+"kalkulyator-rastamozhki.html", "0.9", "weekly"))
 urls.append(u(BASE+"kalkulyator-utilsbora.html", "0.8", "weekly"))
+urls.append(u(BASE+"katalog/", "0.9", "daily"))
+for _k in ("yaponiya", "koreya", "kitay"):
+    urls.append(u(BASE+"katalog/"+_k+".html", "0.85", "daily"))
 urls.append(u(BASE+"dostavka-po-rossii.html", "0.85", "weekly"))
 urls.append(u(BASE+"otzyvy.html", "0.8", "weekly"))
 # Страновые SEO-лендинги (scripts/gen_countries.py)
@@ -631,8 +764,7 @@ for a in articles:
     urls.append(u(BASE+"articles/"+a["slug"]+".html", "0.7", "weekly"))
 for c in cars:
     urls.append(u(BASE+"auto/"+slugify(c["id"])+".html", "0.6", "weekly"))
-for d in ["docs/privacy.html","docs/terms.html","docs/agreement.html"]:
-    urls.append(u(BASE+d, "0.3", "monthly"))
+# юридические страницы (docs/*) закрыты от индексации, в карту сайта не включаем
 sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n"
 open("sitemap.xml", "w", encoding="utf-8").write(sitemap)
 
