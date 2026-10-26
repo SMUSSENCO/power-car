@@ -3998,3 +3998,6 @@ a.stat-link .stat-label { text-decoration: underline; text-decoration-color: rgb
 .sel-country { margin-bottom: 14px; }
 .sel-country .selector-label { margin-bottom: 8px; display: block; }
 #selector { scroll-margin-top: 96px; }
+
+/* Карточки отзывов: вертикальные фото клиентов, лицо и машина находятся в нижней части кадра */
+.rv-img img { object-position: center 62%; }

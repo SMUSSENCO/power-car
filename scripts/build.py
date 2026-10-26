@@ -282,7 +282,7 @@ def _case_card(c):
     photos = c.get("photos") or []
     img = (f'<div class="rv-img"><img src="/{html.escape(photos[0][:-5] + "-card.webp" if photos[0].endswith(".webp") else photos[0])}" alt="{html.escape(title)} — {c.get("clientCity","")}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\'/{html.escape(photos[0])}\'"></div>' if photos else "")
     _n = (c.get("clientName") or "").strip(); _city = c.get("clientCity") or ""
-    who = (f'{html.escape(_n)}, {html.escape(_city)}' if _n and _n != "Клиент" else (f'клиент из города {html.escape(_city)}' if _city and not str(_city).isdigit() else "клиент"))
+    who = (", ".join(x for x in (html.escape(_n), html.escape(str(_city))) if x) if _n and _n != "Клиент" else (f'клиент из города {html.escape(_city)}' if _city and not str(_city).isdigit() else "клиент"))
     chips = [f'{c.get("flag","")} {html.escape(c.get("country",""))}'.strip()]
     if c.get("year"): chips.append(f'{c["year"]} г.')
     if c.get("deliveryDays"): chips.append(f'{c["deliveryDays"]} дн. доставка')

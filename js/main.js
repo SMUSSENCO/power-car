@@ -1169,17 +1169,17 @@ function renderCases() {
       : '';
     card.innerHTML = `
       <div class="case-img${hasPhotos ? ' has-photo' : ''}">
-        <div class="car-flag-badge">${c.flag} ${c.country}</div>
+        ${c.country ? `<div class="car-flag-badge">${c.flag || ''} ${c.country}</div>` : ''}
         ${videoBadge}
         ${countBadge}
         ${imgContent}
       </div>
       <div class="case-body">
         <div class="case-title">${c.carTitle}</div>
-        <div class="case-client">— ${c.clientName}, ${c.clientCity}</div>
+        <div class="case-client">— ${[c.clientName, c.clientCity].filter(Boolean).join(', ')}</div>
         <div class="case-quote">${c.quote}</div>
         <div class="case-meta">
-          <span><b>${c.year}</b> г. · <b>${c.deliveryDays}</b> дней</span>
+          <span>${[c.year ? `<b>${c.year}</b> г.` : '', c.deliveryDays ? `<b>${c.deliveryDays}</b> дней` : ''].filter(Boolean).join(' · ')}</span>
           ${c.showPrice ? `<span><b>${fmtPrice(c.finalPrice)}</b> под ключ</span>` : ''}
         </div>
       </div>
@@ -1442,7 +1442,7 @@ function openCaseModal(c) {
 
   content.innerHTML = `
     <div class="modal-gallery">
-      <div class="car-flag-badge">${c.flag} ${c.country}</div>
+      ${c.country ? `<div class="car-flag-badge">${c.flag || ''} ${c.country}</div>` : ''}
       ${tabsHtml}
       <div class="media-panel media-panel-video" ${showVideoPanel ? '' : 'hidden'}>${videoPanelHtml}</div>
       <div class="media-panel media-panel-photos" ${showVideoPanel ? 'hidden' : ''}>${photosPanelHtml}</div>
@@ -1451,9 +1451,9 @@ function openCaseModal(c) {
       <div class="modal-title-row">
         <div>
           <h2 class="modal-title" id="modalTitle">${c.carTitle}</h2>
-          <div style="color:var(--text-muted);margin-top:6px;">${c.clientName}, ${c.clientCity} · ${c.year} г.</div>
+          <div style="color:var(--text-muted);margin-top:6px;">${[c.clientName, c.clientCity].filter(Boolean).join(', ')}${c.year ? ' · ' + c.year + ' г.' : ''}</div>
         </div>
-        ${c.showPrice ? `<div class="modal-price-block"><div class="modal-price">${fmtPrice(c.finalPrice)}</div><div style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">под ключ за ${c.deliveryDays} дней</div></div>` : ''}
+        ${c.showPrice ? `<div class="modal-price-block"><div class="modal-price">${fmtPrice(c.finalPrice)}</div><div style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">${c.deliveryDays ? 'под ключ за ' + c.deliveryDays + ' дней' : 'под ключ'}</div></div>` : ''}
       </div>
 
       <p style="font-size:0.95rem;line-height:1.6;color:var(--text);margin-top:6px;">${c.story}</p>
