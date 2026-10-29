@@ -2,7 +2,7 @@
   "rateCNY": 12.16,
   "rateJPY": 0.55,
   "rateKRW": 0.065,
-  "rateEUR": 90.0977,
+  "rateEUR": 90.166,
   "freightChina": 0,
   "freightJapan": 0,
   "freightKorea": 0,
@@ -10,6 +10,6 @@
   "domesticJapan": 200000,
   "domesticKorea": 2000000,
   "ratesUpdatedAt": "2026-10-23",
-  "rateEURDate": "2026-10-28",
+  "rateEURDate": "2026-10-29",
   "rateEURSource": "ЦБ РФ"
 }
