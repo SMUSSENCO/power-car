@@ -890,7 +890,7 @@ function openCarModal(car) {
   if (hasBreakdown) {
     const rows = [
       { label: 'Цена авто на аукционе', value: bd.auction },
-      { label: 'Логистика внутри страны', value: bd.domestic },
+      { label: 'Логистика внутри Азии', value: bd.domestic },
       { label: 'Доставка морем + автовоз', value: bd.delivery },
       { label: 'Утильсбор и таможня', value: bd.customs },
       { label: 'СБКТС, оформление', value: bd.docs },
@@ -902,6 +902,7 @@ function openCarModal(car) {
         <h4>Из чего складывается цена</h4>
         ${rows.map(r => `<div class="modal-breakdown-row"><span class="l">${r.label}</span><span>${fmtPrice(r.value)}</span></div>`).join('')}
         <div class="modal-breakdown-total"><span>Итого под ключ</span><span class="v">${fmtPrice(sum)}</span></div>
+        <p class="modal-breakdown-note">Банк может взимать дополнительную комиссию за международный перевод: она не входит в цену под ключ, её размер зависит от вашего банка.</p>
       </div>`;
   }
 

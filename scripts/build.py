@@ -134,6 +134,7 @@ CARDS_CSS = """
 .art-body ul.cc-calc{list-style:none;padding:0;margin:10px 0;font-size:.86rem}
 .cc-calc li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07);color:var(--text-muted)}
 .cc-calc li b{color:var(--text);white-space:nowrap}
+.cc-bank{font-size:.78rem;color:var(--text-dim);margin:2px 0 8px}
 .art-body ul.cc-eq{list-style:none;padding:0;margin:8px 0;columns:1;font-size:.88rem}.cc-eq li{padding:3px 0 3px 18px;position:relative}.cc-eq li:before{content:'✓';position:absolute;left:0;color:var(--accent)}
 .art-body a.cc-open{display:inline-flex;margin-top:8px;padding:9px 18px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#002417;font-weight:700;font-size:.88rem;text-decoration:none}
 """
@@ -196,11 +197,11 @@ def car_card(c):
     eq = [x for x in (c.get("equipment") or []) if x]
     if eq: more += '<ul class="cc-eq">' + "".join(f"<li>{html.escape(x)}</li>" for x in eq) + "</ul>"
     bd = c.get("breakdown") or {}
-    rows = [("Автомобиль", bd.get("auction")), ("Логистика и доставка до Владивостока", (bd.get("domestic") or 0) + (bd.get("delivery") or 0)),
+    rows = [("Автомобиль", bd.get("auction")), ("Логистика внутри Азии и доставка до Владивостока", (bd.get("domestic") or 0) + (bd.get("delivery") or 0)),
             ("Пошлина и утильсбор", bd.get("customs")), ("СБКТС и оформление", bd.get("docs")), ("Комиссия POWER Car", bd.get("commission"))]
     rows = [(k, v) for k, v in rows if v]
     if rows:
-        more += '<ul class="cc-calc">' + "".join(f"<li><span>{html.escape(k)}</span><b>{fmt_price(v)}</b></li>" for k, v in rows) + f'<li><span><b>Итого под ключ</b></span><b>{fmt_price(c["price"])}</b></li></ul>'
+        more += '<ul class="cc-calc">' + "".join(f"<li><span>{html.escape(k)}</span><b>{fmt_price(v)}</b></li>" for k, v in rows) + f'<li><span><b>Итого под ключ</b></span><b>{fmt_price(c["price"])}</b></li></ul><p class="cc-bank">Банк может взимать дополнительную комиссию за международный перевод: она не входит в цену под ключ, её размер зависит от вашего банка.</p>'
     more += f'<a class="cc-open" href="{url}">Открыть карточку →</a>'
     return (f'<article class="cc" id="car-{slug}">{img}<div class="cc-info"><h3><a href="{url}">{c.get("flag","")} {html.escape(name)}</a></h3>'
             f'<div class="cc-price">{fmt_price(c["price"])}<small>под ключ до Владивостока</small></div><div class="cc-chips">{chips_html}</div></div>'
@@ -504,13 +505,13 @@ def car_page(c, articles):
     eq_html = ('<ul class="eq">' + "".join(f"<li>{html.escape(x)}</li>" for x in eq) + '</ul>') if eq else ""
     desc_block = (f'<section><h2 class="sec-h">Описание и комплектация</h2><div class="card desc">{desc_paras}{eq_html}</div></section>') if (desc_paras or eq_html) else ""
     b = c.get("breakdown") or {}
-    rows = [("Стоимость на аукционе",b.get("auction")),("Логистика внутри страны",b.get("domestic")),("Доставка до РФ",b.get("delivery")),
+    rows = [("Стоимость на аукционе",b.get("auction")),("Логистика внутри Азии",b.get("domestic")),("Доставка до РФ",b.get("delivery")),
             ("Таможенная пошлина",b.get("customs")),("Оформление документов / СБКТС",b.get("docs")),("Комиссия POWER Car",b.get("commission"))]
     bd = "".join(f'<tr><td>{html.escape(k)}</td><td>{fmt_price(v)}</td></tr>' for k,v in rows if v)
     breakdown = (f'<section><h2 class="sec-h">Расчёт стоимости под ключ</h2>'
                  f'<p class="sec-sub">Прозрачно, без скрытых платежей. Все суммы фиксируются в договоре.</p>'
                  f'<div class="card"><table class="bd">{bd}<tr class="total"><td>Итого под ключ</td><td>{fmt_price(c["price"])}</td></tr></table>'
-                 f'<p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа.</p></div></section>') if bd else ""
+                 f'<p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа. Банк может взимать дополнительную комиссию за международный перевод: она не входит в цену под ключ, её размер зависит от вашего банка.</p></div></section>') if bd else ""
 
     related = related_articles_for_car(c, articles)
     rel_cards = ""

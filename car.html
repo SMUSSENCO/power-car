@@ -134,13 +134,13 @@ function renderCar(c){
   const specsHtml=specs.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join("");
 
   const b=c.breakdown||{};
-  const rows=[["Стоимость на аукционе",b.auction],["Логистика внутри страны",b.domestic],["Доставка до РФ",b.delivery],
+  const rows=[["Стоимость на аукционе",b.auction],["Логистика внутри Азии",b.domestic],["Доставка до РФ",b.delivery],
     ["Таможенная пошлина",b.customs],["Оформление документов / СБКТС",b.docs],["Комиссия POWER Car",b.commission]];
   const bdHtml=rows.filter(([,v])=>v).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${fmt(v)}</td></tr>`).join("");
   const breakdownBlock=bdHtml?`<section><h2 class="sec-h">Расчёт стоимости под ключ</h2>
     <p class="sec-sub">Прозрачно, без скрытых платежей. Все суммы фиксируются в договоре.</p>
     <div class="card"><table class="bd">${bdHtml}<tr class="total"><td>Итого под ключ</td><td>${fmt(c.price)}</td></tr></table>
-    <p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа.</p></div></section>`:"";
+    <p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа. Банк может взимать дополнительную комиссию за международный перевод: она не входит в цену под ключ, её размер зависит от вашего банка.</p></div></section>`:"";
 
   const eqList=Array.isArray(c.equipment)?c.equipment.filter(Boolean):[];
   const descBlock=(c.description||eqList.length)?`<section><h2 class="sec-h">Описание и комплектация</h2><div class="card desc">

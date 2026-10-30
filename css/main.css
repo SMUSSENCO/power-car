@@ -4001,3 +4001,5 @@ a.stat-link .stat-label { text-decoration: underline; text-decoration-color: rgb
 
 /* Карточки отзывов: вертикальные фото клиентов, лицо и машина находятся в нижней части кадра */
 .rv-img img { object-position: center 62%; }
+
+.modal-breakdown-note{margin-top:10px;font-size:.8rem;line-height:1.4;color:var(--text-dim)}
