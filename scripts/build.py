@@ -221,6 +221,13 @@ def expand_car_markers(body):
     groups["japan-german-plus"] = sorted([c for c in _all if c.get("country") == "Japan" and c.get("brand") in {"Mercedes-Benz", "BMW", "Audi", "Volkswagen"}
                                           and BUDGET_MAX < c["price"] <= 2500000], key=lambda c: -c["price"])
     groups["japan-all"] = [c for c in cs if c.get("country") == "Japan"]
+    # корейские подгруппы: малолитражки «кёнча» (Ray, Spark, Casper), европейские марки, остальные корейские
+    _kr = groups.get("korea", [])
+    _is_light = lambda c: any(k in (c.get("model") or "") for k in ("Ray", "Spark", "Casper"))
+    _is_euro = lambda c: c.get("brand") in {"Citroen", "Mini"} or (c.get("brand") == "Renault" and "XM3" not in (c.get("model") or ""))
+    groups["korea-light"] = [c for c in _kr if _is_light(c)]
+    groups["korea-euro"] = [c for c in _kr if not _is_light(c) and _is_euro(c)]
+    groups["korea-local"] = [c for c in _kr if not _is_light(c) and not _is_euro(c)]
     def grid(m):
         g = groups.get(m.group(1), [])
         shown.extend(g)
