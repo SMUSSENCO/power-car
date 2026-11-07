@@ -138,7 +138,7 @@ function renderCar(c){
     ["Таможенная пошлина",b.customs],["Оформление документов / СБКТС",b.docs],["Комиссия POWER Car",b.commission]];
   const bdHtml=rows.filter(([,v])=>v).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${fmt(v)}</td></tr>`).join("");
   const breakdownBlock=bdHtml?`<section><h2 class="sec-h">Расчёт стоимости под ключ</h2>
-    <p class="sec-sub">Прозрачно, без скрытых платежей. Все суммы фиксируются в договоре.</p>
+    <p class="sec-sub">Прозрачно, без скрытых платежей.</p>
     <div class="card"><table class="bd">${bdHtml}<tr class="total"><td>Итого под ключ</td><td>${fmt(c.price)}</td></tr></table>
     <p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа. Банк может взимать дополнительную комиссию за международный перевод: она не входит в цену под ключ, её размер зависит от вашего банка.</p></div></section>`:"";
 
@@ -156,7 +156,7 @@ function renderCar(c){
         <h1>${esc(name)}</h1>
         <div class="sub">Импорт из ${country} под ключ · доставка 25–40 дней</div>
         <div class="price">${fmt(c.price)}${market}</div>${save}
-        <div class="price-date">Цена под ключ на ${new Date().toLocaleDateString("ru-RU")}, фиксируется в договоре</div>
+        <div class="price-date">Цена под ключ на ${new Date().toLocaleDateString("ru-RU")}</div>
         <table class="specs">${specsHtml}</table>
         <div class="cta-box">
           <a href="/#cta" class="btn btn-primary">Заказать под ключ</a>

@@ -516,7 +516,7 @@ def car_page(c, articles):
             ("Таможенная пошлина",b.get("customs")),("Оформление документов / СБКТС",b.get("docs")),("Комиссия POWER Car",b.get("commission"))]
     bd = "".join(f'<tr><td>{html.escape(k)}</td><td>{fmt_price(v)}</td></tr>' for k,v in rows if v)
     breakdown = (f'<section><h2 class="sec-h">Расчёт стоимости под ключ</h2>'
-                 f'<p class="sec-sub">Прозрачно, без скрытых платежей. Все суммы фиксируются в договоре.</p>'
+                 f'<p class="sec-sub">Прозрачно, без скрытых платежей.</p>'
                  f'<div class="card"><table class="bd">{bd}<tr class="total"><td>Итого под ключ</td><td>{fmt_price(c["price"])}</td></tr></table>'
                  f'<p class="note">Расчёт ориентировочный, актуальные курс и ставки уточняются на момент заказа. Банк может взимать дополнительную комиссию за международный перевод: она не входит в цену под ключ, её размер зависит от вашего банка.</p></div></section>') if bd else ""
 
@@ -586,7 +586,7 @@ def car_page(c, articles):
       <h1>{html.escape(name)}</h1>
       <div class="sub">Импорт из {country} под ключ · доставка 25–40 дней</div>
       <div class="price">{fmt_price(c['price'])}{market}</div>{save}
-      <div class="price-date">Цена под ключ на {TODAY_RU}, фиксируется в договоре</div>
+      <div class="price-date">Цена под ключ на {TODAY_RU}</div>
       <table class="specs">{specs_html}</table>
       <div class="cta-box">
         <a href="/#cta" class="btn btn-primary">Обсудить авто</a>
