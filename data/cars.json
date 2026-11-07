@@ -11176,5 +11176,67 @@
       "docs": 100000,
       "commission": 50000
     }
+  },
+  {
+    "id": "Hyundai-ix25-red-2021",
+    "brand": "Hyundai",
+    "model": "ix25",
+    "year": 2021,
+    "mileage": 19116,
+    "engine": "1.5",
+    "power": 115,
+    "transmission": "CVT",
+    "body": "crossover",
+    "country": "China",
+    "flag": "🇨🇳",
+    "wheel": "left",
+    "deliveryMin": 21,
+    "deliveryMax": 28,
+    "hit": false,
+    "weight": null,
+    "published": false,
+    "addedAt": "2026-11-07",
+    "type": "auto",
+    "priceMarket": null,
+    "drive": "fwd",
+    "color": "красный",
+    "description": "Hyundai ix25 (Beijing Hyundai)  левый руль. Бензиновый двигатель 1.5 л (115 л.с.)  вариатор  передний привод. Цвет кузова красный  салон чёрный со светлой отделкой. Пробег 19 116 км по приборной панели. Панорамная крыша, камеры 360°, вертикальный экран, цифровая приборная панель.",
+    "calc": {
+      "marketLocal": 82000,
+      "customs": 221064,
+      "commission": 50000,
+      "docs": 100000
+    },
+    "price": 1538424,
+    "photos": [
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-1.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-2.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-3.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-4.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-5.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-6.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-7.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-8.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-9.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-10.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-11.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-12.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-13.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-14.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-15.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-16.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-17.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-18.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-19.webp",
+      "images/cars/Hyundai-ix25-red-2021/Hyundai-ix25-red-2021-20.webp"
+    ],
+    "breakdown": {
+      "auction": 997120,
+      "domestic": 170240,
+      "delivery": 0,
+      "customs": 221064,
+      "docs": 100000,
+      "commission": 50000
+    }
   }
 ]
