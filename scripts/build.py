@@ -23,7 +23,14 @@ BASE = "https://power-car.ru/"
 # Use today's date for <lastmod> in generated sitemap (was hardcoded to a stale value)
 TODAY = date.today().isoformat()
 PRICE_VALID_UNTIL = (date.today() + timedelta(days=45)).isoformat()   # цены фиксированы до продажи, но курс плавает: подтверждаем раз в неделю (cron в build-pages.yml)
-TODAY_RU = date.today().strftime("%d.%m.%Y")
+def _prices_date():
+    # дата, когда цены в cars.json последний раз пересчитаны по курсам (а не день сборки)
+    try:
+        d = json.load(open("data/settings.json", encoding="utf-8")).get("pricesUpdatedAt")
+        return date.fromisoformat(d).strftime("%d.%m.%Y")
+    except Exception:
+        return date.today().strftime("%d.%m.%Y")
+TODAY_RU = _prices_date()
 
 def read(p):
     with open(p, encoding="utf-8") as f: return f.read()

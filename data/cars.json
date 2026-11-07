@@ -985,11 +985,11 @@
     "priceMarket": -4,
     "calc": {
       "marketLocal": 99800,
-      "customs": 253744,
+      "customs": 253831,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1829658,
+    "price": 1829745,
     "photos": [
       "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-1.webp",
       "images/cars/Skoda-Kamiq-Comfort-2022/Skoda-Kamiq-Comfort-2022-2.webp",
@@ -1004,7 +1004,7 @@
       "auction": 1250494,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 253744,
+      "customs": 253831,
       "docs": 100000,
       "commission": 50000
     }
@@ -1076,11 +1076,11 @@
     "priceMarket": 3700000,
     "calc": {
       "marketLocal": 191800,
-      "customs": 238077,
+      "customs": 238158,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2966751,
+    "price": 2966832,
     "photos": [
       "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-1.webp",
       "images/cars/Tiguan-L-280TSI-Trendy-2023/Tiguan-L-280TSI-Trendy-2023-2.webp",
@@ -1093,7 +1093,7 @@
       "auction": 2403254,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 238077,
+      "customs": 238158,
       "docs": 100000,
       "commission": 50000
     },
@@ -1121,11 +1121,11 @@
     "priceMarket": 3500000,
     "calc": {
       "marketLocal": 239800,
-      "customs": 253744,
+      "customs": 253831,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 3583858,
+    "price": 3583945,
     "photos": [
       "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-1.webp",
       "images/cars/BMW-X1-sDrive20Li-X-Design-2023/BMW-X1-sDrive20Li-X-Design-2023-2.webp",
@@ -1139,7 +1139,7 @@
       "auction": 3004694,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 253744,
+      "customs": 253831,
       "docs": 100000,
       "commission": 50000
     }
@@ -1256,11 +1256,11 @@
     "priceMarket": 1700000,
     "calc": {
       "marketLocal": 72800,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1482731,
+    "price": 1482818,
     "photos": [
       "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-1.webp",
       "images/cars/YARiS-X-1.5L-CVT-Luxury-Plus/YARiS-X-1.5L-CVT-Luxury-Plus-2.webp",
@@ -1273,7 +1273,7 @@
       "auction": 912184,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     },
@@ -1405,11 +1405,11 @@
     "priceMarket": 3500000,
     "calc": {
       "marketLocal": 145800,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2668689,
+    "price": 2668873,
     "photos": [
       "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-1.webp",
       "images/cars/Mazda-CX-5-Smart-2022/Mazda-CX-5-Smart-2022-2.webp",
@@ -1424,7 +1424,7 @@
       "auction": 1826874,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -1452,11 +1452,11 @@
     "priceMarket": 2958309,
     "calc": {
       "marketLocal": 138800,
-      "customs": 238077,
+      "customs": 238158,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2302661,
+    "price": 2302742,
     "photos": [
       "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-1.webp",
       "images/cars/Audi-Q2L-Fashion-Dynamic-2022/Audi-Q2L-Fashion-Dynamic-2022-2.webp",
@@ -1472,7 +1472,7 @@
       "auction": 1739164,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 238077,
+      "customs": 238158,
       "docs": 100000,
       "commission": 50000
     }
@@ -1499,11 +1499,11 @@
     "priceMarket": 2136633,
     "calc": {
       "marketLocal": 87800,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1670681,
+    "price": 1670768,
     "photos": [
       "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-1.webp",
       "images/cars/Kia-K3-Luxury-2023/Kia-K3-Luxury-2023-2.webp",
@@ -1517,7 +1517,7 @@
       "auction": 1100134,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -1544,11 +1544,11 @@
     "priceMarket": 2812056,
     "calc": {
       "marketLocal": 129800,
-      "customs": 238077,
+      "customs": 238158,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2189891,
+    "price": 2189972,
     "photos": [
       "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-1.webp",
       "images/cars/Lamando-L-280TSI-Hot-2023/Lamando-L-280TSI-Hot-2023-2.webp",
@@ -1562,7 +1562,7 @@
       "auction": 1626394,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 238077,
+      "customs": 238158,
       "docs": 100000,
       "commission": 50000
     }
@@ -1840,11 +1840,11 @@
     "priceMarket": 2000000,
     "calc": {
       "marketLocal": 26500000,
-      "customs": 206744,
+      "customs": 206813,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2209244,
+    "price": 2209313,
     "photos": [
       "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-1.webp",
       "images/cars/Chevrolet-Trax-2023/Chevrolet-Trax-2023-2.webp",
@@ -1860,7 +1860,7 @@
       "auction": 1722500,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 206744,
+      "customs": 206813,
       "docs": 100000,
       "commission": 50000
     }
@@ -1936,11 +1936,11 @@
     "priceMarket": 1800000,
     "calc": {
       "marketLocal": 16300000,
-      "customs": 378756,
+      "customs": 378893,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1718256,
+    "price": 1718393,
     "photos": [
       "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-1.webp",
       "images/cars/Hyundai-Venue-2021/Hyundai-Venue-2021-2.webp",
@@ -1954,7 +1954,7 @@
       "auction": 1059500,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 378756,
+      "customs": 378893,
       "docs": 100000,
       "commission": 50000
     }
@@ -2316,11 +2316,11 @@
     "priceMarket": 3000000,
     "calc": {
       "marketLocal": 39900000,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 3389895,
+    "price": 3390079,
     "photos": [
       "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-1.webp",
       "images/cars/Kia-Seltos-Signature-2023/Kia-Seltos-Signature-2023-2.webp",
@@ -2337,7 +2337,7 @@
       "auction": 2593500,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -2365,11 +2365,11 @@
     "priceMarket": 1300000,
     "calc": {
       "marketLocal": 12000000,
-      "customs": 148361,
+      "customs": 148412,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1208361,
+    "price": 1208412,
     "photos": [
       "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-1.webp",
       "images/cars/Casper-Turbo-Smart/Casper-Turbo-Smart-2.webp",
@@ -2390,7 +2390,7 @@
       "auction": 780000,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 148361,
+      "customs": 148412,
       "docs": 100000,
       "commission": 50000
     }
@@ -2418,11 +2418,11 @@
     "priceMarket": 2200000,
     "calc": {
       "marketLocal": 19500000,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2063895,
+    "price": 2064079,
     "photos": [
       "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-1.webp",
       "images/cars/BMW-2-Series-Gran-Coupe/BMW-2-Series-Gran-Coupe-2.webp",
@@ -2437,7 +2437,7 @@
       "auction": 1267500,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -2561,11 +2561,11 @@
     "priceMarket": 1700000,
     "calc": {
       "marketLocal": 1688000,
-      "customs": 148361,
+      "customs": 148412,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1336761,
+    "price": 1336812,
     "photos": [
       "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-1.webp",
       "images/cars/Volkswagen-T-Cross/Volkswagen-T-Cross-2.webp",
@@ -2575,7 +2575,7 @@
       "auction": 928400,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 148361,
+      "customs": 148412,
       "docs": 100000,
       "commission": 50000
     }
@@ -2603,11 +2603,11 @@
     "priceMarket": 1300000,
     "calc": {
       "marketLocal": 1007000,
-      "customs": 213793,
+      "customs": 213869,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1027643,
+    "price": 1027719,
     "photos": [
       "images/cars/Renault-Lutecia/Renault-Lutecia-1.webp",
       "images/cars/Renault-Lutecia/Renault-Lutecia-2.webp",
@@ -2617,7 +2617,7 @@
       "auction": 553850,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 213793,
+      "customs": 213869,
       "docs": 100000,
       "commission": 50000
     }
@@ -2645,11 +2645,11 @@
     "priceMarket": 1200000,
     "calc": {
       "marketLocal": 1247000,
-      "customs": 198127,
+      "customs": 198196,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1143977,
+    "price": 1144046,
     "photos": [
       "images/cars/Nissan-Kix/Nissan-Kix-1.webp",
       "images/cars/Nissan-Kix/Nissan-Kix-2.webp",
@@ -2659,7 +2659,7 @@
       "auction": 685850,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 198127,
+      "customs": 198196,
       "docs": 100000,
       "commission": 50000
     }
@@ -2687,11 +2687,11 @@
     "priceMarket": 1800000,
     "calc": {
       "marketLocal": 1956000,
-      "customs": 198127,
+      "customs": 198196,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1533927,
+    "price": 1533996,
     "photos": [
       "images/cars/Nissan-Serena/Nissan-Serena-1.webp",
       "images/cars/Nissan-Serena/Nissan-Serena-2.webp",
@@ -2701,7 +2701,7 @@
       "auction": 1075800,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 198127,
+      "customs": 198196,
       "docs": 100000,
       "commission": 50000
     }
@@ -2813,11 +2813,11 @@
     "priceMarket": 2400000,
     "calc": {
       "marketLocal": 2800000,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2316395,
+    "price": 2316579,
     "photos": [
       "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-1.webp",
       "images/cars/Mercedes-Benz-CLA-Class/Mercedes-Benz-CLA-Class-2.webp",
@@ -2827,7 +2827,7 @@
       "auction": 1540000,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -2855,11 +2855,11 @@
     "priceMarket": 2200000,
     "calc": {
       "marketLocal": 2220000,
-      "customs": 253744,
+      "customs": 253831,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1734744,
+    "price": 1734831,
     "photos": [
       "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-1.webp",
       "images/cars/Mercedes-Benz-C-Class-Japan/Mercedes-Benz-C-Class-Japan-2.webp",
@@ -2869,7 +2869,7 @@
       "auction": 1221000,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 253744,
+      "customs": 253831,
       "docs": 100000,
       "commission": 50000
     }
@@ -2897,11 +2897,11 @@
     "priceMarket": 1599999,
     "calc": {
       "marketLocal": 2100000,
-      "customs": 198127,
+      "customs": 198196,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1613127,
+    "price": 1613196,
     "photos": [
       "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-1.webp",
       "images/cars/Toyota-Corolla-Sport-Japan/Toyota-Corolla-Sport-Japan-2.webp",
@@ -2911,7 +2911,7 @@
       "auction": 1155000,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 198127,
+      "customs": 198196,
       "docs": 100000,
       "commission": 50000
     }
@@ -2939,11 +2939,11 @@
     "priceMarket": 1900000,
     "calc": {
       "marketLocal": 2450000,
-      "customs": 206744,
+      "customs": 206813,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1814244,
+    "price": 1814313,
     "photos": [
       "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-1.webp",
       "images/cars/Toyota-C-HR-Japan/Toyota-C-HR-Japan-2.webp",
@@ -2953,7 +2953,7 @@
       "auction": 1347500,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 206744,
+      "customs": 206813,
       "docs": 100000,
       "commission": 50000
     }
@@ -2981,11 +2981,11 @@
     "priceMarket": 1700000,
     "calc": {
       "marketLocal": 2035000,
-      "customs": 198127,
+      "customs": 198196,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1577377,
+    "price": 1577446,
     "photos": [
       "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-1.webp",
       "images/cars/Toyota-Raize-Japan/Toyota-Raize-Japan-2.webp",
@@ -2995,7 +2995,7 @@
       "auction": 1119250,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 198127,
+      "customs": 198196,
       "docs": 100000,
       "commission": 50000
     }
@@ -3023,11 +3023,11 @@
     "priceMarket": 1200000,
     "calc": {
       "marketLocal": 1200000,
-      "customs": 378756,
+      "customs": 378893,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1298756,
+    "price": 1298893,
     "photos": [
       "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-1.webp",
       "images/cars/Subaru-Impreza-Japan/Subaru-Impreza-Japan-2.webp",
@@ -3037,7 +3037,7 @@
       "auction": 660000,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 378756,
+      "customs": 378893,
       "docs": 100000,
       "commission": 50000
     }
@@ -3065,11 +3065,11 @@
     "priceMarket": 2100000,
     "calc": {
       "marketLocal": 2340000,
-      "customs": 253744,
+      "customs": 253831,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1800744,
+    "price": 1800831,
     "photos": [
       "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-1.webp",
       "images/cars/BMW-1-Series-Japan/BMW-1-Series-Japan-2.webp",
@@ -3079,7 +3079,7 @@
       "auction": 1287000,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 253744,
+      "customs": 253831,
       "docs": 100000,
       "commission": 50000
     }
@@ -3191,11 +3191,11 @@
     "priceMarket": 2400000,
     "calc": {
       "marketLocal": 3050000,
-      "customs": 253744,
+      "customs": 253831,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2191244,
+    "price": 2191331,
     "photos": [
       "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-1.webp",
       "images/cars/Honda-Step-Wagon-Japan/Honda-Step-Wagon-Japan-2.webp",
@@ -3205,7 +3205,7 @@
       "auction": 1677500,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 253744,
+      "customs": 253831,
       "docs": 100000,
       "commission": 50000
     }
@@ -4503,11 +4503,11 @@
     "priceMarket": 2990001,
     "calc": {
       "marketLocal": 140641,
-      "customs": 238077,
+      "customs": 238158,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2325729,
+    "price": 2325810,
     "photos": [
       "images/cars/Audi-A3-2022/Audi-A3-2022-1.webp",
       "images/cars/Audi-A3-2022/Audi-A3-2022-2.webp",
@@ -4517,7 +4517,7 @@
       "auction": 1762232,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 238077,
+      "customs": 238158,
       "docs": 100000,
       "commission": 50000
     }
@@ -4545,11 +4545,11 @@
     "priceMarket": 2769008,
     "calc": {
       "marketLocal": 126518,
-      "customs": 253744,
+      "customs": 253831,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2164435,
+    "price": 2164522,
     "photos": [
       "images/cars/BMW-1-Series-M-Sport-2022/BMW-1-Series-M-Sport-2022-1.webp",
       "images/cars/BMW-1-Series-M-Sport-2022/BMW-1-Series-M-Sport-2022-2.webp"
@@ -4558,7 +4558,7 @@
       "auction": 1585271,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 253744,
+      "customs": 253831,
       "docs": 100000,
       "commission": 50000
     }
@@ -4627,11 +4627,11 @@
     "priceMarket": 2990000,
     "calc": {
       "marketLocal": 3288827,
-      "customs": 253744,
+      "customs": 253831,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2322599,
+    "price": 2322686,
     "photos": [
       "images/cars/Mercedes-Benz-C-Class-2021-AMG-Line/Mercedes-Benz-C-Class-2021-AMG-Line-1.webp",
       "images/cars/Mercedes-Benz-C-Class-2021-AMG-Line/Mercedes-Benz-C-Class-2021-AMG-Line-2.webp"
@@ -4640,7 +4640,7 @@
       "auction": 1808855,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 253744,
+      "customs": 253831,
       "docs": 100000,
       "commission": 50000
     }
@@ -4710,11 +4710,11 @@
     "priceMarket": 2210001,
     "calc": {
       "marketLocal": 92641,
-      "customs": 229460,
+      "customs": 229541,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1715672,
+    "price": 1715753,
     "photos": [
       "images/cars/Volkswagen-Lamando-L-Lingdu-2022/Volkswagen-Lamando-L-Lingdu-2022-1.webp",
       "images/cars/Volkswagen-Lamando-L-Lingdu-2022/Volkswagen-Lamando-L-Lingdu-2022-2.webp"
@@ -4723,7 +4723,7 @@
       "auction": 1160792,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 229460,
+      "customs": 229541,
       "docs": 100000,
       "commission": 50000
     }
@@ -4751,11 +4751,11 @@
     "priceMarket": 1644503,
     "calc": {
       "marketLocal": 57515,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1291210,
+    "price": 1291297,
     "photos": [
       "images/cars/Chevrolet-Cruze-320-2022/Chevrolet-Cruze-320-2022-1.webp",
       "images/cars/Chevrolet-Cruze-320-2022/Chevrolet-Cruze-320-2022-2.webp",
@@ -4768,7 +4768,7 @@
       "auction": 720663,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -4841,11 +4841,11 @@
     "priceMarket": 1847383,
     "calc": {
       "marketLocal": 70000,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1447647,
+    "price": 1447734,
     "photos": [
       "images/cars/Hyundai-ix25-DLX-Premium-2021/Hyundai-ix25-DLX-Premium-2021-1.webp",
       "images/cars/Hyundai-ix25-DLX-Premium-2021/Hyundai-ix25-DLX-Premium-2021-2.webp",
@@ -4859,7 +4859,7 @@
       "auction": 877100,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -4887,11 +4887,11 @@
     "priceMarket": 2410836,
     "calc": {
       "marketLocal": 105000,
-      "customs": 238077,
+      "customs": 238158,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1879147,
+    "price": 1879228,
     "photos": [
       "images/cars/Volkswagen-T-ROC-Tango-280TSI-2022/Volkswagen-T-ROC-Tango-280TSI-2022-1.webp",
       "images/cars/Volkswagen-T-ROC-Tango-280TSI-2022/Volkswagen-T-ROC-Tango-280TSI-2022-2.webp",
@@ -4904,7 +4904,7 @@
       "auction": 1315650,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 238077,
+      "customs": 238158,
       "docs": 100000,
       "commission": 50000
     }
@@ -4932,11 +4932,11 @@
     "priceMarket": 2557086,
     "calc": {
       "marketLocal": 114000,
-      "customs": 238077,
+      "customs": 238158,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1991917,
+    "price": 1991998,
     "photos": [
       "images/cars/Volkswagen-Tayron-Tuyue-280TSI-2022/Volkswagen-Tayron-Tuyue-280TSI-2022-1.webp",
       "images/cars/Volkswagen-Tayron-Tuyue-280TSI-2022/Volkswagen-Tayron-Tuyue-280TSI-2022-2.webp",
@@ -4948,7 +4948,7 @@
       "auction": 1428420,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 238077,
+      "customs": 238158,
       "docs": 100000,
       "commission": 50000
     }
@@ -5022,11 +5022,11 @@
     "priceMarket": 2392000,
     "calc": {
       "marketLocal": 103841,
-      "customs": 238077,
+      "customs": 238158,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1864625,
+    "price": 1864706,
     "photos": [
       "images/cars/Volkswagen-T-Cross-280TSI-Comfort-2021/Volkswagen-T-Cross-280TSI-Comfort-2021-1.webp",
       "images/cars/Volkswagen-T-Cross-280TSI-Comfort-2021/Volkswagen-T-Cross-280TSI-Comfort-2021-2.webp",
@@ -5043,7 +5043,7 @@
       "auction": 1301128,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 238077,
+      "customs": 238158,
       "docs": 100000,
       "commission": 50000
     },
@@ -5074,11 +5074,11 @@
     "priceMarket": 2080000,
     "calc": {
       "marketLocal": 84315,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1627014,
+    "price": 1627101,
     "photos": [
       "images/cars/Toyota-Yaris-L-Leading-Plus-2023/Toyota-Yaris-L-Leading-Plus-2023-1.webp",
       "images/cars/Toyota-Yaris-L-Leading-Plus-2023/Toyota-Yaris-L-Leading-Plus-2023-2.webp",
@@ -5093,7 +5093,7 @@
       "auction": 1056467,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     },
@@ -5864,11 +5864,11 @@
     "priceMarket": 1690000,
     "calc": {
       "marketLocal": 59884,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1320894,
+    "price": 1320981,
     "photos": [
       "images/cars/Chery-Tiggo-5x-2022/Chery-Tiggo-5x-2022-1.webp",
       "images/cars/Chery-Tiggo-5x-2022/Chery-Tiggo-5x-2022-2.webp",
@@ -5891,7 +5891,7 @@
       "auction": 750347,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     },
@@ -6156,11 +6156,11 @@
     "priceMarket": 1950000,
     "calc": {
       "marketLocal": 75769,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1519933,
+    "price": 1520020,
     "photos": [
       "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-1.webp",
       "images/cars/Hyundai-ix25-GLS-Intelligent-2021/Hyundai-ix25-GLS-Intelligent-2021-2.webp",
@@ -6175,7 +6175,7 @@
       "auction": 949386,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     },
@@ -6587,11 +6587,11 @@
     "description": "Mini Cooper  комплектация 5 Door HIGH Third generation  первая регистрация май 2021  левый руль. Бензиновый мотор 1499 см³  136 л.с.  автоматическая коробка  передний привод  пять мест. Пробег 78 605 км.\nПо страховой истории Кореи: длинная страховая история: общая сумма выплат около 14,2 млн ₩, ДТП в 2022, 2023, 2024 и дважды в 2025 годах. Состояние кузова проверяем на диагностике до выкупа.",
     "calc": {
       "marketLocal": 12800000,
-      "customs": 452483,
+      "customs": 452647,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1564483,
+    "price": 1564647,
     "photos": [
       "images/cars/Mini-Cooper-2021-5017876/Mini-Cooper-2021-5017876-1.webp",
       "images/cars/Mini-Cooper-2021-5017876/Mini-Cooper-2021-5017876-2.webp",
@@ -6622,7 +6622,7 @@
       "auction": 832000,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 452483,
+      "customs": 452647,
       "docs": 100000,
       "commission": 50000
     }
@@ -7119,17 +7119,17 @@
     "description": "Mazda 3  комплектация 2.0L automatic quality elegant version  выпуск октябрь 2023  левый руль. Бензиновый мотор 2000 см³  158 л.с.  АКПП  передний привод. Пробег 30 000 км.",
     "calc": {
       "marketLocal": 56500,
-      "customs": 507778,
+      "customs": 507962,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1541143,
+    "price": 1541327,
     "photos": [],
     "breakdown": {
       "auction": 707945,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 507778,
+      "customs": 507962,
       "docs": 100000,
       "commission": 50000
     }
@@ -7161,17 +7161,17 @@
     "description": "Toyota Corolla  комплектация 1.5L CVT Pioneer Edition  выпуск май 2022  левый руль. Бензиновый мотор 1490 см³  121 л.с.  вариатор  передний привод. Пробег 29 000 км.",
     "calc": {
       "marketLocal": 77800,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1545381,
+    "price": 1545468,
     "photos": [],
     "breakdown": {
       "auction": 974834,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -7203,17 +7203,17 @@
     "description": "Toyota Levin  комплектация Facelifted TNGA 1.5L aggressive version  выпуск октябрь 2022  левый руль. Бензиновый мотор 1490 см³  121 л.с.  вариатор  передний привод. Пробег 48 000 км.",
     "calc": {
       "marketLocal": 46800,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1156951,
+    "price": 1157038,
     "photos": [],
     "breakdown": {
       "auction": 586404,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -7245,17 +7245,17 @@
     "description": "Toyota Levin  комплектация Facelifted TNGA 1.5L aggressive version  выпуск февраль 2023  левый руль. Бензиновый мотор 1490 см³  121 л.с.  вариатор  передний привод. Пробег 29 000 км.",
     "calc": {
       "marketLocal": 69800,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1445141,
+    "price": 1445228,
     "photos": [],
     "breakdown": {
       "auction": 874594,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -7287,17 +7287,17 @@
     "description": "BMW 1 Series  комплектация 120i M Sports Yao Ye Edition  выпуск декабрь 2021  левый руль. Бензиновый мотор 1499 см³  140 л.с.  робот 7DCT  передний привод. Пробег 62 000 км.",
     "calc": {
       "marketLocal": 75800,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1520321,
+    "price": 1520408,
     "photos": [],
     "breakdown": {
       "auction": 949774,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -7371,17 +7371,17 @@
     "description": "Audi Q2L  комплектация 35TFSI aggressive dynamic type  выпуск декабрь 2021  левый руль. Бензиновый мотор 1395 см³  150 л.с.  робот 7DCT  передний привод. Пробег 71 000 км.",
     "calc": {
       "marketLocal": 78000,
-      "customs": 229460,
+      "customs": 229541,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1532220,
+    "price": 1532301,
     "photos": [],
     "breakdown": {
       "auction": 977340,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 229460,
+      "customs": 229541,
       "docs": 100000,
       "commission": 50000
     }
@@ -7497,17 +7497,17 @@
     "description": "BMW 1 Series  комплектация Facelift 120i M sports version  выпуск декабрь 2021  левый руль. Бензиновый мотор 1499 см³  140 л.с.  робот 7DCT  передний привод. Пробег 32 300 км.",
     "calc": {
       "marketLocal": 68000,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1422587,
+    "price": 1422674,
     "photos": [],
     "breakdown": {
       "auction": 852040,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -7539,17 +7539,17 @@
     "description": "Volkswagen T-Roc  комплектация 280TSI DSG two-wheel drive Elite PLUS  выпуск февраль 2023  левый руль. Бензиновый мотор 1400 см³  150 л.с.  АКПП DSG  передний привод. Пробег 42 000 км.",
     "calc": {
       "marketLocal": 59800,
-      "customs": 229460,
+      "customs": 229541,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1304174,
+    "price": 1304255,
     "photos": [],
     "breakdown": {
       "auction": 749294,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 229460,
+      "customs": 229541,
       "docs": 100000,
       "commission": 50000
     }
@@ -7581,17 +7581,17 @@
     "description": "Volkswagen Bora  комплектация 280TSI DSG Premium Edition  выпуск июнь 2022  левый руль. Бензиновый мотор 1395 см³  150 л.с.  робот 7DCT  передний привод. Пробег 46 600 км.",
     "calc": {
       "marketLocal": 68500,
-      "customs": 229460,
+      "customs": 229541,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1413185,
+    "price": 1413266,
     "photos": [],
     "breakdown": {
       "auction": 858305,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 229460,
+      "customs": 229541,
       "docs": 100000,
       "commission": 50000
     }
@@ -7665,17 +7665,17 @@
     "description": "Volkswagen T-Roc  комплектация 280TSI two-wheel drive fashion version  выпуск март 2022  левый руль. Бензиновый мотор 1395 см³  150 л.с.  робот 7DCT  передний привод. Пробег 46 000 км.",
     "calc": {
       "marketLocal": 62800,
-      "customs": 229460,
+      "customs": 229541,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1341764,
+    "price": 1341845,
     "photos": [],
     "breakdown": {
       "auction": 786884,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 229460,
+      "customs": 229541,
       "docs": 100000,
       "commission": 50000
     }
@@ -7707,17 +7707,17 @@
     "description": "Volkswagen Golf  комплектация Facelift 280TSI DSG R-Line Lite  выпуск июнь 2023  левый руль. Бензиновый мотор 1400 см³  150 л.с.  АКПП DSG  передний привод. Пробег 38 000 км.",
     "calc": {
       "marketLocal": 72800,
-      "customs": 229460,
+      "customs": 229541,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1467064,
+    "price": 1467145,
     "photos": [],
     "breakdown": {
       "auction": 912184,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 229460,
+      "customs": 229541,
       "docs": 100000,
       "commission": 50000
     }
@@ -7749,17 +7749,17 @@
     "description": "Mazda 3  комплектация 1.5L manual quality American version  выпуск август 2022  левый руль. Бензиновый мотор 1500 см³  117 л.с.  механика  передний привод. Пробег 38 000 км.",
     "calc": {
       "marketLocal": 49800,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1194541,
+    "price": 1194628,
     "photos": [],
     "breakdown": {
       "auction": 623994,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     }
@@ -7791,17 +7791,17 @@
     "description": "Volkswagen T-Roc  комплектация 280TSI DSG two-wheel drive Elite PLUS  выпуск март 2023  левый руль. Бензиновый мотор 1395 см³  150 л.с.  робот 7DCT  передний привод. Пробег 51 000 км.",
     "calc": {
       "marketLocal": 75600,
-      "customs": 229460,
+      "customs": 229541,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1502148,
+    "price": 1502229,
     "photos": [],
     "breakdown": {
       "auction": 947268,
       "domestic": 175420,
       "delivery": 0,
-      "customs": 229460,
+      "customs": 229541,
       "docs": 100000,
       "commission": 50000
     }
@@ -7899,17 +7899,17 @@
     "description": "Citroen C3  комплектация CAR IN  2018 год  правый руль. Двигатель 1200 см³  110 л.с.  AT. Пробег 81 000 км. Лот аукциона CAA Chubu №38143  оценка 4.",
     "calc": {
       "marketLocal": 320000,
-      "customs": 372628,
+      "customs": 372759,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 808628,
+    "price": 808759,
     "photos": [],
     "breakdown": {
       "auction": 176000,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 372628,
+      "customs": 372759,
       "docs": 100000,
       "commission": 50000
     },
@@ -7941,17 +7941,17 @@
     "description": "Mitsubishi Mirage  комплектация G  2022 год  правый руль. Двигатель 1200 см³  78 л.с.  CVT. Пробег 18 000 км. Лот аукциона MIRIVE Saitama №20235  оценка 3.5.",
     "calc": {
       "marketLocal": 677000,
-      "customs": 206744,
+      "customs": 206813,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 839094,
+    "price": 839163,
     "photos": [],
     "breakdown": {
       "auction": 372350,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 206744,
+      "customs": 206813,
       "docs": 100000,
       "commission": 50000
     },
@@ -7983,17 +7983,17 @@
     "description": "Subaru Impreza  комплектация 1.6i-S EyeSight 4WD  2022 год  правый руль. Двигатель 1600 см³  116 л.с.  CVT. Пробег 15 000 км. Лот аукциона CAA Chubu №36329  оценка 5.",
     "calc": {
       "marketLocal": 1775000,
-      "customs": 378756,
+      "customs": 378893,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1615006,
+    "price": 1615143,
     "photos": [],
     "breakdown": {
       "auction": 976250,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 378756,
+      "customs": 378893,
       "docs": 100000,
       "commission": 50000
     },
@@ -8025,17 +8025,17 @@
     "description": "Nissan Aura  комплектация G Leather Edition  2021 год  правый руль. Двигатель 1200 см³  60 л.с.  AT. Пробег 32 000 км. Лот аукциона JU Gifu №7079  оценка 5.",
     "calc": {
       "marketLocal": 1490000,
-      "customs": 198127,
+      "customs": 198196,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1277627,
+    "price": 1277696,
     "photos": [],
     "breakdown": {
       "auction": 819500,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 198127,
+      "customs": 198196,
       "docs": 100000,
       "commission": 50000
     },
@@ -8109,17 +8109,17 @@
     "description": "Toyota Corolla Touring  комплектация 4WD Touring Hybrid S Toyota Safety Sense  2022 год  правый руль. Двигатель 1800 см³  98 л.с.  CVT. Пробег 80 000 км. Лот аукциона JU Gifu №5895  оценка 4.",
     "calc": {
       "marketLocal": 1620000,
-      "customs": 424835,
+      "customs": 424989,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1575835,
+    "price": 1575989,
     "photos": [],
     "breakdown": {
       "auction": 891000,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 424835,
+      "customs": 424989,
       "docs": 100000,
       "commission": 50000
     },
@@ -8151,17 +8151,17 @@
     "description": "Nissan Note  комплектация Autech  2021 год  правый руль. Двигатель 1200 см³  60 л.с.  AT. Пробег 38 000 км. Лот аукциона JU Gifu №60634  оценка 4.",
     "calc": {
       "marketLocal": 1355000,
-      "customs": 198127,
+      "customs": 198196,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1203377,
+    "price": 1203446,
     "photos": [],
     "breakdown": {
       "auction": 745250,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 198127,
+      "customs": 198196,
       "docs": 100000,
       "commission": 50000
     },
@@ -8193,17 +8193,17 @@
     "description": "Mitsubishi Delica D:2  комплектация Hybrid MZ Navi  2023 год  правый руль. Двигатель 1200 см³  91 л.с.  CVT. Пробег 28 000 км. Лот аукциона JU Gifu №90252  оценка 5.",
     "calc": {
       "marketLocal": 1545000,
-      "customs": 198127,
+      "customs": 198196,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1307877,
+    "price": 1307946,
     "photos": [],
     "breakdown": {
       "auction": 849750,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 198127,
+      "customs": 198196,
       "docs": 100000,
       "commission": 50000
     },
@@ -8235,17 +8235,17 @@
     "description": "Mazda Demio  комплектация 4WD 15S Black Tone Edition  2022 год  правый руль. Двигатель 1500 см³  110 л.с.  AT. Пробег 22 000 км. Лот аукциона JU Gifu №8623  оценка 3.5.",
     "calc": {
       "marketLocal": 1350000,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1247627,
+    "price": 1247714,
     "photos": [],
     "breakdown": {
       "auction": 742500,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     },
@@ -8277,17 +8277,17 @@
     "description": "Toyota Yaris Cross  комплектация Hybrid X Toyota Safety Sense  2021 год  правый руль. Двигатель 1500 см³  92 л.с.  CVT. Пробег 128 000 км. Лот аукциона JU Gifu №8400  оценка 3.5.",
     "calc": {
       "marketLocal": 1220000,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1176127,
+    "price": 1176214,
     "photos": [],
     "breakdown": {
       "auction": 671000,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     },
@@ -8319,17 +8319,17 @@
     "description": "Honda Vezel  комплектация Hybrid Z Honda Sensing  2020 год  правый руль. Двигатель 1500 см³  132 л.с.  DCT. Пробег 31 000 км. Лот аукциона Honda Tokyo №10200  оценка 4.5.",
     "calc": {
       "marketLocal": 1682000,
-      "customs": 452483,
+      "customs": 452647,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1637583,
+    "price": 1637747,
     "photos": [],
     "breakdown": {
       "auction": 925100,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 452483,
+      "customs": 452647,
       "docs": 100000,
       "commission": 50000
     },
@@ -8361,17 +8361,17 @@
     "description": "Daihatsu Rocky  комплектация L  2023 год  правый руль. Двигатель 1200 см³  87 л.с.  CVT. Пробег 64 000 км. Лот аукциона AUCNET №25168  оценка 4.",
     "calc": {
       "marketLocal": 1175000,
-      "customs": 198127,
+      "customs": 198196,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1104377,
+    "price": 1104446,
     "photos": [],
     "breakdown": {
       "auction": 646250,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 198127,
+      "customs": 198196,
       "docs": 100000,
       "commission": 50000
     },
@@ -8403,17 +8403,17 @@
     "description": "Toyota Yaris Cross  комплектация X B Package  2021 год  правый руль. Двигатель 1500 см³  120 л.с.  CVT. Пробег 72 000 км. Лот аукциона JU Tokyo №5  оценка 4.",
     "calc": {
       "marketLocal": 1446000,
-      "customs": 245127,
+      "customs": 245214,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1300427,
+    "price": 1300514,
     "photos": [],
     "breakdown": {
       "auction": 795300,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 245127,
+      "customs": 245214,
       "docs": 100000,
       "commission": 50000
     },
@@ -8445,17 +8445,17 @@
     "description": "Audi A3  комплектация 30 TFSI  2022 год  правый руль. Двигатель 1000 см³  110 л.с.  DCT. Пробег 25 000 км. Лот аукциона AUCNET №33523  оценка 4.5.",
     "calc": {
       "marketLocal": 1710000,
-      "customs": 148361,
+      "customs": 148412,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1348861,
+    "price": 1348912,
     "photos": [],
     "breakdown": {
       "auction": 940500,
       "domestic": 110000,
       "delivery": 0,
-      "customs": 148361,
+      "customs": 148412,
       "docs": 100000,
       "commission": 50000
     },
@@ -8555,11 +8555,11 @@
     "description": "Kia K5  комплектация 2.0 Noblesse  первая регистрация июль 2022  левый руль. Бензиновый двигатель: 1999 см³  160 л.с.  автоматическая коробка  передний привод. Пробег 42 042 км.\nПо страховой истории Кореи: ДТП 27.05.2025, страховая выплата 240 751 ₩; выплат другим участникам нет; диагностическая карта продавцом не приложена. Состояние проверяем на диагностике до выкупа.",
     "calc": {
       "marketLocal": 26900000,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2544895,
+    "price": 2545079,
     "photos": [
       "images/cars/Kia-K5-2022-5017272/Kia-K5-2022-5017272-1.webp",
       "images/cars/Kia-K5-2022-5017272/Kia-K5-2022-5017272-2.webp",
@@ -8576,7 +8576,7 @@
       "auction": 1748500,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -8608,11 +8608,11 @@
     "description": "Kia K5  комплектация 2.0 Signature  первая регистрация июль 2022  левый руль. Бензиновый двигатель: 1999 см³  160 л.с.  автоматическая коробка  передний привод. Пробег 73 313 км.\nПо страховой истории Кореи: ДТП 11.08.2024, страховая выплата 451 180 ₩; выплата другому участнику ДТП 01.11.2022 — 315 472 ₩. Состояние проверяем на диагностике до выкупа.",
     "calc": {
       "marketLocal": 29800000,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2733395,
+    "price": 2733579,
     "photos": [
       "images/cars/Kia-K5-2022-5002836/Kia-K5-2022-5002836-1.webp",
       "images/cars/Kia-K5-2022-5002836/Kia-K5-2022-5002836-2.webp",
@@ -8643,7 +8643,7 @@
       "auction": 1937000,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -8675,11 +8675,11 @@
     "description": "Kia K5  комплектация 2.0 Prestige  первая регистрация июль 2022  левый руль. Бензиновый двигатель: 1999 см³  160 л.с.  автоматическая коробка  передний привод. Пробег 48 419 км.\nПо страховой истории Кореи: страховых выплат нет; диагностическая карта продавцом не приложена. Состояние проверяем на диагностике до выкупа.",
     "calc": {
       "marketLocal": 23200000,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2304395,
+    "price": 2304579,
     "photos": [
       "images/cars/Kia-K5-2022-5017263/Kia-K5-2022-5017263-1.webp",
       "images/cars/Kia-K5-2022-5017263/Kia-K5-2022-5017263-2.webp",
@@ -8706,7 +8706,7 @@
       "auction": 1508000,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -8805,11 +8805,11 @@
     "description": "Kia Seltos  комплектация Gasoline 2.0 2WD Prestige  первая регистрация октябрь 2022  левый руль. Бензиновый двигатель: 1999 см³  149 л.с.  автоматическая коробка  передний привод. Пробег 57 620 км.\nПо страховой истории Кореи: сведения о страховых выплатах не получены. Состояние проверяем на диагностике до выкупа.",
     "calc": {
       "marketLocal": 21990000,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2225745,
+    "price": 2225929,
     "photos": [
       "images/cars/Kia-Seltos-2022-5002611/Kia-Seltos-2022-5002611-1.webp",
       "images/cars/Kia-Seltos-2022-5002611/Kia-Seltos-2022-5002611-2.webp",
@@ -8836,7 +8836,7 @@
       "auction": 1429350,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -8931,11 +8931,11 @@
     "description": "Hyundai Sonata (DN8)  комплектация 2.0 Premium Plus  первая регистрация январь 2023  левый руль. Бензиновый двигатель: 1999 см³  160 л.с.  автоматическая коробка  передний привод. Пробег 46 771 км.\nПо страховой истории Кореи: страховых выплат нет. Состояние проверяем на диагностике до выкупа.",
     "calc": {
       "marketLocal": 26500000,
-      "customs": 516395,
+      "customs": 516579,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 2518895,
+    "price": 2519079,
     "photos": [
       "images/cars/Hyundai-Sonata-DN8-2023-5016848/Hyundai-Sonata-DN8-2023-5016848-1.webp",
       "images/cars/Hyundai-Sonata-DN8-2023-5016848/Hyundai-Sonata-DN8-2023-5016848-2.webp",
@@ -8966,7 +8966,7 @@
       "auction": 1722500,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 516395,
+      "customs": 516579,
       "docs": 100000,
       "commission": 50000
     }
@@ -9065,11 +9065,11 @@
     "description": "Peugeot 3008  комплектация 1.2 PureTech GT  первая регистрация апрель 2022  левый руль. Бензиновый двигатель: 1199 см³  131 л.с.  автоматическая коробка  передний привод. Пробег 68 737 км.\nПо страховой истории Кореи: собственных страховых выплат нет; выплата другому участнику ДТП 27.05.2025 — 940 569 ₩. Состояние проверяем на диагностике до выкупа.",
     "calc": {
       "marketLocal": 19990000,
-      "customs": 202710,
+      "customs": 206813,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1782060,
+    "price": 1786163,
     "photos": [
       "images/cars/Peugeot-3008-2022-5017392/Peugeot-3008-2022-5017392-1.webp",
       "images/cars/Peugeot-3008-2022-5017392/Peugeot-3008-2022-5017392-2.webp",
@@ -9100,7 +9100,7 @@
       "auction": 1299350,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 202710,
+      "customs": 206813,
       "docs": 100000,
       "commission": 50000
     }
@@ -9199,11 +9199,11 @@
     "description": "Chevrolet Trax Crossover  комплектация 1.2 RS  первая регистрация сентябрь 2023  левый руль. Бензиновый двигатель: 1199 см³  137 л.с.  автоматическая коробка  передний привод. Пробег 37 489 км.\nПо страховой истории Кореи: страховых выплат нет. Состояние проверяем на диагностике до выкупа.",
     "calc": {
       "marketLocal": 20800000,
-      "customs": 202710,
+      "customs": 206813,
       "commission": 50000,
       "docs": 100000
     },
-    "price": 1834710,
+    "price": 1838813,
     "photos": [
       "images/cars/Chevrolet-Trax-Crossover-2023-5002163/Chevrolet-Trax-Crossover-2023-5002163-1.webp",
       "images/cars/Chevrolet-Trax-Crossover-2023-5002163/Chevrolet-Trax-Crossover-2023-5002163-2.webp",
@@ -9234,7 +9234,7 @@
       "auction": 1352000,
       "domestic": 130000,
       "delivery": 0,
-      "customs": 202710,
+      "customs": 206813,
       "docs": 100000,
       "commission": 50000
     }

@@ -156,7 +156,7 @@ function renderCar(c){
         <h1>${esc(name)}</h1>
         <div class="sub">Импорт из ${country} под ключ · доставка 25–40 дней</div>
         <div class="price">${fmt(c.price)}${market}</div>${save}
-        <div class="price-date">Цена под ключ на ${new Date().toLocaleDateString("ru-RU")}</div>
+        <div class="price-date">Цена под ключ${PRICES_DATE?" на "+PRICES_DATE:""}</div>
         <table class="specs">${specsHtml}</table>
         <div class="cta-box">
           <a href="/#cta" class="btn btn-primary">Заказать под ключ</a>
@@ -195,9 +195,12 @@ function renderNotFound(){
   </div>`;
 }
 
+let PRICES_DATE="";
 (async function(){
   if(!param){renderNotFound();return;}
   try{
+    try{const s=await (await fetch("data/settings.json",{cache:"no-store"})).json();
+      if(s.pricesUpdatedAt)PRICES_DATE=new Date(s.pricesUpdatedAt).toLocaleDateString("ru-RU");}catch(e){}
     const res=await fetch("data/cars.json",{cache:"no-store"});
     const cars=await res.json();
     const car=cars.find(c=>String(c.id)===String(param) && c.published!==false);

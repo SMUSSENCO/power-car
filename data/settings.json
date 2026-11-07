@@ -11,5 +11,10 @@
   "domesticKorea": 2000000,
   "ratesUpdatedAt": "2026-11-07",
   "rateEURDate": "2026-11-06",
-  "rateEURSource": "ЦБ РФ"
+  "rateEURSource": "ЦБ РФ",
+  "pricesUpdatedAt": "2026-11-08",
+  "customsEUR": 92.1924,
+  "customsUSD": 82.1386,
+  "customsCNY": 12.2651,
+  "customsRatesDate": "2026-11-08"
 }
