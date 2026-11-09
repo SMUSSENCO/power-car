@@ -228,6 +228,9 @@ def expand_car_markers(body):
     groups["japan-german-plus"] = sorted([c for c in _all if c.get("country") == "Japan" and c.get("brand") in {"Mercedes-Benz", "BMW", "Audi", "Volkswagen"}
                                           and BUDGET_MAX < c["price"] <= 2500000], key=lambda c: -c["price"])
     groups["japan-all"] = [c for c in cs if c.get("country") == "Japan"]
+    # «japan-pick»: 6 свежих японских лотов с фото для блока в информационных статьях (лист, прописка)
+    groups["japan-pick"] = sorted([c for c in groups["japan-all"] if len(c.get("photos") or []) >= 3],
+                                  key=lambda c: c.get("addedAt") or "", reverse=True)[:6]
     # корейские подгруппы: малолитражки «кёнча» (Ray, Spark, Casper), европейские марки, остальные корейские
     _kr = groups.get("korea", [])
     _is_light = lambda c: any(k in (c.get("model") or "") for k in ("Ray", "Spark", "Casper"))
