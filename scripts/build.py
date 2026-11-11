@@ -235,6 +235,9 @@ def expand_car_markers(body):
     _kr = groups.get("korea", [])
     _is_light = lambda c: any(k in (c.get("model") or "") for k in ("Ray", "Spark", "Casper"))
     _is_euro = lambda c: c.get("brand") in {"Citroen", "Mini"} or (c.get("brand") == "Renault" and "XM3" not in (c.get("model") or ""))
+    # «korea-pick»: 6 свежих корейских лотов с фото для блока в статье про доставку из Кореи
+    groups["korea-pick"] = sorted([c for c in _kr if len(c.get("photos") or []) >= 3],
+                                  key=lambda c: c.get("addedAt") or "", reverse=True)[:6]
     groups["korea-light"] = [c for c in _kr if _is_light(c)]
     groups["korea-euro"] = [c for c in _kr if not _is_light(c) and _is_euro(c)]
     groups["korea-local"] = [c for c in _kr if not _is_light(c) and not _is_euro(c)]
