@@ -9,39 +9,30 @@
     "active": true
   },
   {
-    "id": "vid_2",
-    "title": "Видео-обзор #2",
-    "thumbnail": "",
-    "vkEmbedUrl": "",
+    "id": "vw_tcross_right_hand",
+    "title": "Volkswagen T-Cross 2021, правый руль за 1 300 000 ₽",
+    "thumbnail": "images/cover/vw_tcross_right_hand.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239050",
     "duration": "",
-    "active": true,
-    "order": 2
+    "order": 2,
+    "active": true
   },
   {
-    "id": "vid_3",
-    "title": "Видео-обзор #3",
-    "thumbnail": "",
-    "vkEmbedUrl": "",
+    "id": "bmw_218i_pavel",
+    "title": "BMW 218i Active Tourer 2015 за 1 020 000 ₽: отзыв Павла",
+    "thumbnail": "images/cover/bmw_218i_pavel.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239049",
     "duration": "",
-    "active": true,
-    "order": 3
+    "order": 3,
+    "active": true
   },
   {
-    "id": "vid_4",
-    "title": "Видео-обзор #4",
-    "thumbnail": "",
-    "vkEmbedUrl": "",
+    "id": "kia_k3_elena",
+    "title": "Kia K3 2021 для Елены из Томска, 1 450 000 ₽",
+    "thumbnail": "images/cover/kia_k3_elena.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239048",
     "duration": "",
-    "active": true,
-    "order": 4
-  },
-  {
-    "id": "vid_5",
-    "title": "Видео-обзор #5",
-    "thumbnail": "",
-    "vkEmbedUrl": "",
-    "duration": "",
-    "active": true,
-    "order": 5
+    "order": 4,
+    "active": true
   }
 ]
