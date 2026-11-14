@@ -176,6 +176,12 @@ h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.1; margin-bottom: 1
 .page-footer { border-top: 1px solid var(--border); padding: 24px 0 40px; text-align: center; color: var(--text-dim); font-size: 0.84rem; }
 .page-footer a { color: var(--text-muted); }
 .page-footer a:hover { color: var(--text); }
+
+.hero .how { max-width: 54ch; margin: 12px auto 0; text-align: left; }
+.hero .how summary { cursor: pointer; display: inline-block; color: var(--text-muted); font-size: .9rem; font-weight: 600; list-style: none; padding: 6px 14px; border: 1px solid var(--border-2); border-radius: 999px; }
+.hero .how summary::-webkit-details-marker { display: none; }
+.hero .how[open] summary { color: var(--text); border-color: var(--accent); }
+.hero .how p { margin-top: 12px; font-size: .92rem; text-align: left; }
 </style>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -217,7 +223,11 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
     <div class="hero">
       <span class="eyebrow">Растаможка для физлиц</span>
       <h1>Калькулятор утильсбора и пошлины</h1>
-      <p>Введите объём двигателя, мощность и год выпуска — покажем утильсбор и таможенную пошлину при ввозе легкового автомобиля физическим лицом. Это только платежи государству; полную стоимость авто под ключ считает <a href="/kalkulyator-rastamozhki.html" style="color:var(--accent-2);text-decoration:underline;">основной калькулятор</a>.</p>
+      <p>Объём, мощность и год выпуска — покажем утильсбор и пошлину для физлица.</p>
+      <details class="how">
+        <summary>Что это за расчёт</summary>
+        <p>Это только платежи государству. Полную стоимость авто под ключ считает <a href="/kalkulyator-rastamozhki.html" style="color:var(--accent-2);text-decoration:underline;">основной калькулятор</a>.</p>
+      </details>
     </div>
 
     <div class="card">

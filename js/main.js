@@ -531,6 +531,8 @@ function getBudgetRange() {
 // Алиасы марок: в cars.json иногда модель попадает в поле brand («AUDI A1» вместо «Audi»).
 // Приводим к канонической марке — используется и в чипах, и в фильтре, чтобы клики совпадали.
 const BRAND_ALIAS = { 'audi a1': 'Audi' };
+// Логотипы марок для фильтра: images/brands/<slug>.png (car-logos-dataset)
+const BRAND_LOGO = {"audi": "audi", "bmw": "bmw", "byd": "byd", "changan": "changan", "chery": "chery", "chevrolet": "chevrolet", "daihatsu": "daihatsu", "fiat": "fiat", "ford": "ford", "geely": "geely", "haval": "haval", "honda": "honda", "hyundai": "hyundai", "jeep": "jeep", "jetour": "jetour", "ktm": "ktm", "kia": "kia", "lamborghini": "lamborghini", "land rover": "land-rover", "lexus": "lexus", "mazda": "mazda", "mercedes-amg": "mercedes-benz", "mercedes-benz": "mercedes-benz", "mini": "mini", "mitsubishi": "mitsubishi", "nissan": "nissan", "peugeot": "peugeot", "polestar": "polestar", "porsche": "porsche", "renault": "renault", "ssangyong": "ssangyong", "subaru": "subaru", "suzuki": "suzuki", "tesla": "tesla", "toyota": "toyota", "volkswagen": "volkswagen", "volvo": "volvo", "citroen": "citroen", "skoda": "skoda"};
 function normalizeBrand(b) {
   const raw = String(b || '').trim();
   const aliased = BRAND_ALIAS[raw.toLowerCase()];
@@ -571,7 +573,13 @@ function renderBrandChips() {
     btn.type = 'button';
     btn.className = 'chip' + (state.brand.toLowerCase() === b.toLowerCase() ? ' active' : '');
     btn.dataset.brand = b;
-    btn.textContent = b;
+    const lg = BRAND_LOGO[b.toLowerCase()];
+    if (lg) {
+      const im = document.createElement('img');
+      im.className = 'chip-logo'; im.src = '/images/brands/' + lg + '.png'; im.alt = ''; im.width = 26; im.height = 26; im.loading = 'lazy';
+      btn.appendChild(im);
+    }
+    btn.appendChild(document.createTextNode(b));
     container.appendChild(btn);
   });
   // Делегированный клик: один слушатель на контейнер вместо привязки к каждому чипу

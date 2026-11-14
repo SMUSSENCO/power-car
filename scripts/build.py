@@ -123,27 +123,29 @@ CARDS_CSS = """
 .cc-nav a:hover{border-color:var(--accent);color:var(--text)}
 .cc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 26px}
 @media(max-width:700px){.cc-grid{grid-template-columns:1fr}}
-.cc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.cc-img{display:block;aspect-ratio:4/3;background:rgba(255,255,255,.05);overflow:hidden}
-.cc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
-.cc:hover .cc-img img{transform:scale(1.03)}
-.cc-info{padding:14px 16px 6px}
-.cc-info h3{font-size:1.02rem;line-height:1.3;margin:0 0 6px}
+.cc{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.09);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s}
+.cc:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18);box-shadow:0 18px 40px -18px rgba(0,0,0,.7)}
+.cc-img{display:block;aspect-ratio:16/11;background:rgba(255,255,255,.05);overflow:hidden}
+.cc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.cc:hover .cc-img img{transform:scale(1.04)}
+.cc-info{padding:16px 18px 0}
+.cc-info h3{font-size:1.08rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin:0}
 .art-body .cc-info h3 a{color:var(--text);text-decoration:none}.art-body .cc-info h3 a:hover{color:var(--accent-2)}
-.cc-price{font-weight:800;font-size:1.15rem;color:var(--accent-2)}
-.cc-price small{display:block;font-weight:500;font-size:.74rem;color:var(--text-dim)}
-.cc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.cc-chips span{background:rgba(255,255,255,.07);border-radius:999px;padding:3px 10px;font-size:.78rem;color:var(--text-muted)}
-.cc-more{padding:0 16px 14px;margin-top:auto}
-.cc-more summary{cursor:pointer;color:var(--accent-2);font-weight:600;font-size:.9rem;padding:10px 0}
-.cc-thumbs{display:flex;gap:8px;overflow-x:auto;margin:4px 0 10px}.cc-thumbs img{height:84px;border-radius:10px;flex:none}
-.cc-more p{color:var(--text-muted);font-size:.9rem;line-height:1.6;margin:8px 0}
-.art-body ul.cc-calc{list-style:none;padding:0;margin:10px 0;font-size:.86rem}
-.cc-calc li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07);color:var(--text-muted)}
+.cc-meta{margin-top:6px;font-size:.84rem;color:var(--text-dim);line-height:1.4}
+.cc-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px 16px;margin-top:auto}
+.cc-price{font-weight:800;font-size:1.3rem;letter-spacing:-.02em;color:var(--accent-2);line-height:1.1;white-space:nowrap}
+.cc-price small{display:block;font-weight:500;font-size:.72rem;color:var(--text-dim);letter-spacing:0;margin-top:4px;white-space:normal}
+.art-body a.cc-btn{display:inline-flex;align-items:center;padding:10px 20px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#002417;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:filter .2s,transform .2s}
+.art-body a.cc-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.cc-more{border-top:1px solid rgba(255,255,255,.07);padding:0 18px}
+.cc-more summary{cursor:pointer;color:var(--text-muted);font-weight:600;font-size:.84rem;padding:12px 0;list-style:none}
+.cc-more summary::-webkit-details-marker{display:none}
+.cc-more summary:after{content:"+";float:right;color:var(--text-dim)}.cc-more[open] summary:after{content:"–"}
+.art-body ul.cc-calc{list-style:none;padding:0;margin:0 0 8px;font-size:.86rem}
+.cc-calc li{display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.07);color:var(--text-muted)}
+.cc-calc li:last-child{border-bottom:0}
 .cc-calc li b{color:var(--text);white-space:nowrap}
-.cc-bank{font-size:.78rem;color:var(--text-dim);margin:2px 0 8px}
-.art-body ul.cc-eq{list-style:none;padding:0;margin:8px 0;columns:1;font-size:.88rem}.cc-eq li{padding:3px 0 3px 18px;position:relative}.cc-eq li:before{content:'✓';position:absolute;left:0;color:var(--accent)}
-.art-body a.cc-open{display:inline-flex;margin-top:8px;padding:9px 18px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#002417;font-weight:700;font-size:.88rem;text-decoration:none}
+.cc-bank{font-size:.76rem;color:var(--text-dim);margin:2px 0 12px}
 """
 ART_STYLE += CARDS_CSS
 
@@ -186,33 +188,24 @@ def car_card(c):
     photos = c.get("photos") or []
     img = (f'<a class="cc-img" href="{url}"><img src="/{html.escape(photos[0])}" alt="{html.escape(name)} из {CMAP.get(c.get("country"),"")} под ключ" loading="lazy"></a>'
            if photos else f'<a class="cc-img" href="{url}"></a>')
-    chips = []
-    if c.get("mileage"): chips.append(f'{int(c["mileage"]):,}'.replace(",", " ") + " км")
+    meta = []
+    if c.get("mileage"): meta.append(f'{int(c["mileage"]):,}'.replace(",", " ") + " км")
     eng = str(c.get("engine") or "").replace(",", ".").strip()
-    if eng: chips.append(eng + (f', {c["power"]} л.с.' if c.get("power") else ""))
-    if c.get("transmission"): chips.append(c["transmission"])
-    if c.get("drive") in DRIVE: chips.append(DRIVE[c["drive"]] + " привод")
-    if c.get("wheel"): chips.append(WHEEL.get(c["wheel"], c["wheel"]) + " руль")
-    if c.get("body") in BODY: chips.append(BODY[c["body"]])
-    if c.get("color"): chips.append(c["color"])
-    chips_html = "".join(f"<span>{html.escape(x)}</span>" for x in chips)
-    thumbs = "".join(f'<img src="/{html.escape(p)}" alt="{html.escape(name)}" loading="lazy">' for p in photos[1:5])
-    more = ""
-    if thumbs: more += f'<div class="cc-thumbs">{thumbs}</div>'
-    desc = (c.get("description") or "").strip() or auto_description(c)
-    for para in [p for p in desc.split("\n") if p.strip()]: more += f"<p>{html.escape(para)}</p>"
-    eq = [x for x in (c.get("equipment") or []) if x]
-    if eq: more += '<ul class="cc-eq">' + "".join(f"<li>{html.escape(x)}</li>" for x in eq) + "</ul>"
+    if eng: meta.append(eng + (f', {c["power"]} л.с.' if c.get("power") and str(c["power"]) not in eng else ""))
+    if c.get("transmission"): meta.append(c["transmission"])
+    meta_html = f'<div class="cc-meta">{html.escape(" · ".join(meta))}</div>' if meta else ""
     bd = c.get("breakdown") or {}
     rows = [("Автомобиль", bd.get("auction")), ("Логистика внутри Азии и доставка до Владивостока", (bd.get("domestic") or 0) + (bd.get("delivery") or 0)),
             ("Пошлина и утильсбор", bd.get("customs")), ("СБКТС и оформление", bd.get("docs")), ("Комиссия POWER Car", bd.get("commission"))]
     rows = [(k, v) for k, v in rows if v]
+    more = ""
     if rows:
-        more += '<ul class="cc-calc">' + "".join(f"<li><span>{html.escape(k)}</span><b>{fmt_price(v)}</b></li>" for k, v in rows) + f'<li><span><b>Итого под ключ</b></span><b>{fmt_price(c["price"])}</b></li></ul><p class="cc-bank">Банк может взимать дополнительную комиссию за международный перевод: она не входит в цену под ключ, её размер зависит от вашего банка.</p>'
-    more += f'<a class="cc-open" href="{url}">Открыть карточку →</a>'
-    return (f'<article class="cc" id="car-{slug}">{img}<div class="cc-info"><h3><a href="{url}">{c.get("flag","")} {html.escape(name)}</a></h3>'
-            f'<div class="cc-price">{fmt_price(c["price"])}<small>под ключ до Владивостока</small></div><div class="cc-chips">{chips_html}</div></div>'
-            f'<details class="cc-more"><summary>Развернуть</summary>{more}</details></article>')
+        more = ('<details class="cc-more"><summary>Из чего складывается цена</summary><ul class="cc-calc">'
+                + "".join(f"<li><span>{html.escape(k)}</span><b>{fmt_price(v)}</b></li>" for k, v in rows)
+                + f'<li><span><b>Итого под ключ</b></span><b>{fmt_price(c["price"])}</b></li></ul>'
+                + '<p class="cc-bank">Банк может взимать дополнительную комиссию за международный перевод: она не входит в цену под ключ.</p></details>')
+    return (f'<article class="cc" id="car-{slug}">{img}<div class="cc-info"><h3><a href="{url}">{c.get("flag","")} {html.escape(name)}</a></h3>{meta_html}</div>'
+            f'<div class="cc-foot"><div class="cc-price">{fmt_price(c["price"])}<small>под ключ до Владивостока</small></div><a class="cc-btn" href="{url}">Подробнее</a></div>{more}</article>')
 
 def expand_car_markers(body):
     """{{cars:group}} → сетка карточек; {{n_total}}, {{n_<group>}}, {{china_min}} → числа из каталога. Возвращает (html, список авто в порядке показа)."""

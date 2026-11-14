@@ -162,6 +162,18 @@ body.is-embed .hero,
 body.is-embed .cta-block { display: none; }
 body.is-embed .wrap, body.is-embed .wrap-narrow { padding: 0 4px; }
 body.is-embed main { padding-top: 4px; }
+
+.tariffs h3 { margin-bottom: 6px; }
+.t-list { display: block; }
+.t-row { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.t-row:last-child { border-bottom: 0; }
+.t-city { color: var(--text-muted); font-size: .94rem; line-height: 1.35; }
+.t-price { text-align: right; font-weight: 700; font-size: 1rem; white-space: nowrap; letter-spacing: -.01em; }
+.t-price small { display: block; margin-top: 2px; font-weight: 500; font-size: .76rem; color: var(--text-dim); white-space: normal; letter-spacing: 0; }
+.fold summary { cursor: pointer; list-style: none; font-weight: 700; font-size: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.fold summary::-webkit-details-marker { display: none; }
+.fold summary::after { content: "+"; color: var(--text-dim); font-size: 1.3rem; line-height: 1; }
+.fold[open] summary::after { content: "–"; }
 </style>
 <script>if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('is-embed-html');</script>
 <!-- Yandex.Metrika counter -->
@@ -596,23 +608,16 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
       <div class="result-note" id="resultNote">Расчёт по реальному прайс-листу нашего партнёра-перевозчика на популярные направления; для остальных городов — по регрессии на этих же тарифах. Точная стоимость зависит от типа автовоза, сезона и загруженности маршрута.</div>
     </div>
 
-    <div class="result-card show" style="margin-top:16px;">
-      <h3 style="margin-bottom:14px;">Реальные тарифы автовоза от Владивостока (2026)</h3>
-      <div class="result-row"><span class="l">Владивосток и Приморье (забрать в порту)</span><span class="v">0 ₽, сразу после растаможки</span></div>
-      <div class="result-row"><span class="l">Иркутск / Чита / Улан-Удэ</span><span class="v">95 000 – 110 000 ₽, 7–13 дней</span></div>
-      <div class="result-row"><span class="l">Новосибирск / Кемерово / Томск / Красноярск</span><span class="v">125 000 – 145 000 ₽, 9–13 дней</span></div>
-      <div class="result-row"><span class="l">Омск</span><span class="v">155 000 – 175 000 ₽</span></div>
-      <div class="result-row"><span class="l">Тюмень / Екатеринбург</span><span class="v">175 000 – 195 000 ₽</span></div>
-      <div class="result-row"><span class="l">Челябинск / Уфа / Казань / Н. Новгород / Москва</span><span class="v">195 000 – 215 000 ₽, 14–17 дней до Москвы</span></div>
-      <div class="result-row"><span class="l">Краснодар</span><span class="v">205 000 – 225 000 ₽</span></div>
-      <div class="result-row"><span class="l">Санкт-Петербург</span><span class="v">225 000 ₽</span></div>
+    <div class="result-card show tariffs" style="margin-top:16px;">
+      <h3>Реальные тарифы автовоза от Владивостока (2026)</h3>
+      <div class="t-list"><div class="t-row"><div class="t-city">Владивосток и Приморье</div><div class="t-price">0 ₽<small>сразу после растаможки</small></div></div><div class="t-row"><div class="t-city">Иркутск, Чита, Улан-Удэ</div><div class="t-price">95 000 – 110 000 ₽<small>7–13 дней</small></div></div><div class="t-row"><div class="t-city">Новосибирск, Кемерово, Томск, Красноярск</div><div class="t-price">125 000 – 145 000 ₽<small>9–13 дней</small></div></div><div class="t-row"><div class="t-city">Омск</div><div class="t-price">155 000 – 175 000 ₽</div></div><div class="t-row"><div class="t-city">Тюмень, Екатеринбург</div><div class="t-price">175 000 – 195 000 ₽</div></div><div class="t-row"><div class="t-city">Москва, Казань, Н. Новгород, Челябинск, Уфа</div><div class="t-price">195 000 – 215 000 ₽<small>до Москвы 14–17 дней</small></div></div><div class="t-row"><div class="t-city">Краснодар</div><div class="t-price">205 000 – 225 000 ₽</div></div><div class="t-row"><div class="t-city">Санкт-Петербург</div><div class="t-price">225 000 ₽</div></div></div>
       <div class="result-note">Малый класс автовоза (до 4,1 м) — большой класс (от 4,7 до 5,1 м); для авто длиннее 5,2 м — расчёт индивидуально. По прайсу партнёра-перевозчика на 2026 год. Для острова, эксклава или другого города — используйте карту и поиск выше или уточните у менеджера.</div>
     </div>
 
-    <div class="result-card show" style="margin-top:16px;">
-      <h3 style="margin-bottom:14px;">Владивосток: как забрать автомобиль в порту</h3>
-      <div class="result-note" style="margin-top:0;">Все машины из Японии, Кореи и Китая приходят во Владивосток: Япония и Корея морем, Китай автовозом по суше. Здесь, в порту или в Уссурийске, проходит таможенная очистка. После растаможки автомобиль можно забрать самостоятельно: автовоз в этом случае не нужен, а доставка до вашего города в стоимость не входит. Если вы живёте не в Приморье, выберите свой регион на карте выше и посмотрите ориентир по автовозу. Нужна временная регистрация в ДВФО для дистанционной растаможки? Мы помогаем оформить её через Госуслуги.</div>
-    </div>
+    <details class="result-card show fold" style="margin-top:16px;">
+      <summary>Как забрать автомобиль во Владивостоке</summary>
+      <div class="result-note" style="margin-top:12px;">Все машины из Японии, Кореи и Китая приходят во Владивосток: Япония и Корея морем, Китай автовозом по суше. Здесь, в порту или в Уссурийске, проходит таможенная очистка. После растаможки автомобиль можно забрать самостоятельно: автовоз в этом случае не нужен, а доставка до вашего города в стоимость не входит. Если вы живёте не в Приморье, выберите свой регион на карте выше и посмотрите ориентир по автовозу. Нужна временная регистрация в ДВФО для дистанционной растаможки? Мы помогаем оформить её через Госуслуги.</div>
+    </details>
     <div class="cta-block">
       <p>Хотите точный тариф на дату отправки? Напишите нам — ответим в течение рабочего дня.</p>
       <div class="cta-contact">

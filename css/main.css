@@ -1463,8 +1463,9 @@ a.car-title:hover { color: var(--accent-2); }
 .more-filters summary {
   list-style: none;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px;
   color: var(--text-muted);
   font-size: 0.88rem;
@@ -4003,3 +4004,11 @@ a.stat-link .stat-label { text-decoration: underline; text-decoration-color: rgb
 .rv-img img { object-position: center 62%; }
 
 .modal-breakdown-note{margin-top:10px;font-size:.8rem;line-height:1.4;color:var(--text-dim)}
+
+
+/* Фильтр марок: логотип на белой плашке */
+.chip { display: inline-flex; align-items: center; gap: 8px; }
+.chip-logo { width: 30px; height: 30px; object-fit: contain; background: #fff; border-radius: 9px; padding: 3px; flex-shrink: 0; margin: -4px 0 -4px -8px; }
+/* Топ-10 теперь под каталогом */
+#top5 { padding-top: 24px; padding-bottom: 24px; }
+#selector { padding-top: 12px; }
