@@ -34,5 +34,95 @@
     "duration": "",
     "order": 4,
     "active": true
+  },
+  {
+    "id": "haval_f7x_boris",
+    "title": "Haval F7x 2020 для Бориса из Томска, 1 300 000 ₽",
+    "thumbnail": "images/cover/clip_046.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239046",
+    "duration": "",
+    "order": 5,
+    "active": true
+  },
+  {
+    "id": "honda_vezel_natali",
+    "title": "Honda Vezel 2022 для Натали из Северска, 2 150 000 ₽",
+    "thumbnail": "images/cover/clip_045.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239045",
+    "duration": "",
+    "order": 6,
+    "active": true
+  },
+  {
+    "id": "toyota_highlander_dmitriy",
+    "title": "Toyota Highlander 2021 для Дмитрия из Томска, 3 400 000 ₽",
+    "thumbnail": "images/cover/clip_044.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239044",
+    "duration": "",
+    "order": 7,
+    "active": true
+  },
+  {
+    "id": "mazda_axela_pavel",
+    "title": "Mazda Axela 2017 для Павла из Томска, 1 200 000 ₽",
+    "thumbnail": "images/cover/clip_043.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239043",
+    "duration": "",
+    "order": 8,
+    "active": true
+  },
+  {
+    "id": "toyota_wish_rinat",
+    "title": "Toyota Wish 2018 для Рината из Томска, 1 280 000 ₽",
+    "thumbnail": "images/cover/clip_042.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239042",
+    "duration": "",
+    "order": 9,
+    "active": true
+  },
+  {
+    "id": "toyota_chr_roman",
+    "title": "Toyota C-HR 2018 для Романа из Томска, 1 950 000 ₽",
+    "thumbnail": "images/cover/clip_041.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239041",
+    "duration": "",
+    "order": 10,
+    "active": true
+  },
+  {
+    "id": "hyundai_ix25_svetlana",
+    "title": "Hyundai ix25 2021 для Светланы из Томска, 1 500 000 ₽",
+    "thumbnail": "images/cover/clip_040.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239040",
+    "duration": "",
+    "order": 11,
+    "active": true
+  },
+  {
+    "id": "honda_urv_sergey",
+    "title": "Honda UR-V 2022 для Сергея из Томска, 2 850 000 ₽",
+    "thumbnail": "images/cover/clip_039.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239039",
+    "duration": "",
+    "order": 12,
+    "active": true
+  },
+  {
+    "id": "toyota_rav4_vyacheslav",
+    "title": "Toyota RAV4 2022 для Вячеслава, 2 550 000 ₽",
+    "thumbnail": "images/cover/clip_038.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239038",
+    "duration": "",
+    "order": 13,
+    "active": true
+  },
+  {
+    "id": "hyundai_ix35_natalya",
+    "title": "Hyundai ix35 2021 для Натальи из Томска, 1 580 000 ₽",
+    "thumbnail": "images/cover/clip_037.webp",
+    "vkEmbedUrl": "https://vkvideo.ru/clip-239056351_456239037",
+    "duration": "",
+    "order": 14,
+    "active": true
   }
 ]
