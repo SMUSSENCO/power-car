@@ -407,8 +407,12 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 .rv-thumbs{display:flex;gap:8px;overflow-x:auto;margin:6px 0}.rv-thumbs img{height:80px;border-radius:10px;flex:none}
 .art-body a.rv-video{display:inline-flex;margin-top:6px;color:var(--accent-2);font-weight:600;font-size:.88rem}
 
-.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.09);border-radius:14px}
+.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
 .cc-table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+.cc-table.sm{min-width:0}
+.art-body .art-fig{margin:22px 0}
+.art-body .art-fig img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.12)}
+.art-body .art-fig figcaption{font-size:.82rem;color:var(--text-dim);margin-top:8px;line-height:1.45}
 .cc-table th{background:rgba(255,255,255,.05);text-align:left;font-weight:600;color:var(--text-muted);padding:10px 14px;white-space:nowrap}
 .cc-table td{padding:10px 14px;border-top:1px solid rgba(255,255,255,.07)}
 .cc-table td.num{font-weight:700;color:var(--accent-2);white-space:nowrap}
@@ -457,14 +461,14 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 </svg>
 <figcaption style="font-size:.85rem;opacity:.7;margin-top:6px">Схема не в масштабе: от Владивостока до Москвы по трассе около 9 000 км, и это самый долгий этап.</figcaption>
 </figure>
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; margin: 20px 0;">
+<div class="cc-table-wrap"><table class="cc-table sm">
 <thead><tr><th>Этап</th><th>Что происходит</th><th>Срок</th></tr></thead>
 <tbody>
 <tr><td>1. Выкуп и инвойс</td><td>Выкупаем лот, вы оплачиваете инвойс сами через банк, машина едет в порт</td><td>3–7 дней</td></tr>
 <tr><td>2. Море, Пусан — Владивосток</td><td>Автомобиль идёт морем, доставку до Владивостока организует наш партнёр, логистическая компания «Феникс Азия»</td><td>3–5 дней</td></tr>
 <tr><td>3. Таможня во Владивостоке</td><td>Декларирование, СБКТС, электронный паспорт (ЭПТС), уплата пошлины и утильсбора</td><td>4–7 дней</td></tr>
 <tr><td>4. Автовоз до Москвы</td><td>Отправка после растаможки, перевозка лицензированным перевозчиком с КАСКО</td><td>14–17 дней</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p>Честно скажу: сроки отдельных этапов ориентировочные, а общий срок до Владивостока в карточках каталога указан с запасом: 14–21 день. Автовоз стартует только после выпуска машины, поэтому его время прибавляется целиком. Выходит так: 14–21 день плюс 14–17 дней дают 28–38 дней от выкупа до Москвы. Точная дата зависит от расписания судов, скорости вашей оплаты инвойса и загрузки таможенного поста.</p>
 
 <h2>Что входит в цену на сайте, а что нет</h2>
@@ -479,13 +483,13 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 
 <h2>Сколько выходит машина из Кореи в Москве: три примера</h2>
 <p>Берём реальные лоты из каталога и добавляем к цене под ключ диапазон стоимости автовоза. Цены в каталоге зависят от курса и меняются, поэтому таблица верна на 11 ноября 2026 года.</p>
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; margin: 20px 0;">
+<div class="cc-table-wrap"><table class="cc-table sm">
 <thead><tr><th>Автомобиль</th><th>Цена под ключ до Владивостока</th><th>В Москве с автовозом</th></tr></thead>
 <tbody>
 <tr><td>Kia Ray, 2022</td><td>820 869 ₽</td><td>1 015 869 ₽ – 1 035 869 ₽</td></tr>
 <tr><td>Hyundai Avante, 2018</td><td>1 507 119 ₽</td><td>1 702 119 ₽ – 1 722 119 ₽</td></tr>
 <tr><td>Kia K5, 2022</td><td>2 733 579 ₽</td><td>2 928 579 ₽ – 2 948 579 ₽</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p>Видно, что для Kia Ray автовоз добавляет почти четверть к цене, а для K5 это уже меньше десятой части. Поэтому тем, кто выбирает в бюджете «до 1,5 млн», я бы советовал смотреть сразу на цену с доставкой: подборка в этом бюджете есть в статье <a href="/articles/chto-privezti-iz-korei-do-1-5-mln.html">«Что привезти из Кореи за 1,5 млн ₽»</a>.</p>
 
 <h2>Автовоз, самовывоз или железная дорога</h2>

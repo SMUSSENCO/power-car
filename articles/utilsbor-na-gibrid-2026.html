@@ -407,8 +407,12 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 .rv-thumbs{display:flex;gap:8px;overflow-x:auto;margin:6px 0}.rv-thumbs img{height:80px;border-radius:10px;flex:none}
 .art-body a.rv-video{display:inline-flex;margin-top:6px;color:var(--accent-2);font-weight:600;font-size:.88rem}
 
-.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.09);border-radius:14px}
+.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
 .cc-table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+.cc-table.sm{min-width:0}
+.art-body .art-fig{margin:22px 0}
+.art-body .art-fig img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.12)}
+.art-body .art-fig figcaption{font-size:.82rem;color:var(--text-dim);margin-top:8px;line-height:1.45}
 .cc-table th{background:rgba(255,255,255,.05);text-align:left;font-weight:600;color:var(--text-muted);padding:10px 14px;white-space:nowrap}
 .cc-table td{padding:10px 14px;border-top:1px solid rgba(255,255,255,.07)}
 .cc-table td.num{font-weight:700;color:var(--accent-2);white-space:nowrap}
@@ -442,7 +446,7 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 <p>С 1 января 2027 года, по данным ТКС, коммерческие коэффициенты вырастут примерно на 10%, а льготные 3 400 и 5 200 ₽ для личного ввоза останутся прежними. Сумма считается по коэффициентам на дату подачи таможенной декларации.</p>
 
 <h2>Какая мощность идёт в расчёт у каждого типа гибрида</h2>
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; margin: 20px 0;">
+<div class="cc-table-wrap"><table class="cc-table sm">
 <thead><tr><th>Тип</th><th>Что считается</th><th>Порог для льготы</th></tr></thead>
 <tbody>
 <tr><td>Параллельный гибрид (HEV)</td><td>двигатель + 30-минутная мощность электромотора</td><td>160 л.с.</td></tr>
@@ -451,7 +455,7 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 <tr><td>Последовательный гибрид (EREV)</td><td>30-минутная мощность тяговых моторов, двигатель не считается</td><td>80 л.с.</td></tr>
 <tr><td>Электромобиль</td><td>30-минутная мощность тяговых моторов</td><td>80 л.с.</td></tr>
 </tbody>
-</table>
+</table></div>
 <p>Льгота действует при трёх условиях: ввоз для личного пользования, объём двигателя не больше 3,0 л и регистрация автомобиля на плательщика сбора в течение 12 месяцев с даты оформления. Если продать машину раньше, сбор пересчитывают по коммерческим коэффициентам.</p>
 
 <aside class="art-mid"><b>Хотите узнать цену под ваш бюджет?</b><span>Посчитайте растаможку сами или напишите менеджеру — ответим в течение рабочего дня.</span><div class="art-mid-row"><a class="art-qb max" href="https://max.ru/u/f9LHodD0cOI15ISW65cZM-troopdVYCICi0eYXIWSilu6SCKonmcc0CqZZM" target="_blank" rel="noopener" data-goal="messenger_clicked" data-place="article_mid" data-slug="utilsbor-na-gibrid-2026">💬 Написать в MAX</a><a class="art-qb call" href="/kalkulyator-rastamozhki.html" data-goal="" data-place="article_mid" data-slug="utilsbor-na-gibrid-2026">🧮 Калькулятор под ключ</a></div></aside><h2>30-минутная мощность и «пиковая» из рекламы — не одно и то же</h2>

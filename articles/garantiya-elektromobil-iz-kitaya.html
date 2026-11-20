@@ -407,8 +407,12 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 .rv-thumbs{display:flex;gap:8px;overflow-x:auto;margin:6px 0}.rv-thumbs img{height:80px;border-radius:10px;flex:none}
 .art-body a.rv-video{display:inline-flex;margin-top:6px;color:var(--accent-2);font-weight:600;font-size:.88rem}
 
-.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.09);border-radius:14px}
+.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
 .cc-table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+.cc-table.sm{min-width:0}
+.art-body .art-fig{margin:22px 0}
+.art-body .art-fig img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.12)}
+.art-body .art-fig figcaption{font-size:.82rem;color:var(--text-dim);margin-top:8px;line-height:1.45}
 .cc-table th{background:rgba(255,255,255,.05);text-align:left;font-weight:600;color:var(--text-muted);padding:10px 14px;white-space:nowrap}
 .cc-table td{padding:10px 14px;border-top:1px solid rgba(255,255,255,.07)}
 .cc-table td.num{font-weight:700;color:var(--accent-2);white-space:nowrap}
@@ -437,7 +441,7 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 
 <h2>Гарантия на батарею: что заявляют бренды</h2>
 <p>У электромобилей гарантия на тяговую батарею заметно длиннее общей гарантии на машину. Но единого стандарта нет: условия различаются по бренду, модели, модельному году и рынку, а у части программ действуют только для первого владельца. Ниже — то, что мы нашли в открытых источниках на ноябрь 2026 года. Это ориентиры, а не обязательства, которые переходят к вам при параллельном импорте.</p>
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; margin: 20px 0;">
+<div class="cc-table-wrap"><table class="cc-table sm">
 <thead><tr><th>Марка</th><th>Что указано в открытых источниках</th></tr></thead>
 <tbody>
 <tr><td><strong>BYD</strong></td><td>Для европейского рынка компания расширила гарантию на батарею Blade до 8 лет или 250 000 км, с минимальным порогом остаточной ёмкости (SoH) 70%. Для китайского рынка и конкретной модели условия указаны в гарантийной книжке, поэтому смотрим их по VIN.</td></tr>
@@ -445,7 +449,7 @@ a.art-qb.call{background:linear-gradient(180deg,var(--accent-2),var(--accent));c
 <tr><td><strong>Li Auto (Lixiang)</strong></td><td>В спецификациях L8 и i8 для батареи указано 8 лет или 160 000 км. Для новых батарей Lianshan компания заявляет сохранение не менее 75% здоровья батареи за 8 лет или 160 000 км.</td></tr>
 <tr><td><strong>Voyah</strong></td><td>Источники расходятся: для Voyah Free встречаются 120 000, 160 000 и 200 000 км в зависимости от версии и рынка. Поэтому конкретную цифру мы подтверждаем только по документам на автомобиль.</td></tr>
 </tbody>
-</table>
+</table></div>
 <p>Отправлять автомобиль или батарею обратно на завод технически и экономически нецелесообразно, поэтому заводской норматив мы используем как ориентир, а не как способ вернуть деньги. Главное защитное действие — проверить состояние батареи до оплаты.</p>
 <p style="font-size:.88rem;opacity:.8">Источники: <a href="https://vision-mobility.de/en/news/byd-battery-warranty-8-years-or-250-000-kilometers-389544.html" rel="nofollow noopener" target="_blank">BYD — Vision Mobility</a>, <a href="https://data.carnewschina.com/database/zeekr/zeekr-009/2024/params" rel="nofollow noopener" target="_blank">Zeekr 009 — CarNewsChina</a>, <a href="https://technode.com/2026/02/10/zeekr-recalls-38277-zeekr-001-we-86-vehicles-over-potential-battery-safety-risk" rel="nofollow noopener" target="_blank">Zeekr — TechNode</a>, <a href="https://cnevpost.com/2026/10/20/li-auto-launches-lianshan-in-house-ev-tech-system/" rel="nofollow noopener" target="_blank">Li Auto — CnEVPost</a>, <a href="https://db.carnewschina.com/aratu-free/2024/params" rel="nofollow noopener" target="_blank">Voyah Free — CarNewsChina</a>.</p>
 
