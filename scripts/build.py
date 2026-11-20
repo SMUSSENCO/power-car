@@ -277,8 +277,12 @@ REVIEWS_CSS = """
 """
 ART_STYLE += REVIEWS_CSS
 ART_STYLE += """
-.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.09);border-radius:14px}
+.cc-table-wrap{overflow-x:auto;margin:16px 0 26px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
 .cc-table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+.cc-table.sm{min-width:0}
+.art-body .art-fig{margin:22px 0}
+.art-body .art-fig img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.12)}
+.art-body .art-fig figcaption{font-size:.82rem;color:var(--text-dim);margin-top:8px;line-height:1.45}
 .cc-table th{background:rgba(255,255,255,.05);text-align:left;font-weight:600;color:var(--text-muted);padding:10px 14px;white-space:nowrap}
 .cc-table td{padding:10px 14px;border-top:1px solid rgba(255,255,255,.07)}
 .cc-table td.num{font-weight:700;color:var(--accent-2);white-space:nowrap}

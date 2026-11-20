@@ -13,6 +13,7 @@ on:
       - "car.html"
   schedule:
     - cron: "0 3 * * 1"   # раз в неделю: обновляет дату цены и priceValidUntil на страницах авто
+    - cron: "0 5 * * *"   # ежедневно в 08:00 МСК: включает запланированные статьи (autoPublish) и пересобирает страницы, только если что-то включилось
   workflow_dispatch: {}   # позволяет запустить вручную из вкладки Actions
 
 permissions:
@@ -34,23 +35,39 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Publish scheduled articles
+        id: flip
+        run: python3 scripts/publish_scheduled.py
+
+      # Ежедневный запуск без новых статей ничего не пересобирает (иначе каждый день менялись бы lastmod и даты цен на всех страницах).
       - name: Install Pillow (для превью фото)
+        if: github.event.schedule != '0 5 * * *' || steps.flip.outputs.changed == 'true'
         run: pip install pillow
 
       - name: Make card thumbnails
+        if: github.event.schedule != '0 5 * * *' || steps.flip.outputs.changed == 'true'
         run: python3 scripts/make_thumbs.py
 
       - name: Generate static pages
+        if: github.event.schedule != '0 5 * * *' || steps.flip.outputs.changed == 'true'
         run: python3 scripts/build.py
 
       - name: Commit & push generated pages
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add articles auto katalog otzyvy.html sitemap.xml images/thumbs
+          git add data/articles.json articles auto katalog otzyvy.html sitemap.xml images/thumbs
           if git diff --staged --quiet; then
             echo "Изменений нет — коммит не нужен."
           else
             git commit -m "chore: regenerate static pages [skip ci]"
+            git pull --rebase
             git push
           fi
+
+      # Сообщаем поисковикам только о новых статьях. Даём Pages время выкатить страницы; ошибка пинга не должна ронять публикацию.
+      - name: Ping IndexNow for new articles
+        if: steps.flip.outputs.changed == 'true'
+        run: |
+          sleep 150
+          python3 scripts/indexnow.py ${{ steps.flip.outputs.urls }} || true
